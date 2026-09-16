@@ -4032,9 +4032,11 @@
 
     .landing-preview-machine-frame {
       min-height: 188px;
+      height: 188px;
       display: grid;
       place-items: center;
-      padding: 10px;
+      padding: 0;
+      overflow: hidden;
       border: 1px solid rgba(47, 127, 136, 0.10);
       border-radius: 16px;
       background: rgba(255, 255, 255, 0.74);
@@ -4043,10 +4045,12 @@
 
     .landing-preview-machine-img {
       width: 100%;
-      max-width: 245px;
-      max-height: 166px;
-      object-fit: contain;
-      filter: drop-shadow(0 12px 18px rgba(34, 55, 66, 0.10));
+      height: 100%;
+      max-width: none;
+      max-height: none;
+      display: block;
+      object-fit: cover;
+      object-position: center center;
     }
 
     .landing-preview-machine-panel small {
@@ -4446,10 +4450,10 @@
         <aside class="landing-preview-card" aria-label="OncoVis3D workspace preview">
           <div class="landing-preview-heading">
             <div>
-              
-              <h2>Workspace Preview</h2>
+              <span class="landing-preview-kicker">Workspace preview</span>
+              <h2>Treatment conversations, visualized.</h2>
             </div>
-            
+            <span class="landing-preview-live">Clinical education</span>
           </div>
 
           <div class="landing-preview-carousel" data-landing-carousel>
