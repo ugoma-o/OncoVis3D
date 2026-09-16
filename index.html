@@ -3895,6 +3895,26 @@
       place-items: center;
     }
 
+    .landing-preview-video-frame {
+      width: 100%;
+      min-height: 188px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border: 1px solid rgba(47, 127, 136, 0.12);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.74);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.72);
+    }
+
+    .landing-preview-video {
+      width: 100%;
+      height: 188px;
+      display: block;
+      object-fit: contain;
+      background: #fff;
+    }
+
     .model-core {
       width: 76px;
       height: 122px;
@@ -4440,10 +4460,11 @@
                     </div>
                     <div class="landing-preview-body">
                       <div class="landing-preview-anatomy">
-                        <div class="landing-preview-model">
-                          <span class="model-orbit orbit-one"></span>
-                          <span class="model-orbit orbit-two"></span>
-                          <span class="model-core"></span>
+                        <div class="landing-preview-video-frame">
+                          <video class="landing-preview-video" autoplay muted loop playsinline preload="metadata" aria-label="OncoVis3D 3D anatomy preview">
+                            <source src="images/homepage_preview.mp4" type="video/mp4" />
+                            Your browser does not support embedded video.
+                          </video>
                         </div>
                         <div>
                           <small>3D anatomy</small>
