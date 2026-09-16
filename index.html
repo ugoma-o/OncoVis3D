@@ -4157,6 +4157,10 @@
       will-change: transform;
     }
 
+    .landing-preview-track.no-transition {
+      transition: none !important;
+    }
+
     .landing-preview-slide {
       flex: 0 0 100%;
       min-width: 100%;
@@ -10488,10 +10492,21 @@ const workspaceMainColumn = document.querySelector(".workspace > .main-column");
 
       let index = 0;
       let timer = null;
+      let wrapResetTimer = null;
       const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
 
-      const render = () => {
-        if (track) track.style.transform = `translateX(-${index * 100}%)`;
+      // Duplicate the first slide after the final slide. Moving from the last real
+      // slide to this clone keeps the carousel traveling forward. After that
+      // animation finishes, the track is silently reset to the real first slide.
+      const firstSlideClone = slides[0]?.cloneNode(true);
+      if (track && firstSlideClone) {
+        firstSlideClone.removeAttribute("data-preview-slide");
+        firstSlideClone.setAttribute("aria-hidden", "true");
+        firstSlideClone.setAttribute("data-preview-clone", "first");
+        track.appendChild(firstSlideClone);
+      }
+
+      const updateIndicators = () => {
         slides.forEach((slide, i) => slide.setAttribute("aria-hidden", String(i !== index)));
         dots.forEach((dot, i) => {
           dot.classList.toggle("active", i === index);
@@ -10500,9 +10515,54 @@ const workspaceMainColumn = document.querySelector(".workspace > .main-column");
         if (caption) caption.textContent = captions[index] || captions[0];
       };
 
+      const render = () => {
+        if (track) track.style.transform = `translateX(-${index * 100}%)`;
+        updateIndicators();
+      };
+
       const goTo = (nextIndex) => {
         index = (nextIndex + slides.length) % slides.length;
         render();
+      };
+
+      const resetAfterForwardWrap = () => {
+        if (!track) return;
+        if (wrapResetTimer) window.clearTimeout(wrapResetTimer);
+        wrapResetTimer = null;
+        track.classList.add("no-transition");
+        track.style.transform = "translateX(0%)";
+        void track.offsetWidth;
+        requestAnimationFrame(() => track.classList.remove("no-transition"));
+      };
+
+      const goForward = () => {
+        if (index < slides.length - 1) {
+          index += 1;
+          render();
+          return;
+        }
+
+        if (reduceMotion || !track || !firstSlideClone) {
+          index = 0;
+          render();
+          return;
+        }
+
+        // From the last slide, continue in the same direction onto the cloned
+        // first slide rather than reversing across the whole track.
+        index = 0;
+        updateIndicators();
+        track.classList.remove("no-transition");
+        track.style.transform = `translateX(-${slides.length * 100}%)`;
+
+        let resetDone = false;
+        const finishWrap = () => {
+          if (resetDone) return;
+          resetDone = true;
+          resetAfterForwardWrap();
+        };
+        track.addEventListener("transitionend", finishWrap, { once: true });
+        wrapResetTimer = window.setTimeout(finishWrap, 1200);
       };
 
       const stopAuto = () => {
@@ -10513,11 +10573,11 @@ const workspaceMainColumn = document.querySelector(".workspace > .main-column");
       const startAuto = () => {
         stopAuto();
         if (reduceMotion || slides.length < 2 || document.hidden) return;
-        timer = window.setInterval(() => goTo(index + 1), 5000);
+        timer = window.setInterval(goForward, 7000);
       };
 
       prev?.addEventListener("click", () => { goTo(index - 1); startAuto(); });
-      next?.addEventListener("click", () => { goTo(index + 1); startAuto(); });
+      next?.addEventListener("click", () => { goForward(); startAuto(); });
       dots.forEach(dot => dot.addEventListener("click", () => {
         goTo(Number(dot.dataset.previewDot || 0));
         startAuto();
