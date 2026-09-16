@@ -10597,7 +10597,7 @@ const workspaceMainColumn = document.querySelector(".workspace > .main-column");
       const startAuto = () => {
         stopAuto();
         if (reduceMotion || slides.length < 2 || document.hidden) return;
-        timer = window.setInterval(goForward, 7000);
+        timer = window.setInterval(goForward, 10000);
       };
 
       prev?.addEventListener("click", () => { goTo(index - 1); startAuto(); });
