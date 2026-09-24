@@ -1991,10 +1991,24 @@
       display: flex;
       width: 100%;
       min-width: 0;
-      border: 1px solid var(--line);
+      border: 2px solid rgba(47, 127, 136, 0.48);
       border-radius: 13px;
-      background: rgba(255, 255, 255, 0.96);
+      background: rgba(255, 255, 255, 0.98);
       padding: 9px 11px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(47, 127, 136, 0.08);
+      transition: border-color 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+    }
+
+    .calendar-start-field:hover .calendar-date-input-wrap {
+      border-color: var(--primary);
+      background: #ffffff;
+      box-shadow: 0 7px 16px rgba(47, 127, 136, 0.13);
+    }
+
+    .calendar-date-input-wrap:focus-within {
+      border-color: var(--primary);
+      box-shadow: var(--focus);
     }
 
     .calendar-date-input-wrap input {
@@ -2006,7 +2020,10 @@
       background: transparent;
       color: var(--ink);
       font: inherit;
-      font-weight: 800;
+      font-size: 0.98rem;
+      font-weight: 850;
+      cursor: pointer;
+      outline: none;
     }
 
     .treatment-calendar-summary {
@@ -2289,6 +2306,61 @@
       gap: 12px;
       margin: 12px 0;
       align-items: stretch;
+    }
+
+
+    .treatment-plan-shared-controls {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: end;
+      margin: 14px 0 16px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(248, 251, 252, 0.78);
+    }
+
+    .treatment-plan-shared-controls .field {
+      min-width: 0;
+      margin: 0;
+    }
+
+    .treatment-plan-shared-switch {
+      align-self: end;
+      min-height: 46px;
+      min-width: 188px;
+      white-space: nowrap;
+    }
+
+    .treatment-plan-guidance-timing {
+      margin: 0 0 14px;
+    }
+
+    .treatment-plan-guidance-timing[hidden] {
+      display: none !important;
+    }
+
+    @media (max-width: 760px) {
+      .treatment-plan-shared-controls {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .treatment-plan-shared-switch {
+        grid-column: 1 / -1;
+        width: 100%;
+        min-width: 0;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .treatment-plan-shared-controls {
+        grid-template-columns: 1fr;
+      }
+
+      .treatment-plan-shared-switch {
+        grid-column: auto;
+      }
     }
 
     .dose-fractions-field { grid-area: fractions; }
@@ -4978,21 +5050,6 @@
                   <h3>Treatment plan</h3>
                   <p id="treatmentPlanViewSubtitle">Clinical plan details</p>
                 </div>
-
-                <button
-                  class="treatment-plan-switch-button treatment-plan-header-switch"
-                  id="treatmentPlanHeaderToggle"
-                  type="button"
-                  aria-controls="regimenGuidanceView treatmentCalendarView"
-                  aria-expanded="false"
-                >
-                  <span id="treatmentPlanHeaderToggleLabel">Switch to calendar view</span>
-                  <span
-                    class="treatment-plan-switch-arrow"
-                    id="treatmentPlanHeaderToggleArrow"
-                    aria-hidden="true"
-                  >›</span>
-                </button>
               </div>
               <div class="treatment-plan-stage" id="treatmentPlanStage">
               <div
@@ -5220,9 +5277,11 @@
                 <p class="prostate-regimen-disclaimer regimen-disclaimer-quiet">Educational decision support only. Final regimen selection remains individualized to tumor location, stage, organ-at-risk constraints, systemic therapy, and institutional protocol.</p>
               </div>
 
+              </div>
+
               <input id="totalDose" type="hidden" value="50" />
 
-              <div class="dose-grid">
+              <div class="treatment-plan-shared-controls" aria-label="Treatment schedule controls">
                 <div class="field dose-fractions-field">
                   <label for="fractions">Treatment sessions</label>
                   <input id="fractions" type="number" min="1" step="1" value="25" />
@@ -5233,34 +5292,47 @@
                   <input id="treatmentsPerWeek" type="number" min="0.5" max="14" step="0.5" value="5" />
                 </div>
 
-                <div class="field dose-duration-field">
-                  <span class="field-label">Session timing</span>
-                  <div class="session-timing-card" id="sessionDuration" aria-live="polite">
-                    <div class="session-timing-step">
-                      <span class="session-timing-number">1</span>
-                      <div>
-                        <strong>Prep</strong>
-                        <span>Enter the room and get into position.</span>
-                      </div>
+                <button
+                  class="treatment-plan-switch-button treatment-plan-shared-switch"
+                  id="treatmentPlanHeaderToggle"
+                  type="button"
+                  aria-controls="regimenGuidanceView treatmentCalendarView"
+                  aria-expanded="false"
+                >
+                  <span id="treatmentPlanHeaderToggleLabel">Switch to calendar view</span>
+                  <span
+                    class="treatment-plan-switch-arrow"
+                    id="treatmentPlanHeaderToggleArrow"
+                    aria-hidden="true"
+                  >›</span>
+                </button>
+              </div>
+
+              <div class="field dose-duration-field treatment-plan-guidance-timing" id="regimenGuidanceTiming">
+                <span class="field-label">Session timing</span>
+                <div class="session-timing-card" id="sessionDuration" aria-live="polite">
+                  <div class="session-timing-step">
+                    <span class="session-timing-number">1</span>
+                    <div>
+                      <strong>Prep</strong>
+                      <span>Enter the room and get into position.</span>
                     </div>
-                    <div class="session-timing-step">
-                      <span class="session-timing-number">2</span>
-                      <div>
-                        <strong>Set up</strong>
-                        <span>Imaging and alignment are completed.</span>
-                      </div>
+                  </div>
+                  <div class="session-timing-step">
+                    <span class="session-timing-number">2</span>
+                    <div>
+                      <strong>Set up</strong>
+                      <span>Imaging and alignment are completed.</span>
                     </div>
-                    <div class="session-timing-step">
-                      <span class="session-timing-number">3</span>
-                      <div>
-                        <strong>Delivery</strong>
-                        <span id="sessionDeliveryText">The radiation itself often takes only a few minutes.</span>
-                      </div>
+                  </div>
+                  <div class="session-timing-step">
+                    <span class="session-timing-number">3</span>
+                    <div>
+                      <strong>Delivery</strong>
+                      <span id="sessionDeliveryText">The radiation itself often takes only a few minutes.</span>
                     </div>
                   </div>
                 </div>
-
-              </div>
               </div>
 
               <div
@@ -10198,64 +10270,16 @@
     }
 
 
-    function syncTreatmentPlanStageHeight({ forceMeasure = false } = {}) {
+    function syncTreatmentPlanStageHeight() {
       const stage = $("treatmentPlanStage");
-      const guidanceView = $("regimenGuidanceView");
-      const calendarView = $("treatmentCalendarView");
-      const isStacked = window.matchMedia("(max-width: 720px)").matches;
+      if (!stage) return;
 
-      if (!stage || !guidanceView || !calendarView || isStacked) {
-        if (stage) {
-          stage.style.height = "";
-          stage.classList.remove("is-fixed");
-        }
-        return;
-      }
-
-      const guidanceVisible = !guidanceView.hidden;
-
-      if (guidanceVisible) {
-        // Regimen guidance always follows its natural content height. This keeps
-        // the complete Session timing card visible even when text or controls grow.
-        stage.style.height = "";
-        stage.classList.remove("is-fixed");
-        const measuredHeight = Math.ceil(guidanceView.scrollHeight);
-        if (measuredHeight > 0) stage.dataset.guidanceHeight = String(measuredHeight);
-        return;
-      }
-
-      if (forceMeasure) {
-        const previousHidden = guidanceView.hidden;
-        const previousVisibility = guidanceView.style.visibility;
-        const previousPosition = guidanceView.style.position;
-        const previousWidth = guidanceView.style.width;
-
-        guidanceView.hidden = false;
-        guidanceView.style.visibility = "hidden";
-        guidanceView.style.position = "absolute";
-        guidanceView.style.width = "100%";
-        stage.style.height = "";
-        stage.classList.remove("is-fixed");
-
-        const measuredHeight = Math.ceil(guidanceView.scrollHeight);
-        if (measuredHeight > 0) stage.dataset.guidanceHeight = String(measuredHeight);
-
-        guidanceView.hidden = previousHidden;
-        guidanceView.style.visibility = previousVisibility;
-        guidanceView.style.position = previousPosition;
-        guidanceView.style.width = previousWidth;
-      }
-
-      // The calendar may use the measured guidance height and scroll internally,
-      // preserving the visual swap without ever clipping the guidance content.
-      const storedHeight = Math.max(0, parseInt(stage.dataset.guidanceHeight || "0", 10));
-      if (storedHeight > 0) {
-        stage.style.height = `${storedHeight}px`;
-        stage.classList.add("is-fixed");
-      } else {
-        stage.style.height = "";
-        stage.classList.remove("is-fixed");
-      }
+      // Keep the treatment-plan area at its natural height in both views.
+      // This prevents shared schedule controls, session timing, or the calendar
+      // from being clipped when content grows or the screen width changes.
+      stage.style.height = "";
+      stage.classList.remove("is-fixed");
+      stage.removeAttribute("data-guidance-height");
     }
 
     function setTreatmentPlanView(index) {
@@ -10265,18 +10289,16 @@
 
       const guidanceView = $("regimenGuidanceView");
       const calendarView = $("treatmentCalendarView");
+      const guidanceTiming = $("regimenGuidanceTiming");
       const subtitle = $("treatmentPlanViewSubtitle");
       const toggleButton = $("treatmentPlanHeaderToggle");
       const toggleLabel = $("treatmentPlanHeaderToggleLabel");
       const toggleArrow = $("treatmentPlanHeaderToggleArrow");
       const showingCalendar = current.id === "calendar";
 
-      if (showingCalendar) {
-        syncTreatmentPlanStageHeight({ forceMeasure: true });
-      }
-
       if (guidanceView) guidanceView.hidden = showingCalendar;
       if (calendarView) calendarView.hidden = !showingCalendar;
+      if (guidanceTiming) guidanceTiming.hidden = showingCalendar;
       if (subtitle) subtitle.textContent = current.subtitle;
 
       if (toggleButton) {
