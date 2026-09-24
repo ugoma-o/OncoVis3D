@@ -4403,6 +4403,151 @@
       .landing-calendar-preview { min-height: 300px; }
     }
 
+
+    /* Readability pass: increase small supporting text throughout the app without
+       materially changing the hierarchy of headings or primary controls. */
+    .organ-reference-disclosure > summary small,
+    .workspace-landing-kicker,
+    .setup-position-control span,
+    .setup-label,
+    .breast-regimen-source,
+    .breast-boost-heading p,
+    .breast-radiobio-heading p,
+    .alpha-beta-control label,
+    .lung-regimen-note,
+    .prostate-regimen-disclaimer,
+    .note-template-help,
+    .treatment-calendar-legend,
+    .treatment-calendar-note,
+    .landing-pilot-chip,
+    .landing-preview-caption,
+    .landing-workflow-card p,
+    .team-card p,
+    .team-meta-item {
+      font-size: 0.84rem;
+    }
+
+    .system-card span,
+    .site-card span,
+    .panel-heading p,
+    .viewer-title p,
+    .field label,
+    .field .field-label,
+    .timeline-context,
+    .timeline-item p,
+    .timeline-item ul,
+    .tag,
+    .footer,
+    .organ-reference-links a {
+      font-size: 0.86rem;
+    }
+
+    .regimen-quiet-status,
+    .regimen-source-toggle,
+    .regimen-source-detail,
+    .regimen-disclaimer-quiet,
+    .pilot-system-status,
+    .pilot-site-status,
+    .setup-image-credit,
+    .team-role,
+    .team-meta-label {
+      font-size: 0.75rem !important;
+    }
+
+    .alpha-beta-band,
+    .alpha-beta-scale span,
+    .alpha-beta-scale b,
+    .radiobio-result-values span,
+    .breast-radiobio-note {
+      font-size: 0.78rem;
+    }
+
+    /* Keep compact top-level navigation readable on smaller screens. */
+    @media (max-width: 980px) {
+      .page-tab { font-size: 0.78rem !important; }
+      .nav-actions .btn.primary.small { font-size: 0.80rem !important; }
+    }
+
+    @media (max-width: 520px) {
+      .page-tab { font-size: 0.72rem !important; }
+      .nav-actions .btn.primary.small { font-size: 0.74rem !important; }
+    }
+
+    /* Landing preview microcopy remains compact but is easier to read. */
+    .landing-preview-kicker,
+    .landing-preview-anatomy small,
+    .preview-detail-card small,
+    .landing-preview-machine-panel small {
+      font-size: 0.75rem;
+    }
+
+    .landing-calendar-top small,
+    .landing-calendar-start {
+      font-size: 0.72rem;
+    }
+
+    .landing-calendar-summary span {
+      font-size: 0.66rem;
+    }
+
+    .landing-calendar-summary b {
+      font-size: 0.82rem;
+    }
+
+    .landing-calendar-month-title {
+      font-size: 0.78rem;
+    }
+
+    .landing-calendar-weekdays span {
+      font-size: 0.62rem;
+    }
+
+    .landing-calendar-day {
+      font-size: 0.66rem;
+    }
+
+    .landing-calendar-note {
+      font-size: 0.70rem;
+    }
+
+    /* Calendar session markers use only the session number. This prevents the
+       words “Session” / “Sessions” from clipping in narrow date cells while the
+       full meaning remains available in the cell's aria-label. */
+    .calendar-day {
+      min-height: 52px;
+    }
+
+    .calendar-day-number {
+      font-size: 0.76rem;
+    }
+
+    .calendar-session-label {
+      display: grid;
+      place-items: center;
+      width: min(30px, 100%);
+      min-width: 22px;
+      min-height: 24px;
+      margin: 5px auto 0;
+      padding: 3px 5px;
+      border-radius: 8px;
+      font-size: 0.72rem;
+      line-height: 1;
+      white-space: nowrap;
+      overflow: visible;
+      text-overflow: clip;
+    }
+
+    @media (max-width: 720px) {
+      .calendar-day {
+        min-height: 60px;
+      }
+
+      .calendar-session-label {
+        font-size: 0.70rem;
+        min-height: 24px;
+      }
+    }
+
 </style>
 </head>
 <body>
@@ -4446,9 +4591,8 @@
           <div class="landing-preview-heading">
             <div>
               <span class="landing-preview-kicker">Workspace preview</span>
-              <h2>Treatment conversations, visualized.</h2>
+              <h2>How OncoVis3D Supports the Treatment Conversation</h2>
             </div>
-            <span class="landing-preview-live">Clinical education</span>
           </div>
 
           <div class="landing-preview-carousel" data-landing-carousel>
@@ -9813,12 +9957,12 @@
         if (events.length === 1) {
           const event = events[0];
           const phaseText = event.phase === "boost" ? "Boost" : "Session";
-          sessionLabel = `<span class="calendar-session-label">${phaseText} ${event.sessionNumber}</span>`;
+          sessionLabel = `<span class="calendar-session-label" aria-hidden="true">${event.sessionNumber}</span>`;
           accessibleLabel += ` Treatment ${phaseText.toLowerCase()} ${event.sessionNumber}.`;
         } else if (events.length > 1) {
           const first = events[0].sessionNumber;
           const last = events[events.length - 1].sessionNumber;
-          sessionLabel = `<span class="calendar-session-label">Sessions ${first}–${last}</span>`;
+          sessionLabel = `<span class="calendar-session-label" aria-hidden="true">${first}–${last}</span>`;
           accessibleLabel += ` Treatment sessions ${first} through ${last}.`;
         }
 
