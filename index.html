@@ -3810,7 +3810,8 @@
 
     .landing-preview-heading h2 {
       margin: 0;
-      max-width: 390px;
+      max-width: none;
+      width: 100%;
       font-size: clamp(1.45rem, 2.2vw, 2.1rem);
       line-height: 1.04;
       letter-spacing: -0.045em;
@@ -4546,6 +4547,37 @@
         font-size: 0.70rem;
         min-height: 24px;
       }
+    }
+
+
+    /* Readability pass: enlarge patient-facing explanatory body text while
+       keeping compact labels, kickers, and metadata visually secondary. */
+    .course-step p {
+      font-size: 0.96rem;
+      line-height: 1.48;
+    }
+
+    .info-box p,
+    .info-box li,
+    .timeline-item p,
+    .timeline-item li,
+    .setup-caption p,
+    .treatment-calendar-intro p,
+    .treatment-calendar-note,
+    .lung-regimen-note,
+    .prostate-regimen-head p {
+      font-size: 0.96rem;
+      line-height: 1.5;
+    }
+
+    .timeline-item ul {
+      font-size: 0.94rem;
+      line-height: 1.45;
+    }
+
+    .landing-workflow-card p {
+      font-size: 0.88rem;
+      line-height: 1.5;
     }
 
 </style>
