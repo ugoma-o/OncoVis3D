@@ -4,25 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>OncoVis3D</title>
-  <!-- Build: app-logo-favicon-2026-09-04 -->
-  <!-- Build: 30–60 minute appointment duration in Estimated treatment course -->
+  <!-- Build: regimen-card-layout-session-duration-adaptive-timeline-2026-09-24 -->
   <!-- Build: patient-facing-no-bed-eqd2-2026-07-25 -->
   <!-- Build: guideline-source-precedence-and-nonconsecutive-cadence-2026-07-31 -->
-  <!-- Build: organ-order-breast-gu-thoracic-2026-08-08 -->
-  <!-- Build: print-current-biodigital-snapshot-2026-08-08 -->
-  <!-- Build: collapsible-about-references-and-right-aligned-regimen-sources-2026-08-08 -->
-  <!-- Build: lung-involved-node-explanation-no-N-selector-2026-08-08 -->
-  <!-- Build: thoracic-nsclc-sclc-regimen-guidance-2026-08-08 -->
-  <!-- Build: print-static-model-preview-no-open-model-button-2026-08-08 -->
-  <!-- Build: thoracic-thymic-heme-mediastinal-reorganization-2026-07-31 -->
-  <!-- Build: breast-biodigital-embed-MkQZI-2026-09-14 -->
-  <!-- Build: landing-page-redesign-2026-09-14 -->
-  <!-- Build: landing-preview-machine-calendar-carousel-smoother-2026-09-16 -->
-    <!-- Build: visual-education-for-radiation-oncology-hero-2026-09-14 -->
-<meta name="description" content="A clinical tool for showing patients anatomy, tumor locations, radiation treatment concepts, dose schedules, and expected symptoms over time." />
-  <link rel="icon" type="image/png" href="icons/App_Logo.png" />
+  <meta name="description" content="A clinical tool for showing patients anatomy, tumor locations, radiation treatment concepts, dose schedules, and expected symptoms over time." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2218%22%20fill%3D%22%232f7f88%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2253%25%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%20font-family%3D%22Inter%2C%20Arial%2C%20sans-serif%22%20font-size%3D%2225%22%20font-weight%3D%22900%22%20fill%3D%22white%22%3EOG%3C%2Ftext%3E%3C%2Fsvg%3E" />
   <link rel="manifest" href="./manifest.webmanifest" />
-  <link rel="apple-touch-icon" href="icons/App_Logo.png" />
+  <link rel="apple-touch-icon" href="images/icon-192.png" />
   <meta name="theme-color" content="#2f7f88" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -384,126 +372,6 @@
       padding-top: 12px;
     }
 
-    .about-reference-disclosure {
-      margin-top: 14px;
-    }
-
-    .about-reference-disclosure > summary {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      width: 100%;
-      padding: 11px 14px;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background: rgba(255, 255, 255, 0.64);
-      color: var(--primary-dark);
-      font-size: 0.88rem;
-      font-weight: 850;
-      cursor: pointer;
-      list-style: none;
-      user-select: none;
-    }
-
-    .about-reference-disclosure > summary::-webkit-details-marker {
-      display: none;
-    }
-
-    .about-reference-disclosure > summary::after {
-      content: "+";
-      display: grid;
-      place-items: center;
-      width: 24px;
-      height: 24px;
-      flex: 0 0 24px;
-      border-radius: 999px;
-      background: var(--primary-soft);
-      color: var(--primary-dark);
-      font-size: 1rem;
-      font-weight: 900;
-      line-height: 1;
-    }
-
-    .about-reference-disclosure[open] > summary::after {
-      content: "−";
-    }
-
-    .about-reference-disclosure[open] > summary {
-      background: rgba(255, 255, 255, 0.82);
-      border-color: rgba(47, 127, 136, 0.30);
-    }
-
-    .about-reference-disclosure .reference-grid {
-      margin-top: 12px;
-    }
-
-    .organ-reference-accordions {
-      display: grid;
-      gap: 9px;
-      margin-top: 14px;
-    }
-
-    .organ-reference-disclosure {
-      margin-top: 0;
-    }
-
-    .organ-reference-disclosure > summary span:first-child {
-      display: grid;
-      gap: 2px;
-      min-width: 0;
-    }
-
-    .organ-reference-disclosure > summary b {
-      color: var(--ink);
-      font-size: 0.94rem;
-      letter-spacing: -0.015em;
-    }
-
-    .organ-reference-disclosure > summary small {
-      color: var(--muted);
-      font-size: 0.74rem;
-      font-weight: 650;
-      line-height: 1.3;
-    }
-
-    .organ-reference-content {
-      padding: 10px 3px 2px;
-    }
-
-    .organ-reference-links {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 7px 10px;
-    }
-
-    .organ-reference-links a {
-      display: flex;
-      align-items: center;
-      min-width: 0;
-      padding: 9px 11px;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.56);
-      color: var(--primary-dark);
-      font-size: 0.80rem;
-      font-weight: 800;
-      line-height: 1.3;
-      text-decoration: none;
-    }
-
-    .organ-reference-links a:hover,
-    .organ-reference-links a:focus-visible {
-      background: rgba(255, 255, 255, 0.84);
-      border-color: rgba(47, 127, 136, 0.36);
-    }
-
-    @media (max-width: 700px) {
-      .organ-reference-links {
-        grid-template-columns: 1fr;
-      }
-    }
-
     .home-clinical-note {
       margin-top: 18px;
       width: 100%;
@@ -541,14 +409,6 @@
       font-weight: 950;
       letter-spacing: -0.06em;
       box-shadow: 0 18px 34px rgba(47, 127, 136, 0.22);
-    }
-
-    .workspace-landing-logo {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
-      border-radius: inherit;
     }
 
     .workspace-landing-copy {
@@ -1137,8 +997,7 @@
     }
 
     .setup-preview-heading h3 {
-      margin: 0;
-      letter-spacing: -0.03em;
+      margin: 0;letter-spacing: -0.03em;
       text-align: left;
     }
 
@@ -1825,26 +1684,6 @@
       line-height: 1.35;
     }
 
-    .lung-regimen-note {
-      padding: 10px 12px;
-      border: 1px solid rgba(47, 127, 136, 0.22);
-      border-radius: 13px;
-      background: rgba(255, 255, 255, 0.58);
-      color: var(--muted);
-      font-size: 0.78rem;
-      line-height: 1.42;
-    }
-
-    .lung-regimen-note.warning {
-      border-color: rgba(173, 92, 0, 0.28);
-      background: rgba(255, 247, 237, 0.90);
-      color: #6f3b00;
-    }
-
-    .lung-regimen-note b {
-      color: var(--ink);
-    }
-
     @media (max-width: 620px) {
       .prostate-regimen-grid {
         grid-template-columns: 1fr;
@@ -2157,8 +1996,7 @@
       font-weight: 900;
       line-height: 1.15;
       text-align: center;
-      overflow-wrap: anywhere;
-    }
+      overflow-wrap: anywhere;}
 
     .calendar-day.has-boost .calendar-session-label {
       background: #7764d8;
@@ -2341,9 +2179,9 @@
     }
 
     .course-summary-fractions {
-      margin-top: 3px;
-      font-size: 1rem;
-      line-height: 1.2;
+      margin-top: 6px;
+      font-size: clamp(1.18rem, 1.8vw, 1.45rem);
+      line-height: 1.25;
       font-weight: 900;
       color: var(--primary-dark);
     }
@@ -3056,40 +2894,6 @@
       color: var(--muted);
     }
 
-    /* Static model preview used only in printed summaries.
-       The live BioDigital iframe remains interactive on screen, while print uses
-       a stable image to avoid WebGL/iframe print-state resets. */
-    .print-model-static {
-      display: none;
-    }
-
-    .print-model-static img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center;
-      background: #f5f8fa;
-    }
-
-    .print-model-fallback {
-      display: none;
-      width: 100%;
-      height: 100%;
-      place-items: center;
-      text-align: center;
-      padding: 30px;
-      background: #f5f8fa;
-      color: var(--muted);
-    }
-
-    .print-model-fallback strong {
-      display: block;
-      color: var(--ink);
-      font-size: 1.25rem;
-      margin-bottom: 6px;
-    }
-
     @media print {
       body { background: #fff; }
       .topbar, .panel, .nav-actions, .admin-panel, .footer { display: none !important; }
@@ -3100,7 +2904,7 @@
       .side-column { display: block; }
       .print-only { display: block; }
 
-      /* Print a stable static image instead of the live cross-origin WebGL iframe. */
+      /* Keep the embedded anatomy viewer visible in the printed summary. */
       .viewer-frame-wrap {
         display: block !important;
         position: relative !important;
@@ -3112,39 +2916,19 @@
         overflow: hidden !important;
         border: 1px solid #bbb !important;
         border-radius: 12px !important;
-        background: #f5f8fa !important;
+        background: #f1f5f7 !important;
         break-inside: avoid !important;
         page-break-inside: avoid !important;
       }
 
-      iframe.model-frame,
-      .empty-viewer,
-      .mobile-viewer-launch {
-        display: none !important;
-      }
-
-      .print-model-static {
-        display: block !important;
-        position: absolute !important;
-        inset: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
-        background: #f5f8fa !important;
-      }
-
-      .print-model-static img {
+      iframe.model-frame {
         display: block !important;
         width: 100% !important;
         height: 100% !important;
-        object-fit: contain !important;
-        object-position: center !important;
+        border: 0 !important;
       }
 
-      .print-model-static.image-missing img {
-        display: none !important;
-      }
-
-      .print-model-static.image-missing .print-model-fallback {
+      .empty-viewer {
         display: grid !important;
       }
 
@@ -3211,9 +2995,7 @@
 
       .brand {
         align-self: flex-start;
-      }
-
-      .nav-actions {
+      }.nav-actions {
         width: 100%;
         display: flex;
         justify-content: flex-end;
@@ -3489,36 +3271,33 @@
       color: #7b541c !important;
     }
 
-    .regimen-source-toggle {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0;
-      border: 0;
-      background: transparent;
+    .regimen-source-disclosure {
       color: var(--muted);
       font-size: 0.68rem;
-      font-weight: 750;
       line-height: 1.35;
+    }
+
+    .regimen-source-disclosure summary {
+      cursor: pointer;
+      color: var(--muted);
+      font-weight: 750;
       opacity: 0.68;
+      list-style: none;
       text-decoration: underline;
       text-decoration-style: dotted;
       text-underline-offset: 3px;
-      white-space: nowrap;
-      cursor: pointer;
     }
 
-    .regimen-source-toggle:hover,
-    .regimen-source-toggle:focus-visible {
-      color: var(--primary-dark);
-      opacity: 1;
+    .regimen-source-disclosure summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .regimen-source-disclosure[open] {
+      flex-basis: 100%;
     }
 
     .regimen-source-detail {
-      width: 100%;
-      max-width: none;
-      align-self: stretch;
-      margin: 7px 0 0;
+      margin-top: 7px;
       padding: 9px 10px;
       border: 1px solid var(--line);
       border-radius: 12px;
@@ -3526,11 +3305,6 @@
       color: var(--muted);
       font-size: 0.70rem;
       line-height: 1.4;
-      text-align: left;
-    }
-
-    .regimen-source-detail[hidden] {
-      display: none !important;
     }
 
     .regimen-source-detail .basis-links {
@@ -3549,25 +3323,32 @@
 
     @media (max-width: 620px) {
       .regimen-quiet-meta {
-        justify-content: flex-end;
+        justify-content: flex-start;
       }
 
       .regimen-disclaimer-quiet {
-        text-align: right;
+        text-align: left;
       }
-
     }
 .session-timing-card {
-      min-height: 100%;
+      min-height: auto;
+      width: 100%;
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 14px;
       align-items: stretch;
-      padding: 14px 14px 3px;
+      padding: 14px;
       border: 1px solid var(--line);
       border-radius: 14px;
       background: rgba(241, 245, 247, 0.78);
       color: var(--muted);
+      overflow: visible;
+    }
+
+    .dose-duration-field {
+      min-width: 0;
+      overflow: visible;
+      padding-bottom: 2px;
     }
 
     .session-timing-step {
@@ -3610,976 +3391,6 @@
         grid-template-columns: 1fr;
       }
     }
-
-
-    /* Pilot availability states: keep future modules visible without presenting
-       incomplete content as available during the study pilot. */
-    .system-card.pilot-unavailable,
-    .site-card.pilot-unavailable {
-      opacity: 0.58;
-      cursor: not-allowed;
-      filter: saturate(0.55);
-    }
-
-    .system-card.pilot-unavailable:hover,
-    .site-card.pilot-unavailable:hover {
-      transform: none;
-      border-color: var(--line);
-      background: rgba(255, 255, 255, 0.62);
-    }
-
-    .system-card.pilot-unavailable .icon-bubble {
-      opacity: 0.72;
-    }
-
-    .pilot-system-status {
-      display: block !important;
-      margin-top: 3px;
-      color: var(--muted) !important;
-      font-size: 0.60rem !important;
-      font-weight: 850 !important;
-      line-height: 1.1 !important;
-      white-space: nowrap;
-    }
-
-    .pilot-site-status {
-      display: inline-flex !important;
-      width: fit-content;
-      margin-top: 8px;
-      padding: 4px 7px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(241, 245, 247, 0.88);
-      color: var(--muted) !important;
-      font-size: 0.68rem !important;
-      font-weight: 850 !important;
-      line-height: 1.1 !important;
-    }
-
-    .organ-selector-panel.searching .pilot-system-status {
-      margin-top: 4px;
-      font-size: 0.66rem !important;
-    }
-
-    @media print {
-      .pilot-site-status,
-      .pilot-system-status {
-        display: none !important;
-      }
-    }
-
-
-    /* Landing page redesign: premium clinical product hero */
-    .landing-hero {
-      grid-template-columns: minmax(0, 1.08fr) minmax(390px, 0.92fr);
-      gap: 20px;
-      align-items: stretch;
-      margin-bottom: 16px;
-    }
-
-    .landing-hero-card {
-      min-height: 520px;
-      display: flex;
-      align-items: center;
-      padding: clamp(30px, 5vw, 64px);
-      isolation: isolate;
-      background:
-        linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(239, 247, 249, 0.92));
-      border-color: rgba(47, 127, 136, 0.18);
-    }
-
-    .landing-hero-card::after {
-      content: none;
-    }
-
-    .landing-hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 780px;
-    }
-
-    .landing-hero-glow {
-      position: absolute;
-      z-index: 0;
-      border-radius: 999px;
-      pointer-events: none;
-      filter: blur(2px);
-    }
-
-    .landing-hero-glow-one {
-      width: 360px;
-      height: 360px;
-      right: -120px;
-      top: -120px;
-      background: radial-gradient(circle, rgba(47, 127, 136, 0.18), rgba(47, 127, 136, 0));
-    }
-
-    .landing-hero-glow-two {
-      width: 300px;
-      height: 300px;
-      left: 28%;
-      bottom: -190px;
-      background: radial-gradient(circle, rgba(119, 100, 216, 0.17), rgba(119, 100, 216, 0));
-    }
-
-    .landing-hero-card #hero-title {
-      margin-bottom: 18px;
-      max-width: 780px;
-    }
-
-    .landing-hero-card .hero-title-text {
-      font-size: clamp(2.2rem, 3.8vw, 3.95rem);
-      line-height: 1.01;
-      letter-spacing: -0.055em;
-      color: var(--ink);
-      font-weight: 850;
-    }
-
-    .landing-lead {
-      max-width: 720px;
-      margin-bottom: 26px;
-      font-size: clamp(1rem, 1.35vw, 1.15rem);
-      line-height: 1.7;
-    }
-
-    .landing-hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 25px;
-    }
-
-    .landing-primary-cta {
-      min-height: 46px;
-      padding: 11px 18px;
-      box-shadow: 0 14px 28px rgba(47, 127, 136, 0.22);
-    }
-
-    .landing-primary-cta span {
-      font-size: 1.05rem;
-      line-height: 1;
-    }
-
-    .landing-pilot-chip {
-      display: inline-flex;
-      align-items: center;
-      min-height: 38px;
-      padding: 8px 12px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.58);
-      color: var(--muted);
-      font-size: 0.78rem;
-      font-weight: 800;
-    }
-
-    .landing-preview-card {
-      min-height: 520px;
-      position: relative;
-      overflow: hidden;
-      padding: clamp(20px, 3vw, 28px);
-      border: 1px solid rgba(47, 127, 136, 0.19);
-      border-radius: var(--radius);
-      background:
-        radial-gradient(circle at 85% 8%, rgba(119, 100, 216, 0.16), transparent 32%),
-        linear-gradient(160deg, rgba(231, 241, 244, 0.98), rgba(220, 233, 238, 0.94));
-      box-shadow: var(--shadow);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .landing-preview-heading {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 15px;
-    }
-
-    .landing-preview-kicker {
-      display: block;
-      color: var(--primary-dark);
-      font-size: 0.71rem;
-      font-weight: 900;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-    }
-
-    .landing-preview-heading h2 {
-      margin: 0;
-      max-width: none;
-      width: 100%;
-      font-size: clamp(1.45rem, 2.2vw, 2.1rem);
-      line-height: 1.04;
-      letter-spacing: -0.045em;
-    }
-
-    .landing-preview-live {
-      flex: 0 0 auto;
-      padding: 6px 9px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.65);
-      border: 1px solid rgba(47, 127, 136, 0.16);
-      color: var(--muted);
-      font-size: 0.66rem;
-      font-weight: 850;
-      white-space: nowrap;
-    }
-
-    .landing-preview-window {
-      overflow: hidden;
-      border: 1px solid rgba(80, 111, 124, 0.19);
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.87);
-      box-shadow: 0 20px 42px rgba(34, 55, 66, 0.15);
-      transform: perspective(1200px) rotateY(-1.5deg) rotateX(0.7deg);
-      transform-origin: center;
-    }
-
-    .landing-preview-windowbar {
-      height: 42px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 0 13px;
-      border-bottom: 1px solid var(--line);
-      background: rgba(239, 245, 247, 0.9);
-      color: var(--muted);
-      font-size: 0.68rem;
-      font-weight: 800;
-    }
-
-    .landing-window-dots {
-      display: flex;
-      gap: 5px;
-    }
-
-    .landing-window-dots i {
-      width: 7px;
-      height: 7px;
-      display: block;
-      border-radius: 50%;
-      background: rgba(92, 111, 120, 0.28);
-    }
-
-    .landing-preview-body {
-      display: grid;
-      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-      gap: 12px;
-      padding: 14px;
-    }
-
-    .landing-preview-anatomy {
-      min-height: 275px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 14px;
-      padding: 16px;
-      border: 1px solid rgba(47, 127, 136, 0.14);
-      border-radius: 17px;
-      background:
-        radial-gradient(circle at 50% 38%, rgba(47, 127, 136, 0.12), transparent 42%),
-        linear-gradient(180deg, rgba(232, 242, 245, 0.88), rgba(247, 250, 251, 0.9));
-    }
-
-    .landing-preview-model {
-      position: relative;
-      width: min(170px, 84%);
-      aspect-ratio: 1;
-      margin: 6px auto 0;
-      display: grid;
-      place-items: center;
-    }
-
-    .landing-preview-video-frame {
-      width: 100%;
-      min-height: 188px;
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-      border: 1px solid rgba(47, 127, 136, 0.12);
-      border-radius: 14px;
-      background: transparent;
-      box-shadow: none;
-    }
-
-    .landing-preview-video {
-      width: 100%;
-      height: 188px;
-      display: block;
-      object-fit: cover;
-      object-position: center center;
-      transform: scale(1.14);
-      transform-origin: center center;
-      background-color: transparent !important;
-    }
-
-    .model-core {
-      width: 76px;
-      height: 122px;
-      border-radius: 48% 48% 42% 42% / 26% 26% 62% 62%;
-      background:
-        linear-gradient(165deg, rgba(255,255,255,0.88), rgba(47,127,136,0.28)),
-        rgba(47, 127, 136, 0.20);
-      border: 1px solid rgba(47, 127, 136, 0.26);
-      box-shadow: 0 18px 32px rgba(47, 127, 136, 0.16);
-      transform: rotate(-4deg);
-    }
-
-    .model-orbit {
-      position: absolute;
-      border: 1px solid rgba(119, 100, 216, 0.28);
-      border-radius: 50%;
-    }
-
-    .orbit-one {
-      width: 148px;
-      height: 78px;
-      transform: rotate(-15deg);
-    }
-
-    .orbit-two {
-      width: 118px;
-      height: 142px;
-      transform: rotate(28deg);
-      border-color: rgba(47, 127, 136, 0.25);
-    }
-
-    .landing-preview-anatomy small,
-    .preview-detail-card small {
-      display: block;
-      color: var(--muted);
-      font-size: 0.67rem;
-      font-weight: 850;
-      text-transform: uppercase;
-      letter-spacing: 0.055em;
-      margin-bottom: 2px;
-    }
-
-    .landing-preview-anatomy strong {
-      display: block;
-      color: var(--ink);
-      font-size: 0.91rem;
-      line-height: 1.25;
-    }
-
-    .landing-preview-details {
-      display: grid;
-      gap: 9px;
-      align-content: center;
-    }
-
-    .preview-detail-card {
-      display: grid;
-      grid-template-columns: 34px minmax(0, 1fr);
-      gap: 10px;
-      align-items: center;
-      min-height: 75px;
-      padding: 11px;
-      border: 1px solid var(--line);
-      border-radius: 15px;
-      background: rgba(255, 255, 255, 0.72);
-    }
-
-    .preview-detail-card > span {
-      width: 34px;
-      height: 34px;
-      display: grid;
-      place-items: center;
-      border-radius: 11px;
-      background: rgba(47, 127, 136, 0.09);
-      color: var(--primary-dark);
-      font-size: 0.74rem;
-      font-weight: 950;
-    }
-
-    .preview-detail-card strong {
-      display: block;
-      color: var(--ink);
-      font-size: 0.82rem;
-      line-height: 1.22;
-    }
-
-    .preview-detail-card.preview-detail-active {
-      border-color: rgba(47, 127, 136, 0.28);
-      background: rgba(224, 242, 243, 0.72);
-    }
-
-    .landing-preview-caption {
-      margin: 14px 2px 0;
-      color: var(--muted);
-      font-size: 0.78rem;
-      line-height: 1.45;
-    }
-
-    .landing-preview-machine-panel {
-      min-height: 275px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 14px;
-      padding: 16px;
-      border: 1px solid rgba(47, 127, 136, 0.14);
-      border-radius: 17px;
-      background:
-        radial-gradient(circle at 50% 22%, rgba(47, 127, 136, 0.10), transparent 42%),
-        linear-gradient(180deg, rgba(232, 242, 245, 0.88), rgba(247, 250, 251, 0.9));
-    }
-
-    .landing-preview-machine-frame {
-      width: 100%;
-      display: block;
-      padding: 0;
-      overflow: hidden;
-      border: 1px solid rgba(47, 127, 136, 0.10);
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.74);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.72);
-    }
-
-    .landing-preview-machine-img {
-      width: 100%;
-      height: auto;
-      max-width: none;
-      display: block;
-    }
-
-    .landing-preview-machine-panel small {
-      display: block;
-      color: var(--muted);
-      font-size: 0.67rem;
-      font-weight: 850;
-      text-transform: uppercase;
-      letter-spacing: 0.055em;
-      margin-bottom: 2px;
-    }
-
-    .landing-preview-machine-panel strong {
-      display: block;
-      color: var(--ink);
-      font-size: 0.91rem;
-      line-height: 1.25;
-    }
-
-
-    .landing-workflow {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      margin: 0 0 18px;
-    }
-
-    .landing-workflow-card {
-      display: grid;
-      grid-template-columns: 42px minmax(0, 1fr);
-      gap: 12px;
-      align-items: start;
-      padding: 16px;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      background: rgba(244, 248, 250, 0.82);
-      box-shadow: 0 10px 24px rgba(34, 55, 66, 0.07);
-    }
-
-    .landing-workflow-number {
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      border-radius: 14px;
-      background: linear-gradient(135deg, var(--primary-soft), rgba(119, 100, 216, 0.14));
-      color: var(--primary-dark);
-      border: 1px solid rgba(47, 127, 136, 0.18);
-      font-weight: 950;
-    }
-
-    .landing-workflow-card strong {
-      display: block;
-      margin: 1px 0 4px;
-      color: var(--ink);
-      font-size: 0.91rem;
-      letter-spacing: -0.015em;
-    }
-
-    .landing-workflow-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.78rem;
-      line-height: 1.45;
-    }
-
-    @media (max-width: 980px) {
-      .landing-hero {
-        grid-template-columns: 1fr;
-      }
-
-      .landing-hero-card,
-      .landing-preview-card {
-        min-height: 0;
-      }
-
-      .landing-workflow {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 620px) {
-      .landing-hero-card {
-        padding: 28px 22px;
-      }
-
-      .landing-hero-card .hero-title-text {
-        font-size: clamp(2.05rem, 9vw, 3rem);
-      }
-
-      .landing-hero-actions {
-        align-items: stretch;
-      }
-
-      .landing-primary-cta,
-      .landing-pilot-chip {
-        width: 100%;
-        justify-content: center;
-        text-align: center;
-      }
-
-      .landing-preview-heading {
-        flex-direction: column;
-      }
-
-      .landing-preview-body {
-        grid-template-columns: 1fr;
-      }
-
-      .landing-preview-anatomy {
-        min-height: 220px;
-      }
-    }
-
-
-    /* Landing workspace-preview carousel */
-    .landing-preview-carousel {
-      position: relative;
-      min-width: 0;
-    }
-
-    .landing-preview-viewport {
-      overflow: hidden;
-      border-radius: 20px;
-    }
-
-    .landing-preview-track {
-      display: flex;
-      width: 100%;
-      transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
-      will-change: transform;
-    }
-
-    .landing-preview-track.no-transition {
-      transition: none !important;
-    }
-
-    .landing-preview-slide {
-      flex: 0 0 100%;
-      min-width: 100%;
-      padding: 1px;
-    }
-
-    .landing-preview-carousel .landing-preview-window {
-      transform: none;
-      height: 100%;
-    }
-
-    .landing-preview-nav {
-      position: absolute;
-      top: 50%;
-      z-index: 4;
-      width: 36px;
-      height: 36px;
-      display: grid;
-      place-items: center;
-      border: 1px solid rgba(80, 111, 124, 0.18);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.90);
-      color: var(--primary-dark);
-      box-shadow: 0 9px 22px rgba(34, 55, 66, 0.13);
-      transform: translateY(-50%);
-      font-size: 1.15rem;
-      font-weight: 900;
-      line-height: 1;
-      backdrop-filter: blur(7px);
-    }
-
-    .landing-preview-nav:hover {
-      background: #fff;
-      transform: translateY(-50%) scale(1.04);
-    }
-
-    .landing-preview-nav.prev { left: -12px; }
-    .landing-preview-nav.next { right: -12px; }
-
-    .landing-preview-controls {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 7px;
-      margin-top: 12px;
-    }
-
-    .landing-preview-dot-button {
-      width: 8px;
-      height: 8px;
-      padding: 0;
-      border-radius: 999px;
-      background: rgba(92, 111, 120, 0.30);
-      transition: width 180ms ease, background 180ms ease;
-    }
-
-    .landing-preview-dot-button.active {
-      width: 24px;
-      background: var(--primary);
-    }
-
-    .landing-preview-dot-button:focus-visible,
-    .landing-preview-nav:focus-visible {
-      outline: none;
-      box-shadow: var(--focus);
-    }
-
-    .landing-calendar-preview {
-      min-height: 317px;
-      padding: 14px;
-      background: rgba(248, 251, 252, 0.92);
-    }
-
-    .landing-calendar-top {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 10px;
-    }
-
-    .landing-calendar-top small {
-      display: block;
-      color: var(--muted);
-      font-size: 0.65rem;
-      font-weight: 850;
-      text-transform: uppercase;
-      letter-spacing: 0.055em;
-      margin-bottom: 2px;
-    }
-
-    .landing-calendar-top strong {
-      color: var(--ink);
-      font-size: 0.92rem;
-      line-height: 1.2;
-    }
-
-    .landing-calendar-start {
-      min-width: 112px;
-      padding: 7px 9px;
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      background: rgba(255,255,255,0.84);
-      color: var(--muted);
-      font-size: 0.65rem;
-      font-weight: 800;
-      text-align: center;
-    }
-
-    .landing-calendar-summary {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 7px;
-      margin-bottom: 10px;
-    }
-
-    .landing-calendar-summary > div {
-      padding: 7px 6px;
-      border: 1px solid var(--line);
-      border-radius: 11px;
-      background: rgba(255,255,255,0.78);
-      text-align: center;
-    }
-
-    .landing-calendar-summary span {
-      display: block;
-      color: var(--muted);
-      font-size: 0.58rem;
-      font-weight: 800;
-      line-height: 1.15;
-    }
-
-    .landing-calendar-summary b {
-      display: block;
-      margin-top: 2px;
-      color: var(--primary-dark);
-      font-size: 0.78rem;
-    }
-
-    .landing-calendar-month {
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 13px;
-      background: rgba(255,255,255,0.90);
-    }
-
-    .landing-calendar-month-title {
-      padding: 7px 10px;
-      border-bottom: 1px solid var(--line);
-      background: rgba(224, 242, 243, 0.62);
-      color: var(--ink);
-      font-size: 0.71rem;
-      font-weight: 900;
-      text-align: center;
-    }
-
-    .landing-calendar-weekdays,
-    .landing-calendar-days {
-      display: grid;
-      grid-template-columns: repeat(7, minmax(0, 1fr));
-    }
-
-    .landing-calendar-weekdays span {
-      padding: 5px 1px 4px;
-      color: var(--muted);
-      font-size: 0.52rem;
-      font-weight: 900;
-      text-align: center;
-    }
-
-    .landing-calendar-day {
-      min-height: 27px;
-      display: grid;
-      place-items: center;
-      position: relative;
-      border-top: 1px solid rgba(208, 220, 224, 0.64);
-      border-right: 1px solid rgba(208, 220, 224, 0.64);
-      color: var(--muted);
-      font-size: 0.56rem;
-      font-weight: 800;
-      background: rgba(255,255,255,0.64);
-    }
-
-    .landing-calendar-day:nth-child(7n) { border-right: 0; }
-    .landing-calendar-day.empty { color: transparent; background: rgba(241,245,247,0.58); }
-
-    .landing-calendar-day.treatment {
-      color: #fff;
-      background: var(--primary);
-      font-weight: 950;
-    }
-
-    .landing-calendar-day.treatment::after {
-      content: "";
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      bottom: 3px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.82);
-    }
-
-    .landing-calendar-note {
-      margin-top: 8px;
-      color: var(--muted);
-      font-size: 0.62rem;
-      line-height: 1.35;
-      text-align: center;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .landing-preview-track { transition: none; }
-    }
-
-    @media (max-width: 620px) {
-      .landing-preview-nav.prev { left: -7px; }
-      .landing-preview-nav.next { right: -7px; }
-      .landing-calendar-preview { min-height: 300px; }
-    }
-
-
-    /* Readability pass: increase small supporting text throughout the app without
-       materially changing the hierarchy of headings or primary controls. */
-    .organ-reference-disclosure > summary small,
-    .workspace-landing-kicker,
-    .setup-position-control span,
-    .setup-label,
-    .breast-regimen-source,
-    .breast-boost-heading p,
-    .breast-radiobio-heading p,
-    .alpha-beta-control label,
-    .lung-regimen-note,
-    .prostate-regimen-disclaimer,
-    .note-template-help,
-    .treatment-calendar-legend,
-    .treatment-calendar-note,
-    .landing-pilot-chip,
-    .landing-preview-caption,
-    .landing-workflow-card p,
-    .team-card p,
-    .team-meta-item {
-      font-size: 0.84rem;
-    }
-
-    .system-card span,
-    .site-card span,
-    .panel-heading p,
-    .viewer-title p,
-    .field label,
-    .field .field-label,
-    .timeline-context,
-    .timeline-item p,
-    .timeline-item ul,
-    .tag,
-    .footer,
-    .organ-reference-links a {
-      font-size: 0.86rem;
-    }
-
-    .regimen-quiet-status,
-    .regimen-source-toggle,
-    .regimen-source-detail,
-    .regimen-disclaimer-quiet,
-    .pilot-system-status,
-    .pilot-site-status,
-    .setup-image-credit,
-    .team-role,
-    .team-meta-label {
-      font-size: 0.75rem !important;
-    }
-
-    .alpha-beta-band,
-    .alpha-beta-scale span,
-    .alpha-beta-scale b,
-    .radiobio-result-values span,
-    .breast-radiobio-note {
-      font-size: 0.78rem;
-    }
-
-    /* Keep compact top-level navigation readable on smaller screens. */
-    @media (max-width: 980px) {
-      .page-tab { font-size: 0.78rem !important; }
-      .nav-actions .btn.primary.small { font-size: 0.80rem !important; }
-    }
-
-    @media (max-width: 520px) {
-      .page-tab { font-size: 0.72rem !important; }
-      .nav-actions .btn.primary.small { font-size: 0.74rem !important; }
-    }
-
-    /* Landing preview microcopy remains compact but is easier to read. */
-    .landing-preview-kicker,
-    .landing-preview-anatomy small,
-    .preview-detail-card small,
-    .landing-preview-machine-panel small {
-      font-size: 0.75rem;
-    }
-
-    .landing-calendar-top small,
-    .landing-calendar-start {
-      font-size: 0.72rem;
-    }
-
-    .landing-calendar-summary span {
-      font-size: 0.66rem;
-    }
-
-    .landing-calendar-summary b {
-      font-size: 0.82rem;
-    }
-
-    .landing-calendar-month-title {
-      font-size: 0.78rem;
-    }
-
-    .landing-calendar-weekdays span {
-      font-size: 0.62rem;
-    }
-
-    .landing-calendar-day {
-      font-size: 0.66rem;
-    }
-
-    .landing-calendar-note {
-      font-size: 0.70rem;
-    }
-
-    /* Calendar session markers use only the session number. This prevents the
-       words “Session” / “Sessions” from clipping in narrow date cells while the
-       full meaning remains available in the cell's aria-label. */
-    .calendar-day {
-      min-height: 52px;
-    }
-
-    .calendar-day-number {
-      font-size: 0.76rem;
-    }
-
-    .calendar-session-label {
-      display: grid;
-      place-items: center;
-      width: min(30px, 100%);
-      min-width: 22px;
-      min-height: 24px;
-      margin: 5px auto 0;
-      padding: 3px 5px;
-      border-radius: 8px;
-      font-size: 0.72rem;
-      line-height: 1;
-      white-space: nowrap;
-      overflow: visible;
-      text-overflow: clip;
-    }
-
-    @media (max-width: 720px) {
-      .calendar-day {
-        min-height: 60px;
-      }
-
-      .calendar-session-label {
-        font-size: 0.70rem;
-        min-height: 24px;
-      }
-    }
-
-
-    /* Readability pass: enlarge patient-facing explanatory body text while
-       keeping compact labels, kickers, and metadata visually secondary. */
-    .course-step p {
-      font-size: 0.96rem;
-      line-height: 1.48;
-    }
-
-    .info-box p,
-    .info-box li,
-    .timeline-item p,
-    .timeline-item li,
-    .setup-caption p,
-    .treatment-calendar-intro p,
-    .treatment-calendar-note,
-    .lung-regimen-note,
-    .prostate-regimen-head p {
-      font-size: 0.96rem;
-      line-height: 1.5;
-    }
-
-    .timeline-item ul {
-      font-size: 0.94rem;
-      line-height: 1.45;
-    }
-
-    .landing-workflow-card p {
-      font-size: 0.88rem;
-      line-height: 1.5;
-    }
-
 </style>
 </head>
 <body>
@@ -4601,240 +3412,74 @@
 
     <main class="container" id="main">
       <section class="app-page active-page" id="homePage" data-page="home">
-      <section class="hero landing-hero" aria-labelledby="hero-title">
-        <div class="hero-card landing-hero-card">
-          <div class="landing-hero-glow landing-hero-glow-one" aria-hidden="true"></div>
-          <div class="landing-hero-glow landing-hero-glow-two" aria-hidden="true"></div>
-          <div class="landing-hero-content">
-            <h1 id="hero-title">
-              <span class="hero-title-text">Visual Education for Radiation Oncology</span>
-            </h1>
-            <p class="lead landing-lead">OncoVis3D is a clinician-guided platform for explaining treatment anatomy, setup, radiation schedules, and expected side effects through interactive visual education.</p>
-            <div class="landing-hero-actions">
-              <button class="btn primary landing-primary-cta" type="button" onclick="goToPage('workspace')">
-                Open workspace <span aria-hidden="true">→</span>
-              </button>
-              <span class="landing-pilot-chip">Pilot content: Breast · Prostate · Lung</span>
-            </div>
-          </div>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-card">
+<h1 id="hero-title">
+   <span class="hero-title-text">Explain the treatment. Reduce the uncertainty.</span>
+</h1>          <p class="lead">OncoVis3D is a clinic-friendly radiation oncology education workspace for demonstrating cancer treatment sites and making treatment conversations more visual, structured, and easier for patients to understand.</p>
+          <p class="lead">Clinicians can open an embedded 3D anatomy model viewer, then walk through treatment logistics, setup previews, dose explanations, expected side effects, symptom timelines, practical supportive care, and clinician note templates in a static, privacy-conscious web format.</p>
+          <div class="hero-metrics" aria-label="App capabilities">
+                 </div>
         </div>
-
-        <aside class="landing-preview-card" aria-label="OncoVis3D workspace preview">
-          <div class="landing-preview-heading">
-            <div>
-              <span class="landing-preview-kicker">Workspace preview</span>
-              <h2>How OncoVis3D Supports the Treatment Conversation</h2>
-            </div>
+        <aside class="patient-card" aria-label="How to use this app">
+          <div>
+            <h2>Clinic workflow</h2>
+            <p>Select an organ system, choose a disease site, open the relevant 3D model, then walk through treatment setup, dose and fractionation, expected symptoms, and practical supportive care.</p>
           </div>
-
-          <div class="landing-preview-carousel" data-landing-carousel>
-            <div class="landing-preview-viewport">
-              <div class="landing-preview-track" id="landingPreviewTrack">
-                <div class="landing-preview-slide" data-preview-slide="0">
-                  <div class="landing-preview-window" aria-hidden="true">
-                    <div class="landing-preview-windowbar">
-                      <div class="landing-window-dots"><i></i><i></i><i></i></div>
-                      <span>OncoVis3D workspace</span>
-                    </div>
-                    <div class="landing-preview-body">
-                      <div class="landing-preview-anatomy">
-                        <div class="landing-preview-video-frame">
-                          <video class="landing-preview-video" autoplay muted loop playsinline preload="metadata" aria-label="OncoVis3D 3D anatomy preview">
-                            <source src="images/homepage_preview.mp4" type="video/mp4" />
-                            Your browser does not support embedded video.
-                          </video>
-                        </div>
-                        <div>
-                          <small>3D anatomy</small>
-                          <strong>See what is being treated</strong>
-                        </div>
-                      </div>
-                      <div class="landing-preview-details">
-                        <div class="preview-detail-card preview-detail-active">
-                          <span>01</span>
-                          <div><small>Treatment setup</small><strong>Position & technique</strong></div>
-                        </div>
-                        <div class="preview-detail-card">
-                          <span>02</span>
-                          <div><small>Treatment plan</small><strong>Sessions & calendar</strong></div>
-                        </div>
-                        <div class="preview-detail-card">
-                          <span>03</span>
-                          <div><small>What to expect</small><strong>Symptoms & support</strong></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="landing-preview-slide" data-preview-slide="1">
-                  <div class="landing-preview-window" aria-hidden="true">
-                    <div class="landing-preview-windowbar">
-                      <div class="landing-window-dots"><i></i><i></i><i></i></div>
-                      <span>OncoVis3D treatment setup</span>
-                    </div>
-                    <div class="landing-preview-body">
-                      <div class="landing-preview-machine-panel">
-                        <div class="landing-preview-machine-frame">
-                          <img src="images/IMRT.jpg" alt="Radiation treatment machine preview" class="landing-preview-machine-img" />
-                        </div>
-                        <div>
-                          <small>Treatment equipment</small>
-                          <strong>Preview the treatment machine and setup environment</strong>
-                        </div>
-                      </div>
-                      <div class="landing-preview-details">
-                        <div class="preview-detail-card preview-detail-active">
-                          <span>01</span>
-                          <div><small>Treatment machine</small><strong>Linear accelerator preview</strong></div>
-                        </div>
-                        <div class="preview-detail-card">
-                          <span>02</span>
-                          <div><small>Patient position</small><strong>Supine or prone setup options</strong></div>
-                        </div>
-                        <div class="preview-detail-card">
-                          <span>03</span>
-                          <div><small>Technique</small><strong>IMRT, VMAT, SBRT, and more</strong></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="landing-preview-slide" data-preview-slide="2">
-                  <div class="landing-preview-window" aria-hidden="true">
-                    <div class="landing-preview-windowbar">
-                      <div class="landing-window-dots"><i></i><i></i><i></i></div>
-                      <span>OncoVis3D treatment calendar</span>
-                    </div>
-                    <div class="landing-calendar-preview">
-                      <div class="landing-calendar-top">
-                        <div>
-                          <small>Treatment plan</small>
-                          <strong>Estimated treatment calendar</strong>
-                        </div>
-                        <div class="landing-calendar-start">Start date selected</div>
-                      </div>
-
-                      <div class="landing-calendar-summary">
-                        <div><span>Treatment visits</span><b>15</b></div>
-                        <div><span>Sessions/week</span><b>5</b></div>
-                        <div><span>Estimated course</span><b>3 weeks</b></div>
-                      </div>
-
-                      <div class="landing-calendar-month">
-                        <div class="landing-calendar-month-title">September 2026</div>
-                        <div class="landing-calendar-weekdays">
-                          <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
-                        </div>
-                        <div class="landing-calendar-days">
-                          <span class="landing-calendar-day empty">0</span><span class="landing-calendar-day empty">0</span>
-                          <span class="landing-calendar-day treatment">1</span><span class="landing-calendar-day treatment">2</span><span class="landing-calendar-day treatment">3</span><span class="landing-calendar-day treatment">4</span><span class="landing-calendar-day">5</span>
-                          <span class="landing-calendar-day">6</span><span class="landing-calendar-day treatment">7</span><span class="landing-calendar-day treatment">8</span><span class="landing-calendar-day treatment">9</span><span class="landing-calendar-day treatment">10</span><span class="landing-calendar-day treatment">11</span><span class="landing-calendar-day">12</span>
-                          <span class="landing-calendar-day">13</span><span class="landing-calendar-day treatment">14</span><span class="landing-calendar-day treatment">15</span><span class="landing-calendar-day treatment">16</span><span class="landing-calendar-day treatment">17</span><span class="landing-calendar-day treatment">18</span><span class="landing-calendar-day">19</span>
-                          <span class="landing-calendar-day">20</span><span class="landing-calendar-day">21</span><span class="landing-calendar-day">22</span><span class="landing-calendar-day">23</span><span class="landing-calendar-day">24</span><span class="landing-calendar-day">25</span><span class="landing-calendar-day">26</span>
-                          <span class="landing-calendar-day">27</span><span class="landing-calendar-day">28</span><span class="landing-calendar-day">29</span><span class="landing-calendar-day">30</span><span class="landing-calendar-day empty">0</span><span class="landing-calendar-day empty">0</span><span class="landing-calendar-day empty">0</span>
-                        </div>
-                      </div>
-                      <div class="landing-calendar-note">Treatment days are estimated from the selected regimen and can be adjusted by the treating clinic.</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <button class="landing-preview-nav prev" type="button" data-preview-nav="prev" aria-label="Previous workspace preview">‹</button>
-            <button class="landing-preview-nav next" type="button" data-preview-nav="next" aria-label="Next workspace preview">›</button>
-            <div class="landing-preview-controls" aria-label="Workspace preview slides">
-              <button class="landing-preview-dot-button active" type="button" data-preview-dot="0" aria-label="Show workspace overview"></button>
-              <button class="landing-preview-dot-button" type="button" data-preview-dot="1" aria-label="Show treatment machine preview"></button>
-              <button class="landing-preview-dot-button" type="button" data-preview-dot="2" aria-label="Show treatment calendar preview"></button>
-            </div>
+          <div class="quick-list">
+            <div class="quick-item"><span>①</span><div><b>Choose site</b><br />Drill from organ system to specific disease site.</div></div>
+            <div class="quick-item"><span>②</span><div><b>Show model</b><br />Use an embeded anatomy viewer for each model.</div></div>
+            <div class="quick-item"><span>③</span><div><b>Explain plan</b><br />Enter total dose and fractions and describe expected course in patient-friendly language.</div></div>
           </div>
-
-          <p class="landing-preview-caption" id="landingPreviewCaption">Built to help clinicians move from anatomy to treatment logistics to expected symptoms in one continuous conversation.</p>
         </aside>
-      </section>
-
-      <section class="landing-workflow" aria-label="Clinic workflow">
-        <article class="landing-workflow-card">
-          <span class="landing-workflow-number">1</span>
-          <div><strong>Choose the treatment site</strong><p>Select an organ system and the clinical scenario being discussed.</p></div>
-        </article>
-        <article class="landing-workflow-card">
-          <span class="landing-workflow-number">2</span>
-          <div><strong>Visualize the treatment</strong><p>Explore anatomy, positioning, equipment, and the expected treatment setup.</p></div>
-        </article>
-        <article class="landing-workflow-card">
-          <span class="landing-workflow-number">3</span>
-          <div><strong>Explain the plan</strong><p>Review the schedule, evidence-linked regimen, symptoms, and supportive care.</p></div>
-        </article>
       </section>
         <section class="about-references-card side-card" aria-label="Content sources and references">
           <h2>Content sources and references</h2>
-          <p>OncoVis3D content is synthesized for clinician-guided patient education from public education resources, society guidelines, consensus statements, pivotal trials, and clinician review. Expand an organ system below to view its main reference links. Regimen-specific evidence remains available directly in each treatment plan's <b>Source</b> disclosure.</p>
+          <p>OncoVis3D content is synthesized for clinical education from public patient-education materials, disease-site treatment summaries, radiation oncology guidelines, clinician review, and institution-specific practice patterns. It is intended to support clinician-led discussion, not to function as a standalone guideline or treatment-planning system.</p>
 
-          <div class="organ-reference-accordions" aria-label="Reference links by organ system">
-            <details class="about-reference-disclosure organ-reference-disclosure">
-              <summary>
-                <span><b>General</b><small>Patient education, disease frameworks, and 3D visualization</small></span>
-              </summary>
-              <div class="organ-reference-content">
-                <div class="organ-reference-links">
-                  <a href="https://www.rtanswers.org/patient-education" target="_blank" rel="noopener noreferrer">ASTRO RTAnswers patient education</a>
-                  <a href="https://www.cancer.gov/about-cancer/treatment/types/radiation-therapy" target="_blank" rel="noopener noreferrer">NCI Radiation Therapy for Cancer</a>
-                  <a href="https://www.cancer.gov/publications/pdq/information-summaries/adult-treatment" target="_blank" rel="noopener noreferrer">NCI PDQ adult treatment summaries</a>
-                  <a href="https://www.astro.org/provider-resources/guidelines/clinical-practice-guidelines" target="_blank" rel="noopener noreferrer">ASTRO clinical practice guidelines</a>
-                  <a href="https://www.biodigital.com/product/the-biodigital-human" target="_blank" rel="noopener noreferrer">BioDigital Human platform</a>
-                  <a href="https://support.biodigital.com/hc/en-us/articles/33541326533399-What-is-the-BioDigital-library" target="_blank" rel="noopener noreferrer">BioDigital model library</a>
-                </div>
-              </div>
-            </details>
+          <div class="reference-grid">
+            <article class="reference-card">
+              <strong>Radiation therapy education</strong>
+              <p>General explanations of what radiation therapy is, what patients may experience before, during, and after treatment, and common treatment concepts.</p>
+              <a href="https://www.rtanswers.org/patient-education" target="_blank" rel="noopener noreferrer">ASTRO RTAnswers patient education</a>
+              <a href="https://www.cancer.gov/about-cancer/treatment/types/radiation-therapy" target="_blank" rel="noopener noreferrer">NCI Radiation Therapy for Cancer</a>
+            </article>
 
-            <details class="about-reference-disclosure organ-reference-disclosure">
-              <summary>
-                <span><b>Breast</b><small>Whole breast, partial breast, chest wall, and regional nodes</small></span>
-              </summary>
-              <div class="organ-reference-content">
-                <div class="organ-reference-links">
-                  <a href="https://www.astro.org/provider-resources/guidelines/whole-breast-irradiation-gl" target="_blank" rel="noopener noreferrer">ASTRO whole-breast irradiation guideline</a>
-                  <a href="https://www.astro.org/provider-resources/guidelines/clinical-practice-guidelines/pbi-guideline-replacement" target="_blank" rel="noopener noreferrer">ASTRO partial-breast irradiation guideline</a>
-                  <a href="https://www.astro.org/provider-resources/guidelines/clinical-practice-guidelines/postmastectomy-radiation-therapy" target="_blank" rel="noopener noreferrer">ASTRO/ASCO/SSO postmastectomy radiation guideline</a>
-                </div>
-              </div>
-            </details>
+            <article class="reference-card">
+              <strong>Disease-site frameworks</strong>
+              <p>Diagnosis, staging, treatment paradigms, and site-specific management concepts are cross-checked against public cancer treatment summaries and clinician review.</p>
+              <a href="https://www.cancer.gov/publications/pdq/information-summaries/adult-treatment" target="_blank" rel="noopener noreferrer">NCI PDQ adult treatment summaries</a>
+              <a href="https://www.cancer.gov/publications/pdq/information-summaries/pediatric-treatment" target="_blank" rel="noopener noreferrer">NCI PDQ pediatric treatment summaries</a>
+            </article>
 
-            <details class="about-reference-disclosure organ-reference-disclosure">
-              <summary>
-                <span><b>Genitourinary</b><small>Current pilot content: prostate cancer</small></span>
-              </summary>
-              <div class="organ-reference-content">
-                <div class="organ-reference-links">
-                  <a href="https://www.astro.org/provider-resources/guidelines/clinically-localized-prostate-cancer" target="_blank" rel="noopener noreferrer">AUA/ASTRO clinically localized prostate cancer guideline</a>
-                  <a href="https://www.astro.org/provider-resources/guidelines/astro-s-guideline-on-hypofractionation-for-localized-prostate-cancer" target="_blank" rel="noopener noreferrer">ASTRO/ASCO/AUA prostate hypofractionation guideline</a>
-                  <a href="https://www.astro.org/provider-resources/guidelines/clinical-practice-guidelines/salvage-therapy-guideline" target="_blank" rel="noopener noreferrer">AUA/ASTRO/SUO salvage therapy guideline</a>
-                  <a href="https://pubmed.ncbi.nlm.nih.gov/40707306/" target="_blank" rel="noopener noreferrer">HDR prostate brachytherapy boost consensus</a>
-                </div>
-              </div>
-            </details>
+            <article class="reference-card">
+              <strong>Radiation oncology guidelines</strong>
+              <p>Disease-site regimen modules use educational categories and common examples from society guidelines, consensus statements, and pivotal trials. The source type is displayed beside each matched preset.</p>
+              <a href="https://www.astro.org/provider-resources/guidelines/clinical-practice-guidelines" target="_blank" rel="noopener noreferrer">ASTRO clinical practice guidelines</a>
+              <a href="https://www.astro.org/provider-resources/guidelines/clinically-localized-prostate-cancer" target="_blank" rel="noopener noreferrer">AUA/ASTRO localized prostate guideline</a>
+              <a href="https://www.astro.org/provider-resources/guidelines/astro-s-guideline-on-hypofractionation-for-localized-prostate-cancer" target="_blank" rel="noopener noreferrer">ASTRO/ASCO/AUA prostate hypofractionation guideline</a>
+              <a href="https://www.astro.org/provider-resources/guidelines/clinical-practice-guidelines/salvage-therapy-guideline" target="_blank" rel="noopener noreferrer">AUA/ASTRO/SUO salvage therapy guideline</a>
+              <a href="https://pubmed.ncbi.nlm.nih.gov/40707306/" target="_blank" rel="noopener noreferrer">HDR prostate brachytherapy boost consensus</a>
+              <a href="https://www.astro.org/provider-resources/guidelines/whole-breast-irradiation-gl" target="_blank" rel="noopener noreferrer">ASTRO whole-breast irradiation guideline</a>
+              <a href="https://www.astro.org/provider-resources/guidelines/clinical-practice-guidelines/pbi-guideline-replacement" target="_blank" rel="noopener noreferrer">ASTRO partial-breast irradiation guideline</a>
+              <a href="https://www.astro.org/provider-resources/guidelines/clinical-practice-guidelines/postmastectomy-radiation-therapy" target="_blank" rel="noopener noreferrer">ASTRO/ASCO/SSO postmastectomy guideline</a>
+            </article>
 
-            <details class="about-reference-disclosure organ-reference-disclosure">
-              <summary>
-                <span><b>Thoracic</b><small>Current pilot content: non-small cell and small cell lung cancer</small></span>
-              </summary>
-              <div class="organ-reference-content">
-                <div class="organ-reference-links">
-                  <a href="https://www.astro.org/provider-resources/guidelines/astro-s-guideline-on-sbrt-for-early-stage-nsclc" target="_blank" rel="noopener noreferrer">ASTRO early-stage NSCLC SBRT guideline</a>
-                  <a href="https://ascopubs.org/doi/10.1200/JCO.21.02528" target="_blank" rel="noopener noreferrer">ASCO stage III NSCLC guideline</a>
-                  <a href="https://www.astro.org/provider-resources/guidelines/astro-s-guideline-on-palliative-radiation-therapy-for-non-small-cell-lung-cancer" target="_blank" rel="noopener noreferrer">ASTRO palliative thoracic NSCLC guideline</a>
-                  <a href="https://www.astro.org/provider-resources/guidelines/small-cell-lung-cancer-guideline" target="_blank" rel="noopener noreferrer">ASTRO small cell lung cancer guideline</a>
-                </div>
-              </div>
-            </details>
+            <article class="reference-card">
+              <strong>3D anatomy and model visualization</strong>
+              <p>Interactive anatomy and disease models are displayed through linked BioDigital Human model URLs when available for the selected disease site.</p>
+              <a href="https://www.biodigital.com/product/the-biodigital-human" target="_blank" rel="noopener noreferrer">BioDigital Human platform</a>
+              <a href="https://support.biodigital.com/hc/en-us/articles/33541326533399-What-is-the-BioDigital-library" target="_blank" rel="noopener noreferrer">BioDigital model library</a>
+            </article>
+
+            <article class="reference-card">
+              <strong>Clinical calibration</strong>
+              <p>Dose, fractionation, organ-at-risk counseling, setup instructions, supportive care, and toxicity expectations should be adapted to physician judgment, institutional protocols, treatment plan review, and patient-specific factors.</p>
+            </article>
           </div>
 
           <div class="reference-note">
-            <b>Important:</b> References identify the source framework used to build and review the educational content. Final treatment selection remains individualized and should reflect current guidelines, physician judgment, institutional protocols, and patient-specific factors.
+            <b>Important:</b> References listed identify the types of sources used to build and review the educational framework. OncoVis3D does not reproduce complete guideline text and should be updated as guidelines, institutional standards, and treatment techniques evolve.
           </div>
         </section>
         <section class="notice home-clinical-note" aria-label="Clinical use note">
@@ -4862,7 +3507,7 @@
         </section>
 
         <section class="workspace-landing panel" id="workspaceLanding" aria-labelledby="workspaceLandingTitle">
-          <div class="workspace-landing-icon" aria-hidden="true"><img src="icons/App_Logo.png" alt="" class="workspace-landing-logo" /></div>
+          <div class="workspace-landing-icon" aria-hidden="true">3D</div>
           <div class="workspace-landing-copy">
             <span class="workspace-landing-kicker">Treatment education workspace</span>
             <h2 id="workspaceLandingTitle">Choose an organ system to begin</h2>
@@ -4888,6 +3533,7 @@
               <h2 id="selectedTitle">Central nervous system</h2>
               <p id="selectedSubtitle">Brain tumors, skull base tumors, spinal tumors, metastases</p>
             </div>
+            <button class="btn small" id="openModelBtn" type="button">Open model</button>
           </div>
 
           <div class="viewer-frame-wrap" id="viewerWrap">
@@ -4899,15 +3545,6 @@
               </div>
             </div>
             <iframe class="model-frame" id="modelFrame" title="Embedded 3D anatomy model" allow="fullscreen; xr-spatial-tracking; accelerometer; gyroscope; autoplay; encrypted-media; clipboard-read; clipboard-write" allowfullscreen loading="eager" referrerpolicy="strict-origin-when-cross-origin" scrolling="no" hidden></iframe>
-            <div class="print-model-static image-missing" id="printModelStatic" aria-hidden="true">
-              <img id="printModelImage" alt="Static anatomy model for printed summary" />
-              <div class="print-model-fallback" id="printModelFallback">
-                <div>
-                  <strong id="printModelFallbackTitle">Anatomy model</strong>
-                  <span id="printModelFallbackText">Interactive 3D model available in the digital version.</span>
-                </div>
-              </div>
-            </div>
           </div>
 
           <div class="viewer-bottom-buffer" id="viewerBottomBuffer" aria-hidden="true"></div>
@@ -4999,7 +3636,6 @@
                     <strong>Prostate regimen guidance</strong>
                     <p>Choose the clinical setting and a common educational regimen, or enter a custom prescription below.</p>
                   </div>
-                  <span class="tag">Prostate only</span>
                 </div>
 
                 <div class="prostate-regimen-grid">
@@ -5084,9 +3720,11 @@
 
                 <div class="regimen-quiet-meta">
                   <span class="regimen-quiet-status info" id="prostateRegimenStatus" aria-live="polite"></span>
-                  <button class="regimen-source-toggle" type="button" aria-expanded="false" aria-controls="prostateRegimenSource">Source</button>
+                  <details class="regimen-source-disclosure">
+                    <summary>Source</summary>
+                    <div class="breast-regimen-source prostate-regimen-source regimen-source-detail" id="prostateRegimenSource"></div>
+                  </details>
                 </div>
-                <div class="breast-regimen-source prostate-regimen-source regimen-source-detail" id="prostateRegimenSource" hidden></div>
                 <p class="prostate-regimen-disclaimer regimen-disclaimer-quiet">Educational decision support only. Final regimen selection remains individualized.</p>
               </div>
 
@@ -5096,7 +3734,6 @@
                     <strong>Breast regimen guidance</strong>
                     <p>Choose the clinical setting and a society-guideline-based educational regimen, or enter a custom prescription below.</p>
                   </div>
-                  <span class="tag">Breast only</span>
                 </div>
 
                 <div class="prostate-regimen-grid">
@@ -5173,47 +3810,12 @@
 
                 <div class="regimen-quiet-meta">
                   <span class="regimen-quiet-status info" id="breastRegimenStatus" aria-live="polite"></span>
-                  <button class="regimen-source-toggle" type="button" aria-expanded="false" aria-controls="breastRegimenSource">Source</button>
+                  <details class="regimen-source-disclosure">
+                    <summary>Source</summary>
+                    <div class="breast-regimen-source regimen-source-detail" id="breastRegimenSource"></div>
+                  </details>
                 </div>
-                <div class="breast-regimen-source regimen-source-detail" id="breastRegimenSource" hidden></div>
                 <p class="prostate-regimen-disclaimer regimen-disclaimer-quiet">Educational decision support only. Final regimen selection remains individualized.</p>
-              </div>
-
-
-              <div class="prostate-regimen-panel lung-regimen-panel" id="lungRegimenPanel" hidden>
-                <div class="prostate-regimen-head">
-                  <div>
-                    <strong>Lung regimen guidance</strong>
-                    <p>Choose the lung-cancer treatment setting and an evidence-linked radiation regimen, or enter a custom prescription below.</p>
-                  </div>
-                  <span class="tag" id="lungRegimenTag">Lung only</span>
-                </div>
-
-                <div class="prostate-regimen-grid">
-                  <div class="field">
-                    <label for="lungTreatmentSetting">Treatment setting</label>
-                    <select id="lungTreatmentSetting"></select>
-                  </div>
-
-                  <div class="field">
-                    <label for="lungFractionationCategory">Fractionation category</label>
-                    <select id="lungFractionationCategory"></select>
-                  </div>
-
-                  <div class="field prostate-preset-field">
-                    <label for="lungRegimenPreset">Common regimen</label>
-                    <select id="lungRegimenPreset"></select>
-                  </div>
-                </div>
-
-                <div class="lung-regimen-note" id="lungRegimenNote" aria-live="polite"></div>
-
-                <div class="regimen-quiet-meta">
-                  <span class="regimen-quiet-status info" id="lungRegimenStatus" aria-live="polite"></span>
-                  <button class="regimen-source-toggle" type="button" aria-expanded="false" aria-controls="lungRegimenSource">Source</button>
-                </div>
-                <div class="breast-regimen-source prostate-regimen-source regimen-source-detail" id="lungRegimenSource" hidden></div>
-                <p class="prostate-regimen-disclaimer regimen-disclaimer-quiet">Educational decision support only. Final regimen selection remains individualized to tumor location, stage, organ-at-risk constraints, systemic therapy, and institutional protocol.</p>
               </div>
 
               <input id="totalDose" type="hidden" value="50" />
@@ -5397,11 +3999,10 @@
           </div>
         </div>
         <div class="field">
-          <label class="sr-only" for="clinicianNotes">Clinician notes</label>
-          <textarea id="clinicianNotes" rows="5" placeholder="Example: Review left parietal lesion location, explain mask setup, discuss fatigue and skin care."></textarea>
+          <label class="sr-only" for="clinicianNotes">Clinician notes</label><textarea id="clinicianNotes" rows="5" placeholder="Example: Review left parietal lesion location, explain mask setup, discuss fatigue and skin care."></textarea>
         </div>
         <div class="workspace-print-row">
-          <button class="btn primary small" id="printSummaryBtn" type="button">Print summary</button>
+          <button class="btn primary small" onclick="window.print()" type="button">Print summary</button>
         </div>
 
       </section>
@@ -5470,101 +4071,8 @@
   </div>
 
 
-  <script src="https://developer.biodigital.com/builds/api/human-api-3.0.0.min.js"></script>
-
   <script>
     const systems = [
-      {
-        id: "breast", icon: "icons/breast.png", name: "Breast", subtitle: "Breast, chest wall, nodes", defaultDose: [40.05, 15],
-        purpose: "Breast radiation lowers local recurrence risk and may treat the breast, chest wall, or regional nodes.",
-        expectation: "Simulation maps the treatment area. Left-sided treatment may use deep inspiration breath hold to reduce heart dose.",
-        support: ["Gentle skin care and moisturizer per clinic protocol", "Supportive bra or soft clothing", "Fatigue pacing", "Shoulder range-of-motion encouragement when appropriate"],
-        position: "Usually supine on a breast board with one or both arms raised. Prone setup or breath hold may be used selectively.",
-        sites: [
-          { id: "whole-breast", name: "Whole breast", hint: "Lumpectomy setting", tags: ["hypofractionation", "boost"], dose: [40.05, 15] },
-          { id: "pbi", name: "Partial breast", hint: "Selected early-stage cases", tags: ["APBI", "short course"], dose: [30, 5] },
-          { id: "chest-wall", name: "Chest wall", hint: "Post-mastectomy", tags: ["PMRT", "bolus"], dose: [50, 25] },
-          { id: "regional-nodes", name: "Regional nodes", hint: "Axillary, SCV, IMN", tags: ["nodes", "DIBH"], dose: [50, 25] }
-        ],
-        timeline: [
-          ["Week 1", "Most patients notice little initially beyond setup time and mild fatigue."],
-          ["Weeks 2 to 4", "Skin redness, tanning, itching, breast/chest wall tenderness, and fatigue may increase."],
-          ["After RT", "Skin reaction usually peaks shortly after treatment and then improves. Fibrosis, cosmetic change, edema, or rare lung/heart effects are discussed based on the plan."]
-        ]
-      },
-      {
-        id: "gu", icon: "icons/genitourinary.png", name: "Genitourinary", subtitle: "Prostate, bladder, kidney/adrenal, testis", defaultDose: [70, 28],
-        purpose: "GU radiation may treat prostate, bladder, testicular, kidney, adrenal, nodal, or metastatic disease while limiting dose to nearby bowel, urinary, renal, and sexual structures.",
-        expectation: "Simulation emphasizes reproducible anatomy. Pelvic treatment may require bladder and rectal preparation, while kidney or adrenal SBRT may require respiratory motion management.",
-        support: ["Bladder filling and bowel routine coaching", "Baseline urinary, bowel, sexual, and fertility assessment", "Alpha blocker discussion for prostate-related obstructive symptoms", "Hydration guidance and bowel/antidiarrheal support when appropriate", "ADT, chemotherapy, sperm banking, and fertility counseling when relevant"],
-        position: "Most GU treatments are supine. Pelvic cases use leg support and daily image guidance; kidney or adrenal SBRT may use arms-up setup and motion management.",
-        sites: [
-          { id: "prostate", name: "Prostate cancer", hint: "Definitive, postoperative/salvage, nodal, SBRT, or brachytherapy discussion", tags: ["IGRT", "ADT", "SBRT"], dose: [70, 28] },
-          { id: "bladder", name: "Bladder cancer", hint: "Bladder preservation after maximal TURBT with concurrent chemoradiation", tags: ["TMT", "chemoRT", "cystoscopy"], dose: [64, 32] },
-          { id: "testis", name: "Testicular seminoma", hint: "Selected seminoma nodal RT; routine stage I adjuvant RT is generally avoided", tags: ["PA nodes", "fertility", "late effects"], dose: [30, 15] },
-          { id: "kidney", name: "Kidney/adrenal lesion", hint: "SBRT for selected primary RCC, adrenal lesion, oligometastasis, or palliation", tags: ["SBRT", "motion", "renal dose"], dose: [40, 5] }
-        ],
-        timeline: [
-          ["Week 1", "Treatment is painless. Baseline urinary, bowel, sexual, renal, and fertility considerations are reviewed, and bladder/rectal or motion-management instructions are reinforced."],
-          ["Weeks 2 to 6", "Pelvic RT can cause frequency, urgency, nocturia, weaker stream, dysuria, loose stools, rectal urgency, and fatigue. Kidney/adrenal SBRT more often requires monitoring for nausea, flank discomfort, fatigue, and nearby bowel irritation."],
-          ["Months to years", "Late issues are site-specific and may include erectile dysfunction, urethral stricture, hematuria, rectal bleeding, bowel change, infertility, renal function change, or second-malignancy risk in selected historical or young-patient contexts."]
-        ]
-      },
-      {
-        id: "thoracic", icon: "icons/thoracic.png", name: "Thoracic", subtitle: "Lung, esophagus, thymus", defaultDose: [60, 30],
-        purpose: "Thoracic radiation treats tumors in the chest while limiting dose to the lungs, heart, esophagus, spinal cord, brachial plexus, trachea, and great vessels.",
-        expectation: "Simulation may include 4D-CT, respiratory motion assessment, breath hold, and daily image guidance depending on tumor location and treatment technique.",
-        support: ["Nutrition support for esophagitis risk", "Cough and dyspnea monitoring", "Skin care across entry and exit regions", "Smoking cessation support when relevant"],
-        position: "Usually supine with arms raised, using customized upper-body support and respiratory-motion coaching when needed.",
-        sites: [
-          {
-            id: "nsclc",
-            name: "Non-small cell lung cancer",
-            hint: "Early-stage SBRT, locally advanced treatment, or palliation",
-            tags: ["lung", "IMRT", "SBRT"],
-            dose: [60, 30],
-            defaultTreatmentsPerWeek: 5,
-            defaultTechnique: "IMRT/VMAT",
-            defaultPosition: "supine-arms-up",
-            purpose: "Radiation for non-small cell lung cancer may be used as definitive SBRT for selected early-stage disease, as part of definitive chemoradiation for locally advanced disease, or to relieve thoracic symptoms when cure-directed treatment is not appropriate.",
-            expectation: "Planning commonly uses PET/CT review, 4D-CT or another respiratory-motion assessment, and daily image guidance. Early-stage SBRT uses a few highly focused treatments, while stage III chemoradiation is generally delivered once daily over several weeks.",
-            support: ["Monitor cough, shortness of breath, oxygen needs, fever, and chest pain", "Nutrition and swallowing support when the esophagus receives clinically meaningful dose", "Smoking-cessation support when relevant", "Teach patients to report new cough, fever, or dyspnea after treatment because pneumonitis requires evaluation"],
-            position: "Usually supine with both arms raised using reproducible upper-body immobilization. 4D-CT, an internal target volume, breath hold, gating, or another motion-management strategy may be used according to tumor motion and anatomy."
-          },
-          {
-            id: "sclc",
-            name: "Small cell lung cancer",
-            hint: "Limited-stage chemoradiation, selected early-stage SBRT, or thoracic consolidation",
-            tags: ["chemoRT", "thorax", "BID"],
-            dose: [45, 30],
-            defaultTreatmentsPerWeek: 10,
-            defaultTechnique: "IMRT/VMAT",
-            defaultPosition: "supine-arms-up",
-            purpose: "Thoracic radiation is a core component of treatment for limited-stage small cell lung cancer and may also be used for selected node-negative early-stage disease or carefully selected extensive-stage patients with residual thoracic disease.",
-            expectation: "Limited-stage thoracic radiation is coordinated with systemic therapy. The guideline-standard accelerated course uses two radiation sessions on each treatment weekday, separated by at least 6 hours; once-daily alternatives are available when twice-daily treatment is not feasible.",
-            support: ["Nutrition, hydration, and swallowing support during concurrent chemoradiation", "Monitor cough, dyspnea, fever, chest pain, and oxygen needs", "Coordinate blood-count and systemic-therapy monitoring with medical oncology", "Brain MRI surveillance and prophylactic cranial irradiation discussions are individualized by stage, response, age, comorbidity, and current evidence"],
-            position: "Usually supine with both arms raised using reproducible upper-body immobilization. Respiratory motion is assessed with 4D-CT or another motion-management approach, and daily image guidance is typically used."
-          },
-          { id: "esophagus", name: "Esophageal cancer", hint: "Swallowing symptoms", tags: ["GI", "thorax", "chemoRT"], dose: [50.4, 28], defaultPosition: "supine-arms-up" },
-          {
-            id: "thymic-tumors",
-            name: "Thymic tumors",
-            hint: "Thymoma and thymic carcinoma",
-            tags: ["thymus", "mediastinum", "postoperative"],
-            dose: [54, 30],
-            defaultPosition: "supine-arms-up",
-            purpose: "Radiation may be used after surgery, as definitive treatment when surgery is not feasible, or for selected recurrent thymic tumors while protecting nearby mediastinal organs.",
-            expectation: "Planning maps the thymic bed or visible tumor and nearby lungs, heart, esophagus, spinal cord, trachea, and great vessels. Respiratory motion assessment or breath hold may be used when helpful.",
-            support: ["Cough and shortness-of-breath monitoring", "Nutrition support if swallowing irritation develops", "Fatigue and skin-care counseling", "Coordination with thoracic surgery and medical oncology"],
-            position: "Usually supine with arms raised using customized upper-body support. Breath hold or 4D-CT may be used depending on target motion and anatomy."
-          }
-        ],
-        timeline: [
-          ["Week 1", "Treatment is painless. Baseline cough, swallowing, and breathing symptoms are documented."],
-          ["Weeks 2 to 5", "Fatigue, cough, skin irritation, and esophagitis can emerge, especially when the esophagus is in the field."],
-          ["Weeks to months", "Pneumonitis symptoms such as new cough, fever, or shortness of breath require prompt evaluation."]
-        ]
-      },
       {
         id: "cns", icon: "icons/neurologic.png", name: "Neurologic", subtitle: "Brain, spine, skull base", defaultDose: [60, 30],
         purpose: "Radiation may be used after surgery, definitively, or for palliation to treat tumor while protecting nearby critical structures.",
@@ -5584,6 +4092,42 @@
         ]
       },
       {
+        id: "thoracic", icon: "icons/thoracic.png", name: "Thoracic", subtitle: "Lung, esophagus, mediastinum", defaultDose: [60, 30],
+        purpose: "Thoracic radiation treats tumors in the chest while limiting dose to the lungs, heart, esophagus, spinal cord, and brachial plexus.",
+        expectation: "Simulation may include 4D-CT and breathing-motion management, depending on tumor location.",
+        support: ["Nutrition support for esophagitis risk", "Cough and dyspnea monitoring", "Skin care across entry and exit regions", "Smoking cessation support when relevant"],
+        position: "Usually supine with arms raised, using customized support and breath-hold coaching when needed.",
+        sites: [
+          { id: "nsclc", name: "Non-small cell lung cancer", hint: "Central or peripheral lung", tags: ["lung", "IMRT", "SBRT"], dose: [60, 30] },
+          { id: "sclc", name: "Small cell lung cancer", hint: "Thorax and PCI discussion", tags: ["chemoRT", "thorax"], dose: [45, 30] },
+          { id: "esophagus", name: "Esophageal cancer", hint: "Swallowing symptoms", tags: ["GI", "thorax", "chemoRT"], dose: [50.4, 28] },
+          { id: "mediastinum", name: "Mediastinal lymphoma", hint: "Heart and breast sparing", tags: ["lymphoma", "ISRT"], dose: [30, 15] }
+        ],
+        timeline: [
+          ["Week 1", "Treatment is painless. Baseline cough, swallowing, and breathing symptoms are documented."],
+          ["Weeks 2 to 5", "Fatigue, cough, skin irritation, and esophagitis can emerge, especially when the esophagus is in the field."],
+          ["Weeks to months", "Pneumonitis symptoms such as new cough, fever, or shortness of breath require prompt evaluation."]
+        ]
+      },
+      {
+        id: "breast", icon: "icons/breast.png", name: "Breast", subtitle: "Breast, chest wall, nodes", defaultDose: [40.05, 15],
+        purpose: "Breast radiation lowers local recurrence risk and may treat the breast, chest wall, or regional nodes.",
+        expectation: "Simulation maps the treatment area. Left-sided treatment may use deep inspiration breath hold to reduce heart dose.",
+        support: ["Gentle skin care and moisturizer per clinic protocol", "Supportive bra or soft clothing", "Fatigue pacing", "Shoulder range-of-motion encouragement when appropriate"],
+        position: "Usually supine on a breast board with one or both arms raised. Prone setup or breath hold may be used selectively.",
+        sites: [
+          { id: "whole-breast", name: "Whole breast", hint: "Lumpectomy setting", tags: ["hypofractionation", "boost"], dose: [40.05, 15] },
+          { id: "pbi", name: "Partial breast", hint: "Selected early-stage cases", tags: ["APBI", "short course"], dose: [30, 5] },
+          { id: "chest-wall", name: "Chest wall", hint: "Post-mastectomy", tags: ["PMRT", "bolus"], dose: [50, 25] },
+          { id: "regional-nodes", name: "Regional nodes", hint: "Axillary, SCV, IMN", tags: ["nodes", "DIBH"], dose: [50, 25] }
+        ],
+        timeline: [
+          ["Week 1", "Most patients notice little initially beyond setup time and mild fatigue."],
+          ["Weeks 2 to 4", "Skin redness, tanning, itching, breast/chest wall tenderness, and fatigue may increase."],
+          ["After RT", "Skin reaction usually peaks shortly after treatment and then improves. Fibrosis, cosmetic change, edema, or rare lung/heart effects are discussed based on the plan."]
+        ]
+      },
+      {
         id: "gi", icon: "icons/gastrointestinal.png", name: "Gastrointestinal", subtitle: "Pancreas, rectum, liver, anal", defaultDose: [50.4, 28],
         purpose: "GI radiation may be used before or after surgery, with chemotherapy, or for palliation while protecting nearby abdominal and pelvic organs.",
         expectation: "Simulation may require fasting, bladder filling, bowel preparation, contrast, or motion management.",
@@ -5599,6 +4143,24 @@
           ["Week 1", "Patients may feel well initially. Baseline bowel pattern, appetite, nausea, and pain are reviewed."],
           ["Weeks 2 to 5", "Fatigue, diarrhea, cramping, urinary irritation, nausea, appetite change, or skin irritation can develop depending on the field."],
           ["After RT", "Most acute symptoms improve over weeks. Late bowel, bladder, sexual, fertility, hepatic, or gastric risks are individualized."]
+        ]
+      },
+      {
+        id: "gu", icon: "icons/genitourinary.png", name: "Genitourinary", subtitle: "Prostate, bladder, kidney/adrenal, testis", defaultDose: [70, 28],
+        purpose: "GU radiation may treat prostate, bladder, testicular, kidney, adrenal, nodal, or metastatic disease while limiting dose to nearby bowel, urinary, renal, and sexual structures.",
+        expectation: "Simulation emphasizes reproducible anatomy. Pelvic treatment may require bladder and rectal preparation, while kidney or adrenal SBRT may require respiratory motion management.",
+        support: ["Bladder filling and bowel routine coaching", "Baseline urinary, bowel, sexual, and fertility assessment", "Alpha blocker discussion for prostate-related obstructive symptoms", "Hydration guidance and bowel/antidiarrheal support when appropriate", "ADT, chemotherapy, sperm banking, and fertility counseling when relevant"],
+        position: "Most GU treatments are supine. Pelvic cases use leg support and daily image guidance; kidney or adrenal SBRT may use arms-up setup and motion management.",
+        sites: [
+          { id: "prostate", name: "Prostate cancer", hint: "Definitive, postoperative/salvage, nodal, SBRT, or brachytherapy discussion", tags: ["IGRT", "ADT", "SBRT"], dose: [70, 28] },
+          { id: "bladder", name: "Bladder cancer", hint: "Bladder preservation after maximal TURBT with concurrent chemoradiation", tags: ["TMT", "chemoRT", "cystoscopy"], dose: [64, 32] },
+          { id: "testis", name: "Testicular seminoma", hint: "Selected seminoma nodal RT; routine stage I adjuvant RT is generally avoided", tags: ["PA nodes", "fertility", "late effects"], dose: [30, 15] },
+          { id: "kidney", name: "Kidney/adrenal lesion", hint: "SBRT for selected primary RCC, adrenal lesion, oligometastasis, or palliation", tags: ["SBRT", "motion", "renal dose"], dose: [40, 5] }
+        ],
+        timeline: [
+          ["Week 1", "Treatment is painless. Baseline urinary, bowel, sexual, renal, and fertility considerations are reviewed, and bladder/rectal or motion-management instructions are reinforced."],
+          ["Weeks 2 to 6", "Pelvic RT can cause frequency, urgency, nocturia, weaker stream, dysuria, loose stools, rectal urgency, and fatigue. Kidney/adrenal SBRT more often requires monitoring for nausea, flank discomfort, fatigue, and nearby bowel irritation."],
+          ["Months to years", "Late issues are site-specific and may include erectile dysfunction, urethral stricture, hematuria, rectal bleeding, bowel change, infertility, renal function change, or second-malignancy risk in selected historical or young-patient contexts."]
         ]
       },
       {
@@ -5638,27 +4200,16 @@
         ]
       },
       {
-        id: "heme", icon: "icons/heme.png", name: "Heme/Lymphatic", subtitle: "Lymphoma, mediastinum, myeloma", defaultDose: [30, 15],
+        id: "heme", icon: "icons/heme.png", name: "Heme/Lymphatic", subtitle: "Lymphoma, myeloma, marrow", defaultDose: [30, 15],
         purpose: "Radiation for hematologic malignancies usually targets involved sites or focal symptomatic disease while limiting normal-tissue and marrow exposure.",
-        expectation: "Treatment fields are often limited and coordinated with systemic therapy, pathology, and response imaging.",
+        expectation: "Treatment fields are often limited and coordinated with systemic therapy and response imaging.",
         support: ["Fatigue counseling", "Site-specific skin or mucosal care", "Blood count monitoring when marrow exposure is relevant", "Pain flare counseling for bony lesions"],
-        position: "Positioning depends on the treated site, with immobilization chosen for comfort, reproducibility, and organ-at-risk sparing.",
+        position: "Positioning depends on the treated site, with immobilization chosen for comfort and reproducibility.",
         sites: [
           { id: "hodgkin", name: "Hodgkin lymphoma", hint: "Involved-site RT", tags: ["ISRT", "PET"], dose: [30, 15] },
           { id: "nhl", name: "Non-Hodgkin lymphoma", hint: "Indolent or aggressive", tags: ["ISRT", "palliation"], dose: [30, 15] },
-          {
-            id: "mediastinal-lymphoma",
-            name: "Mediastinal lymphoma",
-            hint: "Hodgkin or primary mediastinal B-cell lymphoma",
-            tags: ["ISRT", "PET", "DIBH"],
-            dose: [30, 15],
-            defaultPosition: "supine-arms-up",
-            purpose: "Involved-site radiation may treat selected mediastinal lymphoma or residual disease while limiting dose to the heart, lungs, breasts, thyroid, and esophagus.",
-            expectation: "Planning incorporates the original disease distribution, response imaging, systemic therapy, and current anatomy. Deep inspiration breath hold, IMRT/VMAT, or proton therapy may be considered when they improve normal-tissue sparing.",
-            support: ["Fatigue counseling and activity pacing", "Nutrition support if swallowing irritation develops", "Cough and shortness-of-breath monitoring", "Long-term cardiac, pulmonary, thyroid, and second-cancer risk counseling when relevant"],
-            position: "Usually supine with arms raised using customized upper-body support. Deep inspiration breath hold may be used to reduce heart and lung exposure when feasible."
-          },
-          { id: "plasmacytoma", name: "Plasmacytoma", hint: "Bone or soft tissue", tags: ["myeloma", "bone"], dose: [45, 25] }
+          { id: "plasmacytoma", name: "Plasmacytoma", hint: "Bone or soft tissue", tags: ["myeloma", "bone"], dose: [45, 25] },
+          { id: "tbi", name: "TBI concept", hint: "Transplant conditioning", tags: ["marrow", "specialized"], dose: [12, 6] }
         ],
         timeline: [
           ["Week 1", "Baseline symptoms and systemic therapy timing are reviewed."],
@@ -5704,87 +4255,19 @@
       }
     ];
 
-    // Pilot scope: breast is fully available; GU currently exposes prostate only;
-    // thoracic currently exposes NSCLC and SCLC only. Remaining modules stay visible
-    // as roadmap items but cannot be opened during the pilot.
-    const pilotAvailableSites = {
-      breast: new Set(["whole-breast", "pbi", "chest-wall", "regional-nodes"]),
-      gu: new Set(["prostate"]),
-      thoracic: new Set(["nsclc", "sclc"])
-    };
-
-    const isPilotSystemAvailable = (systemId) => Boolean(pilotAvailableSites[systemId]?.size);
-    const isPilotSiteAvailable = (systemId, siteId) => Boolean(pilotAvailableSites[systemId]?.has(siteId));
-    const firstPilotSiteId = (system) => {
-      if (!system || !isPilotSystemAvailable(system.id)) return null;
-      return system.sites.find(site => isPilotSiteAvailable(system.id, site.id))?.id || null;
-    };
-
-
     const srOnlyStyle = document.createElement("style");
     srOnlyStyle.innerHTML = `.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}`;
     document.head.appendChild(srOnlyStyle);
 
     const defaultEmbedLinks = {
-      "gu:prostate": "https://human.biodigital.com/viewer/?id=7FfI&ui-anatomy-descriptions=true&ui-anatomy-pronunciations=false&ui-anatomy-labels=true&ui-audio=true&ui-chapter-list=false&ui-fullscreen=true&ui-help=true&ui-info=true&ui-label-list=true&ui-layers=true&ui-skin-layers=true&ui-loader=circle&ui-media-controls=full&ui-menu=true&ui-nav=true&ui-search=true&ui-tools=true&ui-tutorial=false&ui-undo=true&ui-whiteboard=true&initial.none=true&disable-scroll=false&uaid=MibxQ&paid=o_064a1c76",
-      "thoracic:nsclc": "https://human.biodigital.com/viewer/?id=7O66&ui-anatomy-descriptions=true&ui-anatomy-pronunciations=false&ui-anatomy-labels=true&ui-audio=true&ui-chapter-list=false&ui-fullscreen=true&ui-help=true&ui-info=true&ui-label-list=true&ui-layers=true&ui-skin-layers=true&ui-loader=circle&ui-media-controls=full&ui-menu=true&ui-nav=true&ui-search=true&ui-tools=true&ui-tutorial=false&ui-undo=true&ui-whiteboard=true&initial.none=true&disable-scroll=false&uaid=MidwC&paid=o_064a1c76",
-      "thoracic:sclc": "https://human.biodigital.com/viewer/?id=7O66&ui-anatomy-descriptions=true&ui-anatomy-pronunciations=false&ui-anatomy-labels=true&ui-audio=true&ui-chapter-list=false&ui-fullscreen=true&ui-help=true&ui-info=true&ui-label-list=true&ui-layers=true&ui-skin-layers=true&ui-loader=circle&ui-media-controls=full&ui-menu=true&ui-nav=true&ui-search=true&ui-tools=true&ui-tutorial=false&ui-undo=true&ui-whiteboard=true&initial.none=true&disable-scroll=false&uaid=MidwC&paid=o_064a1c76",
-      "breast:whole-breast": "https://human.biodigital.com/viewer/?id=7Frx&ui-anatomy-descriptions=true&ui-anatomy-pronunciations=false&ui-anatomy-labels=true&ui-audio=true&ui-chapter-list=false&ui-fullscreen=true&ui-help=true&ui-info=true&ui-label-list=true&ui-layers=true&ui-skin-layers=true&ui-loader=circle&ui-media-controls=full&ui-menu=true&ui-nav=true&ui-search=true&ui-tools=true&ui-tutorial=false&ui-undo=true&ui-whiteboard=true&initial.none=true&disable-scroll=false&uaid=MkQZI&paid=o_064a1c76",
-      "breast:pbi": "https://human.biodigital.com/viewer/?id=7Frx&ui-anatomy-descriptions=true&ui-anatomy-pronunciations=false&ui-anatomy-labels=true&ui-audio=true&ui-chapter-list=false&ui-fullscreen=true&ui-help=true&ui-info=true&ui-label-list=true&ui-layers=true&ui-skin-layers=true&ui-loader=circle&ui-media-controls=full&ui-menu=true&ui-nav=true&ui-search=true&ui-tools=true&ui-tutorial=false&ui-undo=true&ui-whiteboard=true&initial.none=true&disable-scroll=false&uaid=MkQZI&paid=o_064a1c76",
-      "breast:chest-wall": "https://human.biodigital.com/viewer/?id=7Frx&ui-anatomy-descriptions=true&ui-anatomy-pronunciations=false&ui-anatomy-labels=true&ui-audio=true&ui-chapter-list=false&ui-fullscreen=true&ui-help=true&ui-info=true&ui-label-list=true&ui-layers=true&ui-skin-layers=true&ui-loader=circle&ui-media-controls=full&ui-menu=true&ui-nav=true&ui-search=true&ui-tools=true&ui-tutorial=false&ui-undo=true&ui-whiteboard=true&initial.none=true&disable-scroll=false&uaid=MkQZI&paid=o_064a1c76",
-      "breast:regional-nodes": "https://human.biodigital.com/viewer/?id=7Frx&ui-anatomy-descriptions=true&ui-anatomy-pronunciations=false&ui-anatomy-labels=true&ui-audio=true&ui-chapter-list=false&ui-fullscreen=true&ui-help=true&ui-info=true&ui-label-list=true&ui-layers=true&ui-skin-layers=true&ui-loader=circle&ui-media-controls=full&ui-menu=true&ui-nav=true&ui-search=true&ui-tools=true&ui-tutorial=false&ui-undo=true&ui-whiteboard=true&initial.none=true&disable-scroll=false&uaid=MkQZI&paid=o_064a1c76"
+      "gu:prostate": "https://human.biodigital.com/view?id=7FfI&lang=en",
+      "breast:whole-breast": "https://human.biodigital.com/view?id=production%2FfemaleAdult%2Fbreast_cancer_v02&lang=en&ref=share",
+      "breast:pbi": "https://human.biodigital.com/view?id=production%2FfemaleAdult%2Fbreast_cancer_v02&lang=en&ref=share",
+      "breast:chest-wall": "https://human.biodigital.com/view?id=production%2FfemaleAdult%2Fbreast_cancer_v02&lang=en&ref=share",
+      "breast:regional-nodes": "https://human.biodigital.com/view?id=production%2FfemaleAdult%2Fbreast_cancer_v02&lang=en&ref=share"
     };
-
-    /* Optional site-specific still images for printed summaries.
-       For the exact BioDigital view, export a licensed still image from BioDigital
-       and place it at the matching path. The prostate entry below looks for
-       images/print-models/prostate.png first and falls back to a built-in schematic. */
-    const printModelImageLinks = {
-      "gu:prostate": "images/print-models/prostate.png",
-      "thoracic:nsclc": "images/print-models/lung.png",
-      "thoracic:sclc": "images/print-models/lung.png"
-    };
-
-    /* The printed summary can use a fresh snapshot of the currently displayed
-       BioDigital scene. This is captured through BioDigital's Viewer API
-       immediately before printing. Static images above remain a fallback. */
-    let printModelSnapshotKey = "";
-    let printModelSnapshotSrc = "";
-
-    const prostatePrintFallbackSvg = `
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 650" role="img" aria-label="Simplified sagittal male pelvic anatomy">
-        <defs>
-          <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#f8fbfc"/>
-            <stop offset="1" stop-color="#e6f0f3"/>
-          </linearGradient>
-        </defs>
-        <rect width="900" height="650" rx="36" fill="url(#bg)"/>
-        <text x="450" y="62" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#1c2a32">Prostate anatomy</text>
-        <text x="450" y="96" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#5c6f78">Simplified static orientation for printed summaries</text>
-        <path d="M381 173 C343 206 337 279 377 314 C414 347 486 343 520 307 C555 270 548 207 512 176 C478 147 414 146 381 173Z" fill="#8fd0d6" stroke="#2f7f88" stroke-width="5"/>
-        <text x="449" y="244" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#163f45">Bladder</text>
-        <path d="M445 316 C446 342 446 357 446 375" stroke="#2f7f88" stroke-width="16" stroke-linecap="round"/>
-        <path d="M396 379 C416 353 480 353 503 381 C519 402 511 442 486 458 C457 476 414 469 394 443 C378 422 380 399 396 379Z" fill="#7764d8" fill-opacity="0.88" stroke="#5443aa" stroke-width="5"/>
-        <text x="449" y="419" text-anchor="middle" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="white">Prostate</text>
-        <path d="M449 461 C448 502 449 538 450 579" stroke="#485762" stroke-width="12" stroke-linecap="round"/>
-        <text x="474" y="545" font-family="Arial, sans-serif" font-size="18" fill="#5c6f78">Urethra</text>
-        <path d="M597 186 C662 252 669 427 592 505" fill="none" stroke="#cf9a7f" stroke-width="34" stroke-linecap="round" opacity="0.78"/>
-        <text x="662" y="355" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#805a48">Rectum</text>
-        <path d="M331 371 C300 404 286 459 300 514" fill="none" stroke="#9eb7bf" stroke-width="22" stroke-linecap="round"/>
-        <text x="244" y="456" font-family="Arial, sans-serif" font-size="18" fill="#5c6f78">Pubic region</text>
-        <line x1="502" y1="396" x2="608" y2="373" stroke="#5443aa" stroke-width="3"/>
-        <circle cx="502" cy="396" r="6" fill="#5443aa"/>
-        <text x="620" y="376" font-family="Arial, sans-serif" font-size="18" fill="#5443aa">Prostate gland below bladder</text>
-      </svg>`;
-
-    const prostatePrintFallbackDataUrl = `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(prostatePrintFallbackSvg)}`;
 
     const savedEmbedLinks = JSON.parse(localStorage.getItem("OncoVis3DEmbedLinks") || localStorage.getItem("oncoviewEmbedLinks") || "{}");
-
-    if (savedEmbedLinks["thoracic:mediastinum"] && !savedEmbedLinks["heme:mediastinal-lymphoma"]) {
-      savedEmbedLinks["heme:mediastinal-lymphoma"] = savedEmbedLinks["thoracic:mediastinum"];
-    }
 
     const state = {
       page: "home",
@@ -5800,23 +4283,13 @@
       return system?.sites.find(site => site.id === state.siteId) || null;
     };
     const embedKey = (systemId, siteId) => `${systemId}:${siteId}`;
-    const hasWorkspaceSelection = () => {
-      const system = activeSystem();
-      const site = activeSite();
-      return Boolean(system && site && isPilotSiteAvailable(system.id, site.id));
-    };
+    const hasWorkspaceSelection = () => Boolean(activeSystem() && activeSite());
 
     function setDoseForActiveSite() {
       const site = activeSite();
       if (!site?.dose) return;
       if ($("totalDose")) $("totalDose").value = site.dose[0];
       if ($("fractions")) $("fractions").value = site.dose[1];
-      if ($("treatmentsPerWeek") && site.defaultTreatmentsPerWeek !== undefined) {
-        $("treatmentsPerWeek").value = site.defaultTreatmentsPerWeek;
-      }
-      if ($("technique") && site.defaultTechnique) {
-        $("technique").value = site.defaultTechnique;
-      }
     }
 
     function updateWorkspaceVisibility() {
@@ -5902,13 +4375,12 @@
 
       if (first === "workspace") {
         state.page = "workspace";
-
         const system = systems.find(item => item.id === second);
 
-        if (system && isPilotSystemAvailable(system.id)) {
+        if (system) {
           state.systemId = system.id;
-          const matchedSite = system.sites.find(site => site.id === third && isPilotSiteAvailable(system.id, site.id));
-          state.siteId = matchedSite ? matchedSite.id : firstPilotSiteId(system);
+          const matchedSite = system.sites.find(site => site.id === third);
+          state.siteId = matchedSite ? matchedSite.id : system.sites[0].id;
           setDoseForActiveSite();
         } else {
           state.systemId = null;
@@ -5921,15 +4393,10 @@
       const legacySystem = systems.find(item => item.id === first);
       if (legacySystem) {
         state.page = "workspace";
-        if (isPilotSystemAvailable(legacySystem.id)) {
-          state.systemId = legacySystem.id;
-          const matchedSite = legacySystem.sites.find(site => site.id === second && isPilotSiteAvailable(legacySystem.id, site.id));
-          state.siteId = matchedSite ? matchedSite.id : firstPilotSiteId(legacySystem);
-          setDoseForActiveSite();
-        } else {
-          state.systemId = null;
-          state.siteId = null;
-        }
+        state.systemId = legacySystem.id;
+        const matchedSite = legacySystem.sites.find(site => site.id === second);
+        state.siteId = matchedSite ? matchedSite.id : legacySystem.sites[0].id;
+        setDoseForActiveSite();
         return true;
       }
 
@@ -5938,12 +4405,10 @@
 
     function selectSystem(systemId) {
       const system = systems.find(item => item.id === systemId);
-      if (!system || !isPilotSystemAvailable(system.id)) return;
-      const firstSiteId = firstPilotSiteId(system);
-      if (!firstSiteId) return;
+      if (!system) return;
       state.page = "workspace";
       state.systemId = system.id;
-      state.siteId = firstSiteId;
+      state.siteId = system.sites[0].id;
       treatmentPlanViewIndex = 0;
       setDoseForActiveSite();
       updateRouteHash();
@@ -5953,7 +4418,7 @@
     function selectSite(siteId) {
       const system = activeSystem();
       const site = system?.sites.find(item => item.id === siteId);
-      if (!site || !isPilotSiteAvailable(system.id, site.id)) return;
+      if (!site) return;
       state.page = "workspace";
       state.siteId = site.id;
       treatmentPlanViewIndex = 0;
@@ -5973,25 +4438,13 @@
       const organPanel = document.querySelector(".organ-selector-panel");
       if (organPanel) organPanel.classList.toggle("searching", Boolean(query));
 
-      $("systemGrid").innerHTML = filtered.map(system => {
-        const available = isPilotSystemAvailable(system.id);
-        return `
-        <button
-          class="system-card ${system.id === state.systemId ? "active" : ""} ${available ? "" : "pilot-unavailable"}"
-          type="button"
-          data-system-id="${system.id}"
-          ${available ? "" : 'disabled aria-disabled="true" title="Not available during pilot"'}
-        >
+      $("systemGrid").innerHTML = filtered.map(system => `
+        <button class="system-card ${system.id === state.systemId ? "active" : ""}" type="button" data-system-id="${system.id}">
           <span class="icon-bubble" aria-hidden="true"><img src="${system.icon}" alt="" class="system-icon-img" /></span>
-          <span class="system-copy">
-            <strong>${system.name}</strong>
-            <span class="system-subtitle">${system.subtitle}</span>
-            ${available ? "" : '<span class="pilot-system-status">Not available during pilot</span>'}
-          </span>
+          <span class="system-copy"><strong>${system.name}</strong><span class="system-subtitle">${system.subtitle}</span></span>
           <span class="system-arrow" aria-hidden="true">›</span>
         </button>
-      `;
-      }).join("");
+      `).join("");
 
       document.querySelectorAll("[data-system-id]").forEach(btn => {
         btn.addEventListener("click", () => {
@@ -6024,21 +4477,12 @@
 
     function renderSites() {
       const system = activeSystem();
-      $("siteGrid").innerHTML = system.sites.map(site => {
-        const available = isPilotSiteAvailable(system.id, site.id);
-        return `
-        <button
-          class="site-card ${site.id === state.siteId ? "active" : ""} ${available ? "" : "pilot-unavailable"}"
-          type="button"
-          data-site-id="${site.id}"
-          ${available ? "" : 'disabled aria-disabled="true" title="Not available during pilot"'}
-        >
+      $("siteGrid").innerHTML = system.sites.map(site => `
+        <button class="site-card ${site.id === state.siteId ? "active" : ""}" type="button" data-site-id="${site.id}">
           <strong>${site.name}</strong>
           <span>${site.hint}</span>
-          ${available ? "" : '<span class="pilot-site-status">Not available during pilot</span>'}
         </button>
-      `;
-      }).join("");
+      `).join("");
 
       document.querySelectorAll("[data-site-id]").forEach(btn => {
         btn.addEventListener("click", () => {
@@ -6056,145 +4500,12 @@
       return url;
     }
 
-    function updatePrintModelStatic() {
-      const system = activeSystem();
-      const site = activeSite();
-      const container = $("printModelStatic");
-      const image = $("printModelImage");
-      const fallbackTitle = $("printModelFallbackTitle");
-      const fallbackText = $("printModelFallbackText");
-      if (!system || !site || !container || !image) return;
-
-      const key = embedKey(system.id, site.id);
-      const preferredImage = printModelImageLinks[key] || "";
-
-      if (printModelSnapshotKey === key && printModelSnapshotSrc) {
-        container.classList.remove("image-missing");
-        image.onload = () => container.classList.remove("image-missing");
-        image.onerror = () => {
-          printModelSnapshotKey = "";
-          printModelSnapshotSrc = "";
-          updatePrintModelStatic();
-        };
-        image.alt = `${site.name} BioDigital anatomy snapshot for printed summary`;
-        image.src = printModelSnapshotSrc;
-        return;
-      }
-
-      container.classList.add("image-missing");
-      image.removeAttribute("src");
-      image.alt = `${site.name} static anatomy model for printed summary`;
-      if (fallbackTitle) fallbackTitle.textContent = `${site.name} anatomy model`;
-      if (fallbackText) fallbackText.textContent = "Interactive 3D model available in the digital version.";
-
-      const useBuiltInFallback = () => {
-        if (key !== "gu:prostate") {
-          container.classList.add("image-missing");
-          return;
-        }
-        image.onload = () => container.classList.remove("image-missing");
-        image.onerror = () => container.classList.add("image-missing");
-        image.src = prostatePrintFallbackDataUrl;
-      };
-
-      if (preferredImage) {
-        image.onload = () => container.classList.remove("image-missing");
-        image.onerror = useBuiltInFallback;
-        image.src = preferredImage;
-      } else {
-        useBuiltInFallback();
-      }
-    }
-
-    function captureBioDigitalPrintSnapshot({ timeoutMs = 3500 } = {}) {
-      return new Promise(resolve => {
-        const system = activeSystem();
-        const site = activeSite();
-        const frame = $("modelFrame");
-        const container = $("printModelStatic");
-        const image = $("printModelImage");
-        if (!system || !site || !frame || frame.hidden || !frame.src || !container || !image || typeof window.HumanAPI !== "function") {
-          resolve(false);
-          return;
-        }
-
-        const key = embedKey(system.id, site.id);
-        let settled = false;
-        const finish = success => {
-          if (settled) return;
-          settled = true;
-          clearTimeout(timer);
-          resolve(success);
-        };
-        const timer = setTimeout(() => finish(false), timeoutMs);
-
-        try {
-          const human = new window.HumanAPI("modelFrame");
-          human.send("ui.snapshot", {
-            width: 1600,
-            height: 1200,
-            openInTab: false
-          }, imgSrc => {
-            if (!imgSrc || typeof imgSrc !== "string") {
-              finish(false);
-              return;
-            }
-
-            const preload = new Image();
-            preload.onload = () => {
-              printModelSnapshotKey = key;
-              printModelSnapshotSrc = imgSrc;
-              container.classList.remove("image-missing");
-              image.alt = `${site.name} BioDigital anatomy snapshot for printed summary`;
-              image.src = imgSrc;
-              finish(true);
-            };
-            preload.onerror = () => finish(false);
-            preload.src = imgSrc;
-          });
-        } catch (error) {
-          console.warn("BioDigital print snapshot unavailable; using static print fallback.", error);
-          finish(false);
-        }
-      });
-    }
-
-    async function printWorkspaceSummary() {
-      const button = $("printSummaryBtn");
-      const originalLabel = button?.textContent || "Print summary";
-      if (button) {
-        button.disabled = true;
-        button.textContent = "Preparing print…";
-      }
-
-      /* Reset the prior scene capture so each print reflects the current camera/model state. */
-      printModelSnapshotKey = "";
-      printModelSnapshotSrc = "";
-      updatePrintModelStatic();
-
-      try {
-        await captureBioDigitalPrintSnapshot();
-      } finally {
-        updatePrintModelStatic();
-        if (button) {
-          button.disabled = false;
-          button.textContent = originalLabel;
-        }
-      }
-
-      window.print();
-    }
-
     function updateViewer() {
       const system = activeSystem();
       const site = activeSite();
       const key = embedKey(system.id, site.id);
       const url = sanitizeUrl(state.embedLinks[key]);
       const frame = $("modelFrame");
-      if (printModelSnapshotKey && printModelSnapshotKey !== key) {
-        printModelSnapshotKey = "";
-        printModelSnapshotSrc = "";
-      }
       const empty = $("emptyViewer");
       $("emptyIcon").innerHTML = `<img src="${system.icon}" alt="" class="empty-system-icon" />`;
       $("emptyTitle").textContent = `${site.name} model`;
@@ -6213,8 +4524,6 @@
         frame.removeAttribute("src");
         empty.style.display = "grid";
       }
-
-      updatePrintModelStatic();
     }
 
 
@@ -6250,8 +4559,7 @@
 
     function getSelectedPatientPositionKey() {
       const key = patientPositionSelectionKey();
-      const siteDefault = activeSite()?.defaultPosition || "supine";
-      const selected = patientPositionSelections[key] || siteDefault;
+      const selected = patientPositionSelections[key] || "supine";
       return patientPositionLibrary[selected] ? selected : "supine";
     }
 
@@ -6409,36 +4717,6 @@
     };
 
     const timelineOverrides = {
-      "thoracic:nsclc:SBRT/SABR": [
-        { phase: "Preparation", time: "Simulation and planning", title: "Motion-managed stereotactic planning", summary: "SBRT planning defines the lung target with respiratory-motion assessment and strict review of nearby bronchial tree, chest wall, esophagus, heart, spinal cord, and major vessels.", examples: ["Peripheral and central tumors may require different fractionation because central organs can limit dose per treatment.", "Daily image guidance is essential for each stereotactic treatment."] },
-        { phase: "Acute", time: "Treatment week to several weeks after", title: "Often mild short-course symptoms", summary: "Many patients have little immediate toxicity. Fatigue, cough, transient chest discomfort, or chest-wall soreness can occur depending on tumor location.", examples: ["Report fever, worsening shortness of breath, hemoptysis, or severe chest pain promptly."] },
-        { phase: "Recovery", time: "Weeks to 3 months", title: "Most acute effects settle", summary: "Fatigue and local irritation generally improve, although imaging changes around the treated tumor can evolve for months.", examples: ["Follow-up CT changes after SBRT may represent treatment effect and are interpreted over time."] },
-        { phase: "Late", time: "About 1 to 6 months and beyond", title: "Pneumonitis and site-specific late effects", summary: "Radiation pneumonitis can present with new cough, fever, or dyspnea. Later risks depend on tumor location and nearby structures.", examples: ["Chest-wall pain or rib fracture risk is greater for lesions close to the ribs.", "Central or ultracentral targets require special attention to airway, esophagus, and vessel toxicity."] }
-      ],
-      "thoracic:nsclc": [
-        { phase: "Preparation", time: "Before RT", title: "Stage, motion, and systemic-therapy coordination", summary: "Planning integrates diagnostic imaging, respiratory motion, target volumes, and doses to lung, heart, esophagus, spinal cord, and other nearby organs.", examples: ["For unresectable stage III disease, radiation is commonly coordinated with concurrent platinum-based chemotherapy when the patient can tolerate it."] },
-        { phase: "Early", time: "Weeks 1 to 2", title: "Often mild initially", summary: "Treatment itself is painless. Fatigue, cough, appetite change, or mild swallowing irritation may begin.", examples: ["Maintain hydration, nutrition, and pulmonary medications as directed."] },
-        { phase: "Peak acute", time: "Weeks 3 to 6 and shortly after", title: "Esophagitis, fatigue, and cough can build", summary: "Swallowing pain, fatigue, cough, skin reaction, and reduced intake may increase during a multi-week thoracic course, especially with concurrent systemic therapy.", examples: ["Call for inability to maintain hydration, fever, new oxygen requirement, hemoptysis, or worsening dyspnea."] },
-        { phase: "Late", time: "1 to 6 months and beyond", title: "Pneumonitis and long-term thoracic effects", summary: "New cough, fever, or shortness of breath after radiation requires evaluation for pneumonitis or another pulmonary cause. Later risks depend on heart, lung, esophagus, airway, cord, and plexus dose.", examples: ["Surveillance imaging and systemic-therapy follow-up are coordinated with the oncology team."] }
-      ],
-      "thoracic:sclc": [
-        { phase: "Preparation", time: "Before and early in systemic therapy", title: "Concurrent treatment planning", summary: "Limited-stage treatment coordinates thoracic radiation with systemic therapy, respiratory-motion assessment, daily image guidance, and involved-field target definition.", examples: ["The standard twice-daily course requires two treatment visits on each treatment weekday with adequate separation between fractions."] },
-        { phase: "Acute", time: "During thoracic chemoradiation", title: "Esophagitis, fatigue, and blood-count effects", summary: "Fatigue, swallowing pain, cough, appetite change, and treatment-related cytopenias may accumulate during concurrent therapy.", examples: ["Nutrition, hydration, and blood-count monitoring are especially important during combined-modality treatment."] },
-        { phase: "Recovery", time: "Weeks to a few months after thoracic RT", title: "Acute chest effects improve", summary: "Swallowing irritation and fatigue generally improve after treatment, while pulmonary symptoms and systemic-therapy recovery continue to be monitored.", examples: ["New fever, cough, or dyspnea requires evaluation rather than being assumed to be a normal recovery effect."] },
-        { phase: "Follow-up", time: "Months and beyond", title: "Thoracic and brain surveillance", summary: "Follow-up addresses thoracic response, pneumonitis risk, systemic disease, and brain-metastasis surveillance. PCI or MRI-surveillance decisions are individualized.", examples: ["Long-term thoracic risks depend on heart, lung, esophagus, airway, spinal cord, and systemic-therapy exposure."] }
-      ],
-      "thoracic:thymic-tumors": [
-        { phase: "Preparation", time: "Simulation and planning", title: "Mediastinal anatomy and prior surgery", summary: "Planning reviews the surgical bed or visible thymic tumor and nearby lungs, heart, esophagus, trachea, spinal cord, and great vessels.", examples: ["Breath hold or 4D-CT may be used when respiratory motion or organ sparing warrants it.", "Treatment intent and dose depend on resection status, stage, histology, and multidisciplinary review."] },
-        { phase: "Early", time: "First 1 to 2 weeks", title: "Often mild at first", summary: "Patients do not see or feel the beam. Fatigue, mild cough, skin sensitivity, or swallowing irritation may begin depending on the treated volume.", examples: ["Continue nutrition, hydration, and activity as tolerated."] },
-        { phase: "Peak acute", time: "Later treatment to several weeks after", title: "Chest irritation can increase", summary: "Fatigue, esophagitis, cough, and skin reaction may become more noticeable near the end of treatment or shortly afterward.", examples: ["Call for poor intake, dehydration, fever, chest pain, or new shortness of breath."] },
-        { phase: "Late", time: "Months to years", title: "Thoracic organ monitoring", summary: "Late effects depend on dose to the lungs, heart, esophagus, spinal cord, and other mediastinal structures.", examples: ["New cough, fever, or dyspnea weeks to months after treatment requires evaluation for pneumonitis or another cause."] }
-      ],
-      "heme:mediastinal-lymphoma": [
-        { phase: "Preparation", time: "Before RT", title: "Response-adapted involved-site planning", summary: "The treatment team reviews original disease extent, systemic therapy, response imaging, and current anatomy to define the involved site.", examples: ["Deep inspiration breath hold, IMRT/VMAT, or proton therapy may be considered to reduce heart, lung, breast, thyroid, and esophageal exposure."] },
-        { phase: "Early", time: "Week 1", title: "Setup and baseline symptoms", summary: "Patients do not see or feel the beam. Breath-hold coaching, fatigue, cough, swallowing, and chest symptoms are reviewed.", examples: ["Most patients have limited symptoms early in a short involved-site course."] },
-        { phase: "Peak acute", time: "During RT to several weeks after", title: "Fatigue and mediastinal irritation", summary: "Fatigue, mild skin reaction, cough, or esophagitis can occur when the corresponding structures are in the treatment field.", examples: ["Report poor intake, dehydration, fever, chest pain, or new shortness of breath."] },
-        { phase: "Late", time: "Months to years", title: "Long-term normal-tissue awareness", summary: "Long-term follow-up considers cardiac, pulmonary, thyroid, breast, and second-malignancy risks according to age, sex, systemic therapy, field, and dose.", examples: ["Modern involved-site fields and organ-sparing techniques are used to reduce these risks whenever feasible."] }
-      ],
       "gu:bladder": [
         { phase: "Preparation", time: "Before and week 1", title: "TURBT, chemoRT, and bladder baseline", summary: "Bladder-preservation counseling emphasizes maximal TURBT when feasible, concurrent chemotherapy, reproducible pelvic setup, and planned cystoscopic reassessment.", examples: ["Document baseline dysuria, hematuria, frequency, urgency, continence, renal function, and bowel pattern."] },
         { phase: "Peak acute", time: "During chemoRT", title: "Cystitis, bowel irritation, and fatigue", summary: "Frequency, urgency, dysuria, hematuria, pelvic discomfort, loose stools, and fatigue can build during treatment.", examples: ["Escalate for urinary retention, fever, clots, heavy bleeding, dehydration, or uncontrolled pain."] },
@@ -6477,13 +4755,87 @@
       ]
     };
 
+    function getTreatmentCourseShape() {
+      const fractions = parseFloat($("fractions")?.value || "");
+      const perWeek = parseFloat($("treatmentsPerWeek")?.value || "");
+      const technique = $("technique")?.value || "";
+      const weeks = fractions > 0 && perWeek > 0 ? fractions / perWeek : null;
+      const stereotactic = ["SBRT/SABR", "SRS"].includes(technique);
+      const singleFraction = fractions === 1;
+      const veryShort = singleFraction || stereotactic || (fractions > 0 && fractions <= 5) || (weeks !== null && weeks <= 2);
+      const shortCourse = !veryShort && ((fractions > 0 && fractions <= 15) || (weeks !== null && weeks <= 3));
+
+      return { fractions, perWeek, weeks, technique, stereotactic, singleFraction, veryShort, shortCourse };
+    }
+
+    function adaptiveTimelineTime(entry, index, shape) {
+      if (!shape.veryShort && !shape.shortCourse) return entry.time || "";
+
+      const phase = String(entry.phase || "").toLowerCase();
+      const original = String(entry.time || "");
+      const isPreparation = phase.includes("preparation") || phase.includes("planning");
+      const isLate = phase.includes("late") || phase.includes("survivorship");
+      const isRecovery = phase.includes("recovery") || phase.includes("convalescent");
+      const isPeak = phase.includes("peak") || phase.includes("subacute");
+      const isEarly = phase.includes("early") || phase.includes("acute") || phase.includes("treatment");
+
+      if (isPreparation && !/week\s*1/i.test(original)) return original;
+      if (isLate) return "Months to years";
+
+      if (shape.singleFraction) {
+        if (isPeak || index === 1) return "Days 1 to 14 after treatment";
+        if (isRecovery || index === 2) return "Weeks 2 to 12 after treatment";
+        if (isEarly || index === 0) return "Treatment day";
+      }
+
+      if (shape.veryShort) {
+        if (isPeak || index === 1) return "During treatment to 2 to 6 weeks after";
+        if (isRecovery || index === 2) return "Weeks to months after treatment";
+        if (isEarly || index === 0 || isPreparation) return "During the treatment course";
+      }
+
+      if (shape.shortCourse) {
+        if (isPeak || index === 1) return "Final treatment week to 2 to 6 weeks after";
+        if (isRecovery || index === 2) return "Weeks to months after treatment";
+        if (isEarly || index === 0 || isPreparation) return "First treatment week";
+      }
+
+      return original;
+    }
+
+    function adaptTimelineToCourse(timeline) {
+      const shape = getTreatmentCourseShape();
+      if (!Array.isArray(timeline) || (!shape.veryShort && !shape.shortCourse)) return timeline;
+
+      return timeline.map((entry, index) => {
+        if (Array.isArray(entry)) {
+          const [time, text] = entry;
+          let adaptiveTime = time;
+          if (shape.singleFraction) {
+            adaptiveTime = index === 0 ? "Treatment day" : index === 1 ? "Days to weeks after treatment" : "Months to years";
+          } else if (shape.veryShort) {
+            adaptiveTime = index === 0 ? "During the treatment course" : index === 1 ? "During treatment to 2 to 6 weeks after" : "Months to years";
+          } else if (shape.shortCourse) {
+            adaptiveTime = index === 0 ? "First treatment week" : index === 1 ? "Final treatment week to 2 to 6 weeks after" : "Months to years";
+          }
+          return [adaptiveTime, text];
+        }
+
+        return {
+          ...entry,
+          time: adaptiveTimelineTime(entry, index, shape)
+        };
+      });
+    }
+
     function getActiveTimeline() {
       const system = activeSystem();
       const site = activeSite();
       const technique = $("technique") ? $("technique").value : "";
       const siteTechniqueKey = `${system.id}:${site.id}:${technique}`;
       const siteOnlyKey = `${system.id}:${site.id}`;
-      return timelineOverrides[siteTechniqueKey] || timelineOverrides[siteOnlyKey] || systemPhaseTimelines[system.id] || system.timeline;
+      const timeline = timelineOverrides[siteTechniqueKey] || timelineOverrides[siteOnlyKey] || systemPhaseTimelines[system.id] || system.timeline;
+      return adaptTimelineToCourse(timeline);
     }
 
     function renderTimelineEntry(entry, siteName) {
@@ -6631,21 +4983,16 @@
     function updateDetails() {
       const system = activeSystem();
       const site = activeSite();
-      const purpose = site.purpose || system.purpose;
-      const expectation = site.expectation || system.expectation;
-      const position = site.position || system.position;
-      const supportiveCare = Array.isArray(site.support) ? site.support : system.support;
-
       $("selectedTitle").textContent = system.name;
       $("selectedSubtitle").textContent = system.subtitle;
       $("siteHeading").textContent = `${system.name} disease sites`;
-      $("radiationPurpose").textContent = purpose;
-      $("expectationText").textContent = expectation;
-      $("positioningText").textContent = position;
-      $("supportiveCare").innerHTML = supportiveCare.map(item => `<li>${item}</li>`).join("");
+      $("radiationPurpose").textContent = system.purpose;
+      $("expectationText").textContent = system.expectation;
+      $("positioningText").textContent = system.position;
+      $("supportiveCare").innerHTML = system.support.map(item => `<li>${item}</li>`).join("");
       updateTimeline();
       const selectedPosition = getSelectedPatientPosition();
-      $("printSummary").textContent = `${system.name}: ${site.name}. Patient position: ${selectedPosition.label}. ${purpose} Expected course: ${expectation}`;
+      $("printSummary").textContent = `${system.name}: ${site.name}. Patient position: ${selectedPosition.label}. ${system.purpose} Expected course: ${system.expectation}`;
     }
 
     function updateTreatmentCourse() {
@@ -6681,20 +5028,6 @@
           $('courseTreatmentText').textContent = `The course includes ${boostPlan.baseFractions} whole-breast treatments followed by ${boostPlan.boostFractions} tumor-bed boost treatments, for ${boostPlan.totalFractions} total visits.`;
         } else if (boostPlan.active && boostPlan.mode === "sib" && boostPlan.valid) {
           $('courseTreatmentText').textContent = `Each of the ${boostPlan.baseFractions} sessions delivers the whole-breast dose and a higher integrated tumor-bed dose during the same visit.`;
-        } else if (isActiveLungRegimenSite()) {
-          const lungPreset = getSupportedLungPreset();
-          const lungSetting = $("lungTreatmentSetting")?.value || "";
-          if (lungPreset?.twiceDaily) {
-            $('courseTreatmentText').textContent = `The ${lungPreset.fractions}-fraction course is delivered as two treatment sessions per weekday, with at least 6 hours between the two daily fractions.`;
-          } else if (technique === "SBRT/SABR") {
-            $('courseTreatmentText').textContent = `The lung target is treated with ${fractions} highly focused stereotactic sessions using respiratory-motion management and daily image guidance.`;
-          } else if (state.siteId === "nsclc" && lungSetting === "stage3-concurrent") {
-            $('courseTreatmentText').textContent = `Thoracic radiation is delivered once daily over ${fmt(fractions / perWeek)} weeks and is typically coordinated with concurrent systemic therapy for appropriate patients.`;
-          } else if (state.siteId === "sclc" && lungSetting === "limited-qd") {
-            $('courseTreatmentText').textContent = `Thoracic radiation is delivered once daily and coordinated with systemic therapy; this is an alternative when the twice-daily standard is not feasible.`;
-          } else {
-            $('courseTreatmentText').textContent = `Thoracic radiation follows the selected ${fractions}-session schedule with daily image guidance and site-appropriate respiratory-motion management.`;
-          }
         } else {
           $('courseTreatmentText').textContent = isBrachytherapy
             ? `Radiation is delivered with applicators or sources placed near the target.`
@@ -6739,8 +5072,7 @@
         label: "79.2 Gy in 44 fractions",
         totalDose: 79.2,
         fractions: 44,
-        treatmentsPerWeek: 5,
-        technique: "IMRT/VMAT",
+        treatmentsPerWeek: 5,technique: "IMRT/VMAT",
         summary: "Dose-escalated conventional fractionation example.",
         basisType: "Evidence-based conventional example",
         basisDetail: "A dose-escalated conventional external-beam example within the contemporary localized-prostate treatment framework.",
@@ -7738,9 +6070,7 @@
 
     function updateTechniqueFieldPlacement() {
       // Technique no longer appears in the Treatment Plan section.
-    }
-
-    function updateProstateRegimenPanel({ syncCategory = true } = {}) {
+    }function updateProstateRegimenPanel({ syncCategory = true } = {}) {
       const panel = $("prostateRegimenPanel");
       if (!panel) return;
 
@@ -8693,673 +7023,6 @@
     }
 
 
-
-    const lungRegimenConfigs = {
-      nsclc: {
-        tag: "NSCLC",
-        defaultSetting: "stage3-concurrent",
-        categories: [
-          { id: "conventional", label: "Conventional fractionation" },
-          { id: "hypofractionated", label: "Hypofractionated definitive RT" },
-          { id: "sbrt", label: "SBRT / SABR" },
-          { id: "palliative", label: "Palliative thoracic RT" },
-          { id: "custom", label: "Custom or other" }
-        ],
-        settings: [
-          {
-            id: "early-peripheral",
-            label: "Early-stage peripheral tumor, SBRT",
-            defaultCategory: "sbrt",
-            evidenceLabel: "ASTRO early-stage NSCLC SBRT guideline",
-            evidenceDetail: "SBRT is the definitive radiation framework for appropriately selected medically inoperable early-stage NSCLC. Peripheral tumors can use highly ablative short-course schedules when organ-at-risk constraints are met.",
-            sources: [
-              { label: "ASTRO early-stage NSCLC SBRT guideline", url: "https://www.astro.org/provider-resources/guidelines/astro-s-guideline-on-sbrt-for-early-stage-nsclc" }
-            ]
-          },
-          {
-            id: "early-central",
-            label: "Early-stage central tumor, risk-adapted SBRT",
-            defaultCategory: "sbrt",
-            evidenceLabel: "ASTRO central-tumor SBRT guidance",
-            evidenceDetail: "ASTRO advises against 3-fraction SBRT for central lung tumors. Four- or five-fraction approaches may be used with careful attention to proximal airway, esophagus, heart, great vessels, and other critical structures.",
-            sources: [
-              { label: "ASTRO early-stage NSCLC SBRT guideline", url: "https://www.astro.org/provider-resources/guidelines/astro-s-guideline-on-sbrt-for-early-stage-nsclc" },
-              { label: "NRG/RTOG 0813", url: "https://pubmed.ncbi.nlm.nih.gov/30943123/" }
-            ]
-          },
-          {
-            id: "stage3-concurrent",
-            label: "Unresectable stage III, concurrent chemoradiation",
-            defaultCategory: "conventional",
-            evidenceLabel: "ASCO stage III NSCLC guideline",
-            evidenceDetail: "For medically or surgically inoperable stage III NSCLC with good performance status, concurrent chemoradiation is preferred and the guideline-recommended radiation dose is 60 Gy.",
-            sources: [
-              { label: "ASCO stage III NSCLC guideline", url: "https://ascopubs.org/doi/10.1200/JCO.21.02528" },
-              { label: "ASTRO thoracic guideline index / summary", url: "https://www.astro.org/provider-resources/guidelines/clinical-practice-guidelines" }
-            ]
-          },
-          {
-            id: "stage3-rt-alone",
-            label: "Stage II/III, definitive RT without concurrent chemotherapy",
-            defaultCategory: "conventional",
-            evidenceLabel: "ASCO stage III NSCLC guideline",
-            evidenceDetail: "When concurrent chemotherapy cannot be given, standard fractionation remains appropriate; selected patients may be considered for modest hypofractionation, with careful attention to tumor location and normal-tissue constraints.",
-            sources: [
-              { label: "ASCO stage III NSCLC guideline", url: "https://ascopubs.org/doi/10.1200/JCO.21.02528" },
-              { label: "60 Gy in 15 vs 30 fraction randomized trial", url: "https://pubmed.ncbi.nlm.nih.gov/34383006/" }
-            ]
-          },
-          {
-            id: "palliative",
-            label: "Palliative thoracic radiation",
-            defaultCategory: "palliative",
-            evidenceLabel: "ASTRO palliative thoracic NSCLC guideline",
-            evidenceDetail: "Palliative thoracic dose and fractionation are selected according to symptoms, performance status, expected survival, treatment goals, and convenience. Both 30 Gy in 10 fractions and shorter schedules are guideline-supported in appropriate settings.",
-            sources: [
-              { label: "ASTRO palliative thoracic NSCLC guideline", url: "https://www.astro.org/provider-resources/guidelines/astro-s-guideline-on-palliative-radiation-therapy-for-non-small-cell-lung-cancer" },
-              { label: "Guideline evidence review", url: "https://pubmed.ncbi.nlm.nih.gov/25740118/" }
-            ]
-          },
-          {
-            id: "other",
-            label: "Custom or other",
-            defaultCategory: "custom",
-            evidenceLabel: "Custom NSCLC regimen",
-            evidenceDetail: "No preset-specific evidence label is assigned. Confirm the prescription against the applicable stage, tumor location, current guideline, protocol, and institutional constraints.",
-            sources: [
-              { label: "ASTRO clinical practice guidelines", url: "https://www.astro.org/provider-resources/guidelines/clinical-practice-guidelines" }
-            ]
-          }
-        ],
-        presets: [
-          {
-            id: "nsclc-peripheral-54-3",
-            settings: ["early-peripheral"],
-            category: "sbrt",
-            label: "54 Gy in 3 nonconsecutive fractions",
-            totalDose: 54,
-            fractions: 3,
-            treatmentsPerWeek: 2.5,
-            nonconsecutive: true,
-            technique: "SBRT/SABR",
-            tone: "ok",
-            evidenceLabel: "ASTRO framework with RTOG 0236 prospective evidence",
-            evidenceDetail: "54 Gy in 3 fractions is a seminal prospective regimen for peripheral, medically inoperable early-stage NSCLC. The fractions are nonconsecutive; OncoVis3D defaults to 2.5 sessions per week to represent spaced treatment days.",
-            sources: [
-              { label: "ASTRO early-stage NSCLC SBRT guideline", url: "https://www.astro.org/provider-resources/guidelines/astro-s-guideline-on-sbrt-for-early-stage-nsclc" },
-              { label: "RTOG 0236", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC2907644/" }
-            ]
-          },
-          {
-            id: "nsclc-peripheral-48-4",
-            settings: ["early-peripheral"],
-            category: "sbrt",
-            label: "48 Gy in 4 consecutive daily fractions",
-            totalDose: 48,
-            fractions: 4,
-            treatmentsPerWeek: 5,
-            technique: "SBRT/SABR",
-            tone: "ok",
-            evidenceLabel: "ASTRO framework with randomized phase II evidence",
-            evidenceDetail: "48 Gy in 4 consecutive daily fractions is a prospectively studied peripheral stage I NSCLC SBRT regimen in NRG/RTOG 0915.",
-            sources: [
-              { label: "ASTRO early-stage NSCLC SBRT guideline", url: "https://www.astro.org/provider-resources/guidelines/astro-s-guideline-on-sbrt-for-early-stage-nsclc" },
-              { label: "NRG/RTOG 0915", url: "https://pubmed.ncbi.nlm.nih.gov/26530743/" }
-            ]
-          },
-          {
-            id: "nsclc-central-50-5",
-            settings: ["early-central"],
-            category: "sbrt",
-            label: "50 Gy in 5 nonconsecutive fractions",
-            totalDose: 50,
-            fractions: 5,
-            treatmentsPerWeek: 2.5,
-            nonconsecutive: true,
-            technique: "SBRT/SABR",
-            tone: "ok",
-            evidenceLabel: "ASTRO risk-adapted central-tumor framework with NRG/RTOG 0813 support",
-            evidenceDetail: "This is a common risk-adapted five-fraction central-lung SBRT example. NRG/RTOG 0813 evaluated 50 to 60 Gy in 5 fractions over 1.5 to 2 weeks; final dose depends on proximity to critical structures and protocol constraints.",
-            sources: [
-              { label: "ASTRO early-stage NSCLC SBRT guideline", url: "https://www.astro.org/provider-resources/guidelines/astro-s-guideline-on-sbrt-for-early-stage-nsclc" },
-              { label: "NRG/RTOG 0813", url: "https://pubmed.ncbi.nlm.nih.gov/30943123/" }
-            ]
-          },
-          {
-            id: "nsclc-stage3-60-30",
-            settings: ["stage3-concurrent"],
-            category: "conventional",
-            label: "60 Gy in 30 fractions",
-            totalDose: 60,
-            fractions: 30,
-            treatmentsPerWeek: 5,
-            technique: "IMRT/VMAT",
-            tone: "ok",
-            evidenceLabel: "ASCO guideline-standard definitive dose",
-            evidenceDetail: "ASCO strongly recommends 60 Gy for stage III NSCLC treated with concurrent chemoradiation. Systemic-therapy selection and consolidation therapy are managed separately from this radiation prescription module.",
-            sources: [
-              { label: "ASCO stage III NSCLC guideline", url: "https://ascopubs.org/doi/10.1200/JCO.21.02528" },
-              { label: "ASTRO thoracic guideline index / summary", url: "https://www.astro.org/provider-resources/guidelines/clinical-practice-guidelines" }
-            ]
-          },
-          {
-            id: "nsclc-rtalone-60-30",
-            settings: ["stage3-rt-alone"],
-            category: "conventional",
-            label: "60 Gy in 30 fractions",
-            totalDose: 60,
-            fractions: 30,
-            treatmentsPerWeek: 5,
-            technique: "IMRT/VMAT",
-            tone: "ok",
-            evidenceLabel: "ASCO guideline-supported definitive RT-alone example",
-            evidenceDetail: "60 Gy in 30 fractions is a standard definitive radiation-alone example when concurrent chemotherapy cannot be delivered. Sequential chemotherapy should still be considered when appropriate.",
-            sources: [
-              { label: "ASCO stage III NSCLC guideline", url: "https://ascopubs.org/doi/10.1200/JCO.21.02528" }
-            ]
-          },
-          {
-            id: "nsclc-rtalone-60-15",
-            settings: ["stage3-rt-alone"],
-            category: "hypofractionated",
-            label: "60 Gy in 15 fractions, selected patients",
-            totalDose: 60,
-            fractions: 15,
-            treatmentsPerWeek: 5,
-            technique: "IMRT/VMAT",
-            tone: "info",
-            evidenceLabel: "ASCO-permitted modest hypofractionation with randomized trial evidence",
-            evidenceDetail: "ASCO permits modest hypofractionation for selected stage III patients receiving definitive RT without chemotherapy. A randomized trial of 60 Gy in 15 versus 30 fractions did not show superior survival, so this is a selected-patient option rather than a preferred replacement for standard chemoradiation.",
-            sources: [
-              { label: "ASCO stage III NSCLC guideline", url: "https://ascopubs.org/doi/10.1200/JCO.21.02528" },
-              { label: "60 Gy in 15 vs 30 fraction randomized trial", url: "https://pubmed.ncbi.nlm.nih.gov/34383006/" }
-            ]
-          },
-          {
-            id: "nsclc-pall-30-10",
-            settings: ["palliative"],
-            category: "palliative",
-            label: "30 Gy in 10 fractions",
-            totalDose: 30,
-            fractions: 10,
-            treatmentsPerWeek: 5,
-            technique: "3D conformal radiation",
-            tone: "ok",
-            evidenceLabel: "ASTRO palliative thoracic guideline-supported",
-            evidenceDetail: "30 Gy in 10 fractions is a guideline-supported higher-dose palliative thoracic schedule that may modestly improve survival or symptom score in patients with good performance status, with greater esophageal toxicity than shorter schedules.",
-            sources: [
-              { label: "ASTRO palliative thoracic NSCLC guideline", url: "https://www.astro.org/provider-resources/guidelines/astro-s-guideline-on-palliative-radiation-therapy-for-non-small-cell-lung-cancer" },
-              { label: "Guideline evidence review", url: "https://pubmed.ncbi.nlm.nih.gov/25740118/" }
-            ]
-          },
-          {
-            id: "nsclc-pall-20-5",
-            settings: ["palliative"],
-            category: "palliative",
-            label: "20 Gy in 5 fractions",
-            totalDose: 20,
-            fractions: 5,
-            treatmentsPerWeek: 5,
-            technique: "3D conformal radiation",
-            tone: "ok",
-            evidenceLabel: "ASTRO palliative thoracic guideline-supported short course",
-            evidenceDetail: "20 Gy in 5 fractions is a guideline-supported shorter palliative thoracic schedule that provides symptom relief with fewer treatment visits.",
-            sources: [
-              { label: "ASTRO palliative thoracic NSCLC guideline", url: "https://www.astro.org/provider-resources/guidelines/astro-s-guideline-on-palliative-radiation-therapy-for-non-small-cell-lung-cancer" },
-              { label: "Guideline evidence review", url: "https://pubmed.ncbi.nlm.nih.gov/25740118/" }
-            ]
-          },
-          {
-            id: "nsclc-pall-17-2",
-            settings: ["palliative"],
-            category: "palliative",
-            label: "17 Gy in 2 weekly fractions",
-            totalDose: 17,
-            fractions: 2,
-            treatmentsPerWeek: 1,
-            technique: "3D conformal radiation",
-            tone: "ok",
-            evidenceLabel: "ASTRO palliative thoracic guideline-supported short course",
-            evidenceDetail: "17 Gy in 2 weekly fractions is specifically listed among shorter palliative thoracic schedules that can provide symptom relief with few treatment visits.",
-            sources: [
-              { label: "ASTRO palliative thoracic NSCLC guideline", url: "https://www.astro.org/provider-resources/guidelines/astro-s-guideline-on-palliative-radiation-therapy-for-non-small-cell-lung-cancer" },
-              { label: "Guideline evidence review", url: "https://pubmed.ncbi.nlm.nih.gov/25740118/" }
-            ]
-          },
-          {
-            id: "nsclc-pall-10-1",
-            settings: ["palliative"],
-            category: "palliative",
-            label: "10 Gy in 1 fraction",
-            totalDose: 10,
-            fractions: 1,
-            treatmentsPerWeek: 1,
-            technique: "3D conformal radiation",
-            tone: "ok",
-            evidenceLabel: "ASTRO palliative thoracic guideline-supported single fraction",
-            evidenceDetail: "10 Gy in 1 fraction is a guideline-supported single-fraction palliative thoracic option for appropriately selected patients prioritizing a very short course.",
-            sources: [
-              { label: "ASTRO palliative thoracic NSCLC guideline", url: "https://www.astro.org/provider-resources/guidelines/astro-s-guideline-on-palliative-radiation-therapy-for-non-small-cell-lung-cancer" },
-              { label: "Guideline evidence review", url: "https://pubmed.ncbi.nlm.nih.gov/25740118/" }
-            ]
-          }
-        ]
-      },
-      sclc: {
-        tag: "SCLC",
-        defaultSetting: "limited-bid",
-        categories: [
-          { id: "hyperfractionated", label: "Accelerated hyperfractionation, twice daily" },
-          { id: "conventional", label: "Once-daily definitive fractionation" },
-          { id: "sbrt", label: "SBRT / SABR" },
-          { id: "consolidation", label: "Extensive-stage thoracic consolidation" },
-          { id: "custom", label: "Custom or other" }
-        ],
-        settings: [
-          {
-            id: "limited-bid",
-            label: "Limited-stage concurrent chemoradiation, twice daily",
-            defaultCategory: "hyperfractionated",
-            evidenceLabel: "ASTRO SCLC guideline standard",
-            evidenceDetail: "ASTRO strongly recommends 45 Gy in 30 twice-daily fractions for limited-stage SCLC. The two daily fractions should be separated by at least 6 hours, and thoracic RT should begin early in the systemic-therapy course when feasible.",
-            sources: [
-              { label: "ASTRO SCLC guideline", url: "https://www.astro.org/provider-resources/guidelines/small-cell-lung-cancer-guideline" },
-              { label: "Turrisi / Intergroup 0096", url: "https://pubmed.ncbi.nlm.nih.gov/9920950/" }
-            ]
-          },
-          {
-            id: "limited-qd",
-            label: "Limited-stage concurrent chemoradiation, once daily",
-            defaultCategory: "conventional",
-            evidenceLabel: "ASTRO SCLC guideline alternative",
-            evidenceDetail: "When twice-daily treatment is not feasible, ASTRO supports once-daily thoracic radiation in the 60 to 70 Gy range. Phase III trials of 66 Gy and 70 Gy once daily did not establish superiority over 45 Gy twice daily.",
-            sources: [
-              { label: "ASTRO SCLC guideline", url: "https://www.astro.org/provider-resources/guidelines/small-cell-lung-cancer-guideline" },
-              { label: "CONVERT", url: "https://pubmed.ncbi.nlm.nih.gov/28642008/" },
-              { label: "CALGB 30610 / RTOG 0538", url: "https://pubmed.ncbi.nlm.nih.gov/36623230/" }
-            ]
-          },
-          {
-            id: "early-node-negative",
-            label: "Stage I-II node-negative, medically inoperable",
-            defaultCategory: "sbrt",
-            evidenceLabel: "ASTRO SCLC guideline with lung-SBRT framework",
-            evidenceDetail: "ASTRO supports SBRT or conventional radiation for selected medically inoperable stage I-II node-negative SCLC after appropriate nodal staging. The exact SBRT prescription follows lung SBRT principles rather than a single SCLC-specific preferred dose.",
-            sources: [
-              { label: "ASTRO SCLC guideline", url: "https://www.astro.org/provider-resources/guidelines/small-cell-lung-cancer-guideline" },
-              { label: "ASTRO early-stage NSCLC SBRT guideline", url: "https://www.astro.org/provider-resources/guidelines/astro-s-guideline-on-sbrt-for-early-stage-nsclc" }
-            ]
-          },
-          {
-            id: "extensive-consolidation",
-            label: "Extensive-stage residual thoracic disease after systemic therapy",
-            defaultCategory: "consolidation",
-            evidenceLabel: "ASTRO conditional recommendation with evolving 2026 evidence",
-            evidenceDetail: "ASTRO conditionally supports thoracic consolidation for selected extensive-stage SCLC with response to systemic therapy and residual thoracic disease. In the modern immunotherapy era, the 2026 TREASURE randomized phase II trial found no survival benefit and greater toxicity from adding 30 Gy in 10 fractions to atezolizumab maintenance in an unselected population, so patient selection is especially important.",
-            sources: [
-              { label: "ASTRO SCLC guideline", url: "https://www.astro.org/provider-resources/guidelines/small-cell-lung-cancer-guideline" },
-              { label: "TREASURE 2026", url: "https://pubmed.ncbi.nlm.nih.gov/42424047/" }
-            ]
-          },
-          {
-            id: "other",
-            label: "Custom or other",
-            defaultCategory: "custom",
-            evidenceLabel: "Custom SCLC regimen",
-            evidenceDetail: "No preset-specific evidence label is assigned. Confirm the prescription against stage, systemic-therapy timing, current guideline recommendations, and institutional protocol.",
-            sources: [
-              { label: "ASTRO SCLC guideline", url: "https://www.astro.org/provider-resources/guidelines/small-cell-lung-cancer-guideline" }
-            ]
-          }
-        ],
-        presets: [
-          {
-            id: "sclc-ls-45-30-bid",
-            settings: ["limited-bid"],
-            category: "hyperfractionated",
-            label: "45 Gy in 30 fractions, twice daily",
-            totalDose: 45,
-            fractions: 30,
-            treatmentsPerWeek: 10,
-            twiceDaily: true,
-            technique: "IMRT/VMAT",
-            tone: "ok",
-            evidenceLabel: "ASTRO guideline-standard with randomized phase III evidence",
-            evidenceDetail: "45 Gy in 30 fractions at 1.5 Gy twice daily remains the guideline-standard accelerated thoracic regimen for limited-stage SCLC. OncoVis3D sets 10 sessions per week, representing two fractions each weekday, with at least 6 hours between daily fractions.",
-            sources: [
-              { label: "ASTRO SCLC guideline", url: "https://www.astro.org/provider-resources/guidelines/small-cell-lung-cancer-guideline" },
-              { label: "Turrisi / Intergroup 0096", url: "https://pubmed.ncbi.nlm.nih.gov/9920950/" },
-              { label: "CONVERT", url: "https://pubmed.ncbi.nlm.nih.gov/28642008/" }
-            ]
-          },
-          {
-            id: "sclc-ls-66-33-qd",
-            settings: ["limited-qd"],
-            category: "conventional",
-            label: "66 Gy in 33 once-daily fractions",
-            totalDose: 66,
-            fractions: 33,
-            treatmentsPerWeek: 5,
-            technique: "IMRT/VMAT",
-            tone: "ok",
-            evidenceLabel: "ASTRO-supported once-daily alternative with CONVERT phase III evidence",
-            evidenceDetail: "66 Gy in 33 once-daily fractions was the once-daily arm of CONVERT. It was not superior to 45 Gy twice daily, but remains an evidence-supported alternative when BID treatment is not feasible.",
-            sources: [
-              { label: "ASTRO SCLC guideline", url: "https://www.astro.org/provider-resources/guidelines/small-cell-lung-cancer-guideline" },
-              { label: "CONVERT", url: "https://pubmed.ncbi.nlm.nih.gov/28642008/" }
-            ]
-          },
-          {
-            id: "sclc-ls-70-35-qd",
-            settings: ["limited-qd"],
-            category: "conventional",
-            label: "70 Gy in 35 once-daily fractions",
-            totalDose: 70,
-            fractions: 35,
-            treatmentsPerWeek: 5,
-            technique: "IMRT/VMAT",
-            tone: "ok",
-            evidenceLabel: "ASTRO-supported once-daily alternative with phase III evidence",
-            evidenceDetail: "70 Gy in 35 once-daily fractions was evaluated against 45 Gy twice daily in CALGB 30610/RTOG 0538. Once-daily 70 Gy did not improve overall survival, so 45 Gy twice daily remains the reference standard.",
-            sources: [
-              { label: "ASTRO SCLC guideline", url: "https://www.astro.org/provider-resources/guidelines/small-cell-lung-cancer-guideline" },
-              { label: "CALGB 30610 / RTOG 0538", url: "https://pubmed.ncbi.nlm.nih.gov/36623230/" }
-            ]
-          },
-          {
-            id: "sclc-early-50-5",
-            settings: ["early-node-negative"],
-            category: "sbrt",
-            label: "50 Gy in 5 nonconsecutive fractions, selected example",
-            totalDose: 50,
-            fractions: 5,
-            treatmentsPerWeek: 2.5,
-            nonconsecutive: true,
-            technique: "SBRT/SABR",
-            tone: "info",
-            evidenceLabel: "ASTRO SCLC indication with lung-SBRT dose framework",
-            evidenceDetail: "ASTRO supports SBRT for selected medically inoperable, node-negative stage I-II SCLC. The displayed 50 Gy in 5 fraction schedule is a representative lung-SBRT example, not an SCLC-specific preferred trial dose; the exact prescription depends on location and normal-tissue constraints.",
-            sources: [
-              { label: "ASTRO SCLC guideline", url: "https://www.astro.org/provider-resources/guidelines/small-cell-lung-cancer-guideline" },
-              { label: "ASTRO early-stage NSCLC SBRT guideline", url: "https://www.astro.org/provider-resources/guidelines/astro-s-guideline-on-sbrt-for-early-stage-nsclc" }
-            ]
-          },
-          {
-            id: "sclc-es-30-10",
-            settings: ["extensive-consolidation"],
-            category: "consolidation",
-            label: "30 Gy in 10 fractions, selected consolidation",
-            totalDose: 30,
-            fractions: 10,
-            treatmentsPerWeek: 5,
-            technique: "IMRT/VMAT",
-            tone: "warning",
-            evidenceLabel: "ASTRO conditional framework; role evolving after TREASURE 2026",
-            evidenceDetail: "30 Gy in 10 fractions is the guideline-based historical consolidative schedule for selected extensive-stage SCLC with residual thoracic disease. TREASURE 2026 found no survival benefit and increased toxicity when this regimen was added to atezolizumab maintenance in an unselected post-chemoimmunotherapy population.",
-            sources: [
-              { label: "ASTRO SCLC guideline", url: "https://www.astro.org/provider-resources/guidelines/small-cell-lung-cancer-guideline" },
-              { label: "TREASURE 2026", url: "https://pubmed.ncbi.nlm.nih.gov/42424047/" }
-            ]
-          },
-          {
-            id: "sclc-es-45-15",
-            settings: ["extensive-consolidation"],
-            category: "consolidation",
-            label: "45 Gy in 15 fractions, selected fit patients",
-            totalDose: 45,
-            fractions: 15,
-            treatmentsPerWeek: 5,
-            technique: "IMRT/VMAT",
-            tone: "warning",
-            evidenceLabel: "Selected higher-dose consolidation option; not routine",
-            evidenceDetail: "ASTRO-era guidance allowed consideration of higher-dose thoracic consolidation such as 45 Gy in 15 fractions for carefully selected fit patients expected to have prolonged survival. The immunotherapy-era benefit remains uncertain and should not be presented as routine.",
-            sources: [
-              { label: "ASTRO SCLC guideline", url: "https://www.astro.org/provider-resources/guidelines/small-cell-lung-cancer-guideline" },
-              { label: "TREASURE 2026", url: "https://pubmed.ncbi.nlm.nih.gov/42424047/" }
-            ]
-          }
-        ]
-      }
-    };
-
-    let lungRegimenSiteId = null;
-
-    function isActiveLungRegimenSite() {
-      return state.systemId === "thoracic" && ["nsclc", "sclc"].includes(state.siteId);
-    }
-
-    function activeLungRegimenConfig() {
-      return isActiveLungRegimenSite() ? lungRegimenConfigs[state.siteId] : null;
-    }
-
-    function currentLungSettingConfig() {
-      const config = activeLungRegimenConfig();
-      const setting = $("lungTreatmentSetting")?.value || config?.defaultSetting || "other";
-      return config?.settings.find(item => item.id === setting) || null;
-    }
-
-    function classifyLungFractionation(totalDose, fractions, technique = $("technique")?.value || "") {
-      const setting = $("lungTreatmentSetting")?.value || "";
-      const dosePerFraction = totalDose > 0 && fractions > 0 ? totalDose / fractions : NaN;
-
-      if (setting === "palliative") return { id: "palliative", label: "Palliative thoracic RT", dosePerFraction };
-      if (setting === "extensive-consolidation") return { id: "consolidation", label: "Thoracic consolidation", dosePerFraction };
-      if (setting === "limited-bid") return { id: "hyperfractionated", label: "Accelerated hyperfractionation", dosePerFraction };
-      if (["early-peripheral", "early-central", "early-node-negative"].includes(setting)) return { id: "sbrt", label: "SBRT / SABR", dosePerFraction };
-      if (["stage3-concurrent", "limited-qd"].includes(setting)) return { id: "conventional", label: "Conventional fractionation", dosePerFraction };
-      if (setting === "stage3-rt-alone") {
-        if (dosePerFraction > 2.05 && dosePerFraction <= 4.01) return { id: "hypofractionated", label: "Hypofractionated definitive RT", dosePerFraction };
-        if (dosePerFraction > 0 && dosePerFraction <= 2.05) return { id: "conventional", label: "Conventional fractionation", dosePerFraction };
-      }
-      if (setting === "other") return { id: "custom", label: "Custom fractionation", dosePerFraction };
-      if (technique === "SBRT/SABR" || dosePerFraction >= 5) return { id: "sbrt", label: "SBRT / SABR", dosePerFraction };
-      if (dosePerFraction > 2.05 && dosePerFraction < 5) return { id: "hypofractionated", label: "Hypofractionated definitive RT", dosePerFraction };
-      if (dosePerFraction > 0 && dosePerFraction <= 2.05) return { id: "conventional", label: "Conventional fractionation", dosePerFraction };
-      return { id: "custom", label: "Custom fractionation", dosePerFraction };
-    }
-
-    function populateLungSettingOptions({ reset = false } = {}) {
-      const select = $("lungTreatmentSetting");
-      const config = activeLungRegimenConfig();
-      if (!select || !config) return;
-      const previous = reset ? "" : select.value;
-      select.innerHTML = config.settings.map(setting => `<option value="${setting.id}">${setting.label}</option>`).join("");
-      select.value = config.settings.some(setting => setting.id === previous) ? previous : config.defaultSetting;
-    }
-
-    function populateLungCategoryOptions({ reset = false } = {}) {
-      const select = $("lungFractionationCategory");
-      const config = activeLungRegimenConfig();
-      if (!select || !config) return;
-      const previous = reset ? "" : select.value;
-      select.innerHTML = config.categories.map(category => `<option value="${category.id}">${category.label}</option>`).join("");
-      if (config.categories.some(category => category.id === previous)) {
-        select.value = previous;
-      } else {
-        const setting = currentLungSettingConfig();
-        select.value = setting?.defaultCategory || config.categories[0]?.id || "custom";
-      }
-    }
-
-    function populateLungPresetOptions({ preserveSelection = true } = {}) {
-      const select = $("lungRegimenPreset");
-      const config = activeLungRegimenConfig();
-      const setting = $("lungTreatmentSetting")?.value || "";
-      const category = $("lungFractionationCategory")?.value || "";
-      if (!select || !config) return;
-
-      const previous = preserveSelection ? select.value : "";
-      const matches = config.presets.filter(preset =>
-        preset.settings.includes(setting) && preset.category === category
-      );
-
-      if (!matches.length) {
-        select.disabled = true;
-        select.innerHTML = `<option value="">No built-in preset for this setting/category</option>`;
-        return;
-      }
-
-      select.disabled = false;
-      select.innerHTML = `<option value="">Choose a common regimen...</option>` + matches.map(preset =>
-        `<option value="${preset.id}">${preset.label}</option>`
-      ).join("");
-      if (matches.some(preset => preset.id === previous)) select.value = previous;
-    }
-
-    function currentLungPreset(totalDose, fractions, technique, perWeek) {
-      const config = activeLungRegimenConfig();
-      if (!config) return null;
-      return config.presets.find(preset =>
-        nearlyEqual(totalDose, preset.totalDose) &&
-        nearlyEqual(fractions, preset.fractions, 0.01) &&
-        technique === preset.technique &&
-        nearlyEqual(perWeek, presetSessionsPerWeek(preset), 0.11)
-      ) || null;
-    }
-
-    function getSupportedLungPreset() {
-      if (!isActiveLungRegimenSite()) return null;
-      const totalDose = parseFloat($("totalDose")?.value || "");
-      const fractions = parseFloat($("fractions")?.value || "");
-      const technique = $("technique")?.value || "";
-      const perWeek = parseFloat($("treatmentsPerWeek")?.value || "");
-      const setting = $("lungTreatmentSetting")?.value || "";
-      const category = $("lungFractionationCategory")?.value || "";
-      const matched = currentLungPreset(totalDose, fractions, technique, perWeek);
-      return matched && matched.settings.includes(setting) && matched.category === category ? matched : null;
-    }
-
-    function renderLungRegimenSource(preset = null) {
-      const source = $("lungRegimenSource");
-      const setting = currentLungSettingConfig();
-      if (!source || !setting) return;
-      const basis = preset || setting;
-      const links = breastSourceLinksHtml(basis.sources || setting.sources || []);
-      source.innerHTML = `
-        <b>Evidence basis:</b>
-        <span class="basis-type">${basis.evidenceLabel || "Clinical source"}</span>
-        ${basis.evidenceDetail ? `— ${basis.evidenceDetail}` : ""}
-        ${links}
-      `;
-    }
-
-    function updateLungRegimenNote() {
-      const note = $("lungRegimenNote");
-      if (!note || !isActiveLungRegimenSite()) return;
-      const setting = $("lungTreatmentSetting")?.value || "";
-      const supported = getSupportedLungPreset();
-      let tone = "info";
-      let html = "";
-
-      if (state.siteId === "nsclc" && setting === "early-central") {
-        tone = "warning";
-        html = `<b>Central-tumor caution:</b> Three-fraction SBRT is not recommended for central lung tumors. Use risk-adapted fractionation and verify airway, esophagus, heart, great-vessel, and other critical-organ constraints.`;
-      } else if (state.siteId === "nsclc" && setting === "stage3-concurrent") {
-        html = `<b>Definitive stage III:</b> 60 Gy in 30 fractions is the guideline-standard radiation dose with concurrent systemic therapy for appropriate patients. <b>Involved lymph nodes:</b> When cancer is present in nearby chest lymph nodes, those known involved nodes are generally included in the radiation treatment area with the primary lung tumor; clinically uninvolved nodal regions are not routinely treated electively. Nodal location changes the treatment volume and planning considerations, but does not by itself determine the number of fractions. This module displays the radiation course only; systemic-therapy selection remains separate.`;
-      } else if (state.siteId === "nsclc" && setting === "stage3-rt-alone") {
-        html = `<b>RT without concurrent chemotherapy:</b> Standard fractionation remains appropriate. Modest hypofractionation is a selected-patient option and requires careful review of tumor location, performance status, and normal-tissue constraints. <b>Involved lymph nodes:</b> Known involved hilar or mediastinal nodes are generally included with the primary tumor, while clinically uninvolved nodal regions are not routinely treated electively. Nodal location affects the target volume rather than automatically changing fraction number.`;
-      } else if (state.siteId === "nsclc" && setting === "palliative") {
-        html = `<b>Palliative treatment:</b> Fractionation is individualized to symptom burden, performance status, expected survival, logistics, and treatment goals. Shorter schedules reduce treatment visits.`;
-      } else if (state.siteId === "sclc" && setting === "limited-bid") {
-        html = `<b>Twice-daily schedule:</b> Two radiation sessions are delivered on each treatment weekday, with at least 6 hours between fractions. The 45 Gy in 30 fraction preset automatically enters 10 sessions per week. <b>Involved lymph nodes:</b> Limited-stage thoracic treatment generally includes the primary tumor and known involved nodal disease rather than routinely treating clinically uninvolved nodal stations.`;
-      } else if (state.siteId === "sclc" && setting === "limited-qd") {
-        html = `<b>Once-daily alternative:</b> 66 Gy in 33 or 70 Gy in 35 fractions are evidence-supported alternatives when BID treatment is not feasible, but neither has demonstrated superiority over the 45 Gy twice-daily reference standard. <b>Involved lymph nodes:</b> Limited-stage thoracic treatment generally includes the primary tumor and known involved nodal disease rather than routinely treating clinically uninvolved nodal stations.`;
-      } else if (state.siteId === "sclc" && setting === "early-node-negative") {
-        html = `<b>Selected early-stage disease:</b> SBRT may be used for medically inoperable stage I-II node-negative SCLC after appropriate nodal staging. The exact SBRT dose is location- and protocol-dependent, and systemic chemotherapy is generally considered if medically tolerated.`;
-      } else if (state.siteId === "sclc" && setting === "extensive-consolidation") {
-        tone = "warning";
-        html = `<b>Evolving evidence:</b> ASTRO's thoracic-consolidation recommendation is conditional. TREASURE 2026 found no survival benefit and greater toxicity when 30 Gy in 10 fractions was added to atezolizumab maintenance in an unselected post-chemoimmunotherapy population. Use requires careful patient selection.`;
-      } else {
-        html = `<b>Custom lung regimen:</b> Confirm the treatment setting, target location, current guideline, organ-at-risk constraints, and institutional protocol.`;
-      }
-
-      if (supported?.twiceDaily) {
-        html += ` The calendar displays two treatment sessions on each weekday.`;
-      }
-      note.className = `lung-regimen-note ${tone === "warning" ? "warning" : ""}`.trim();
-      note.innerHTML = html;
-    }
-
-    function updateLungRegimenPanel({ syncCategory = true } = {}) {
-      const panel = $("lungRegimenPanel");
-      if (!panel) return;
-      const active = isActiveLungRegimenSite();
-      panel.hidden = !active;
-      if (!active) return;
-
-      const config = activeLungRegimenConfig();
-      const siteChanged = lungRegimenSiteId !== state.siteId;
-      if (siteChanged) {
-        lungRegimenSiteId = state.siteId;
-        populateLungSettingOptions({ reset: true });
-        populateLungCategoryOptions({ reset: true });
-      }
-
-      const totalDose = parseFloat($("totalDose")?.value || "");
-      const fractions = parseFloat($("fractions")?.value || "");
-      const perWeek = parseFloat($("treatmentsPerWeek")?.value || "");
-      const technique = $("technique")?.value || "";
-      const categorySelect = $("lungFractionationCategory");
-      const presetSelect = $("lungRegimenPreset");
-      const status = $("lungRegimenStatus");
-      const tag = $("lungRegimenTag");
-      if (!config || !categorySelect || !presetSelect || !status) return;
-      if (tag) tag.textContent = config.tag;
-
-      if (syncCategory) {
-        const classification = classifyLungFractionation(totalDose, fractions, technique);
-        if (config.categories.some(item => item.id === classification.id)) {
-          categorySelect.value = classification.id;
-        }
-      }
-
-      populateLungPresetOptions();
-      const setting = $("lungTreatmentSetting")?.value || "";
-      const category = categorySelect.value;
-      const matched = currentLungPreset(totalDose, fractions, technique, perWeek);
-      const supported = matched && matched.settings.includes(setting) && matched.category === category ? matched : null;
-
-      if (supported) {
-        presetSelect.value = supported.id;
-      } else if (presetSelect.value && !config.presets.some(preset =>
-        preset.id === presetSelect.value && preset.settings.includes(setting) && preset.category === category
-      )) {
-        presetSelect.value = "";
-      }
-
-      const warning = (
-        (state.siteId === "nsclc" && setting === "early-central" && fractions > 0 && fractions <= 3) ||
-        (state.siteId === "sclc" && setting === "limited-bid" && perWeek > 0 && !nearlyEqual(perWeek, 10, 0.11)) ||
-        (state.siteId === "sclc" && setting === "extensive-consolidation")
-      );
-
-      status.className = `regimen-quiet-status ${supported ? (supported.tone === "warning" ? "warning" : "ok") : warning ? "warning" : "info"}`;
-      status.textContent = supported ? (supported.tone === "warning" ? "Evidence-linked; review context" : "Evidence-linked preset") : warning ? "Review regimen context" : "Custom regimen";
-      renderLungRegimenSource(supported);
-      updateLungRegimenNote();
-    }
-
-    function applyLungRegimenPreset() {
-      const select = $("lungRegimenPreset");
-      const config = activeLungRegimenConfig();
-      if (!select || !select.value || !config) return;
-      const preset = config.presets.find(item => item.id === select.value);
-      if (!preset) return;
-
-      $("totalDose").value = preset.totalDose;
-      $("fractions").value = preset.fractions;
-      $("treatmentsPerWeek").value = presetSessionsPerWeek(preset);
-      $("technique").value = preset.technique;
-      $("lungFractionationCategory").value = preset.category;
-
-      updateDose();
-      updateTreatmentCourse();
-      setupSlideIndex = 0;
-      updateSetupCard();
-      updateTimeline();
-      requestAnimationFrame(syncWorkspaceColumnHeights);
-    }
-
     function isBreastBoostSelected() {
       return (
         state.systemId === "breast" &&
@@ -9406,9 +7069,7 @@
       }
 
       const sibTotalDose = parseFloat($("breastSibTotalDose")?.value || "");
-      const valid = baseDose > 0 && baseFractions > 0 && sibTotalDose > 0;
-
-      return {
+      const valid = baseDose > 0 && baseFractions > 0 && sibTotalDose > 0;return {
         active: true,
         mode,
         valid,
@@ -9668,7 +7329,7 @@
 
       const fractions = parseFloat($("fractions")?.value || "");
       const perWeek = parseFloat($("treatmentsPerWeek")?.value || "");
-      const appointmentDuration = "30–60 mins per appointment";
+      const appointmentDuration = "15–30 minutes per session";
 
       const clearSummary = () => {
         weeksElement.textContent = "";
@@ -9852,17 +7513,6 @@
         }
       }
 
-      const lungPreset = getSupportedLungPreset();
-      if (lungPreset?.twiceDaily) {
-        additionalNote =
-          "This SCLC course uses two radiation sessions on each treatment weekday. " +
-          "The two daily fractions should be separated by at least 6 hours according to the treating protocol.";
-      } else if (lungPreset?.nonconsecutive) {
-        additionalNote =
-          "This lung SBRT preset uses a nonconsecutive default cadence. " +
-          "The treating clinic determines the exact treatment days based on protocol and organ-at-risk considerations.";
-      }
-
       return {
         baseSessions,
         totalSessions,
@@ -9921,7 +7571,6 @@
       const singleDay = normalizedStart.getDay();
       let weekIndex = 0;
       let safety = 0;
-      let startDateCandidateSeen = false;
 
       while (schedule.length < totalSessions && safety < 520) {
         const weekStart = addCalendarDays(startWeek, weekIndex * 7);
@@ -9937,10 +7586,7 @@
 
           const sessionDate = addCalendarDays(weekStart, weekday - 1);
           if (sessionDate < normalizedStart) return;
-          if (dateKey(sessionDate) === dateKey(normalizedStart) && !startDateCandidateSeen) {
-            startDateCandidateSeen = true;
-            return;
-          }
+          if (dateKey(sessionDate) === dateKey(normalizedStart)) return;
 
           const sessionNumber = schedule.length + 1;
           schedule.push({
@@ -9989,12 +7635,12 @@
         if (events.length === 1) {
           const event = events[0];
           const phaseText = event.phase === "boost" ? "Boost" : "Session";
-          sessionLabel = `<span class="calendar-session-label" aria-hidden="true">${event.sessionNumber}</span>`;
+          sessionLabel = `<span class="calendar-session-label">${phaseText} ${event.sessionNumber}</span>`;
           accessibleLabel += ` Treatment ${phaseText.toLowerCase()} ${event.sessionNumber}.`;
         } else if (events.length > 1) {
           const first = events[0].sessionNumber;
           const last = events[events.length - 1].sessionNumber;
-          sessionLabel = `<span class="calendar-session-label" aria-hidden="true">${first}–${last}</span>`;
+          sessionLabel = `<span class="calendar-session-label">Sessions ${first}–${last}</span>`;
           accessibleLabel += ` Treatment sessions ${first} through ${last}.`;
         }
 
@@ -10147,6 +7793,12 @@
         parseInt(stage.dataset.guidanceHeight || "0", 10)
       );
 
+      if (guidanceVisible) {
+        stage.style.height = "";
+        stage.classList.remove("is-fixed");
+        return;
+      }
+
       if (storedHeight > 0) {
         stage.style.height = `${storedHeight}px`;
         stage.classList.add("is-fixed");
@@ -10208,6 +7860,7 @@
       updateSessionDuration();
       updateTreatmentWeeksDisplay();
       updateTreatmentCalendar();
+      updateTimeline();
       requestAnimationFrame(() => syncTreatmentPlanStageHeight());
       const total = parseFloat($("totalDose").value);
       const fractions = parseFloat($("fractions").value);
@@ -10217,7 +7870,6 @@
 
       updateProstateRegimenPanel({ syncCategory: true });
       updateBreastRegimenPanel({ syncCategory: true });
-      updateLungRegimenPanel({ syncCategory: true });
 
       if (!valid) {
           updateTreatmentCourse();
@@ -10235,9 +7887,6 @@
       } else if (isActiveBreastSite()) {
         const breastClass = classifyBreastFractionation(total, fractions, technique);
         descriptors.push(breastClass.label);
-      } else if (isActiveLungRegimenSite()) {
-        const lungClass = classifyLungFractionation(total, fractions, technique);
-        descriptors.push(lungClass.label);
       } else {
         if (fractions <= 5) descriptors.push("short course");
         if (dosePerFraction >= 5) descriptors.push("high dose per visit");
@@ -10301,6 +7950,13 @@
       renderEmbedEditors();
       updateAll();
     }
+
+    function openCurrentModel() {
+      const key = embedKey(state.systemId, state.siteId);
+      const url = sanitizeUrl(state.embedLinks[key]);
+      if (url) window.open(url, "_blank", "noopener,noreferrer");
+    }
+
 
     const clinicianNoteTemplates = [
       {
@@ -10417,9 +8073,7 @@
       if (Math.abs(currentHeight - targetHeight) > 1) {
         notes.style.height = `${targetHeight}px`;
       }
-    }
-
-    function syncWorkspaceColumnHeights() {
+    }function syncWorkspaceColumnHeights() {
       if (!hasWorkspaceSelection() || $("workspaceContent")?.hidden) return;
 
       /*
@@ -10454,7 +8108,6 @@
       updateDose();
       updateProstateRegimenPanel({ syncCategory: true });
       updateBreastRegimenPanel({ syncCategory: true });
-      updateLungRegimenPanel({ syncCategory: true });
       updateSetupCard();
       setTreatmentPlanView(treatmentPlanViewIndex);
       renderPage();
@@ -10505,11 +8158,6 @@
         updateSetupCard();
       });
     }
-    if ($("printSummaryBtn")) {
-      $("printSummaryBtn").addEventListener("click", printWorkspaceSummary);
-    }
-    window.addEventListener("beforeprint", updatePrintModelStatic);
-
     $("searchInput").addEventListener("input", e => {
       renderSystems(e.target.value);
       requestAnimationFrame(updateOrganScrollButtons);
@@ -10525,6 +8173,7 @@
     if ($("closeModalBtn")) $("closeModalBtn").addEventListener("click", closeEmbedModal);
     if ($("saveLinksBtn")) $("saveLinksBtn").addEventListener("click", saveEmbedLinks);
     if ($("clearLinksBtn")) $("clearLinksBtn").addEventListener("click", clearEmbedLinks);
+    $("openModelBtn").addEventListener("click", openCurrentModel);
     if ($("prostateTreatmentSetting")) $("prostateTreatmentSetting").addEventListener("change", () => {
       updateProstateSecondaryDoseControls();
       updateProstateRegimenPanel({ syncCategory: true });
@@ -10614,32 +8263,6 @@
         requestAnimationFrame(syncWorkspaceColumnHeights);
       });
     }
-    if ($("lungTreatmentSetting")) $("lungTreatmentSetting").addEventListener("change", () => {
-      const setting = currentLungSettingConfig();
-      populateLungCategoryOptions({ reset: true });
-      if (setting && $("lungFractionationCategory")) $("lungFractionationCategory").value = setting.defaultCategory;
-      populateLungPresetOptions({ preserveSelection: false });
-      updateLungRegimenPanel({ syncCategory: false });
-      updateTreatmentCourse();
-      requestAnimationFrame(syncWorkspaceColumnHeights);
-    });
-    if ($("lungFractionationCategory")) $("lungFractionationCategory").addEventListener("change", () => {
-      populateLungPresetOptions({ preserveSelection: false });
-      updateLungRegimenPanel({ syncCategory: false });
-    });
-    if ($("lungRegimenPreset")) $("lungRegimenPreset").addEventListener("change", applyLungRegimenPreset);
-
-    document.querySelectorAll(".regimen-source-toggle").forEach(button => {
-      button.addEventListener("click", () => {
-        const panelId = button.getAttribute("aria-controls");
-        const panel = panelId ? $(panelId) : null;
-        if (!panel) return;
-        const willOpen = panel.hidden;
-        panel.hidden = !willOpen;
-        button.setAttribute("aria-expanded", String(willOpen));
-        requestAnimationFrame(syncWorkspaceColumnHeights);
-      });
-    });
     if ($("noteTemplateSelect")) $("noteTemplateSelect").addEventListener("change", e => { if (e.target.value) insertClinicianNoteTemplate(); });
     window.addEventListener("resize", () => {
       updateViewer();
@@ -10670,129 +8293,6 @@ const workspaceMainColumn = document.querySelector(".workspace > .main-column");
     setTreatmentPlanView(0);
   </script>
 
-
-
-  <script>
-    (() => {
-      const carousel = document.querySelector("[data-landing-carousel]");
-      if (!carousel) return;
-
-      const track = carousel.querySelector("#landingPreviewTrack");
-      const slides = Array.from(carousel.querySelectorAll("[data-preview-slide]"));
-      const dots = Array.from(carousel.querySelectorAll("[data-preview-dot]"));
-      const prev = carousel.querySelector('[data-preview-nav="prev"]');
-      const next = carousel.querySelector('[data-preview-nav="next"]');
-      const caption = document.getElementById("landingPreviewCaption");
-      const captions = [
-        "Built to help clinicians move from anatomy to treatment logistics to expected symptoms in one continuous conversation.",
-        "Treatment setup can be previewed visually so clinicians can explain the machine, positioning, and delivery environment.",
-        "Treatment schedules can be translated into a simple calendar view so patients can see how the course unfolds over time."
-      ];
-
-      let index = 0;
-      let timer = null;
-      let wrapResetTimer = null;
-      const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
-
-      // Duplicate the first slide after the final slide. Moving from the last real
-      // slide to this clone keeps the carousel traveling forward. After that
-      // animation finishes, the track is silently reset to the real first slide.
-      const firstSlideClone = slides[0]?.cloneNode(true);
-      if (track && firstSlideClone) {
-        firstSlideClone.removeAttribute("data-preview-slide");
-        firstSlideClone.setAttribute("aria-hidden", "true");
-        firstSlideClone.setAttribute("data-preview-clone", "first");
-        track.appendChild(firstSlideClone);
-      }
-
-      const updateIndicators = () => {
-        slides.forEach((slide, i) => slide.setAttribute("aria-hidden", String(i !== index)));
-        dots.forEach((dot, i) => {
-          dot.classList.toggle("active", i === index);
-          dot.setAttribute("aria-current", i === index ? "true" : "false");
-        });
-        if (caption) caption.textContent = captions[index] || captions[0];
-      };
-
-      const render = () => {
-        if (track) track.style.transform = `translateX(-${index * 100}%)`;
-        updateIndicators();
-      };
-
-      const goTo = (nextIndex) => {
-        index = (nextIndex + slides.length) % slides.length;
-        render();
-      };
-
-      const resetAfterForwardWrap = () => {
-        if (!track) return;
-        if (wrapResetTimer) window.clearTimeout(wrapResetTimer);
-        wrapResetTimer = null;
-        track.classList.add("no-transition");
-        track.style.transform = "translateX(0%)";
-        void track.offsetWidth;
-        requestAnimationFrame(() => track.classList.remove("no-transition"));
-      };
-
-      const goForward = () => {
-        if (index < slides.length - 1) {
-          index += 1;
-          render();
-          return;
-        }
-
-        if (reduceMotion || !track || !firstSlideClone) {
-          index = 0;
-          render();
-          return;
-        }
-
-        // From the last slide, continue in the same direction onto the cloned
-        // first slide rather than reversing across the whole track.
-        index = 0;
-        updateIndicators();
-        track.classList.remove("no-transition");
-        track.style.transform = `translateX(-${slides.length * 100}%)`;
-
-        let resetDone = false;
-        const finishWrap = () => {
-          if (resetDone) return;
-          resetDone = true;
-          resetAfterForwardWrap();
-        };
-        track.addEventListener("transitionend", finishWrap, { once: true });
-        wrapResetTimer = window.setTimeout(finishWrap, 1200);
-      };
-
-      const stopAuto = () => {
-        if (timer) window.clearInterval(timer);
-        timer = null;
-      };
-
-      const startAuto = () => {
-        stopAuto();
-        if (reduceMotion || slides.length < 2 || document.hidden) return;
-        timer = window.setInterval(goForward, 10000);
-      };
-
-      prev?.addEventListener("click", () => { goTo(index - 1); startAuto(); });
-      next?.addEventListener("click", () => { goForward(); startAuto(); });
-      dots.forEach(dot => dot.addEventListener("click", () => {
-        goTo(Number(dot.dataset.previewDot || 0));
-        startAuto();
-      }));
-
-      carousel.addEventListener("mouseenter", stopAuto);
-      carousel.addEventListener("mouseleave", startAuto);
-      carousel.addEventListener("focusin", stopAuto);
-      carousel.addEventListener("focusout", () => window.setTimeout(startAuto, 0));
-      document.addEventListener("visibilitychange", () => document.hidden ? stopAuto() : startAuto());
-
-      render();
-      startAuto();
-    })();
-  </script>
-
   <script>
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", async () => {
@@ -10807,3 +8307,4 @@ const workspaceMainColumn = document.querySelector(".workspace > .main-column");
 
 </body>
 </html>
+            
