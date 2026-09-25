@@ -1030,6 +1030,67 @@
       background: rgba(248, 251, 252, 0.88);
     }
 
+    .treatment-glance-card {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .treatment-glance-heading {
+      margin-bottom: 0;
+    }
+
+    .treatment-glance-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .treatment-glance-item,
+    .treatment-glance-support {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(248, 251, 252, 0.90);
+      padding: 14px;
+      min-width: 0;
+    }
+
+    .treatment-glance-goal {
+      border-color: rgba(47, 127, 136, 0.28);
+      background: linear-gradient(145deg, rgba(236, 247, 247, 0.96), rgba(248, 251, 252, 0.94));
+    }
+
+    .treatment-glance-label {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--primary-dark);
+      font-size: 0.77rem;
+      font-weight: 900;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .treatment-glance-item p,
+    .treatment-glance-support li {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+
+    .treatment-glance-support ul {
+      margin: 0;
+      padding-left: 19px;
+      display: grid;
+      gap: 5px;
+    }
+
+    @media (max-width: 620px) {
+      .treatment-glance-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .treatment-course-card {
       min-height: 220px;
       height: auto !important;
@@ -1096,6 +1157,32 @@
       color: var(--muted);
       font-size: 0.82rem;
       line-height: 1.35;
+    }
+
+    .course-step-consultation {
+      border-color: rgba(31, 111, 120, 0.28);
+      background: linear-gradient(135deg, rgba(230, 245, 246, 0.96), rgba(246, 244, 255, 0.94));
+    }
+
+    .course-consult-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 1px;
+    }
+
+    .course-consult-points span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 5px 9px;
+      border: 1px solid rgba(31, 111, 120, 0.16);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--primary-dark);
+      font-size: 0.76rem;
+      font-weight: 800;
+      line-height: 1.1;
     }
 
 
@@ -2899,6 +2986,11 @@
       .workspace > .main-column > .viewer-card { order: 1; }
       .workspace > .main-column > .setup-card { order: 2; }
       .workspace > .side-column { order: 3; }
+      /* In single-column view, surface the symptom timeline before the
+         treatment-course explanation while keeping the desktop order unchanged. */
+      .workspace > .side-column > .symptom-card { order: 1; }
+      .workspace > .side-column > .treatment-course-card { order: 2; }
+      .workspace > .side-column > .education-card { order: 3; }
       .workspace > .side-column > .clinician-notes-wide { order: 4; margin-top: 0; }
       .course-flow { grid-template-columns: 1fr; }
       .treatment-course-card { height: auto !important; min-height: 0; }
@@ -5418,54 +5510,86 @@
               </div>
             </div>
             <div class="course-flow">
-              <div class="course-step">
+              <div class="course-step course-step-consultation">
                 <div class="course-step-head">
                   <div class="course-step-marker" aria-hidden="true">1</div>
-                  <strong>CT simulation</strong>
+                  <strong>Radiation oncology consultation</strong>
                 </div>
-                <p id="courseSimText">Planning maps the target, nearby organs, and setup position.</p>
+                <p id="courseConsultText">Your radiation oncologist reviews your diagnosis and imaging, explains why radiation is being considered, discusses treatment goals, benefits, alternatives, and possible side effects, and answers your questions.</p>
+                <div class="course-consult-points" aria-label="Consultation topics">
+                  <span>Treatment goals</span>
+                  <span>Benefits &amp; risks</span>
+                  <span>Your questions</span>
+                </div>
               </div>
-<div class="course-step">
+
+              <div class="course-step">
                 <div class="course-step-head">
                   <div class="course-step-marker" aria-hidden="true">2</div>
+                  <strong>CT simulation</strong>
+                </div>
+                <p id="courseSimText">A planning CT maps the treatment area and nearby organs. Your treatment position, immobilization, and any preparation instructions are established so the setup can be reproduced accurately.</p>
+              </div>
+
+              <div class="course-step">
+                <div class="course-step-head">
+                  <div class="course-step-marker" aria-hidden="true">3</div>
+                  <strong>Treatment planning</strong>
+                </div>
+                <p id="coursePlanningText">The radiation oncology team designs and reviews the treatment plan, shaping dose around the target while limiting exposure to nearby healthy tissue. The plan is checked before treatment begins.</p>
+              </div>
+
+              <div class="course-step">
+                <div class="course-step-head">
+                  <div class="course-step-marker" aria-hidden="true">4</div>
                   <strong>Treatment sessions</strong>
                 </div>
                 <p id="courseTreatmentText">Treatment delivery follows the finalized plan and technique.</p>
               </div>
-<div class="course-step">
+
+              <div class="course-step">
                 <div class="course-step-head">
-                  <div class="course-step-marker" aria-hidden="true">3</div>
-                  <strong>Follow-up</strong>
+                  <div class="course-step-marker" aria-hidden="true">5</div>
+                  <strong>Follow-up &amp; monitoring</strong>
                 </div>
-                <p id="courseFollowText">Recovery, side effects, and surveillance are reviewed.</p>
+                <p id="courseFollowText">After treatment, your team reviews recovery, side effects, treatment response, and the surveillance plan.</p>
               </div>
             </div>
           </section>
 
-          <section class="side-card education-card" aria-label="Radiation treatment explanation">
-            <div class="panel-heading">
+          <section class="side-card education-card treatment-glance-card" aria-label="Your treatment at a glance">
+            <div class="panel-heading treatment-glance-heading">
               <div>
-                <h3>Treatment explanation</h3>
-                <p>Patient-facing overview for the selected disease site</p>
+                <h3>Your treatment at a glance</h3>
+                <p>Key points from the treatment plan to keep in mind</p>
               </div>
             </div>
-            <div class="detail-grid">
-              <div class="info-box">
-                <h4>What radiation is doing</h4>
-                <p id="radiationPurpose">Radiation uses targeted high-energy beams to treat tumor cells while limiting dose to nearby normal tissues whenever possible.</p>
+
+            <div class="treatment-glance-grid">
+              <div class="treatment-glance-item treatment-glance-goal">
+                <span class="treatment-glance-label">Treatment goal</span>
+                <p id="radiationPurpose">The treatment goal will update for the selected disease site and treatment setting.</p>
               </div>
-              <div class="info-box">
-                <h4>What the patient should expect</h4>
-                <p id="expectationText">Treatment usually begins with consultation, simulation, immobilization, planning, quality assurance, then daily or near-daily treatment visits depending on the regimen.</p>
+
+              <div class="treatment-glance-item">
+                <span class="treatment-glance-label">Treatment area</span>
+                <p id="treatmentAreaText">The treatment area will update for the selected disease site and treatment setting.</p>
               </div>
-              <div class="info-box">
-                <h4>Positioning preview</h4>
-                <p id="positioningText">Future module: show patient setup position, immobilization devices, breath-hold or bladder/rectal prep when relevant.</p>
+
+              <div class="treatment-glance-item">
+                <span class="treatment-glance-label">Your schedule</span>
+                <p id="treatmentScheduleSummary">Your CT simulation and treatment schedule will appear here.</p>
               </div>
-              <div class="info-box">
-                <h4>Common supportive care</h4>
-                <ul id="supportiveCare"></ul>
+
+              <div class="treatment-glance-item">
+                <span class="treatment-glance-label">Each visit</span>
+                <p id="positioningText">What happens during each treatment visit will appear here.</p>
               </div>
+            </div>
+
+            <div class="treatment-glance-support">
+              <span class="treatment-glance-label">Support during treatment</span>
+              <ul id="supportiveCare"></ul>
             </div>
           </section>
 
@@ -5591,10 +5715,10 @@
       },
       {
         id: "gu", icon: "icons/genitourinary.png", name: "Genitourinary", subtitle: "Prostate, bladder, kidney/adrenal, testis", defaultDose: [70, 28],
-        purpose: "GU radiation may treat prostate, bladder, testicular, kidney, adrenal, nodal, or metastatic disease while limiting dose to nearby bowel, urinary, renal, and sexual structures.",
+        purpose: "Genitourinary radiation may treat prostate, bladder, testicular, kidney, adrenal, nodal, or metastatic disease while limiting dose to nearby bowel, urinary, renal, and sexual structures.",
         expectation: "Simulation emphasizes reproducible anatomy. Pelvic treatment may require bladder and rectal preparation, while kidney or adrenal SBRT may require respiratory motion management.",
         support: ["Bladder filling and bowel routine coaching", "Baseline urinary, bowel, sexual, and fertility assessment", "Alpha blocker discussion for prostate-related obstructive symptoms", "Hydration guidance and bowel/antidiarrheal support when appropriate", "ADT, chemotherapy, sperm banking, and fertility counseling when relevant"],
-        position: "Most GU treatments are supine. Pelvic cases use leg support and daily image guidance; kidney or adrenal SBRT may use arms-up setup and motion management.",
+        position: "Most genitourinary treatments are delivered with the patient lying on the back. Pelvic cases use leg support and daily image guidance; kidney or adrenal stereotactic treatment may use an arms-up setup and motion management.",
         sites: [
           { id: "prostate", name: "Prostate cancer", hint: "Definitive, postoperative/salvage, nodal, SBRT, or brachytherapy discussion", tags: ["IGRT", "ADT", "SBRT"], dose: [70, 28] },
           { id: "bladder", name: "Bladder cancer", hint: "Bladder preservation after maximal TURBT with concurrent chemoradiation", tags: ["TMT", "chemoRT", "cystoscopy"], dose: [64, 32] },
@@ -5682,7 +5806,7 @@
       },
       {
         id: "gi", icon: "icons/gastrointestinal.png", name: "Gastrointestinal", subtitle: "Pancreas, rectum, liver, anal", defaultDose: [50.4, 28],
-        purpose: "GI radiation may be used before or after surgery, with chemotherapy, or for palliation while protecting nearby abdominal and pelvic organs.",
+        purpose: "Gastrointestinal radiation may be used before or after surgery, with chemotherapy, or for palliation while protecting nearby abdominal and pelvic organs.",
         expectation: "Simulation may require fasting, bladder filling, bowel preparation, contrast, or motion management.",
         support: ["Antidiarrheals or bowel regimen depending on symptoms", "Nutrition and hydration planning", "Nausea management", "Perianal skin care for pelvic/anal fields"],
         position: "Often supine, with customized immobilization and bladder or rectal preparation when needed.",
@@ -5735,7 +5859,7 @@
         ]
       },
       {
-        id: "heme", icon: "icons/heme.png", name: "Heme/Lymphatic", subtitle: "Lymphoma, mediastinum, myeloma", defaultDose: [30, 15],
+        id: "heme", icon: "icons/heme.png", name: "Hematologic / Lymphatic", subtitle: "Lymphoma, mediastinum, myeloma", defaultDose: [30, 15],
         purpose: "Radiation for hematologic malignancies usually targets involved sites or focal symptomatic disease while limiting normal-tissue and marrow exposure.",
         expectation: "Treatment fields are often limited and coordinated with systemic therapy, pathology, and response imaging.",
         support: ["Fatigue counseling", "Site-specific skin or mucosal care", "Blood count monitoring when marrow exposure is relevant", "Pain flare counseling for bony lesions"],
@@ -6463,14 +6587,14 @@
       ],
       gi: [
         { phase: "Early", time: "Week 1", title: "Bowel baseline", summary: "Patients do not see or feel the beam; bowel pattern, nausea, appetite, pain, and hydration are tracked.", examples: ["Follow bladder, bowel, fasting, or motion instructions when prescribed."] },
-        { phase: "Peak acute", time: "Weeks 2 to 6", title: "GI and pelvic irritation", summary: "Fatigue, diarrhea, cramping, nausea, appetite loss, urinary irritation, or skin reaction may occur by field.", examples: ["Call for dehydration, uncontrolled diarrhea, bleeding, fever, or severe pain."] },
+        { phase: "Peak acute", time: "Weeks 2 to 6", title: "Gastrointestinal and pelvic irritation", summary: "Fatigue, diarrhea, cramping, nausea, appetite loss, urinary irritation, or skin reaction may occur by field.", examples: ["Call for dehydration, uncontrolled diarrhea, bleeding, fever, or severe pain."] },
         { phase: "Recovery", time: "2 to 8 weeks after RT", title: "Inflammation improves", summary: "Most acute bowel, bladder, skin, and appetite effects improve over several weeks.", examples: ["Diet adjustment and symptom medicines may be tapered as tolerated."] },
         { phase: "Late", time: "Months to years", title: "Organ-specific follow-up", summary: "Late bowel, bladder, sexual, fertility, hepatic, renal, or gastric effects depend on target and dose.", examples: ["Report bleeding, obstruction symptoms, persistent diarrhea, or worsening pain."] }
       ],
       gu: [
         { phase: "Early", time: "Week 1", title: "Preparation and baseline function", summary: "Patients do not see or feel the beam. Baseline urinary, bowel, sexual, renal, and fertility considerations are documented, and site-specific preparation is reinforced.", examples: ["Prostate and pelvic cases may need a reproducible bladder and rectum.", "Kidney/adrenal SBRT may need breath hold, gating, abdominal compression, or 4D-CT motion assessment."] },
         { phase: "Peak acute", time: "Weeks 2 to 6", title: "Urinary, bowel, and fatigue symptoms", summary: "Pelvic RT can cause frequency, urgency, nocturia, dysuria, weaker stream, loose stools, rectal urgency, and fatigue. Abdominal SBRT more often raises nausea, flank discomfort, or bowel-irritation counseling.", examples: ["Alpha blockers, hydration, bowel medicines, and antiemetics are individualized.", "Retention, fever, heavy bleeding, or severe pain requires evaluation."] },
-        { phase: "Recovery", time: "2 to 12 weeks after RT", title: "Acute symptoms trend down", summary: "Most acute urinary, bowel, and fatigue symptoms improve after treatment, although recovery speed varies by site, systemic therapy, surgery history, and baseline function.", examples: ["Bladder-preservation patients need planned urologic/cystoscopic surveillance.", "Kidney/adrenal SBRT follow-up focuses on imaging response and renal/adrenal or GI tolerance when relevant."] },
+        { phase: "Recovery", time: "2 to 12 weeks after RT", title: "Acute symptoms trend down", summary: "Most acute urinary, bowel, and fatigue symptoms improve after treatment, although recovery speed varies by site, systemic therapy, surgery history, and baseline function.", examples: ["Bladder-preservation patients need planned urologic/cystoscopic surveillance.", "Kidney/adrenal SBRT follow-up focuses on imaging response and renal/adrenal or gastrointestinal tolerance when relevant."] },
         { phase: "Late", time: "Months to years", title: "Site-specific survivorship", summary: "Late effects can include erectile dysfunction, urethral stricture, hematuria, rectal bleeding, bowel change, infertility, renal function change, or rare second malignancy concerns.", examples: ["Risk varies by dose, anatomy, age, technique, systemic therapy, surgery history, and baseline function."] }
       ],
       gyn: [
@@ -6546,7 +6670,7 @@
         { phase: "Preparation", time: "Before RT", title: "Selected seminoma nodal treatment", summary: "Radiation is now mainly a selected option for seminoma nodal disease rather than routine adjuvant therapy for stage I seminoma.", examples: ["Discuss surveillance, chemotherapy, radiation, fertility preservation, and long-term second-malignancy considerations."] },
         { phase: "Acute", time: "During RT", title: "Para-aortic or dog-leg field symptoms", summary: "Nausea, fatigue, dyspepsia, loose stools, and mild skin change can occur depending on field design.", examples: ["Renal, bowel, stomach, and remaining-testis scatter dose are considered in planning."] },
         { phase: "Recovery", time: "Weeks after RT", title: "GI symptoms improve", summary: "Most acute nausea, bowel irritation, and fatigue improve after treatment.", examples: ["Follow tumor markers and imaging according to stage and histology."] },
-        { phase: "Late", time: "Years", title: "Young-patient survivorship", summary: "Long-term follow-up emphasizes fertility, hypogonadism, renal/GI tolerance, cardiovascular risk when relevant, and second-malignancy counseling.", examples: ["Risk-benefit discussion is especially important because many patients are young and highly curable."] }
+        { phase: "Late", time: "Years", title: "Young-patient survivorship", summary: "Long-term follow-up emphasizes fertility, hypogonadism, renal/gastrointestinal tolerance, cardiovascular risk when relevant, and second-malignancy counseling.", examples: ["Risk-benefit discussion is especially important because many patients are young and highly curable."] }
       ],
       "gu:kidney": [
         { phase: "Preparation", time: "Simulation and planning", title: "Motion and nearby bowel matter", summary: "Kidney/adrenal SBRT requires precise target localization, motion assessment, and strict review of dose to remaining kidney, bowel, stomach, duodenum, liver, spinal cord, and adrenal tissue when relevant.", examples: ["4D-CT, breath hold, respiratory gating, abdominal compression, or arms-up immobilization may be used."] },
@@ -6564,13 +6688,13 @@
         { phase: "Acute", time: "Treatment week", title: "Short-course onset", summary: "Temporary symptoms may start during or shortly after the high-dose treatment week.", examples: ["Frequency, urgency, dysuria, mild bowel urgency.", "Fatigue is usually variable and individualized."] },
         { phase: "Subacute", time: "Weeks 1 to 6 after SBRT", title: "Peak urinary/bowel irritation", summary: "Temporary urinary and rectal irritation often peaks after the short course is completed.", examples: ["Nocturia, weaker stream, urgency, loose stools.", "Call for retention, fever, severe pain, or bleeding."] },
         { phase: "Convalescent", time: "Months 2 to 6", title: "Symptoms settle", summary: "Most acute urinary and bowel symptoms improve over weeks to months.", examples: ["Medication support may be tapered as symptoms improve.", "Follow baseline urinary function closely."] },
-        { phase: "Late", time: "6 months to years", title: "Late GU/GI surveillance", summary: "Late urinary, rectal, and sexual effects can occur months to years later.", examples: ["ED, stricture, hematuria, or rectal bleeding are monitored.", "Risk depends on baseline function, dose constraints, and anatomy."] }
+        { phase: "Late", time: "6 months to years", title: "Late urinary and gastrointestinal surveillance", summary: "Late urinary, rectal, and sexual effects can occur months to years later.", examples: ["ED, stricture, hematuria, or rectal bleeding are monitored.", "Risk depends on baseline function, dose constraints, and anatomy."] }
       ],
       "gu:prostate": [
         { phase: "Early", time: "First 1 to 3 weeks", title: "Pelvic irritation begins", summary: "Temporary urinary and bowel irritation can build as pelvic dose accumulates.", examples: ["Frequency, urgency, weaker stream, looser stools.", "Fatigue may slowly increase."] },
         { phase: "Peak", time: "Late RT to 1 month after", title: "Urinary, bowel, fatigue peak", summary: "Temporary symptoms commonly peak near the end of treatment or soon after completion.", examples: ["Dysuria, nocturia, rectal urgency, frequent stools.", "Hydration, alpha blockers, and bowel medicines may help."] },
         { phase: "Recovery", time: "2 to 6 months", title: "Return toward baseline", summary: "Most acute bladder, bowel, and fatigue symptoms improve gradually.", examples: ["Call if symptoms worsen instead of improve.", "Persistent bleeding, fever, or retention needs evaluation."] },
-        { phase: "Late", time: "6 months to years", title: "Late GU/GI/sexual effects", summary: "Late effects are uncommon but clinically important when present.", examples: ["ED, stricture, rectal bleeding, or hematuria.", "Risk varies by technique, anatomy, and baseline function."] }
+        { phase: "Late", time: "6 months to years", title: "Late urinary, gastrointestinal, and sexual effects", summary: "Late effects are uncommon but clinically important when present.", examples: ["ED, stricture, rectal bleeding, or hematuria.", "Risk varies by technique, anatomy, and baseline function."] }
       ]
     };
 
@@ -6594,7 +6718,7 @@
           late: "Longer-term effects depend on the treated volume and may include firmness, cosmetic change, edema, or uncommon lung or heart effects."
         },
         gu: {
-          duringTitle: "Short-course GU treatment",
+          duringTitle: "Short-course genitourinary treatment",
           during: `During ${sessionText}, treatment is painless. Urinary, bowel, or fatigue symptoms may be limited initially and can continue to evolve after the last treatment.`,
           afterTitle: "Urinary or bowel irritation can peak later",
           after: "Frequency, urgency, dysuria, weaker stream, bowel urgency, loose stool, or fatigue can become more noticeable in the days to weeks after a short course.",
@@ -6823,28 +6947,183 @@
       }
     }
 
+    const treatmentGlanceSiteCopy = {
+      "breast:whole-breast": {
+        goal: "The goal is to destroy microscopic cancer cells that may remain in the breast after surgery and lower the chance that the cancer returns in the treated breast.",
+        area: "Radiation is directed to the remaining breast tissue. A focused boost to the surgical cavity may also be recommended when your radiation oncologist believes that area needs additional treatment."
+      },
+      "breast:pbi": {
+        goal: "The goal is to destroy microscopic cancer cells around the surgical cavity, where a local recurrence is most likely to occur, while limiting radiation to the rest of the breast.",
+        area: "Radiation is focused on the portion of the breast surrounding the surgical cavity rather than the entire breast. The exact treatment area is based on the surgery, imaging, pathology, and planning scan."
+      },
+      "breast:chest-wall": {
+        goal: "The goal is to destroy microscopic cancer cells that may remain after mastectomy and reduce the chance of cancer returning in the chest wall or nearby tissues.",
+        area: "Radiation is directed to the chest wall and mastectomy region. Nearby lymph-node regions may also be included when indicated by the stage, pathology, and overall treatment plan."
+      },
+      "breast:regional-nodes": {
+        goal: "The goal is to treat microscopic cancer cells that may be present in nearby lymph nodes and reduce the chance of the cancer returning in those regional nodal areas.",
+        area: "Treatment may include selected lymph-node regions near the breast and chest, such as the axillary, supraclavicular, or internal mammary nodes, depending on the individual treatment plan."
+      }
+    };
+
+    function prostateTreatmentGlanceCopy() {
+      const setting = $("prostateTreatmentSetting")?.value || "intact";
+      const copy = {
+        intact: {
+          goal: "The goal is to destroy prostate cancer cells so they can no longer continue growing, with the aim of controlling or eradicating disease in the prostate and preventing local progression.",
+          area: "Radiation is directed to the prostate, with margins chosen during treatment planning. The seminal vesicles or nearby pelvic lymph nodes may also be treated when the cancer risk and treatment plan indicate they should be included."
+        },
+        postop: {
+          goal: "After prostate surgery, the goal is to destroy microscopic prostate cancer cells that may remain in the prostate bed and reduce the chance of a local recurrence or treat an early recurrence.",
+          area: "Radiation is directed to the prostate bed, which is the area where the prostate was located before surgery. The exact target is defined from the surgery, pathology, imaging, and planning scan."
+        },
+        "pelvic-nodes": {
+          goal: "The goal is to control or eradicate prostate cancer in the prostate while also treating cancer cells that may be present in the pelvic lymph nodes, reducing the risk of local and regional progression.",
+          area: "Radiation includes the prostate and selected pelvic lymph-node regions. The prostate receives the definitive treatment dose, while the nodal areas are treated according to the selected plan."
+        },
+        "postop-nodes": {
+          goal: "After prostate surgery, the goal is to destroy microscopic cancer cells that may remain in the prostate bed and pelvic lymph nodes, reducing the risk of local or regional recurrence.",
+          area: "Radiation includes the prostate bed and selected pelvic lymph-node regions. The exact volumes are based on the surgical history, pathology, imaging, and treatment-planning scan."
+        },
+        "brachy-boost": {
+          goal: "The goal is to intensify radiation within the prostate so cancer cells receive a high local dose and can no longer continue growing, improving local disease control in appropriately selected patients.",
+          area: "Treatment is centered on the prostate. External-beam radiation may also treat nearby tissues or pelvic lymph nodes when indicated, while brachytherapy delivers an additional focused dose within the prostate."
+        },
+        other: {
+          goal: "The goal of prostate radiation is to destroy cancer cells in the selected treatment area so they can no longer continue growing. The specific aim may be cure, local control, treatment of microscopic recurrence, or symptom relief depending on the clinical setting.",
+          area: "The treatment area is individualized and may include the prostate, prostate bed, seminal vesicles, or pelvic lymph nodes depending on the treatment setting and planning findings."
+        }
+      };
+      return copy[setting] || copy.other;
+    }
+
+    function lungTreatmentGlanceCopy(siteId) {
+      const setting = $("lungTreatmentSetting")?.value || "";
+
+      if (siteId === "nsclc") {
+        if (["early-peripheral", "early-central"].includes(setting)) {
+          return {
+            goal: "The goal is to deliver a highly focused dose that destroys the visible lung tumor and prevents it from continuing to grow or spread locally. In selected early-stage disease, this treatment is given with curative intent.",
+            area: "Radiation is focused on the lung tumor with a carefully planned margin for breathing motion and setup. Nearby normal lung, airways, esophagus, heart, spinal cord, and blood vessels are avoided as much as possible."
+          };
+        }
+        if (["stage3-concurrent", "stage3-rt-alone"].includes(setting)) {
+          return {
+            goal: "The goal is to control or eradicate cancer in the chest by treating the primary lung tumor and known involved lymph nodes, preventing further local and regional growth. In definitive treatment, the intent is long-term disease control and potential cure.",
+            area: "Radiation is directed to the known lung tumor and involved lymph nodes. Lymph-node regions without known disease are not routinely treated simply because they are nearby."
+          };
+        }
+        if (setting === "palliative") {
+          return {
+            goal: "The goal is to shrink or slow the chest tumor enough to relieve symptoms such as pain, cough, bleeding, airway pressure, or shortness of breath. The emphasis is symptom control rather than treating every site of cancer in the body.",
+            area: "Radiation is focused on the chest area causing symptoms or at greatest risk of causing a local problem, while keeping the treatment course as practical and tolerable as possible."
+          };
+        }
+        return {
+          goal: "The goal of lung radiation depends on the stage and treatment setting. It may be used to eradicate a localized tumor, control cancer in the chest, prevent further local growth, or relieve symptoms.",
+          area: "Treatment is directed to the known lung tumor and any involved lymph nodes that need radiation, with the exact area defined from imaging and the treatment-planning scan."
+        };
+      }
+
+      if (siteId === "sclc") {
+        if (["limited-bid", "limited-qd"].includes(setting)) {
+          return {
+            goal: "The goal is to control or eradicate small cell lung cancer in the chest by treating the primary tumor and involved lymph nodes together with systemic therapy. In limited-stage disease, treatment is generally given with curative intent.",
+            area: "Radiation is directed to the known tumor and involved lymph nodes in the chest. The treatment area is defined from the diagnostic imaging and planning scan rather than treating uninvolved chest regions routinely."
+          };
+        }
+        if (setting === "early-node-negative") {
+          return {
+            goal: "For selected early, node-negative small cell lung cancer, the goal is to destroy the localized lung tumor and achieve durable local control when surgery is not being used.",
+            area: "Radiation is focused on the lung tumor with a margin for motion and setup. The nearby lymph nodes are evaluated carefully before choosing a focused treatment approach."
+          };
+        }
+        if (setting === "extensive-consolidation") {
+          return {
+            goal: "The goal is to control residual cancer in the chest after systemic therapy and reduce the risk of further local progression there. This treatment does not treat cancer elsewhere in the body.",
+            area: "Radiation is directed to residual thoracic disease selected for treatment after systemic therapy, with the exact target based on the response and current imaging."
+          };
+        }
+        return {
+          goal: "The goal of thoracic radiation for small cell lung cancer depends on stage and response to systemic therapy. It may be used for curative local control, focused treatment of an early tumor, or control of residual disease in the chest.",
+          area: "Treatment is directed to the known lung tumor and chest lymph nodes that need radiation, with the exact target defined from imaging and the planning scan."
+        };
+      }
+
+      return null;
+    }
+
+    function updateTreatmentAtAGlanceContent() {
+      const system = activeSystem();
+      const site = activeSite();
+      if (!system || !site) return;
+
+      let copy = treatmentGlanceSiteCopy[`${system.id}:${site.id}`] || null;
+      if (system.id === "gu" && site.id === "prostate") copy = prostateTreatmentGlanceCopy();
+      if (system.id === "thoracic" && ["nsclc", "sclc"].includes(site.id)) copy = lungTreatmentGlanceCopy(site.id);
+
+      if (!copy) {
+        copy = {
+          goal: site.purpose || system.purpose || "Radiation is used to damage cancer cells in the selected treatment area so they can no longer continue growing. Depending on the clinical setting, the goal may be cure, local control, prevention of recurrence, or symptom relief.",
+          area: `Radiation is focused on the ${site.name.toLowerCase()} treatment area and any nearby structures your radiation oncologist determines are at risk, while limiting dose to surrounding healthy organs whenever possible.`
+        };
+      }
+
+      if ($("radiationPurpose")) $("radiationPurpose").textContent = copy.goal;
+      if ($("treatmentAreaText")) $("treatmentAreaText").textContent = copy.area;
+
+      if ($("positioningText")) {
+        const selectedPosition = getSelectedPatientPosition();
+        const technique = $("technique")?.value || "";
+        const durationText = technique === "Brachytherapy"
+          ? "Brachytherapy appointment length varies because applicator placement or other procedural steps may be part of the visit."
+          : "For most external-beam treatments, plan on about 15–30 minutes for the full visit, although the radiation itself is delivered during only part of that time.";
+        $("positioningText").textContent = `At each treatment visit, you will work with radiation therapists who help you return to the same treatment position used during simulation${selectedPosition?.label ? ` (${selectedPosition.label.toLowerCase()})` : ""}. They may take images to confirm your alignment before treatment begins. ${durationText}`;
+      }
+    }
+
     function updateDetails() {
       const system = activeSystem();
       const site = activeSite();
       const purpose = site.purpose || system.purpose;
       const expectation = site.expectation || system.expectation;
-      const position = site.position || system.position;
       const supportiveCare = Array.isArray(site.support) ? site.support : system.support;
 
       $("selectedTitle").textContent = system.name;
       $("selectedSubtitle").textContent = system.subtitle;
       $("siteHeading").textContent = `${system.name} disease sites`;
-      $("radiationPurpose").textContent = purpose;
-      $("expectationText").textContent = expectation;
-      $("positioningText").textContent = position;
+      updateTreatmentAtAGlanceContent();
       $("supportiveCare").innerHTML = supportiveCare.map(item => `<li>${item}</li>`).join("");
+      updateTreatmentAtAGlanceSchedule();
       updateTimeline();
       const selectedPosition = getSelectedPatientPosition();
       $("printSummary").textContent = `${system.name}: ${site.name}. Patient position: ${selectedPosition.label}. ${purpose} Expected course: ${expectation}`;
     }
 
+    function updateTreatmentAtAGlanceSchedule() {
+      const target = $("treatmentScheduleSummary");
+      if (!target) return;
+
+      const fractions = parseFloat($("fractions")?.value);
+      const perWeek = parseFloat($("treatmentsPerWeek")?.value);
+      if (!(fractions > 0) || !(perWeek > 0)) {
+        target.textContent = "Your CT simulation is the planning visit. Treatment commonly begins about 5–7 days later, although the exact start date can vary while the treatment plan is completed.";
+        return;
+      }
+
+      const weeks = fractions / perWeek;
+      const sessionLabel = Number.isInteger(fractions) && fractions === 1 ? "session" : "sessions";
+      const weekText = weeks < 1
+        ? "less than 1 week"
+        : `${Number.isInteger(weeks) ? weeks : weeks.toFixed(1).replace(/\.0$/, "")} ${Math.abs(weeks - 1) < 0.001 ? "week" : "weeks"}`;
+      const weeklyText = Number.isInteger(perWeek) ? String(perWeek) : perWeek.toFixed(1).replace(/\.0$/, "");
+
+      target.textContent = `Your CT simulation is the planning visit. Treatment commonly begins about 5–7 days later, although the exact start date can vary while planning is completed. This plan includes ${fractions} treatment ${sessionLabel}, typically ${weeklyText} each week, over about ${weekText}.`;
+    }
+
+
     function updateTreatmentCourse() {
-      if (!$('courseSimText') || !$('courseTreatmentText') || !$('courseFollowText')) return;
+      if (!$('courseConsultText') || !$('courseSimText') || !$('coursePlanningText') || !$('courseTreatmentText') || !$('courseFollowText')) return;
 
       const system = activeSystem();
       const site = activeSite();
@@ -6855,7 +7134,9 @@
       const valid = total > 0 && fractions > 0 && perWeek > 0;
       const fmt = (value) => Number.isInteger(value) ? String(value) : value.toFixed(1).replace(/\.0$/, '');
 
-      $('courseSimText').textContent = `Planning maps the target, nearby organs, and setup position.`;
+      $('courseConsultText').textContent = `Your radiation oncologist reviews your diagnosis and imaging, explains how radiation may fit into your care, discusses treatment goals, benefits, alternatives, and possible side effects, and answers your questions.`;
+      $('courseSimText').textContent = `A planning CT maps the treatment area and nearby organs. Your treatment position, immobilization, and any preparation instructions are established so the setup can be reproduced accurately.`;
+      $('coursePlanningText').textContent = `The radiation oncology team designs and reviews the ${technique} treatment plan, shaping dose around the target while limiting exposure to nearby healthy tissue. The plan is checked before treatment begins.`;
 
       const isBrachytherapy = technique === 'Brachytherapy';
 
@@ -6896,13 +7177,13 @@
             : `Each session uses the completed treatment plan to accurately position and deliver radiation to the target area.`;
         }
 
-        if ($('courseSummary')) $('courseSummary').innerHTML = `<b>Course overview:</b> Planning, treatment delivery, and follow-up are tailored to ${site.name.toLowerCase()} using ${technique}.`;
+        if ($('courseSummary')) $('courseSummary').innerHTML = `<b>Course overview:</b> Consultation, simulation, planning, treatment delivery, and follow-up are tailored to ${site.name.toLowerCase()} using ${technique}.`;
       } else {
         $('courseTreatmentText').textContent = `Treatment delivery follows the finalized plan and technique.`;
-        if ($('courseSummary')) $('courseSummary').innerHTML = `<b>Course overview:</b> Planning, treatment delivery, and follow-up are tailored to the selected site.`;
+        if ($('courseSummary')) $('courseSummary').innerHTML = `<b>Course overview:</b> Consultation, simulation, planning, treatment delivery, and follow-up are tailored to the selected site.`;
       }
 
-      $('courseFollowText').textContent = `Recovery, side effects, and surveillance are reviewed after treatment.`;
+      $('courseFollowText').textContent = `After treatment, your team reviews recovery, side effects, treatment response, and the surveillance plan. Follow-up timing depends on the disease site and treatment course.`;
     }
 
 
@@ -7047,7 +7328,7 @@
         technique: "IMRT/VMAT",
         summary: "Hypofractionated post-prostatectomy regimen.",
         basisType: "Phase III trial-supported",
-        basisDetail: "NRG-GU003 found 62.5 Gy in 25 fractions noninferior to 66.6 Gy in 37 fractions for late patient-reported GU and GI symptoms.",
+        basisDetail: "NRG-GU003 found 62.5 Gy in 25 fractions noninferior to 66.6 Gy in 37 fractions for late patient-reported urinary and gastrointestinal symptoms.",
         sources: [
           {
             label: "NRG-GU003",
@@ -8885,6 +9166,7 @@
       setupSlideIndex = 0;
       updateSetupCard();
       updateTimeline();
+      updateTreatmentAtAGlanceContent();
     }
 
 
@@ -10369,6 +10651,7 @@
       updateSessionDuration();
       updateTreatmentWeeksDisplay();
       updateTreatmentCalendar();
+      updateTreatmentAtAGlanceSchedule();
       requestAnimationFrame(() => syncTreatmentPlanStageHeight());
       const total = parseFloat($("totalDose").value);
       const fractions = parseFloat($("fractions").value);
@@ -10631,6 +10914,7 @@
         setupSlideIndex = 0;
         updateSetupCard();
         updateTimeline();
+        updateTreatmentAtAGlanceContent();
       }
     }));
 
@@ -10664,6 +10948,7 @@
         if (!patientPositionLibrary[selected]) return;
         patientPositionSelections[patientPositionSelectionKey()] = selected;
         updateSetupCard();
+        updateTreatmentAtAGlanceContent();
       });
     }
     if ($("printSummaryBtn")) {
@@ -10692,6 +10977,7 @@
       populateProstatePresetOptions({ preserveSelection: false });
       updateDose();
       updateTreatmentCourse();
+      updateTreatmentAtAGlanceContent();
       requestAnimationFrame(syncWorkspaceColumnHeights);
     });
     if ($("prostateFractionationCategory")) $("prostateFractionationCategory").addEventListener("change", () => {
@@ -10782,6 +11068,7 @@
       populateLungPresetOptions({ preserveSelection: false });
       updateLungRegimenPanel({ syncCategory: false });
       updateTreatmentCourse();
+      updateTreatmentAtAGlanceContent();
       requestAnimationFrame(syncWorkspaceColumnHeights);
     });
     if ($("lungFractionationCategory")) $("lungFractionationCategory").addEventListener("change", () => {
