@@ -5474,7 +5474,6 @@
                 <div class="treatment-calendar-months" id="treatmentCalendarMonths"></div>
 
                 <div class="treatment-calendar-note" id="treatmentCalendarNote">
-                  This is an educational estimate. The treating clinic determines actual appointment dates and adjusts for holidays, procedures, and clinical needs.
                 </div>
 
                 <div id="treatmentCalendarControlsAnchor" class="treatment-calendar-controls-anchor"></div>
@@ -10563,12 +10562,8 @@
       if (boostLegend) boostLegend.hidden = !plan.boostStartsAfter;
 
       if (calendarNote) {
-        const standardNote =
-          "This is an educational estimate. The treating clinic determines actual appointment dates " +
-          "and adjusts for holidays, procedures, and clinical needs.";
-        calendarNote.textContent = plan.additionalNote
-          ? `${plan.additionalNote} ${standardNote}`
-          : standardNote;
+        calendarNote.textContent = plan.additionalNote || "";
+        calendarNote.hidden = !plan.additionalNote;
       }
     }
 
