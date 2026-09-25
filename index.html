@@ -5515,11 +5515,6 @@
                   <strong>Radiation oncology consultation</strong>
                 </div>
                 <p id="courseConsultText">Your radiation oncologist reviews your diagnosis and imaging, explains why radiation is being considered, discusses treatment goals, benefits, alternatives, and possible side effects, and answers your questions.</p>
-                <div class="course-consult-points" aria-label="Consultation topics">
-                  <span>Treatment goals</span>
-                  <span>Benefits &amp; risks</span>
-                  <span>Your questions</span>
-                </div>
               </div>
 
               <div class="course-step">
@@ -5596,7 +5591,7 @@
             <div class="panel-heading">
               <div>
                 <h3>Symptom timeline</h3>
-                <p>General pattern by treatment phase. During treatment, patients do not see or feel the beam; most acute symptoms are temporary.</p>
+                <p>Possible pattern by treatment phase. Some people have few or no noticeable side effects. When short-term effects occur, they are usually temporary and often improve after treatment. What you may notice, and when, depends on the area being treated and the length of the radiation course.</p>
               </div>
             </div>
             <div class="timeline" id="timeline"></div>
@@ -6775,6 +6770,124 @@
       ];
     }
 
+    function describeRadiationCourse(fractions, perWeek) {
+      const fractionCount = Number.isFinite(fractions) && fractions > 0 ? Math.round(fractions) : null;
+      const totalWeeks = Number.isFinite(fractions) && fractions > 0 && Number.isFinite(perWeek) && perWeek > 0
+        ? fractions / perWeek
+        : NaN;
+      const roundedWeeks = Number.isFinite(totalWeeks) ? Math.max(1, Math.ceil(totalWeeks - 0.05)) : null;
+
+      return {
+        fractionCount,
+        totalWeeks,
+        roundedWeeks,
+        isVeryShort: Number.isFinite(totalWeeks) && totalWeeks <= 1.1,
+        isShort: Number.isFinite(totalWeeks) && totalWeeks <= 2.1,
+        isLonger: Number.isFinite(totalWeeks) && totalWeeks >= 4,
+        duringLabel: roundedWeeks
+          ? (roundedWeeks === 1 ? "During the treatment week" : `During the ${roundedWeeks}-week course`)
+          : "During treatment",
+        laterLabel: Number.isFinite(totalWeeks) && totalWeeks <= 2.1
+          ? "Days to several weeks after treatment"
+          : "Later in treatment and the first few weeks after"
+      };
+    }
+
+    function buildPilotPossibilityTimeline(system, site, technique, fractions, perWeek) {
+      const course = describeRadiationCourse(fractions, perWeek);
+      const isExternalBeam = technique !== "Brachytherapy";
+      const treatmentFact = isExternalBeam
+        ? "The radiation beam itself is not felt during delivery."
+        : "The treatment team will explain what to expect during the brachytherapy procedure and recovery.";
+
+      const recoveryEntry = (summary, late) => ({
+        phase: "Recovery",
+        time: "Weeks after treatment",
+        title: "If short-term effects occur, they usually improve",
+        summary,
+        examples: [late]
+      });
+
+      if (system.id === "breast") {
+        const area = site.id === "pbi"
+          ? "the part of the breast being treated"
+          : site.id === "chest-wall"
+            ? "the chest wall and nearby skin"
+            : site.id === "regional-nodes"
+              ? "the breast or chest wall and the regional lymph-node areas being treated"
+              : "the breast and nearby skin";
+        const possibleSymptoms = site.id === "regional-nodes"
+          ? "fatigue, skin redness or darkening, itching, tenderness, breast or chest-wall swelling, and sometimes throat or swallowing irritation depending on which lymph-node areas are included"
+          : site.id === "pbi"
+            ? "mild fatigue, localized skin redness or darkening, itching, tenderness, or swelling in the treated part of the breast"
+            : "fatigue, skin redness or darkening, itching, tenderness, warmth, or breast or chest-wall swelling";
+        const duringSummary = course.isShort
+          ? `With this shorter course, some people notice little or no change during the treatment days. Possible short-term effects include ${possibleSymptoms}. These effects may not appear until after the last session.`
+          : `Some people notice little or no change early in treatment. As treatment continues, possible short-term effects include ${possibleSymptoms}.`;
+        const laterSummary = course.isShort
+          ? "If skin or fatigue symptoms develop, they may become more noticeable in the days or first few weeks after the final session rather than during the treatment course itself."
+          : "If skin, tenderness, swelling, or fatigue develops, it may become more noticeable toward the end of treatment or during the first week or two afterward.";
+        return [
+          { phase: "Preparation", time: "Before treatment", title: "Baseline and skin-care planning", summary: `Your team reviews ${area}, your treatment position, baseline skin and arm symptoms, and any site-specific preparation.`, examples: ["Skin-care and activity guidance is individualized to the treatment area."] },
+          { phase: "Possible effects", time: course.duringLabel, title: "You may have few, mild, or no noticeable side effects", summary: duringSummary, examples: [treatmentFact] },
+          { phase: "Possible effects", time: course.laterLabel, title: "Temporary effects can be more noticeable later", summary: laterSummary, examples: ["Not everyone develops these symptoms, and their intensity varies from person to person."] },
+          recoveryEntry("When short-term breast or skin effects occur, they usually fade gradually over the following weeks. Energy and tenderness often improve as the treated tissues recover.", "Longer-lasting effects are possible but are less common and depend on the exact area treated, including firmness, swelling, cosmetic change, or uncommon lung or heart effects.")
+        ];
+      }
+
+      if (system.id === "gu" && site.id === "prostate") {
+        if (technique === "Brachytherapy") {
+          return [
+            { phase: "Preparation", time: "Before treatment", title: "Procedure and urinary baseline", summary: "Your team reviews baseline urinary and bowel function, medications, and the preparation needed for the brachytherapy procedure.", examples: ["Preparation and recovery differ depending on whether temporary catheters or permanent seeds are used."] },
+            { phase: "Possible effects", time: "During the first days to weeks", title: "Temporary urinary symptoms are possible", summary: "Some people have little difficulty, while others may notice temporary urinary frequency, urgency, burning, a weaker stream, pelvic soreness, or mild bowel irritation. These effects are possibilities rather than expected symptoms for everyone.", examples: [treatmentFact] },
+            { phase: "Possible effects", time: "Weeks after treatment", title: "Symptoms can fluctuate before settling", summary: "If urinary or bowel irritation develops, it may become more noticeable for a period of time before improving. The timing varies with the brachytherapy technique and baseline urinary function.", examples: ["Call the treating team for inability to urinate, fever, heavy bleeding, or severe pain."] },
+            recoveryEntry("Most short-term urinary and bowel effects, when they occur, improve gradually over weeks to months.", "Later urinary, bowel, or sexual effects are possible and are discussed according to the specific brachytherapy approach, dose, anatomy, and baseline function.")
+          ];
+        }
+
+        const symptoms = "urinary frequency or urgency, getting up more often at night, burning with urination, a weaker stream, looser stools or rectal urgency, and fatigue";
+        const duringSummary = course.isShort
+          ? `Because the course is short, some people have few or no noticeable symptoms during the treatment days. Possible temporary effects include ${symptoms}, and they can appear or become more noticeable after the last session.`
+          : course.isLonger
+            ? `Many people feel relatively well early in the course. As pelvic radiation accumulates over several weeks, possible temporary effects include ${symptoms}. Some people have only mild symptoms or none of these.`
+            : `During this course, possible temporary effects include ${symptoms}. They may be mild, may not occur at all, or may become more noticeable as treatment continues.`;
+        const laterSummary = course.isShort
+          ? "If urinary, bowel, or fatigue symptoms develop, they may be most noticeable during the first few weeks after treatment because the course finishes before the temporary inflammation has fully developed."
+          : "If urinary, bowel, or fatigue symptoms develop, they may become more noticeable toward the latter part of treatment or shortly after the final session.";
+        return [
+          { phase: "Preparation", time: "Before treatment", title: "Bladder, bowel, and urinary baseline", summary: "Your team reviews baseline urinary and bowel function and reinforces any bladder-filling or rectal-preparation instructions used for your treatment.", examples: ["Preparation is tailored to the prostate treatment technique and treatment field."] },
+          { phase: "Possible effects", time: course.duringLabel, title: "Urinary, bowel, or fatigue changes are possible", summary: duringSummary, examples: [treatmentFact] },
+          { phase: "Possible effects", time: course.laterLabel, title: "Temporary irritation may be more noticeable later", summary: laterSummary, examples: ["Not everyone develops these symptoms, and supportive medicines can be adjusted if they do occur."] },
+          recoveryEntry("When short-term urinary, bowel, or fatigue symptoms occur, they usually improve gradually after treatment, although the time back toward baseline varies from person to person.", "Longer-term urinary, bowel, or sexual effects are possible but are not inevitable. Risk depends on baseline function, treatment area, dose, and technique.")
+        ];
+      }
+
+      if (system.id === "thoracic" && (site.id === "nsclc" || site.id === "sclc")) {
+        const isSclc = site.id === "sclc";
+        const isStereotactic = technique === "SBRT/SABR";
+        const symptoms = isStereotactic
+          ? "fatigue, cough, temporary chest discomfort, or chest-wall soreness, depending on where the tumor is located"
+          : "fatigue, cough, appetite change, skin irritation, or swallowing discomfort if the esophagus is within the treatment area";
+        const duringSummary = isStereotactic || course.isShort
+          ? `Many people have few or no immediate symptoms during a short thoracic course. Possible temporary effects include ${symptoms}. Some effects may not become noticeable until after treatment has finished.`
+          : `Some people have few symptoms early in a multi-week thoracic course. As treatment continues, possible temporary effects include ${symptoms}. The chance and intensity depend strongly on the structures included in the treatment field.`;
+        const laterSummary = isStereotactic || course.isShort
+          ? "If fatigue, cough, chest discomfort, or swallowing irritation develops, it can become more noticeable in the days or weeks after the last session. Many patients still have only mild symptoms."
+          : "If fatigue, cough, skin irritation, or swallowing discomfort develops, it may become more noticeable later in the course or shortly after treatment ends, especially when radiation is combined with systemic therapy.";
+        const bloodCountNote = isSclc
+          ? "When chemotherapy is given at the same time, blood-count changes and other chemotherapy-related effects are also possible and are monitored by the treatment team."
+          : "Symptoms depend on tumor location, the amount of normal lung and esophagus in the treatment field, and whether systemic therapy is given at the same time.";
+        return [
+          { phase: "Preparation", time: "Before treatment", title: "Breathing, swallowing, and treatment-area baseline", summary: "Your team reviews breathing, cough, swallowing, pain, and the exact chest structures near the treatment area before radiation begins.", examples: ["Motion-management or breath-hold instructions are used when they are helpful for the treatment location."] },
+          { phase: "Possible effects", time: course.duringLabel, title: "You may have few, mild, or no immediate side effects", summary: duringSummary, examples: [treatmentFact, bloodCountNote] },
+          { phase: "Possible effects", time: course.laterLabel, title: "Temporary chest-related effects can appear later", summary: laterSummary, examples: ["Not everyone develops these symptoms. New or worsening breathing difficulty, fever, coughing blood, or severe chest pain should be reported promptly."] },
+          recoveryEntry("When short-term fatigue, swallowing irritation, cough, or skin effects occur, they often improve gradually over the following weeks.", "A delayed lung reaction called radiation pneumonitis is possible weeks to months later, but it does not occur in everyone. New cough, fever, or shortness of breath should be evaluated rather than assumed to be a normal treatment effect.")
+        ];
+      }
+
+      return null;
+    }
+
     function getActiveTimeline() {
       const system = activeSystem();
       const site = activeSite();
@@ -6784,6 +6897,11 @@
       const courseWeeks = fractions > 0 && perWeek > 0 ? fractions / perWeek : NaN;
       const siteTechniqueKey = `${system.id}:${site.id}:${technique}`;
       const siteOnlyKey = `${system.id}:${site.id}`;
+
+      // Pilot-facing timelines use possibility-based language and adapt to the
+      // selected treatment site, technique, number of sessions, and weekly frequency.
+      const patientFacingTimeline = buildPilotPossibilityTimeline(system, site, technique, fractions, perWeek);
+      if (patientFacingTimeline) return patientFacingTimeline;
 
       // Keep site-specific SBRT timelines when one is explicitly available.
       if (timelineOverrides[siteTechniqueKey]) return timelineOverrides[siteTechniqueKey];
