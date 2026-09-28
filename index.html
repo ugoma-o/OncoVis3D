@@ -2807,17 +2807,17 @@
 
     .team-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 260px));
-      gap: 14px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
       align-items: stretch;
-      justify-content: start;
+      width: 100%;
     }
 
     .team-card {
       padding: 0;
       overflow: hidden;
       min-height: 0;
-      min-height: 245px;
+      min-height: 225px;
       display: grid;
       grid-template-rows: auto 1fr;
       background: rgba(255, 255, 255, 0.78);
@@ -2825,7 +2825,7 @@
 
     .team-study-card {
       grid-column: 1 / -1;
-      width: min(100%, 760px);
+      width: 100%;
       min-height: 0;
     }
 
@@ -2838,8 +2838,9 @@
     }
 
     .team-study-card p {
-      font-size: 0.92rem;
-      line-height: 1.5;
+      font-size: 0.98rem;
+      line-height: 1.58;
+      max-width: 98ch;
     }
 
     .team-study-card .team-meta-list {
@@ -2862,14 +2863,21 @@
     }
 
     .team-name-band h3 {
-      margin: 0 0 8px;
+      margin: 0;
       letter-spacing: -0.03em;
-      font-size: 1.02rem;
+      font-size: 1.08rem;
       line-height: 1.14;
       color: var(--ink);
-      min-height: 2.3em;
-      display: grid;
-      place-items: center;
+      min-height: 0;
+      display: block;
+    }
+
+    .team-subtitle {
+      margin: 5px 0 0;
+      color: var(--ink);
+      font-size: 0.88rem;
+      font-weight: 600;
+      line-height: 1.3;
     }
 
     .team-card-body {
@@ -5674,14 +5682,11 @@
             <article class="team-card side-card">
               <div class="team-name-band">
                 <h3>Ugoma Onubogu</h3>
-                <div class="team-role-row" aria-label="Project roles">
-                  <span class="team-role">Developer</span>
-                  <span class="team-role">Project lead</span>
-                </div>
+                <p class="team-subtitle">Project Lead</p>
               </div>
               <div class="team-card-body">
                 <div class="team-meta-list" aria-label="Project lead details">
-                  <div class="team-meta-item"><span class="team-meta-label">Institution</span><span class="team-meta-value">Add institution</span></div>
+                  <div class="team-meta-item"><span class="team-meta-label">Institution</span><span class="team-meta-value">AdventHealth Tampa</span></div>
                   
                 </div>
                 <a class="btn small team-contact-btn" href="mailto:" aria-label="Contact Ugoma Onubogu">Contact</a>
@@ -5693,9 +5698,6 @@
             <article class="team-card side-card">
               <div class="team-name-band">
                 <h3>MVP clinical prototype</h3>
-                <div class="team-role-row" aria-label="Project status">
-                  <span class="team-role">Current build</span>
-                </div>
               </div>
               <div class="team-card-body">
                 <p>Static GitHub-hosted MVP for education, shared decision support, and demonstration workflows. No patient data is stored on a server.</p>
@@ -5705,12 +5707,9 @@
             <article class="team-card team-study-card side-card">
               <div class="team-name-band">
                 <h3>VISUAL-RT pilot study</h3>
-                <div class="team-role-row" aria-label="Project status">
-                  <span class="team-role">Currently being tested</span>
-                </div>
               </div>
               <div class="team-card-body">
-                <p>OncoVis3D is currently being evaluated as part of the <strong>Visual Interactive Support for Understanding and Learning in Radiation Therapy (VISUAL-RT)</strong> pilot study. The study evaluates the feasibility and usability of using a clinician-guided visual education platform during radiation oncology counseling, including its integration into the clinical workflow and its ability to support patient understanding of treatment.</p>
+                <p>OncoVis3D is currently being evaluated as part of the Visual Interactive Support for Understanding and Learning in Radiation Therapy (VISUAL-RT) pilot study. The study evaluates the feasibility and usability of using a clinician-guided visual education platform during radiation oncology counseling, including its integration into the clinical workflow and its ability to support patient understanding of treatment.</p>
                 <div class="team-meta-list" aria-label="VISUAL-RT study details">
                   <div class="team-meta-item"><span class="team-meta-label">Study</span><span class="team-meta-value">VISUAL-RT</span></div>
                   <div class="team-meta-item"><span class="team-meta-label">IRB</span><span class="team-meta-value">[2484572-1]</span></div>
