@@ -1334,6 +1334,11 @@
       background: var(--surface-soft);
     }
 
+    .setup-preview-img.zoomed-positioning-reference {
+      transform: scale(1.18);
+      transform-origin: center center;
+    }
+
     .setup-image-credit {
       position: absolute;
       right: 12px;
@@ -7127,7 +7132,7 @@
             <img
               src="${imagePath}"
               alt="${site.name} ${displayTitle.toLowerCase()} treatment setup preview"
-              class="setup-preview-img"
+              class="setup-preview-img ${imagePath === "images/Supine_Chest_Male.png" ? "zoomed-positioning-reference" : ""}"
               onerror="this.closest('.setup-media').classList.remove('has-image'); this.closest('.setup-media').innerHTML = '${setupCarouselControlsHtml().replace(/`/g, '\`').replace(/'/g, '&apos;')}<div class=&quot;setup-placeholder-icon&quot;>⚠️</div><div><strong>Image not found</strong><p>Check that the file path exists: ${imagePath}</p></div>';"
             />
             ${imageCreditHtml}
