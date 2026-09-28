@@ -7086,7 +7086,11 @@
       }
 
       const imagePath = isPositionSlide
-        ? selectedPosition.image
+        ? (
+            key === "gu:prostate" && getSelectedPatientPositionKey() === "supine"
+              ? "images/Supine_Chest_Male.png"
+              : selectedPosition.image
+          )
         : (
             sharedSetupImagesByTechnique[technique]?.[slideType] ||
             setupImageLibrary[key]?.[technique]?.[slideType] ||
