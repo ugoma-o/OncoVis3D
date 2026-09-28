@@ -2807,11 +2807,19 @@
 
     .team-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: minmax(280px, 0.78fr) minmax(0, 1.42fr);
+      grid-template-areas:
+        "lead study"
+        "prototype study";
       gap: 18px;
       align-items: stretch;
-      width: 100%;
+      width: min(1180px, 100%);
+      margin: 0 auto;
     }
+
+    .team-lead-card { grid-area: lead; }
+    .team-prototype-card { grid-area: prototype; }
+    .team-study-card { grid-area: study; }
 
     .team-card {
       padding: 0;
@@ -2824,7 +2832,6 @@
     }
 
     .team-study-card {
-      grid-column: 1 / -1;
       width: 100%;
       min-height: 0;
     }
@@ -2958,7 +2965,8 @@
     }
 
     .team-connect-card {
-      margin-top: 16px;
+      width: min(1180px, 100%);
+      margin: 16px auto 0;
       padding: clamp(18px, 3vw, 26px);
       display: grid;
       justify-items: center;
@@ -2980,13 +2988,16 @@
     @media (max-width: 620px) {
       .team-grid {
         grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+          "lead"
+          "prototype"
+          "study";
         justify-content: stretch;
       }
       .team-card {
         min-height: 0;
       }
       .team-study-card {
-        grid-column: auto;
         width: 100%;
       }
       .team-study-card .team-meta-list {
@@ -5679,7 +5690,7 @@
         <section class="team-layout" aria-label="Project details and contact information">
 
           <div class="team-grid">
-            <article class="team-card side-card">
+            <article class="team-card team-lead-card side-card">
               <div class="team-name-band">
                 <h3>Ugoma Onubogu</h3>
                 <p class="team-subtitle">Project Lead</p>
@@ -5695,7 +5706,7 @@
 
         
 
-            <article class="team-card side-card">
+            <article class="team-card team-prototype-card side-card">
               <div class="team-name-band">
                 <h3>MVP clinical prototype</h3>
               </div>
