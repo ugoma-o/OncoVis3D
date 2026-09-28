@@ -559,9 +559,9 @@
       display: inline-block;
       margin-bottom: 9px;
       color: var(--primary-dark);
-      font-size: 0.78rem;
+      font-size: 0.96rem;
       font-weight: 900;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.07em;
       text-transform: uppercase;
     }
 
@@ -2823,6 +2823,37 @@
       background: rgba(255, 255, 255, 0.78);
     }
 
+    .team-study-card {
+      grid-column: 1 / -1;
+      width: min(100%, 760px);
+      min-height: 0;
+    }
+
+    .team-study-card .team-name-band h3 {
+      min-height: 0;
+    }
+
+    .team-study-card .team-card-body {
+      padding: 18px 20px;
+    }
+
+    .team-study-card p {
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    .team-study-card .team-meta-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .team-study-card .team-meta-item {
+      padding: 9px 11px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.58);
+    }
+
     .team-name-band {
       padding: 16px 12px 14px;
       text-align: center;
@@ -2945,6 +2976,13 @@
       }
       .team-card {
         min-height: 0;
+      }
+      .team-study-card {
+        grid-column: auto;
+        width: 100%;
+      }
+      .team-study-card .team-meta-list {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -4651,6 +4689,11 @@
       font-size: 0.78rem;
     }
 
+    /* Give the workspace section label more presence than supporting microcopy. */
+    .workspace-landing-kicker {
+      font-size: 0.96rem !important;
+    }
+
     /* Keep compact top-level navigation readable on smaller screens. */
     @media (max-width: 980px) {
       .page-tab { font-size: 0.78rem !important; }
@@ -4781,7 +4824,7 @@
           <div class="page-tabs" role="navigation" aria-label="Primary sections">
             <button class="page-tab active" type="button" data-page-tab="home">About</button>
             <button class="page-tab" type="button" data-page-tab="workspace">Workspace</button>
-            <button class="page-tab" type="button" data-page-tab="team">Team</button>
+            <button class="page-tab" type="button" data-page-tab="team">Project &amp; Contact</button>
           </div>
         </div>
       </div>
@@ -5050,7 +5093,6 @@
         </section>
 
         <section class="workspace-landing panel" id="workspaceLanding" aria-labelledby="workspaceLandingTitle">
-          <div class="workspace-landing-icon" aria-hidden="true"><img src="icons/App_Logo.png" alt="" class="workspace-landing-logo" /></div>
           <div class="workspace-landing-copy">
             <span class="workspace-landing-kicker">Treatment education workspace</span>
             <h2 id="workspaceLandingTitle">Choose an organ system to begin</h2>
@@ -5626,7 +5668,7 @@
       </section>
 
       <section class="app-page" id="teamPage" data-page="team">
-        <section class="team-layout" aria-label="Team and project information">
+        <section class="team-layout" aria-label="Project details and contact information">
 
           <div class="team-grid">
             <article class="team-card side-card">
@@ -5638,7 +5680,7 @@
                 </div>
               </div>
               <div class="team-card-body">
-                <div class="team-meta-list" aria-label="Team member details">
+                <div class="team-meta-list" aria-label="Project lead details">
                   <div class="team-meta-item"><span class="team-meta-label">Institution</span><span class="team-meta-value">Add institution</span></div>
                   
                 </div>
@@ -5657,7 +5699,22 @@
               </div>
               <div class="team-card-body">
                 <p>Static GitHub-hosted MVP for education, shared decision support, and demonstration workflows. No patient data is stored on a server.</p>
-                <a class="btn small team-contact-btn" href="#workspace" aria-label="Open workspace">Open workspace</a>
+              </div>
+            </article>
+
+            <article class="team-card team-study-card side-card">
+              <div class="team-name-band">
+                <h3>VISUAL-RT pilot study</h3>
+                <div class="team-role-row" aria-label="Project status">
+                  <span class="team-role">Currently being tested</span>
+                </div>
+              </div>
+              <div class="team-card-body">
+                <p>OncoVis3D is currently being evaluated as part of the <strong>Visual Interactive Support for Understanding and Learning in Radiation Therapy (VISUAL-RT)</strong> pilot study. The study evaluates the feasibility and usability of using a clinician-guided visual education platform during radiation oncology counseling, including its integration into the clinical workflow and its ability to support patient understanding of treatment.</p>
+                <div class="team-meta-list" aria-label="VISUAL-RT study details">
+                  <div class="team-meta-item"><span class="team-meta-label">Study</span><span class="team-meta-value">VISUAL-RT</span></div>
+                  <div class="team-meta-item"><span class="team-meta-label">IRB</span><span class="team-meta-value">[2484572-1]</span></div>
+                </div>
               </div>
             </article>
 
@@ -5665,7 +5722,7 @@
 
           <section class="team-connect-card side-card" aria-label="Connect">
             <p>OncoVis3D is being built to elevate radiation oncology education, strengthen health literacy, and continue improving how clinicians explain treatment. Feedback, collaboration, clinical insight, and implementation ideas are welcome.</p>
-            <a class="btn primary" href="mailto:" aria-label="Connect with the OncoVis3D team">Connect with us</a>
+            <a class="btn primary" href="mailto:" aria-label="Connect with the OncoVis3D team">Connect</a>
           </section>
         </section>
       </section>
@@ -5941,7 +5998,7 @@
     document.head.appendChild(srOnlyStyle);
 
     const defaultEmbedLinks = {
-      "gu:prostate": "https://human.biodigital.com/viewer/?id=7FfI&ui-anatomy-descriptions=true&ui-anatomy-pronunciations=false&ui-anatomy-labels=true&ui-audio=true&ui-chapter-list=false&ui-fullscreen=true&ui-help=true&ui-info=true&ui-label-list=true&ui-layers=true&ui-skin-layers=true&ui-loader=circle&ui-media-controls=full&ui-menu=true&ui-nav=true&ui-search=true&ui-tools=true&ui-tutorial=false&ui-undo=true&ui-whiteboard=true&initial.none=true&disable-scroll=false&uaid=MibxQ&paid=o_064a1c76",
+      "gu:prostate": "https://human.biodigital.com/viewer/?id=7FfI&ui-anatomy-descriptions=true&ui-anatomy-pronunciations=false&ui-anatomy-labels=false&ui-audio=false&ui-chapter-list=false&ui-fullscreen=false&ui-help=false&ui-info=false&ui-label-list=true&ui-layers=false&ui-skin-layers=false&ui-loader=circle&ui-media-controls=none&ui-menu=false&ui-nav=false&ui-search=false&ui-tools=false&ui-tutorial=false&ui-undo=false&ui-whiteboard=false&initial.none=true&disable-scroll=false&load-rotate=3&uaid=Ml7DM&paid=o_064a1c76",
       "thoracic:nsclc": "https://human.biodigital.com/viewer/?id=7O66&ui-anatomy-descriptions=true&ui-anatomy-pronunciations=false&ui-anatomy-labels=true&ui-audio=true&ui-chapter-list=false&ui-fullscreen=true&ui-help=true&ui-info=true&ui-label-list=true&ui-layers=true&ui-skin-layers=true&ui-loader=circle&ui-media-controls=full&ui-menu=true&ui-nav=true&ui-search=true&ui-tools=true&ui-tutorial=false&ui-undo=true&ui-whiteboard=true&initial.none=true&disable-scroll=false&uaid=MidwC&paid=o_064a1c76",
       "thoracic:sclc": "https://human.biodigital.com/viewer/?id=7O66&ui-anatomy-descriptions=true&ui-anatomy-pronunciations=false&ui-anatomy-labels=true&ui-audio=true&ui-chapter-list=false&ui-fullscreen=true&ui-help=true&ui-info=true&ui-label-list=true&ui-layers=true&ui-skin-layers=true&ui-loader=circle&ui-media-controls=full&ui-menu=true&ui-nav=true&ui-search=true&ui-tools=true&ui-tutorial=false&ui-undo=true&ui-whiteboard=true&initial.none=true&disable-scroll=false&uaid=MidwC&paid=o_064a1c76",
       "breast:whole-breast": "https://human.biodigital.com/viewer/?id=7Frx&ui-anatomy-descriptions=true&ui-anatomy-pronunciations=false&ui-anatomy-labels=true&ui-audio=true&ui-chapter-list=false&ui-fullscreen=true&ui-help=true&ui-info=true&ui-label-list=true&ui-layers=true&ui-skin-layers=true&ui-loader=circle&ui-media-controls=full&ui-menu=true&ui-nav=true&ui-search=true&ui-tools=true&ui-tutorial=false&ui-undo=true&ui-whiteboard=true&initial.none=true&disable-scroll=false&uaid=MkQZI&paid=o_064a1c76",
