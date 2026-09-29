@@ -11962,6 +11962,7 @@
     }
     function navigateSetupSlide(direction) {
       const technique = $("technique").value;
+      const system = activeSystem();
       const setup =
         siteSpecificSetupSlides[system.id]?.[technique] ||
         siteSpecificSetupSlides[system.id]?.["IMRT/VMAT"] ||
