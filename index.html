@@ -1335,8 +1335,15 @@
     }
 
     .setup-preview-img.zoomed-positioning-reference {
-      transform: scale(1.18);
       transform-origin: center center;
+    }
+
+    .setup-preview-img.zoomed-positioning-reference-prostate {
+      transform: scale(1.18);
+    }
+
+    .setup-preview-img.zoomed-positioning-reference-arms-up {
+      transform: scale(0.98);
     }
 
     .setup-image-credit {
@@ -7104,7 +7111,7 @@
             <img
               src="${imagePath}"
               alt="${site.name} ${displayTitle.toLowerCase()} treatment setup preview"
-              class="setup-preview-img ${["images/Supine_Chest_Male.png", "images/Supine_Raised_Male.png"].includes(imagePath) ? "zoomed-positioning-reference" : ""}"
+              class="setup-preview-img ${imagePath === "images/Supine_Chest_Male.png" ? "zoomed-positioning-reference zoomed-positioning-reference-prostate" : imagePath === "images/Supine_Raised_Male.png" ? "zoomed-positioning-reference zoomed-positioning-reference-arms-up" : ""}"
               onerror="this.closest('.setup-media').classList.remove('has-image'); this.closest('.setup-media').innerHTML = '${setupCarouselControlsHtml().replace(/`/g, '\`').replace(/'/g, '&apos;')}<div class=&quot;setup-placeholder-icon&quot;>⚠️</div><div><strong>Image not found</strong><p>Check that the file path exists: ${imagePath}</p></div>';"
             />
             ${imageCreditHtml}
