@@ -2626,14 +2626,16 @@
 
     .timeline-item p { color: var(--muted); margin: 3px 0 0; font-size: 0.9rem; }
 
-    .timeline-item ul {
-      margin: 7px 0 0;
-      padding-left: 18px;
+    .timeline-note {
+      margin-top: 7px;
       color: var(--muted);
       font-size: 0.88rem;
+      line-height: 1.45;
     }
 
-    .timeline-item li { margin: 3px 0; }
+    .timeline-note + .timeline-note {
+      margin-top: 5px;
+    }
 
     .timeline-context {
       color: var(--muted);
@@ -5624,47 +5626,11 @@
             </div>
           </section>
 
-          <section class="side-card education-card treatment-glance-card" aria-label="Your treatment at a glance">
-            <div class="panel-heading treatment-glance-heading">
-              <div>
-                <h3>Your treatment at a glance</h3>
-                <p>Key points from the treatment plan to keep in mind</p>
-              </div>
-            </div>
-
-            <div class="treatment-glance-grid">
-              <div class="treatment-glance-item treatment-glance-goal">
-                <span class="treatment-glance-label">Treatment goal</span>
-                <p id="radiationPurpose">The treatment goal will update for the selected disease site and treatment setting.</p>
-              </div>
-
-              <div class="treatment-glance-item">
-                <span class="treatment-glance-label">Treatment area</span>
-                <p id="treatmentAreaText">The treatment area will update for the selected disease site and treatment setting.</p>
-              </div>
-
-              <div class="treatment-glance-item">
-                <span class="treatment-glance-label">Your schedule</span>
-                <p id="treatmentScheduleSummary">Your CT simulation and treatment schedule will appear here.</p>
-              </div>
-
-              <div class="treatment-glance-item">
-                <span class="treatment-glance-label">Each visit</span>
-                <p id="positioningText">What happens during each treatment visit will appear here.</p>
-              </div>
-            </div>
-
-            <div class="treatment-glance-support">
-              <span class="treatment-glance-label">Support during treatment</span>
-              <ul id="supportiveCare"></ul>
-            </div>
-          </section>
-
           <section class="side-card symptom-card">
             <div class="panel-heading">
               <div>
                 <h3>Symptom timeline</h3>
-                <p>Possible pattern by treatment phase. Some people have few or no noticeable side effects. When short-term effects occur, they are usually temporary and often improve after treatment. What you may notice, and when, depends on the area being treated and the length of the radiation course.</p>
+                <p>Possible pattern by treatment phase. Side effects vary from person to person. Some people have few noticeable effects, while others develop symptoms that become more noticeable during treatment or in the weeks afterward. Many short-term effects improve after treatment, but their timing, intensity, and duration depend on the area being treated and the length of the radiation course.</p>
               </div>
             </div>
             <div class="timeline" id="timeline"></div>
@@ -6565,6 +6531,15 @@
       },
       "3D conformal radiation": {
         machine: "images/IMRT.jpg"
+      },
+      "SBRT/SABR": {
+        machine: "images/IMRT.jpg"
+      },
+      "SRS": {
+        machine: "images/IMRT.jpg"
+      },
+      "Protons": {
+        machine: "images/IMRT.jpg"
       }
     };
 
@@ -6593,55 +6568,49 @@
         description: "A linear accelerator rotates around the patient while daily image guidance helps align the treatment target.",
         slides: [
           ["⚙️", "Treatment machine", "Linear accelerator used to deliver image-guided IMRT/VMAT treatments."],
-          ["🛏️", "Patient position", "Placeholder for a supine treatment setup image. Replace this with your site-specific patient positioning photo."],
-          ["🧩", "Immobilizer", "Placeholder for thermoplastic mask, Vac-Lok cushion, breast board, wing board, or pelvic immobilization device."]
+          ["🛏️", "Patient position", "Placeholder for a supine treatment setup image. Replace this with your site-specific patient positioning photo."]
         ]
       },
       "3D conformal radiation": {
         description: "A linear accelerator delivers shaped fields from selected beam angles using patient-specific blocks, MLCs, and reproducible setup.",
         slides: [
           ["⚙️", "Treatment machine", "Linear accelerator used to deliver shaped 3D conformal radiation fields."],
-          ["🛏️", "Patient position", "Placeholder for conventional supine or site-specific treatment setup."],
-          ["🧩", "Immobilizer", "Placeholder for custom cradle, mask, breast board, or extremity setup device."]
+          ["🛏️", "Patient position", "Placeholder for conventional supine or site-specific treatment setup."]
         ]
       },
       "SBRT/SABR": {
         description: "SBRT/SABR uses highly focused radiation over a small number of treatments, with strict immobilization and motion management when needed.",
         slides: [
           ["🎯", "Treatment machine", "Placeholder for linac-based SBRT, CyberKnife, or other stereotactic platform."],
-          ["🛏️", "Patient position", "Placeholder for SBRT setup, commonly supine with customized body immobilization."],
-          ["🧩", "Immobilizer", "Placeholder for Vac-Lok cradle, abdominal compression, body frame, or breath-hold setup."]
+          ["🛏️", "Patient position", "Placeholder for SBRT setup, commonly supine with customized body immobilization."]
         ]
       },
       "SRS": {
         description: "SRS uses stereotactic localization and very precise immobilization to treat intracranial targets in one or a few sessions.",
         slides: [
           ["🎯", "Treatment machine", "Placeholder for Gamma Knife, linac SRS, CyberKnife, or comparable system."],
-          ["🛏️", "Patient position", "Placeholder for cranial stereotactic setup."],
-          ["🧩", "Immobilizer", "Placeholder for frameless mask, stereotactic frame, bite block, or head fixation system."]
+          ["🛏️", "Patient position", "Placeholder for cranial stereotactic setup."]
         ]
       },
       "Protons": {
         description: "Proton therapy uses charged particles with finite range, often requiring highly reproducible setup and anatomy-specific verification.",
         slides: [
           ["🌀", "Treatment machine", "Placeholder for proton gantry, fixed beam room, or nozzle image."],
-          ["🛏️", "Patient position", "Placeholder for proton treatment setup."],
-          ["🧩", "Immobilizer", "Placeholder for mask, body mold, breast board, or pediatric immobilization device."]
+          ["🛏️", "Patient position", "Placeholder for proton treatment setup."]
         ]
       },
       "Brachytherapy": {
         description: "Brachytherapy places a radiation source close to or inside the treatment region using applicators, catheters, or seeds.",
         slides: [
           ["🏥", "Treatment equipment", "Placeholder for HDR afterloader, applicator setup, or procedure suite."],
-          ["🛏️", "Patient position", "Placeholder for procedure or treatment position."],
-          ["🧩", "Applicator/immobilizer", "Placeholder for applicator, template, cylinder, tandem/ring, needles, or site-specific device."]
+          ["🛏️", "Patient position", "Placeholder for procedure or treatment position."]
         ]
       }
     };
 
     const systemPhaseTimelines = {
       cns: [
-        { phase: "Early", time: "Week 1", title: "Setup and baseline", summary: "Patients do not see or feel the beam; temporary mask anxiety or mild fatigue can start.", examples: ["Watch for new headache, nausea, weakness, seizure, or vision change."] },
+        { phase: "Early", time: "Week 1", title: "Setup and baseline", summary: "Patients do not see or feel the beam; mask anxiety or mild fatigue can start.", examples: ["Watch for new headache, nausea, weakness, seizure, or vision change."] },
         { phase: "Peak acute", time: "Weeks 2 to 6", title: "Fatigue and local irritation", summary: "Fatigue, scalp irritation, focal hair loss, nausea, or headache may increase by treated region.", examples: ["Steroids, antiemetics, and urgent evaluation depend on symptoms."] },
         { phase: "Recovery", time: "1 to 3 months after RT", title: "Acute effects settle", summary: "Energy, skin reaction, nausea, and scalp sensitivity generally improve over weeks.", examples: ["Report worsening neurologic symptoms rather than assuming delayed recovery."] },
         { phase: "Late", time: "Months to years", title: "Site-specific monitoring", summary: "Late risks depend on dose to brain, optic structures, cochlea, pituitary, brainstem, or spinal cord.", examples: ["Follow neurocognition, endocrine function, hearing, vision, and focal deficits as relevant."] }
@@ -6752,20 +6721,20 @@
         { phase: "Late", time: "Months to years", title: "Renal, bowel, and adrenal tolerance", summary: "Late risks depend on treated volume and nearby organs, including renal function change, bowel ulceration or bleeding, and adrenal insufficiency risk in select bilateral or solitary-adrenal contexts.", examples: ["Risk is individualized by anatomy, prior surgery, baseline kidney function, and cumulative dose."] }
       ],
       "gu:prostate:IMRT/VMAT": [
-        { phase: "Acute", time: "Weeks 1 to 4", title: "Mild urinary/bowel start", summary: "Temporary inflammation begins in the bladder, urethra, rectum, and bowel lining.", examples: ["Frequency, weaker stream, looser stools or gas.", "Fatigue may begin around week 2 or 3."] },
-        { phase: "Subacute", time: "Week 5 to 4 weeks after RT", title: "Peak irritation", summary: "Temporary urinary, rectal, and fatigue symptoms often peak as pelvic dose accumulates.", examples: ["Urgency, dysuria, nocturia, bowel urgency, rectal pressure.", "Fatigue peaks; perineal skin can become tender if in-field."] },
-        { phase: "Convalescent", time: "Months 2 to 6", title: "Recovery phase", summary: "Pelvic inflammation falls and most temporary symptoms fade toward baseline.", examples: ["Urination and bowel habits gradually stabilize.", "Energy often improves over 4 to 8 weeks after RT."] },
+        { phase: "Acute", time: "Weeks 1 to 4", title: "Mild urinary/bowel start", summary: "Inflammation can begin in the bladder, urethra, rectum, and bowel lining.", examples: ["Frequency, weaker stream, looser stools or gas.", "Fatigue may begin around week 2 or 3."] },
+        { phase: "Subacute", time: "Week 5 to 4 weeks after RT", title: "Peak irritation", summary: "Urinary, rectal, and fatigue symptoms can become more noticeable as pelvic dose accumulates.", examples: ["Urgency, dysuria, nocturia, bowel urgency, rectal pressure.", "Fatigue peaks; perineal skin can become tender if in-field."] },
+        { phase: "Convalescent", time: "Months 2 to 6", title: "Recovery phase", summary: "Pelvic inflammation generally decreases after treatment, and many symptoms gradually improve toward baseline.", examples: ["Urination and bowel habits gradually stabilize.", "Energy often improves over 4 to 8 weeks after RT."] },
         { phase: "Late", time: "6 months to years", title: "Long-term monitoring", summary: "Late effects are less common with modern IMRT but can evolve slowly over time.", examples: ["Gradual ED, urethral stricture, rectal bleeding, or hematuria.", "Report progressive urinary obstruction or bleeding."] }
       ],
       "gu:prostate:SBRT/SABR": [
-        { phase: "Acute", time: "Treatment week", title: "Short-course onset", summary: "Temporary symptoms may start during or shortly after the high-dose treatment week.", examples: ["Frequency, urgency, dysuria, mild bowel urgency.", "Fatigue is usually variable and individualized."] },
-        { phase: "Subacute", time: "Weeks 1 to 6 after SBRT", title: "Peak urinary/bowel irritation", summary: "Temporary urinary and rectal irritation often peaks after the short course is completed.", examples: ["Nocturia, weaker stream, urgency, loose stools.", "Call for retention, fever, severe pain, or bleeding."] },
+        { phase: "Acute", time: "Treatment week", title: "Short-course onset", summary: "Symptoms may start during or shortly after the high-dose treatment week.", examples: ["Frequency, urgency, dysuria, mild bowel urgency.", "Fatigue is usually variable and individualized."] },
+        { phase: "Subacute", time: "Weeks 1 to 6 after SBRT", title: "Peak urinary/bowel irritation", summary: "Urinary and rectal irritation may be most noticeable after the short course is completed.", examples: ["Nocturia, weaker stream, urgency, loose stools.", "Call for retention, fever, severe pain, or bleeding."] },
         { phase: "Convalescent", time: "Months 2 to 6", title: "Symptoms settle", summary: "Most acute urinary and bowel symptoms improve over weeks to months.", examples: ["Medication support may be tapered as symptoms improve.", "Follow baseline urinary function closely."] },
         { phase: "Late", time: "6 months to years", title: "Late urinary and gastrointestinal surveillance", summary: "Late urinary, rectal, and sexual effects can occur months to years later.", examples: ["ED, stricture, hematuria, or rectal bleeding are monitored.", "Risk depends on baseline function, dose constraints, and anatomy."] }
       ],
       "gu:prostate": [
-        { phase: "Early", time: "First 1 to 3 weeks", title: "Pelvic irritation begins", summary: "Temporary urinary and bowel irritation can build as pelvic dose accumulates.", examples: ["Frequency, urgency, weaker stream, looser stools.", "Fatigue may slowly increase."] },
-        { phase: "Peak", time: "Late RT to 1 month after", title: "Urinary, bowel, fatigue peak", summary: "Temporary symptoms commonly peak near the end of treatment or soon after completion.", examples: ["Dysuria, nocturia, rectal urgency, frequent stools.", "Hydration, alpha blockers, and bowel medicines may help."] },
+        { phase: "Early", time: "First 1 to 3 weeks", title: "Pelvic irritation begins", summary: "Urinary and bowel irritation can build as pelvic dose accumulates.", examples: ["Frequency, urgency, weaker stream, looser stools.", "Fatigue may slowly increase."] },
+        { phase: "Peak", time: "Late RT to 1 month after", title: "Urinary, bowel, fatigue peak", summary: "Symptoms may become most noticeable near the end of treatment or soon after completion.", examples: ["Dysuria, nocturia, rectal urgency, frequent stools.", "Hydration, alpha blockers, and bowel medicines may help."] },
         { phase: "Recovery", time: "2 to 6 months", title: "Return toward baseline", summary: "Most acute bladder, bowel, and fatigue symptoms improve gradually.", examples: ["Call if symptoms worsen instead of improve.", "Persistent bleeding, fever, or retention needs evaluation."] },
         { phase: "Late", time: "6 months to years", title: "Late urinary, gastrointestinal, and sexual effects", summary: "Late effects are uncommon but clinically important when present.", examples: ["ED, stricture, rectal bleeding, or hematuria.", "Risk varies by technique, anatomy, and baseline function."] }
       ]
@@ -6812,7 +6781,7 @@
         duringTitle: "Short-course treatment",
         during: `During ${sessionText}, immediate effects may be mild and depend on the treatment site.`,
         afterTitle: "Symptoms may peak after treatment",
-        after: "With a short course, some temporary effects become most noticeable after the final session rather than during treatment.",
+        after: "With a short course, some effects can become most noticeable after the final session rather than during treatment.",
         recovery: "Most acute effects improve gradually over the following weeks.",
         late: "Long-term effects depend on the treatment site, dose, and nearby normal tissues."
       };
@@ -6882,9 +6851,8 @@
       const recoveryEntry = (summary, late) => ({
         phase: "Recovery",
         time: "Weeks after treatment",
-        title: "If short-term effects occur, they usually improve",
-        summary,
-        examples: [late]
+        title: "Recovery and possible longer-term effects",
+        summary: `${summary} ${late}`
       });
 
       if (system.id === "breast") {
@@ -6901,16 +6869,16 @@
             ? "mild fatigue, localized skin redness or darkening, itching, tenderness, or swelling in the treated part of the breast"
             : "fatigue, skin redness or darkening, itching, tenderness, warmth, or breast or chest-wall swelling";
         const duringSummary = course.isShort
-          ? `With this shorter course, some people notice little or no change during the treatment days. Possible short-term effects include ${possibleSymptoms}. These effects may not appear until after the last session.`
-          : `Some people notice little or no change early in treatment. As treatment continues, possible short-term effects include ${possibleSymptoms}.`;
+          ? `With this shorter course, symptoms may be limited during the treatment days but can appear or become more noticeable after the last session. Possible short-term effects include ${possibleSymptoms}.`
+          : `As treatment continues, short-term effects such as ${possibleSymptoms} may gradually become more noticeable.`;
         const laterSummary = course.isShort
           ? "If skin or fatigue symptoms develop, they may become more noticeable in the days or first few weeks after the final session rather than during the treatment course itself."
           : "If skin, tenderness, swelling, or fatigue develops, it may become more noticeable toward the end of treatment or during the first week or two afterward.";
         return [
           { phase: "Preparation", time: "Before treatment", title: "Baseline and skin-care planning", summary: `Your team reviews ${area}, your treatment position, baseline skin and arm symptoms, and any site-specific preparation.`, examples: ["Skin-care and activity guidance is individualized to the treatment area."] },
-          { phase: "Possible effects", time: course.duringLabel, title: "You may have few, mild, or no noticeable side effects", summary: duringSummary, examples: [treatmentFact] },
-          { phase: "Possible effects", time: course.laterLabel, title: "Temporary effects can be more noticeable later", summary: laterSummary, examples: ["Not everyone develops these symptoms, and their intensity varies from person to person."] },
-          recoveryEntry("When short-term breast or skin effects occur, they usually fade gradually over the following weeks. Energy and tenderness often improve as the treated tissues recover.", "Longer-lasting effects are possible but are less common and depend on the exact area treated, including firmness, swelling, cosmetic change, or uncommon lung or heart effects.")
+          { phase: "Possible effects", time: course.duringLabel, title: "Skin, breast or chest-wall, and fatigue changes may develop", summary: duringSummary, examples: [treatmentFact] },
+          { phase: "Possible effects", time: course.laterLabel, title: "Effects can be more noticeable later", summary: laterSummary, examples: ["The type and intensity of symptoms vary from person to person and with the treatment area."] },
+          recoveryEntry("Short-term breast, chest-wall, skin, or fatigue effects often begin to improve over the following weeks, although recovery can be gradual and some symptoms may persist longer.", "Longer-lasting effects are possible and depend on the exact area treated, including firmness, swelling, cosmetic change, or uncommon lung or heart effects.")
         ];
       }
 
@@ -6918,26 +6886,26 @@
         if (technique === "Brachytherapy") {
           return [
             { phase: "Preparation", time: "Before treatment", title: "Procedure and urinary baseline", summary: "Your team reviews baseline urinary and bowel function, medications, and the preparation needed for the brachytherapy procedure.", examples: ["Preparation and recovery differ depending on whether temporary catheters or permanent seeds are used."] },
-            { phase: "Possible effects", time: "During the first days to weeks", title: "Temporary urinary symptoms are possible", summary: "Some people have little difficulty, while others may notice temporary urinary frequency, urgency, burning, a weaker stream, pelvic soreness, or mild bowel irritation. These effects are possibilities rather than expected symptoms for everyone.", examples: [treatmentFact] },
+            { phase: "Possible effects", time: "During the first days to weeks", title: "Urinary symptoms are possible", summary: "Urinary frequency, urgency, burning, a weaker stream, pelvic soreness, or bowel irritation can occur after brachytherapy. The intensity varies, and symptoms may become more noticeable over the first days to weeks.", examples: [treatmentFact] },
             { phase: "Possible effects", time: "Weeks after treatment", title: "Symptoms can fluctuate before settling", summary: "If urinary or bowel irritation develops, it may become more noticeable for a period of time before improving. The timing varies with the brachytherapy technique and baseline urinary function.", examples: ["Call the treating team for inability to urinate, fever, heavy bleeding, or severe pain."] },
-            recoveryEntry("Most short-term urinary and bowel effects, when they occur, improve gradually over weeks to months.", "Later urinary, bowel, or sexual effects are possible and are discussed according to the specific brachytherapy approach, dose, anatomy, and baseline function.")
+            recoveryEntry("Short-term urinary and bowel effects often improve gradually over weeks to months, although the pace of recovery varies.", "Later urinary, bowel, or sexual effects are possible and are discussed according to the specific brachytherapy approach, dose, anatomy, and baseline function.")
           ];
         }
 
         const symptoms = "urinary frequency or urgency, getting up more often at night, burning with urination, a weaker stream, looser stools or rectal urgency, and fatigue";
         const duringSummary = course.isShort
-          ? `Because the course is short, some people have few or no noticeable symptoms during the treatment days. Possible temporary effects include ${symptoms}, and they can appear or become more noticeable after the last session.`
+          ? `Because the course is short, symptoms may be limited during the treatment days but can appear or become more noticeable after the last session. Possible effects include ${symptoms}.`
           : course.isLonger
-            ? `Many people feel relatively well early in the course. As pelvic radiation accumulates over several weeks, possible temporary effects include ${symptoms}. Some people have only mild symptoms or none of these.`
-            : `During this course, possible temporary effects include ${symptoms}. They may be mild, may not occur at all, or may become more noticeable as treatment continues.`;
+            ? `As pelvic radiation accumulates over several weeks, effects such as ${symptoms} may gradually become more noticeable.`
+            : `During this course, effects such as ${symptoms} may develop and can become more noticeable as treatment continues.`;
         const laterSummary = course.isShort
-          ? "If urinary, bowel, or fatigue symptoms develop, they may be most noticeable during the first few weeks after treatment because the course finishes before the temporary inflammation has fully developed."
+          ? "If urinary, bowel, or fatigue symptoms develop, they may be most noticeable during the first few weeks after treatment because the course finishes before the inflammation has fully developed."
           : "If urinary, bowel, or fatigue symptoms develop, they may become more noticeable toward the latter part of treatment or shortly after the final session.";
         return [
           { phase: "Preparation", time: "Before treatment", title: "Bladder, bowel, and urinary baseline", summary: "Your team reviews baseline urinary and bowel function and reinforces any bladder-filling or rectal-preparation instructions used for your treatment.", examples: ["Preparation is tailored to the prostate treatment technique and treatment field."] },
           { phase: "Possible effects", time: course.duringLabel, title: "Urinary, bowel, or fatigue changes are possible", summary: duringSummary, examples: [treatmentFact] },
-          { phase: "Possible effects", time: course.laterLabel, title: "Temporary irritation may be more noticeable later", summary: laterSummary, examples: ["Not everyone develops these symptoms, and supportive medicines can be adjusted if they do occur."] },
-          recoveryEntry("When short-term urinary, bowel, or fatigue symptoms occur, they usually improve gradually after treatment, although the time back toward baseline varies from person to person.", "Longer-term urinary, bowel, or sexual effects are possible but are not inevitable. Risk depends on baseline function, treatment area, dose, and technique.")
+          { phase: "Possible effects", time: course.laterLabel, title: "Irritation may be more noticeable later", summary: laterSummary, examples: ["The severity varies. Supportive medicines and other measures can be adjusted if symptoms develop."] },
+          recoveryEntry("Short-term urinary, bowel, or fatigue symptoms often improve gradually after treatment, although the time back toward baseline varies and some effects can persist longer.", "Longer-term urinary, bowel, or sexual effects are possible. Risk depends on baseline function, treatment area, dose, and technique.")
         ];
       }
 
@@ -6945,22 +6913,22 @@
         const isSclc = site.id === "sclc";
         const isStereotactic = technique === "SBRT/SABR";
         const symptoms = isStereotactic
-          ? "fatigue, cough, temporary chest discomfort, or chest-wall soreness, depending on where the tumor is located"
+          ? "fatigue, cough, chest discomfort, or chest-wall soreness, depending on where the tumor is located"
           : "fatigue, cough, appetite change, skin irritation, or swallowing discomfort if the esophagus is within the treatment area";
         const duringSummary = isStereotactic || course.isShort
-          ? `Many people have few or no immediate symptoms during a short thoracic course. Possible temporary effects include ${symptoms}. Some effects may not become noticeable until after treatment has finished.`
-          : `Some people have few symptoms early in a multi-week thoracic course. As treatment continues, possible temporary effects include ${symptoms}. The chance and intensity depend strongly on the structures included in the treatment field.`;
+          ? `During a short thoracic course, immediate symptoms may be limited, but effects such as ${symptoms} can develop during treatment or become more noticeable after treatment has finished.`
+          : `During a multi-week thoracic course, effects such as ${symptoms} may build as treatment continues. The chance and intensity depend strongly on the structures included in the treatment field.`;
         const laterSummary = isStereotactic || course.isShort
-          ? "If fatigue, cough, chest discomfort, or swallowing irritation develops, it can become more noticeable in the days or weeks after the last session. Many patients still have only mild symptoms."
-          : "If fatigue, cough, skin irritation, or swallowing discomfort develops, it may become more noticeable later in the course or shortly after treatment ends, especially when radiation is combined with systemic therapy.";
+          ? "Fatigue, cough, chest discomfort, or swallowing irritation can become more noticeable in the days or weeks after the last session, even when little was noticed during treatment."
+          : "Fatigue, cough, skin irritation, or swallowing discomfort may become more noticeable later in the course or shortly after treatment ends, especially when radiation is combined with systemic therapy.";
         const bloodCountNote = isSclc
           ? "When chemotherapy is given at the same time, blood-count changes and other chemotherapy-related effects are also possible and are monitored by the treatment team."
           : "Symptoms depend on tumor location, the amount of normal lung and esophagus in the treatment field, and whether systemic therapy is given at the same time.";
         return [
           { phase: "Preparation", time: "Before treatment", title: "Breathing, swallowing, and treatment-area baseline", summary: "Your team reviews breathing, cough, swallowing, pain, and the exact chest structures near the treatment area before radiation begins.", examples: ["Motion-management or breath-hold instructions are used when they are helpful for the treatment location."] },
-          { phase: "Possible effects", time: course.duringLabel, title: "You may have few, mild, or no immediate side effects", summary: duringSummary, examples: [treatmentFact, bloodCountNote] },
-          { phase: "Possible effects", time: course.laterLabel, title: "Temporary chest-related effects can appear later", summary: laterSummary, examples: ["Not everyone develops these symptoms. New or worsening breathing difficulty, fever, coughing blood, or severe chest pain should be reported promptly."] },
-          recoveryEntry("When short-term fatigue, swallowing irritation, cough, or skin effects occur, they often improve gradually over the following weeks.", "A delayed lung reaction called radiation pneumonitis is possible weeks to months later, but it does not occur in everyone. New cough, fever, or shortness of breath should be evaluated rather than assumed to be a normal treatment effect.")
+          { phase: "Possible effects", time: course.duringLabel, title: "Chest-related and fatigue symptoms may develop", summary: duringSummary, examples: [treatmentFact, bloodCountNote] },
+          { phase: "Possible effects", time: course.laterLabel, title: "Chest-related effects can appear later", summary: laterSummary, examples: ["New or worsening breathing difficulty, fever, coughing blood, or severe chest pain should be reported promptly."] },
+          recoveryEntry("Short-term fatigue, swallowing irritation, cough, or skin effects often improve gradually over the following weeks, though some symptoms may take longer to settle.", "A delayed lung reaction called radiation pneumonitis is possible weeks to months later. New cough, fever, or shortness of breath should be evaluated rather than assumed to be a normal treatment effect.")
         ];
       }
 
@@ -7012,10 +6980,6 @@
         `;
       }
 
-      const examples = Array.isArray(entry.examples) && entry.examples.length
-        ? `<ul>${entry.examples.map(item => `<li>${item}</li>`).join("")}</ul>`
-        : "";
-
       return `
         <div class="timeline-item">
           <div>
@@ -7025,7 +6989,6 @@
           <div>
             <strong>${entry.title || siteName}</strong>
             <p>${entry.summary || ""}</p>
-            ${examples}
           </div>
         </div>
       `;
@@ -7091,11 +7054,20 @@
       }
 
       const imagePath = isPositionSlide
-        ? (
-            key === "gu:prostate" && getSelectedPatientPositionKey() === "supine"
-              ? "images/Supine_Chest_Male.png"
-              : selectedPosition.image
-          )
+        ? (() => {
+            const positionKey = getSelectedPatientPositionKey();
+            const isBreastSite = system.id === "breast";
+
+            if (positionKey === "supine" && key === "gu:prostate") {
+              return "images/Supine_Chest_Male.png";
+            }
+
+            if (positionKey === "supine-arms-up" && !isBreastSite) {
+              return "images/Supine_Raised_Male.png";
+            }
+
+            return selectedPosition.image;
+          })()
         : (
             sharedSetupImagesByTechnique[technique]?.[slideType] ||
             setupImageLibrary[key]?.[technique]?.[slideType] ||
@@ -7132,7 +7104,7 @@
             <img
               src="${imagePath}"
               alt="${site.name} ${displayTitle.toLowerCase()} treatment setup preview"
-              class="setup-preview-img ${imagePath === "images/Supine_Chest_Male.png" ? "zoomed-positioning-reference" : ""}"
+              class="setup-preview-img ${["images/Supine_Chest_Male.png", "images/Supine_Raised_Male.png"].includes(imagePath) ? "zoomed-positioning-reference" : ""}"
               onerror="this.closest('.setup-media').classList.remove('has-image'); this.closest('.setup-media').innerHTML = '${setupCarouselControlsHtml().replace(/`/g, '\`').replace(/'/g, '&apos;')}<div class=&quot;setup-placeholder-icon&quot;>⚠️</div><div><strong>Image not found</strong><p>Check that the file path exists: ${imagePath}</p></div>';"
             />
             ${imageCreditHtml}
@@ -7293,7 +7265,7 @@
       $("selectedSubtitle").textContent = system.subtitle;
       $("siteHeading").textContent = `${system.name} disease sites`;
       updateTreatmentAtAGlanceContent();
-      $("supportiveCare").innerHTML = supportiveCare.map(item => `<li>${item}</li>`).join("");
+      if ($("supportiveCare")) $("supportiveCare").innerHTML = supportiveCare.map(item => `<li>${item}</li>`).join("");
       updateTreatmentAtAGlanceSchedule();
       updateTimeline();
       const selectedPosition = getSelectedPatientPosition();
