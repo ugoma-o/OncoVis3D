@@ -19,6 +19,7 @@
   <!-- Build: landing-page-redesign-2026-09-14 -->
   <!-- Build: landing-preview-machine-calendar-carousel-smoother-2026-09-16 -->
     <!-- Build: visual-education-for-radiation-oncology-hero-2026-09-14 -->
+  <!-- Build: consultation-baseline-assessments-breast-lung-2026-09-28 -->
 <meta name="description" content="A clinical tool for showing patients anatomy, tumor locations, radiation treatment concepts, dose schedules, and expected symptoms over time." />
   <link rel="icon" type="image/png" href="icons/App_Logo.png" />
   <link rel="manifest" href="./manifest.webmanifest" />
@@ -5285,6 +5286,115 @@
       }
     }
 
+    /* Site-specific consultation baseline assessments */
+    .baseline-assessment-panel .ipss-launch-subtitle {
+      font-size: 0.82rem;
+    }
+
+    .baseline-assessment-panel .ipss-overview-grid > div {
+      min-height: 76px;
+    }
+
+    .baseline-panel-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .baseline-panel-head .ipss-launch-copy {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    .baseline-panel-head .ipss-mini-result {
+      flex: 0 0 auto;
+      min-width: 108px;
+      min-height: 54px;
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      text-align: center;
+      font-size: 0.88rem;
+      line-height: 1.15;
+    }
+
+    .baseline-assessment-panel .ipss-launch-actions {
+      grid-template-columns: 1fr;
+      align-items: stretch;
+    }
+
+    .baseline-assessment-panel .ipss-open-btn {
+      width: 100%;
+      justify-self: stretch;
+    }
+
+    .baseline-summary-value {
+      display: block;
+      margin-top: 6px;
+      color: var(--ink);
+      font-size: 1.45rem;
+      font-weight: 900;
+      letter-spacing: -0.045em;
+      line-height: 1.08;
+    }
+
+    .baseline-summary-detail {
+      display: block;
+      margin-top: 7px;
+      color: var(--primary-dark);
+      font-size: 0.88rem;
+      font-weight: 800;
+      line-height: 1.42;
+    }
+
+    .baseline-source-note {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.72rem;
+      line-height: 1.4;
+    }
+
+    .baseline-source-note a {
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .baseline-field-note {
+      display: block;
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 0.76rem;
+      line-height: 1.4;
+    }
+
+    .baseline-status-chip {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      margin-top: 8px;
+      padding: 5px 8px;
+      border: 1px solid rgba(31, 111, 120, 0.20);
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary-dark);
+      font-size: 0.72rem;
+      font-weight: 850;
+    }
+
+    @media (max-width: 760px) {
+      .baseline-assessment-panel .ipss-launch-actions {
+        grid-template-columns: 1fr;
+      }
+
+      .baseline-assessment-panel .ipss-open-btn {
+        width: 100%;
+        justify-self: stretch;
+      }
+    }
+
 </style>
 </head>
 <body>
@@ -6067,10 +6177,13 @@
             </div>
           </section>
 
-          <section class="side-card ipss-launch-panel ipss-side-panel" id="ipssLaunchPanel" aria-label="Baseline urinary symptoms" hidden>
-            <div class="ipss-launch-copy">
-              <strong class="ipss-launch-title">Baseline urinary symptoms</strong>
-              <span class="ipss-launch-subtitle">International Prostate Symptom Score (IPSS)</span>
+          <section class="side-card ipss-launch-panel ipss-side-panel baseline-assessment-panel" id="ipssLaunchPanel" data-baseline-panel="prostate" aria-label="Baseline urinary symptoms" hidden>
+            <div class="baseline-panel-head">
+              <div class="ipss-launch-copy">
+                <strong class="ipss-launch-title">Baseline urinary symptoms</strong>
+                <span class="ipss-launch-subtitle">International Prostate Symptom Score (IPSS)</span>
+              </div>
+              <div class="ipss-mini-result" id="ipssMiniResult">---</div>
             </div>
 
             <div class="ipss-overview" aria-label="What the symptom score measures">
@@ -6087,6 +6200,58 @@
 
             <div class="ipss-launch-actions">
               <button class="btn small ipss-open-btn" id="openIpssCalculator" type="button">Open symptom score calculator</button>
+            </div>
+          </section>
+
+          <section class="side-card ipss-launch-panel ipss-side-panel baseline-assessment-panel" id="lungBaselinePanel" data-baseline-panel="lung" aria-label="Baseline respiratory status" hidden>
+            <div class="baseline-panel-head">
+              <div class="ipss-launch-copy">
+                <strong class="ipss-launch-title">Baseline breathing symptoms</strong>
+                <span class="ipss-launch-subtitle">Modified Medical Research Council (mMRC) Dyspnea Scale</span>
+              </div>
+              <div class="ipss-mini-result" id="lungMiniResult">---</div>
+            </div>
+
+            <div class="ipss-overview" aria-label="What the respiratory baseline assessment records">
+              <span class="ipss-overview-heading">Before radiation, record</span>
+              <div class="ipss-overview-grid">
+                <div><strong>Breathlessness &amp; function</strong><span>How dyspnea limits walking and daily activity</span></div>
+                <div><strong>Oxygen use</strong><span>Whether supplemental oxygen is needed at baseline</span></div>
+                <div><strong>Cough</strong><span>Baseline cough severity before thoracic treatment</span></div>
+                <div><strong>Hemoptysis &amp; chest pain</strong><span>Symptoms already present at consultation</span></div>
+              </div>
+            </div>
+
+            <p class="ipss-context-note">This consultation baseline helps distinguish symptoms present before thoracic radiation from symptoms that may change during treatment.</p>
+
+            <div class="ipss-launch-actions">
+              <button class="btn small ipss-open-btn" id="openLungBaseline" type="button">Open symptom score calculator</button>
+            </div>
+          </section>
+
+          <section class="side-card ipss-launch-panel ipss-side-panel baseline-assessment-panel" id="breastBaselinePanel" data-baseline-panel="breast" aria-label="Baseline breast symptoms" hidden>
+            <div class="baseline-panel-head">
+              <div class="ipss-launch-copy">
+                <strong class="ipss-launch-title">Baseline breast symptoms</strong>
+                <span class="ipss-launch-subtitle">BREAST-Q Physical Well-being: Chest</span>
+              </div>
+              <div class="ipss-mini-result" id="breastMiniResult">---</div>
+            </div>
+
+            <div class="ipss-overview" aria-label="What the breast questionnaire measures">
+              <span class="ipss-overview-heading">What it measures</span>
+              <div class="ipss-overview-grid">
+                <div><strong>Chest discomfort</strong><span>Breast or chest symptoms that affect physical well-being</span></div>
+                <div><strong>Tightness &amp; tenderness</strong><span>Baseline symptoms present before breast or chest-wall RT</span></div>
+                <div><strong>Physical impact</strong><span>How symptoms affect day-to-day comfort and function</span></div>
+                <div><strong>Pre-RT comparison</strong><span>Creates a formal baseline for later symptom comparison</span></div>
+              </div>
+            </div>
+
+            <p class="ipss-context-note">Official instruments only. This preview removes the made-up breast checklist and keeps the breast slot reserved for BREAST-Q style integration once licensing and scoring workflow are finalized.</p>
+
+            <div class="ipss-launch-actions">
+              <button class="btn small ipss-open-btn" id="openBreastBaseline" type="button">Open symptom score calculator</button>
             </div>
           </section>
 
@@ -11477,27 +11642,23 @@
       const viewerCard = document.querySelector(".viewer-card");
       const viewerBuffer = $("viewerBottomBuffer");
       const courseCard = document.querySelector(".treatment-course-card");
-      const ipssPanel = $("ipssLaunchPanel");
+      const baselinePanels = Array.from(document.querySelectorAll("[data-baseline-panel]"));
+      const activeBaselinePanel = baselinePanels.find(panel => !panel.hidden);
       const isStacked = window.matchMedia("(max-width: 980px)").matches;
 
-      if (!ipssPanel) return;
+      baselinePanels.forEach(panel => {
+        panel.style.height = "";
+        panel.style.minHeight = "";
+      });
 
-      if (ipssPanel.hidden || !viewerCard || !courseCard || isStacked) {
-        ipssPanel.style.height = "";
-        ipssPanel.style.minHeight = "";
-        return;
-      }
+      if (!activeBaselinePanel || !viewerCard || !courseCard || isStacked) return;
 
       /*
-        Keep the prostate baseline-symptom card aligned with the anatomy viewer,
-        but never compress the card enough to clip its content or calculator
-        button. If the IPSS content needs more vertical room, extend the blank
-        buffer beneath the 3D viewer by the same amount so the two columns still
-        end on the same horizontal line.
+        Keep the active pre-treatment baseline card aligned with the anatomy
+        viewer, but never compress the card enough to clip its consultation
+        content or assessment button. If more room is needed, extend the blank
+        buffer beneath the 3D viewer so the columns remain aligned.
       */
-      ipssPanel.style.height = "";
-      ipssPanel.style.minHeight = "";
-
       if (viewerBuffer) {
         viewerBuffer.style.height = "0px";
         viewerBuffer.style.flexBasis = "0px";
@@ -11508,7 +11669,7 @@
       const sideColumn = courseCard.closest(".side-column");
       const computedGap = sideColumn ? parseFloat(getComputedStyle(sideColumn).rowGap || getComputedStyle(sideColumn).gap || "18") : 18;
       const availableHeight = Math.max(180, Math.round(viewerBottom - courseBottom - computedGap));
-      const naturalHeight = Math.ceil(ipssPanel.scrollHeight);
+      const naturalHeight = Math.ceil(activeBaselinePanel.scrollHeight);
       const finalHeight = Math.max(availableHeight, naturalHeight);
       const viewerExtension = Math.max(0, finalHeight - availableHeight);
 
@@ -11517,8 +11678,8 @@
         viewerBuffer.style.flexBasis = `${viewerExtension}px`;
       }
 
-      ipssPanel.style.height = `${finalHeight}px`;
-      ipssPanel.style.minHeight = `${finalHeight}px`;
+      activeBaselinePanel.style.height = `${finalHeight}px`;
+      activeBaselinePanel.style.minHeight = `${finalHeight}px`;
     }
 
     function syncClinicianNotesHeight() {
@@ -11946,6 +12107,155 @@ const workspaceMainColumn = document.querySelector(".workspace > .main-column");
     </section>
   </div>
 
+  <div class="ipss-modal" id="lungBaselineModal" hidden aria-hidden="true">
+    <section class="ipss-dialog" role="dialog" aria-modal="true" aria-labelledby="lungBaselineDialogTitle">
+      <header class="ipss-dialog-header">
+        <div>
+          <span class="ipss-dialog-kicker">Thoracic consultation baseline</span>
+          <h2 id="lungBaselineDialogTitle">Baseline respiratory assessment</h2>
+          <p>Record breathlessness-related functional limitation and key respiratory symptoms present before thoracic radiation begins.</p>
+        </div>
+        <button class="ipss-close-btn" id="closeLungBaseline" type="button" aria-label="Close respiratory baseline assessment">×</button>
+      </header>
+
+      <div class="ipss-dialog-body">
+        <div class="ipss-content-grid">
+          <div class="ipss-question-list">
+            <div class="ipss-question">
+              <label for="lungMmrc"><span class="ipss-question-number">1</span>mMRC dyspnea grade</label>
+              <select id="lungMmrc">
+                <option value="">Select the description that best fits</option>
+                <option value="0">Grade 0 - Breathless only with strenuous exercise</option>
+                <option value="1">Grade 1 - Short of breath when hurrying on level ground or walking up a slight hill</option>
+                <option value="2">Grade 2 - Walks slower than peers because of breathlessness, or stops for breath at own pace</option>
+                <option value="3">Grade 3 - Stops for breath after about 100 meters or a few minutes on level ground</option>
+                <option value="4">Grade 4 - Too breathless to leave home, or breathless when dressing or undressing</option>
+              </select>
+              <span class="baseline-field-note">mMRC grades functional limitation from breathlessness. It does not replace pulmonary function testing or the clinical respiratory assessment.</span>
+            </div>
+
+            <div class="ipss-question">
+              <label for="lungOxygen"><span class="ipss-question-number">2</span>Supplemental oxygen at baseline</label>
+              <select id="lungOxygen">
+                <option value="">Select response</option>
+                <option value="none">None</option>
+                <option value="exertion">With exertion</option>
+                <option value="sleep">During sleep</option>
+                <option value="intermittent">Intermittent daytime use</option>
+                <option value="continuous">Continuous or near-continuous use</option>
+              </select>
+            </div>
+
+            <div class="ipss-question">
+              <label for="lungCough"><span class="ipss-question-number">3</span>Baseline cough</label>
+              <select id="lungCough">
+                <option value="">Select response</option>
+                <option value="0">None</option>
+                <option value="1">Mild</option>
+                <option value="2">Moderate</option>
+                <option value="3">Severe</option>
+              </select>
+            </div>
+
+            <div class="ipss-question">
+              <label for="lungHemoptysis"><span class="ipss-question-number">4</span>Hemoptysis before treatment</label>
+              <select id="lungHemoptysis">
+                <option value="">Select response</option>
+                <option value="no">Absent</option>
+                <option value="scant">Present - scant or blood-streaked sputum</option>
+                <option value="more">Present - more than scant</option>
+              </select>
+            </div>
+
+            <div class="ipss-question">
+              <label for="lungChestPain"><span class="ipss-question-number">5</span>Baseline chest pain or discomfort</label>
+              <select id="lungChestPain">
+                <option value="">Select response</option>
+                <option value="0">None</option>
+                <option value="1">Mild</option>
+                <option value="2">Moderate</option>
+                <option value="3">Severe</option>
+              </select>
+            </div>
+          </div>
+
+          <aside class="ipss-score-column">
+            <div class="ipss-score-card" aria-live="polite">
+              <span class="ipss-score-label">mMRC dyspnea grade</span>
+              <strong class="ipss-score-value" id="lungMmrcResult">— / 4</strong>
+              <span class="ipss-severity" id="lungMmrcInterpretation">Select an mMRC grade</span>
+              <div class="ipss-score-scale">0 minimal limitation · 4 severe limitation</div>
+            </div>
+
+            <div class="ipss-qol-card">
+              <span class="ipss-qol-label">Consultation baseline</span>
+              <strong class="baseline-summary-value" id="lungBaselineCompletion">0 / 5 recorded</strong>
+              <span class="baseline-summary-detail" id="lungBaselineHighlights">Record symptoms that are already present before RT.</span>
+            </div>
+
+            <div class="ipss-note-card">Use this assessment at consultation before radiation starts. Interpret it together with history, examination, oxygen requirement, imaging, pulmonary function testing when available, and the planned thoracic treatment.</div>
+            <div class="baseline-source-note">mMRC description source: <a href="https://www.ncbi.nlm.nih.gov/books/NBK593672/" target="_blank" rel="noopener noreferrer">National Academies / NCBI Bookshelf</a>.</div>
+
+            <div class="ipss-actions">
+              <button class="btn small secondary" id="resetLungBaseline" type="button">Reset</button>
+              <button class="btn small primary" id="doneLungBaseline" type="button">Done</button>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="ipss-modal" id="breastBaselineModal" hidden aria-hidden="true">
+    <section class="ipss-dialog" role="dialog" aria-modal="true" aria-labelledby="breastBaselineDialogTitle">
+      <header class="ipss-dialog-header">
+        <div>
+          <span class="ipss-dialog-kicker">Breast consultation baseline</span>
+          <h2 id="breastBaselineDialogTitle">BREAST-Q Physical Well-being: Chest</h2>
+          <p>This space is reserved for an official breast baseline questionnaire at consultation, before radiation starts.</p>
+        </div>
+        <button class="ipss-close-btn" id="closeBreastBaseline" type="button" aria-label="Close breast baseline assessment">×</button>
+      </header>
+
+      <div class="ipss-dialog-body">
+        <div class="ipss-content-grid">
+          <div class="ipss-question-list">
+            <div class="ipss-overview" aria-label="Official breast questionnaire note">
+              <span class="ipss-overview-heading">Preview status</span>
+              <div style="display:grid; gap:12px;">
+                <div style="padding:12px 13px; border:1px solid var(--line); border-radius:12px; background:rgba(255,255,255,0.78); color:var(--muted); font-size:0.84rem; line-height:1.5;">The previous made-up breast checklist has been removed. This slot is now reserved for an official patient-reported instrument only.</div>
+                <div style="padding:12px 13px; border:1px solid var(--line); border-radius:12px; background:rgba(255,255,255,0.78); color:var(--muted); font-size:0.84rem; line-height:1.5;"><strong style="color:var(--ink); display:block; margin-bottom:4px;">Recommended option</strong>BREAST-Q Physical Well-being: Chest for the breast consultation baseline.</div>
+                <div style="padding:12px 13px; border:1px solid var(--line); border-radius:12px; background:rgba(255,255,255,0.78); color:var(--muted); font-size:0.84rem; line-height:1.5;"><strong style="color:var(--ink); display:block; margin-bottom:4px;">Next step</strong>Confirm the specific breast instrument you want and the associated licensing/scoring workflow. Once selected, the official questionnaire can be embedded here and the top-right score tile can report the completed score.</div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="ipss-score-column">
+            <div class="ipss-score-card" aria-live="polite">
+              <span class="ipss-score-label">Consultation baseline score</span>
+              <strong class="ipss-score-value" id="breastBaselinePlaceholderScore">—</strong>
+              <span class="ipss-severity" id="breastBaselinePlaceholderStatus">Awaiting official breast questionnaire integration</span>
+              <div class="ipss-score-scale">No unofficial score is displayed.</div>
+            </div>
+
+            <div class="ipss-qol-card">
+              <span class="ipss-qol-label">Status</span>
+              <strong class="baseline-summary-value">Official instruments only</strong>
+              <span class="baseline-summary-detail">The preview keeps this slot styled consistently while avoiding a made-up breast score.</span>
+              <span class="baseline-status-chip">Pre-RT consultation baseline</span>
+            </div>
+
+            <div class="ipss-note-card">Use this panel as the final layout template. Once an official breast questionnaire is selected, its true score can appear here, and the side-card result chip can display the completed value instead of a placeholder.</div>
+
+            <div class="ipss-actions">
+              <button class="btn small primary" id="doneBreastBaseline" type="button">Done</button>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </div>
+
 
 
   <script>
@@ -12139,7 +12449,7 @@ const workspaceMainColumn = document.querySelector(".workspace > .main-column");
           scoreValue.textContent = "— / 35";
           severityText.textContent = answered ? `${answered} of 7 symptom items completed` : "Complete all 7 symptom items";
           if (miniResult) {
-            miniResult.textContent = answered ? `${answered}/7 completed` : "Not completed";
+            miniResult.textContent = "---";
             miniResult.classList.remove("has-score");
           }
         }
@@ -12211,6 +12521,146 @@ const workspaceMainColumn = document.querySelector(".workspace > .main-column");
   </script>
 
   <script>
+    (() => {
+      const lungPanel = document.getElementById("lungBaselinePanel");
+      const breastPanel = document.getElementById("breastBaselinePanel");
+      const lungModal = document.getElementById("lungBaselineModal");
+      const breastModal = document.getElementById("breastBaselineModal");
+      const lungOpen = document.getElementById("openLungBaseline");
+      const breastOpen = document.getElementById("openBreastBaseline");
+      const lungMiniResult = document.getElementById("lungMiniResult");
+      const breastMiniResult = document.getElementById("breastMiniResult");
+      let lastFocusedElement = null;
+
+      const currentSelection = () => {
+        try {
+          return { system: activeSystem()?.id || "", site: activeSite()?.id || "" };
+        } catch (error) {
+          const match = window.location.hash.match(/#?workspace\/([^/]+)\/([^/]+)/);
+          return { system: match?.[1] || "", site: match?.[2] || "" };
+        }
+      };
+
+      const closeModal = modal => {
+        if (!modal || modal.hidden) return;
+        modal.hidden = true;
+        modal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        if (lastFocusedElement && typeof lastFocusedElement.focus === "function") lastFocusedElement.focus();
+      };
+
+      const openModal = (modal, closeButton) => {
+        if (!modal) return;
+        lastFocusedElement = document.activeElement;
+        modal.hidden = false;
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        requestAnimationFrame(() => closeButton?.focus());
+      };
+
+      const syncPanels = () => {
+        const { system, site } = currentSelection();
+        const showLung = system === "thoracic" && (site === "nsclc" || site === "sclc");
+        const showBreast = system === "breast";
+        if (lungPanel) lungPanel.hidden = !showLung;
+        if (breastPanel) breastPanel.hidden = !showBreast;
+        if (!showLung) closeModal(lungModal);
+        if (!showBreast) closeModal(breastModal);
+        window.setTimeout(() => {
+          if (typeof syncWorkspaceColumnHeights === "function") syncWorkspaceColumnHeights();
+        }, 0);
+      };
+
+      // Lung baseline assessment
+      const lungMmrc = document.getElementById("lungMmrc");
+      const lungFields = ["lungMmrc", "lungOxygen", "lungCough", "lungHemoptysis", "lungChestPain"].map(id => document.getElementById(id)).filter(Boolean);
+      const lungMmrcResult = document.getElementById("lungMmrcResult");
+      const lungMmrcInterpretation = document.getElementById("lungMmrcInterpretation");
+      const lungBaselineCompletion = document.getElementById("lungBaselineCompletion");
+      const lungBaselineHighlights = document.getElementById("lungBaselineHighlights");
+      const mmrcLabels = {
+        0: "Minimal functional limitation",
+        1: "Mild functional limitation",
+        2: "Moderate functional limitation",
+        3: "Marked functional limitation",
+        4: "Severe functional limitation"
+      };
+
+      const updateLungBaseline = () => {
+        const completed = lungFields.filter(field => field.value !== "").length;
+        if (lungBaselineCompletion) lungBaselineCompletion.textContent = `${completed} / ${lungFields.length} recorded`;
+        if (lungMmrc?.value !== "") {
+          const grade = Number(lungMmrc.value);
+          if (lungMmrcResult) lungMmrcResult.textContent = `${grade} / 4`;
+          if (lungMmrcInterpretation) lungMmrcInterpretation.textContent = mmrcLabels[grade] || "Recorded";
+          if (lungMiniResult) {
+            lungMiniResult.textContent = `mMRC ${grade}`;
+            lungMiniResult.classList.add("has-score");
+          }
+        } else {
+          if (lungMmrcResult) lungMmrcResult.textContent = "— / 4";
+          if (lungMmrcInterpretation) lungMmrcInterpretation.textContent = "Select an mMRC grade";
+          if (lungMiniResult) {
+            lungMiniResult.textContent = "---";
+            lungMiniResult.classList.remove("has-score");
+          }
+        }
+
+        const hemoptysis = document.getElementById("lungHemoptysis")?.value || "";
+        const oxygen = document.getElementById("lungOxygen")?.value || "";
+        const highlights = [];
+        if (oxygen && oxygen !== "none") highlights.push("Supplemental oxygen use recorded");
+        if (hemoptysis && hemoptysis !== "no") highlights.push("Hemoptysis present before RT");
+        if (lungBaselineHighlights) lungBaselineHighlights.textContent = highlights.length ? highlights.join(" · ") : "Record symptoms that are already present before RT.";
+      };
+
+      lungFields.forEach(field => field.addEventListener("change", updateLungBaseline));
+      document.getElementById("resetLungBaseline")?.addEventListener("click", () => {
+        lungFields.forEach(field => { field.value = ""; });
+        updateLungBaseline();
+        lungMmrc?.focus();
+      });
+      lungOpen?.addEventListener("click", () => openModal(lungModal, document.getElementById("closeLungBaseline")));
+      document.getElementById("closeLungBaseline")?.addEventListener("click", () => closeModal(lungModal));
+      document.getElementById("doneLungBaseline")?.addEventListener("click", () => closeModal(lungModal));
+      lungModal?.addEventListener("click", event => { if (event.target === lungModal) closeModal(lungModal); });
+
+      // Breast baseline placeholder. The made-up checklist was removed; keep only the official-instrument slot.
+      const updateBreastBaseline = () => {
+        if (breastMiniResult) {
+          breastMiniResult.textContent = "---";
+          breastMiniResult.classList.remove("has-score");
+        }
+      };
+      breastOpen?.addEventListener("click", () => openModal(breastModal, document.getElementById("closeBreastBaseline")));
+      document.getElementById("closeBreastBaseline")?.addEventListener("click", () => closeModal(breastModal));
+      document.getElementById("doneBreastBaseline")?.addEventListener("click", () => closeModal(breastModal));
+      breastModal?.addEventListener("click", event => { if (event.target === breastModal) closeModal(breastModal); });
+
+      document.addEventListener("keydown", event => {
+        if (event.key !== "Escape") return;
+        closeModal(lungModal);
+        closeModal(breastModal);
+      });
+
+      document.addEventListener("click", event => {
+        if (event.target.closest?.("[data-system-id], [data-site-id]")) window.setTimeout(syncPanels, 0);
+      });
+      window.addEventListener("hashchange", () => window.setTimeout(syncPanels, 0));
+
+      const siteGrid = document.getElementById("siteGrid");
+      if (siteGrid && "MutationObserver" in window) {
+        const observer = new MutationObserver(syncPanels);
+        observer.observe(siteGrid, { childList: true, subtree: true, attributes: true, attributeFilter: ["class"] });
+      }
+
+      updateLungBaseline();
+      updateBreastBaseline();
+      syncPanels();
+    })();
+  </script>
+
+  <script>
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", async () => {
         try {
@@ -12224,3 +12674,4 @@ const workspaceMainColumn = document.querySelector(".workspace > .main-column");
 
 </body>
 </html>
+  
