@@ -3068,6 +3068,7 @@
          treatment-course explanation while keeping the desktop order unchanged. */
       .workspace > .side-column > .symptom-card { order: 1; }
       .workspace > .side-column > .treatment-course-card { order: 2; }
+      .workspace > .side-column > .ipss-side-panel { order: 3; height: auto !important; min-height: 0 !important; }
       .workspace > .side-column > .education-card { order: 3; }
       .workspace > .side-column > .clinician-notes-wide { order: 4; margin-top: 0; }
       .course-flow { grid-template-columns: 1fr; }
@@ -4851,6 +4852,439 @@
       line-height: 1.5;
     }
 
+
+
+    /* Prostate baseline IPSS calculator */
+    .ipss-launch-panel {
+      margin-top: 12px;
+      padding: 13px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      border: 1px solid rgba(31, 111, 120, 0.24);
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(31, 111, 120, 0.08), rgba(139, 92, 246, 0.06)), #fff;
+    }
+
+    .ipss-side-panel {
+      margin-top: 0;
+      min-height: 0;
+      padding: 16px 20px 20px;
+      box-sizing: border-box;
+      align-items: stretch;
+      justify-content: flex-start;
+      flex-direction: column;
+      gap: 18px;
+      overflow: hidden;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .ipss-side-panel .ipss-launch-copy {
+      display: grid;
+      gap: 6px;
+    }
+
+    .ipss-side-panel .ipss-launch-copy strong {
+      font-size: 1.08rem;
+    }
+
+    .ipss-side-panel .ipss-launch-copy p {
+      font-size: 0.9rem;
+      line-height: 1.48;
+    }
+
+    .ipss-side-panel .ipss-launch-actions {
+      width: 100%;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .ipss-launch-panel[hidden] { display: none !important; }
+
+    .ipss-launch-copy {
+      min-width: 0;
+    }
+
+    .ipss-launch-title {
+      display: block;
+      margin: 0;
+      color: var(--ink);
+      font-size: 1.08rem;
+      font-weight: 850;
+      line-height: 1.22;
+      letter-spacing: -0.02em;
+    }
+
+    .ipss-launch-subtitle {
+      display: block;
+      margin-top: 2px;
+      color: var(--primary-dark);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+    }
+
+    .ipss-overview {
+      padding: 14px;
+      border: 1px solid rgba(31, 111, 120, 0.16);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.56);
+    }
+
+    .ipss-overview-heading {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--ink);
+      font-size: 0.78rem;
+      font-weight: 850;
+      letter-spacing: 0.01em;
+    }
+
+    .ipss-overview-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 9px;
+    }
+
+    .ipss-overview-grid > div {
+      min-width: 0;
+      padding: 10px 11px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: rgba(255, 255, 255, 0.78);
+    }
+
+    .ipss-overview-grid strong {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--ink);
+      font-size: 0.76rem;
+      line-height: 1.25;
+    }
+
+    .ipss-overview-grid span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.72rem;
+      line-height: 1.34;
+    }
+
+    .ipss-context-note {
+      margin: 0;
+      padding: 11px 13px;
+      border-left: 3px solid rgba(31, 111, 120, 0.45);
+      border-radius: 0 10px 10px 0;
+      background: rgba(31, 111, 120, 0.055);
+      color: var(--muted);
+      font-size: 0.8rem;
+      line-height: 1.45;
+    }
+
+    .ipss-launch-copy strong {
+      display: block;
+      color: var(--ink);
+      line-height: 1.25;
+    }
+
+    .ipss-launch-copy p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 0.82rem;
+      line-height: 1.38;
+    }
+
+    .ipss-launch-actions {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .ipss-mini-result {
+      min-width: 92px;
+      padding: 7px 9px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.8);
+      color: var(--muted);
+      font-size: 0.74rem;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .ipss-mini-result.has-score {
+      color: var(--primary-dark);
+      border-color: rgba(31, 111, 120, 0.28);
+      background: rgba(31, 111, 120, 0.08);
+    }
+
+    .ipss-open-btn {
+      white-space: nowrap;
+    }
+
+    .ipss-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1200;
+      display: grid;
+      place-items: center;
+      padding: 22px;
+      background: rgba(21, 35, 43, 0.48);
+      backdrop-filter: blur(7px);
+    }
+
+    .ipss-modal[hidden] { display: none !important; }
+
+    .ipss-dialog {
+      width: min(980px, 100%);
+      max-height: min(880px, calc(100vh - 44px));
+      overflow: auto;
+      border: 1px solid rgba(31, 111, 120, 0.22);
+      border-radius: 24px;
+      background: #f8fbfc;
+      box-shadow: 0 30px 70px rgba(22, 37, 46, 0.28);
+    }
+
+    .ipss-dialog-header {
+      position: sticky;
+      top: 0;
+      z-index: 3;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 20px 22px 17px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(135deg, rgba(226, 240, 243, 0.98), rgba(237, 233, 252, 0.98));
+    }
+
+    .ipss-dialog-kicker {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--primary-dark);
+      font-size: 0.70rem;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .ipss-dialog-header h2 {
+      margin: 0;
+      font-size: clamp(1.35rem, 2.3vw, 1.75rem);
+      line-height: 1.1;
+      letter-spacing: -0.035em;
+    }
+
+    .ipss-dialog-header p {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    .ipss-close-btn {
+      flex: 0 0 auto;
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(31, 111, 120, 0.18);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.82);
+      color: var(--ink);
+      font-size: 1.25rem;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .ipss-dialog-body {
+      padding: 18px 22px 22px;
+    }
+
+    .ipss-content-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.65fr) minmax(240px, 0.7fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .ipss-question-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .ipss-question {
+      padding: 12px 13px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255,255,255,0.82);
+    }
+
+    .ipss-question label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--ink);
+      font-size: 0.88rem;
+      font-weight: 800;
+      line-height: 1.38;
+    }
+
+    .ipss-question-number {
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      margin-right: 6px;
+      border-radius: 7px;
+      background: var(--primary-soft);
+      color: var(--primary-dark);
+      font-size: 0.72rem;
+      font-weight: 900;
+      vertical-align: -1px;
+    }
+
+    .ipss-question select {
+      width: 100%;
+      min-height: 41px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      font-size: 0.84rem;
+      font-weight: 700;
+      padding: 8px 34px 8px 10px;
+    }
+
+    .ipss-score-column {
+      position: sticky;
+      top: 104px;
+      display: grid;
+      gap: 11px;
+    }
+
+    .ipss-score-card,
+    .ipss-qol-card,
+    .ipss-note-card {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: #fff;
+    }
+
+    .ipss-score-label,
+    .ipss-qol-label {
+      display: block;
+      color: var(--muted);
+      font-size: 0.69rem;
+      font-weight: 900;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .ipss-score-value {
+      display: block;
+      margin-top: 5px;
+      color: var(--ink);
+      font-size: 2rem;
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      line-height: 1;
+    }
+
+    .ipss-severity {
+      display: block;
+      margin-top: 7px;
+      color: var(--primary-dark);
+      font-size: 0.9rem;
+      font-weight: 850;
+    }
+
+    .ipss-score-scale {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.74rem;
+      line-height: 1.45;
+    }
+
+    .ipss-qol-card select {
+      width: 100%;
+      margin-top: 8px;
+      min-height: 41px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 8px 32px 8px 10px;
+    }
+
+    .ipss-qol-result {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      line-height: 1.4;
+    }
+
+    .ipss-note-card {
+      color: var(--muted);
+      font-size: 0.76rem;
+      line-height: 1.48;
+      background: rgba(248, 251, 252, 0.92);
+    }
+
+    .ipss-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .ipss-actions .btn {
+      flex: 1 1 100px;
+      justify-content: center;
+    }
+
+    @media (max-width: 760px) {
+      .ipss-launch-panel {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .ipss-launch-actions {
+        justify-content: space-between;
+      }
+
+      .ipss-content-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .ipss-score-column {
+        position: static;
+      }
+
+      .ipss-modal {
+        padding: 10px;
+      }
+
+      .ipss-dialog {
+        max-height: calc(100vh - 20px);
+        border-radius: 18px;
+      }
+
+      .ipss-dialog-header,
+      .ipss-dialog-body {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+    }
+
 </style>
 </head>
 <body>
@@ -5633,11 +6067,34 @@
             </div>
           </section>
 
+          <section class="side-card ipss-launch-panel ipss-side-panel" id="ipssLaunchPanel" aria-label="Baseline urinary symptoms" hidden>
+            <div class="ipss-launch-copy">
+              <strong class="ipss-launch-title">Baseline urinary symptoms</strong>
+              <span class="ipss-launch-subtitle">International Prostate Symptom Score (IPSS)</span>
+            </div>
+
+            <div class="ipss-overview" aria-label="What the symptom score measures">
+              <span class="ipss-overview-heading">What it measures</span>
+              <div class="ipss-overview-grid">
+                <div><strong>Emptying &amp; stream</strong><span>Incomplete emptying and weak urinary stream</span></div>
+                <div><strong>Frequency &amp; urgency</strong><span>How often and how urgently you need to urinate</span></div>
+                <div><strong>Flow pattern</strong><span>Stopping and starting or needing to strain</span></div>
+                <div><strong>Nighttime urination</strong><span>How often you get up to urinate overnight</span></div>
+              </div>
+            </div>
+
+            <p class="ipss-context-note">A baseline score helps your care team compare urinary symptoms before, during, and after radiation treatment.</p>
+
+            <div class="ipss-launch-actions">
+              <button class="btn small ipss-open-btn" id="openIpssCalculator" type="button">Open symptom score calculator</button>
+            </div>
+          </section>
+
           <section class="side-card symptom-card">
             <div class="panel-heading">
               <div>
                 <h3>Symptom timeline</h3>
-                <p>During treatment you won't see the beam and you won't feel the beam. Side effects vary from person to person.  Some people have few noticeable effects, while others develop symptoms that become more noticeable during treatment or in the weeks afterward. </p>
+                <p>During treatment you won't see the beam and you won't feel the beam. Side effects vary from person to person. Some people have few noticeable effects, while others develop symptoms that become more noticeable during treatment or in the weeks afterward.</p>
               </div>
             </div>
             <div class="timeline" id="timeline"></div>
@@ -5731,7 +6188,7 @@
 
     <footer class="footer">
       <div class="footer-inner">
-        <span>OncoVis3D™ | © 2026 Ugoma Onubogu. All rights reserved.</span>
+        <span>© 2026 OncoVis3D. All rights reserved.</span>
       </div>
     </footer>
   </div>
@@ -11016,6 +11473,54 @@
       viewerBuffer.style.flexBasis = `${extraSpace}px`;
     }
 
+    function syncIpssPanelToViewer() {
+      const viewerCard = document.querySelector(".viewer-card");
+      const viewerBuffer = $("viewerBottomBuffer");
+      const courseCard = document.querySelector(".treatment-course-card");
+      const ipssPanel = $("ipssLaunchPanel");
+      const isStacked = window.matchMedia("(max-width: 980px)").matches;
+
+      if (!ipssPanel) return;
+
+      if (ipssPanel.hidden || !viewerCard || !courseCard || isStacked) {
+        ipssPanel.style.height = "";
+        ipssPanel.style.minHeight = "";
+        return;
+      }
+
+      /*
+        Keep the prostate baseline-symptom card aligned with the anatomy viewer,
+        but never compress the card enough to clip its content or calculator
+        button. If the IPSS content needs more vertical room, extend the blank
+        buffer beneath the 3D viewer by the same amount so the two columns still
+        end on the same horizontal line.
+      */
+      ipssPanel.style.height = "";
+      ipssPanel.style.minHeight = "";
+
+      if (viewerBuffer) {
+        viewerBuffer.style.height = "0px";
+        viewerBuffer.style.flexBasis = "0px";
+      }
+
+      const viewerBottom = viewerCard.getBoundingClientRect().bottom;
+      const courseBottom = courseCard.getBoundingClientRect().bottom;
+      const sideColumn = courseCard.closest(".side-column");
+      const computedGap = sideColumn ? parseFloat(getComputedStyle(sideColumn).rowGap || getComputedStyle(sideColumn).gap || "18") : 18;
+      const availableHeight = Math.max(180, Math.round(viewerBottom - courseBottom - computedGap));
+      const naturalHeight = Math.ceil(ipssPanel.scrollHeight);
+      const finalHeight = Math.max(availableHeight, naturalHeight);
+      const viewerExtension = Math.max(0, finalHeight - availableHeight);
+
+      if (viewerBuffer && viewerExtension > 0) {
+        viewerBuffer.style.height = `${viewerExtension}px`;
+        viewerBuffer.style.flexBasis = `${viewerExtension}px`;
+      }
+
+      ipssPanel.style.height = `${finalHeight}px`;
+      ipssPanel.style.minHeight = `${finalHeight}px`;
+    }
+
     function syncClinicianNotesHeight() {
       const workspace = document.querySelector(".workspace");
       const mainColumn = workspace?.querySelector(":scope > .main-column");
@@ -11049,10 +11554,15 @@
       */
       syncTreatmentCourseHeight();
       syncViewerToTreatmentExplanation();
+      syncIpssPanelToViewer();
 
       requestAnimationFrame(() => {
         syncViewerToTreatmentExplanation();
-        requestAnimationFrame(syncClinicianNotesHeight);
+        syncIpssPanelToViewer();
+        requestAnimationFrame(() => {
+          syncIpssPanelToViewer();
+          syncClinicianNotesHeight();
+        });
       });
     }
 
@@ -11294,6 +11804,149 @@ const workspaceMainColumn = document.querySelector(".workspace > .main-column");
   </script>
 
 
+  <div class="ipss-modal" id="ipssModal" hidden aria-hidden="true">
+    <section class="ipss-dialog" role="dialog" aria-modal="true" aria-labelledby="ipssDialogTitle">
+      <header class="ipss-dialog-header">
+        <div>
+          <span class="ipss-dialog-kicker">Prostate baseline assessment</span>
+          <h2 id="ipssDialogTitle">International Prostate Symptom Score (IPSS)</h2>
+          <p>Use the seven symptom questions to document baseline lower urinary tract symptoms. The quality-of-life question is recorded separately and is not added to the 0–35 symptom score.</p>
+        </div>
+        <button class="ipss-close-btn" id="closeIpssCalculator" type="button" aria-label="Close IPSS calculator">×</button>
+      </header>
+
+      <div class="ipss-dialog-body">
+        <div class="ipss-content-grid">
+          <div class="ipss-question-list" id="ipssQuestionList">
+            <div class="ipss-question">
+              <label for="ipssQ1"><span class="ipss-question-number">1</span>Over the past month, how often have you had a sensation of not emptying your bladder completely after you finished urinating?</label>
+              <select id="ipssQ1" class="ipss-symptom-input" data-ipss-item="1">
+                <option value="">Select response</option>
+                <option value="0">Never</option>
+                <option value="1">Less than 1 time in 5</option>
+                <option value="2">Less than half the time</option>
+                <option value="3">About half the time</option>
+                <option value="4">More than half the time</option>
+                <option value="5">Almost always</option>
+              </select>
+            </div>
+
+            <div class="ipss-question">
+              <label for="ipssQ2"><span class="ipss-question-number">2</span>Over the past month, how often have you had to urinate again less than two hours after you finished urinating?</label>
+              <select id="ipssQ2" class="ipss-symptom-input" data-ipss-item="2">
+                <option value="">Select response</option>
+                <option value="0">Never</option>
+                <option value="1">Less than 1 time in 5</option>
+                <option value="2">Less than half the time</option>
+                <option value="3">About half the time</option>
+                <option value="4">More than half the time</option>
+                <option value="5">Almost always</option>
+              </select>
+            </div>
+
+            <div class="ipss-question">
+              <label for="ipssQ3"><span class="ipss-question-number">3</span>Over the past month, how often have you found that you stopped and started again several times when you urinated?</label>
+              <select id="ipssQ3" class="ipss-symptom-input" data-ipss-item="3">
+                <option value="">Select response</option>
+                <option value="0">Never</option>
+                <option value="1">Less than 1 time in 5</option>
+                <option value="2">Less than half the time</option>
+                <option value="3">About half the time</option>
+                <option value="4">More than half the time</option>
+                <option value="5">Almost always</option>
+              </select>
+            </div>
+
+            <div class="ipss-question">
+              <label for="ipssQ4"><span class="ipss-question-number">4</span>Over the past month, how often have you found it difficult to postpone urination?</label>
+              <select id="ipssQ4" class="ipss-symptom-input" data-ipss-item="4">
+                <option value="">Select response</option>
+                <option value="0">Never</option>
+                <option value="1">Less than 1 time in 5</option>
+                <option value="2">Less than half the time</option>
+                <option value="3">About half the time</option>
+                <option value="4">More than half the time</option>
+                <option value="5">Almost always</option>
+              </select>
+            </div>
+
+            <div class="ipss-question">
+              <label for="ipssQ5"><span class="ipss-question-number">5</span>Over the past month, how often have you had a weak urinary stream?</label>
+              <select id="ipssQ5" class="ipss-symptom-input" data-ipss-item="5">
+                <option value="">Select response</option>
+                <option value="0">Never</option>
+                <option value="1">Less than 1 time in 5</option>
+                <option value="2">Less than half the time</option>
+                <option value="3">About half the time</option>
+                <option value="4">More than half the time</option>
+                <option value="5">Almost always</option>
+              </select>
+            </div>
+
+            <div class="ipss-question">
+              <label for="ipssQ6"><span class="ipss-question-number">6</span>Over the past month, how often have you had to push or strain to begin urination?</label>
+              <select id="ipssQ6" class="ipss-symptom-input" data-ipss-item="6">
+                <option value="">Select response</option>
+                <option value="0">Never</option>
+                <option value="1">Less than 1 time in 5</option>
+                <option value="2">Less than half the time</option>
+                <option value="3">About half the time</option>
+                <option value="4">More than half the time</option>
+                <option value="5">Almost always</option>
+              </select>
+            </div>
+
+            <div class="ipss-question">
+              <label for="ipssQ7"><span class="ipss-question-number">7</span>Over the past month, how many times did you most typically get up to urinate from the time you went to bed until the time you got up in the morning?</label>
+              <select id="ipssQ7" class="ipss-symptom-input" data-ipss-item="7">
+                <option value="">Select response</option>
+                <option value="0">None</option>
+                <option value="1">1 time</option>
+                <option value="2">2 times</option>
+                <option value="3">3 times</option>
+                <option value="4">4 times</option>
+                <option value="5">5 or more times</option>
+              </select>
+            </div>
+          </div>
+
+          <aside class="ipss-score-column">
+            <div class="ipss-score-card" aria-live="polite">
+              <span class="ipss-score-label">International Prostate Symptom Score total</span>
+              <strong class="ipss-score-value" id="ipssScoreValue">— / 35</strong>
+              <span class="ipss-severity" id="ipssSeverity">Complete all 7 symptom items</span>
+              <div class="ipss-score-scale">0–7 mild · 8–19 moderate · 20–35 severe</div>
+            </div>
+
+            <div class="ipss-qol-card">
+              <span class="ipss-qol-label">Urinary quality of life</span>
+              <label for="ipssQol" class="sr-only">Urinary quality of life</label>
+              <select id="ipssQol">
+                <option value="">Select response</option>
+                <option value="0">0 · Delighted</option>
+                <option value="1">1 · Pleased</option>
+                <option value="2">2 · Mostly satisfied</option>
+                <option value="3">3 · Mixed</option>
+                <option value="4">4 · Mostly dissatisfied</option>
+                <option value="5">5 · Unhappy</option>
+                <option value="6">6 · Terrible</option>
+              </select>
+              <span class="ipss-qol-result" id="ipssQolResult">Recorded separately from the symptom score.</span>
+            </div>
+
+            <div class="ipss-note-card">Use this as a baseline symptom assessment during counseling. The score should be interpreted together with the urinary history, examination, anatomy, medications, and planned treatment. Responses entered here are not persisted by this calculator.</div>
+
+            <div class="ipss-actions">
+              <button class="btn small secondary" id="resetIpssCalculator" type="button">Reset</button>
+              <button class="btn small primary" id="doneIpssCalculator" type="button">Done</button>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
 
   <script>
     (() => {
@@ -11413,6 +12066,147 @@ const workspaceMainColumn = document.querySelector(".workspace > .main-column");
 
       render();
       startAuto();
+    })();
+  </script>
+
+
+  <script>
+    (() => {
+      const launchPanel = document.getElementById("ipssLaunchPanel");
+      const openButton = document.getElementById("openIpssCalculator");
+      const miniResult = document.getElementById("ipssMiniResult");
+      const modal = document.getElementById("ipssModal");
+      const closeButton = document.getElementById("closeIpssCalculator");
+      const doneButton = document.getElementById("doneIpssCalculator");
+      const resetButton = document.getElementById("resetIpssCalculator");
+      const symptomInputs = Array.from(document.querySelectorAll(".ipss-symptom-input"));
+      const qolInput = document.getElementById("ipssQol");
+      const scoreValue = document.getElementById("ipssScoreValue");
+      const severityText = document.getElementById("ipssSeverity");
+      const qolResult = document.getElementById("ipssQolResult");
+      let lastFocusedElement = null;
+
+      if (!launchPanel || !modal || !openButton) return;
+
+      const isProstateSelected = () => {
+        try {
+          return activeSystem()?.id === "gu" && activeSite()?.id === "prostate";
+        } catch (error) {
+          return window.location.hash.includes("/gu/prostate") || window.location.hash.includes("gu/prostate");
+        }
+      };
+
+      const syncLaunchPanel = () => {
+        const show = isProstateSelected();
+        launchPanel.hidden = !show;
+        if (!show && !modal.hidden) closeModal();
+        window.setTimeout(() => {
+          if (typeof syncWorkspaceColumnHeights === "function") syncWorkspaceColumnHeights();
+        }, 0);
+      };
+
+      const severityForScore = (score) => {
+        if (score <= 7) return "Mild urinary symptoms";
+        if (score <= 19) return "Moderate urinary symptoms";
+        return "Severe urinary symptoms";
+      };
+
+      const qolLabels = {
+        0: "Delighted",
+        1: "Pleased",
+        2: "Mostly satisfied",
+        3: "Mixed",
+        4: "Mostly dissatisfied",
+        5: "Unhappy",
+        6: "Terrible"
+      };
+
+      const updateScore = () => {
+        const values = symptomInputs.map(input => input.value === "" ? null : Number(input.value));
+        const complete = values.every(value => Number.isInteger(value));
+
+        if (complete) {
+          const score = values.reduce((sum, value) => sum + value, 0);
+          const severity = severityForScore(score);
+          scoreValue.textContent = `${score} / 35`;
+          severityText.textContent = severity;
+          if (miniResult) {
+            miniResult.textContent = `Score ${score} · ${severity.replace(" urinary symptoms", "")}`;
+            miniResult.classList.add("has-score");
+          }
+        } else {
+          const answered = values.filter(value => Number.isInteger(value)).length;
+          scoreValue.textContent = "— / 35";
+          severityText.textContent = answered ? `${answered} of 7 symptom items completed` : "Complete all 7 symptom items";
+          if (miniResult) {
+            miniResult.textContent = answered ? `${answered}/7 completed` : "Not completed";
+            miniResult.classList.remove("has-score");
+          }
+        }
+
+        if (qolInput && qolInput.value !== "") {
+          const score = Number(qolInput.value);
+          qolResult.textContent = `Quality-of-life response: ${score} · ${qolLabels[score] || "Recorded"}`;
+        } else if (qolResult) {
+          qolResult.textContent = "Recorded separately from the symptom score.";
+        }
+      };
+
+      const openModal = () => {
+        lastFocusedElement = document.activeElement;
+        modal.hidden = false;
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        requestAnimationFrame(() => closeButton?.focus());
+      };
+
+      function closeModal() {
+        modal.hidden = true;
+        modal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
+          lastFocusedElement.focus();
+        }
+      }
+
+      const resetCalculator = () => {
+        symptomInputs.forEach(input => { input.value = ""; });
+        if (qolInput) qolInput.value = "";
+        updateScore();
+        symptomInputs[0]?.focus();
+      };
+
+      openButton.addEventListener("click", openModal);
+      closeButton?.addEventListener("click", closeModal);
+      doneButton?.addEventListener("click", closeModal);
+      resetButton?.addEventListener("click", resetCalculator);
+      symptomInputs.forEach(input => input.addEventListener("change", updateScore));
+      qolInput?.addEventListener("change", updateScore);
+
+      modal.addEventListener("click", event => {
+        if (event.target === modal) closeModal();
+      });
+
+      document.addEventListener("keydown", event => {
+        if (event.key === "Escape" && !modal.hidden) closeModal();
+      });
+
+      document.addEventListener("click", event => {
+        if (event.target.closest?.("[data-system-id], [data-site-id]")) {
+          window.setTimeout(syncLaunchPanel, 0);
+        }
+      });
+
+      window.addEventListener("hashchange", () => window.setTimeout(syncLaunchPanel, 0));
+
+      const siteGrid = document.getElementById("siteGrid");
+      if (siteGrid && "MutationObserver" in window) {
+        const observer = new MutationObserver(syncLaunchPanel);
+        observer.observe(siteGrid, { childList: true, subtree: true, attributes: true, attributeFilter: ["class"] });
+      }
+
+      updateScore();
+      syncLaunchPanel();
     })();
   </script>
 
