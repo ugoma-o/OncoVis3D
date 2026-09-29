@@ -1123,6 +1123,17 @@
       background: rgba(248, 251, 252, 0.88);
       padding: 12px;
       min-width: 0;
+      cursor: pointer;
+      transition: border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+    }
+
+    .course-step:hover {
+      border-color: rgba(31, 111, 120, 0.24);
+    }
+
+    .course-step:focus-visible {
+      outline: 3px solid rgba(31, 111, 120, 0.18);
+      outline-offset: 2px;
     }
 
     .course-step-head {
@@ -1160,9 +1171,10 @@
       line-height: 1.35;
     }
 
-    .course-step-consultation {
+    .course-step.is-active {
       border-color: rgba(31, 111, 120, 0.28);
       background: linear-gradient(135deg, rgba(230, 245, 246, 0.96), rgba(246, 244, 255, 0.94));
+      box-shadow: 0 8px 20px rgba(31, 111, 120, 0.08);
     }
 
     .course-consult-points {
@@ -3063,8 +3075,22 @@
          clinician notes can remain last after the setup, explanation, and timeline cards. */
       .workspace > .main-column { display: contents; }
       .workspace > .main-column > .viewer-card { order: 1; }
-      .workspace > .main-column > .setup-card { order: 2; }
-      .workspace > .side-column { order: 3; }
+      .workspace > .main-column > .setup-card { order: 2 !important; }
+
+      /* In single-column view, baseline symptom scoring is a separate card
+         immediately below Treatment setup, whose final section is the
+         Treatment plan / calendar. */
+      .workspace > .main-column > .baseline-assessment-panel {
+        order: 3 !important;
+        width: 100%;
+        max-width: none;
+        height: auto !important;
+        min-height: 0 !important;
+        margin: 0;
+        align-self: stretch;
+      }
+
+      .workspace > .side-column { order: 4; }
       /* In single-column view, surface the symptom timeline before the
          treatment-course explanation while keeping the desktop order unchanged. */
       .workspace > .side-column > .symptom-card { order: 1; }
@@ -5321,6 +5347,56 @@
       line-height: 1.15;
     }
 
+    .baseline-panel-head .ipss-mini-result.has-score {
+      display: grid;
+      gap: 2px;
+      min-width: 126px;
+    }
+
+    .baseline-panel-head .ipss-mini-score {
+      display: block;
+      color: var(--primary-dark);
+      font-size: 1.02rem;
+      font-weight: 950;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    .baseline-panel-head .ipss-mini-interpretation {
+      display: block;
+      color: var(--muted);
+      font-size: 0.70rem;
+      font-weight: 850;
+      line-height: 1.15;
+    }
+
+    .bctos-mini-line {
+      display: grid;
+      grid-template-columns: auto auto;
+      align-items: baseline;
+      justify-content: center;
+      column-gap: 5px;
+      line-height: 1.12;
+    }
+
+    .bctos-mini-line + .bctos-mini-line {
+      margin-top: 3px;
+    }
+
+    .bctos-mini-label {
+      color: var(--muted);
+      font-size: 0.64rem;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: 0.035em;
+    }
+
+    .bctos-mini-value {
+      color: var(--primary-dark);
+      font-size: 0.82rem;
+      font-weight: 950;
+    }
+
     .baseline-assessment-panel .ipss-launch-actions {
       grid-template-columns: 1fr;
       align-items: stretch;
@@ -6135,7 +6211,7 @@
               </div>
             </div>
             <div class="course-flow">
-              <div class="course-step course-step-consultation">
+              <div class="course-step course-step-consultation is-active" role="button" tabindex="0" aria-current="step">
                 <div class="course-step-head">
                   <div class="course-step-marker" aria-hidden="true">1</div>
                   <strong>Radiation oncology consultation</strong>
@@ -6143,7 +6219,7 @@
                 <p id="courseConsultText">Your radiation oncologist reviews your diagnosis and imaging, explains why radiation is being considered, discusses treatment goals, benefits, alternatives, and possible side effects, and answers your questions.</p>
               </div>
 
-              <div class="course-step">
+              <div class="course-step" role="button" tabindex="0">
                 <div class="course-step-head">
                   <div class="course-step-marker" aria-hidden="true">2</div>
                   <strong>CT simulation</strong>
@@ -6151,7 +6227,7 @@
                 <p id="courseSimText">A planning CT maps the treatment area and nearby organs. Your treatment position, immobilization, and any preparation instructions are established so the setup can be reproduced accurately.</p>
               </div>
 
-              <div class="course-step">
+              <div class="course-step" role="button" tabindex="0">
                 <div class="course-step-head">
                   <div class="course-step-marker" aria-hidden="true">3</div>
                   <strong>Treatment planning</strong>
@@ -6159,7 +6235,7 @@
                 <p id="coursePlanningText">The radiation oncology team designs and reviews the treatment plan, shaping dose around the target while limiting exposure to nearby healthy tissue. The plan is checked before treatment begins.</p>
               </div>
 
-              <div class="course-step">
+              <div class="course-step" role="button" tabindex="0">
                 <div class="course-step-head">
                   <div class="course-step-marker" aria-hidden="true">4</div>
                   <strong>Treatment sessions</strong>
@@ -6167,7 +6243,7 @@
                 <p id="courseTreatmentText">Treatment delivery follows the finalized plan and technique.</p>
               </div>
 
-              <div class="course-step">
+              <div class="course-step" role="button" tabindex="0">
                 <div class="course-step-head">
                   <div class="course-step-marker" aria-hidden="true">5</div>
                   <strong>Follow-up &amp; monitoring</strong>
@@ -6176,6 +6252,8 @@
               </div>
             </div>
           </section>
+
+          <span id="baselinePanelDesktopAnchor" hidden></span>
 
           <section class="side-card ipss-launch-panel ipss-side-panel baseline-assessment-panel" id="ipssLaunchPanel" data-baseline-panel="prostate" aria-label="Baseline urinary symptoms" hidden>
             <div class="baseline-panel-head">
@@ -6196,7 +6274,7 @@
               </div>
             </div>
 
-            <p class="ipss-context-note">A baseline score helps your care team compare urinary symptoms before, during, and after radiation treatment.</p>
+            
 
             <div class="ipss-launch-actions">
               <button class="btn small ipss-open-btn" id="openIpssCalculator" type="button">Open symptom score calculator</button>
@@ -6212,17 +6290,17 @@
               <div class="ipss-mini-result" id="lungMiniResult">---</div>
             </div>
 
-            <div class="ipss-overview" aria-label="What the respiratory baseline assessment records">
-              <span class="ipss-overview-heading">Before radiation, record</span>
+            <div class="ipss-overview" aria-label="What the symptom score measures">
+              <span class="ipss-overview-heading">What it measures</span>
               <div class="ipss-overview-grid">
-                <div><strong>Breathlessness &amp; function</strong><span>How dyspnea limits walking and daily activity</span></div>
-                <div><strong>Oxygen use</strong><span>Whether supplemental oxygen is needed at baseline</span></div>
-                <div><strong>Cough</strong><span>Baseline cough severity before thoracic treatment</span></div>
-                <div><strong>Hemoptysis &amp; chest pain</strong><span>Symptoms already present at consultation</span></div>
+                <div><strong>Breathlessness severity</strong><span>How shortness of breath affects exertion and walking</span></div>
+                <div><strong>Functional limitation</strong><span>How dyspnea impacts everyday activity</span></div>
+                <div><strong>Baseline respiratory status</strong><span>Context for symptoms already present before thoracic RT</span></div>
+                <div><strong>Pre-treatment comparison</strong><span>A baseline for later symptom change during and after treatment</span></div>
               </div>
             </div>
 
-            <p class="ipss-context-note">This consultation baseline helps distinguish symptoms present before thoracic radiation from symptoms that may change during treatment.</p>
+            
 
             <div class="ipss-launch-actions">
               <button class="btn small ipss-open-btn" id="openLungBaseline" type="button">Open symptom score calculator</button>
@@ -6232,23 +6310,23 @@
           <section class="side-card ipss-launch-panel ipss-side-panel baseline-assessment-panel" id="breastBaselinePanel" data-baseline-panel="breast" aria-label="Baseline breast symptoms" hidden>
             <div class="baseline-panel-head">
               <div class="ipss-launch-copy">
-                <strong class="ipss-launch-title">Baseline breast symptoms</strong>
-                <span class="ipss-launch-subtitle">BREAST-Q Physical Well-being: Chest</span>
+                <strong class="ipss-launch-title">Baseline breast/chest symptoms</strong>
+                <span class="ipss-launch-subtitle">Breast Cancer Treatment Outcome Scale (BCTOS-12)</span>
               </div>
               <div class="ipss-mini-result" id="breastMiniResult">---</div>
             </div>
 
-            <div class="ipss-overview" aria-label="What the breast questionnaire measures">
+            <div class="ipss-overview" aria-label="What the BCTOS-12 measures">
               <span class="ipss-overview-heading">What it measures</span>
               <div class="ipss-overview-grid">
-                <div><strong>Chest discomfort</strong><span>Breast or chest symptoms that affect physical well-being</span></div>
-                <div><strong>Tightness &amp; tenderness</strong><span>Baseline symptoms present before breast or chest-wall RT</span></div>
-                <div><strong>Physical impact</strong><span>How symptoms affect day-to-day comfort and function</span></div>
-                <div><strong>Pre-RT comparison</strong><span>Creates a formal baseline for later symptom comparison</span></div>
+                <div><strong>Functional status</strong><span>Arm heaviness, shoulder discomfort, arm discomfort, and arm swelling</span></div>
+                <div><strong>Aesthetic status</strong><span>Breast shape, texture, nipple appearance, tenderness, scar tissue, swelling, bra fit, and sensitivity</span></div>
+                <div><strong>Treated-side difference</strong><span>Each item compares the treated and untreated breast or side</span></div>
+                <div><strong>Pre-treatment status</strong><span>Documents post-surgical status before breast radiation begins</span></div>
               </div>
             </div>
 
-            <p class="ipss-context-note">Official instruments only. This preview removes the made-up breast checklist and keeps the breast slot reserved for BREAST-Q style integration once licensing and scoring workflow are finalized.</p>
+            
 
             <div class="ipss-launch-actions">
               <button class="btn small ipss-open-btn" id="openBreastBaseline" type="button">Open symptom score calculator</button>
@@ -7189,6 +7267,32 @@
           machine: "images/genitourinary/prostate/machine.png",
           immobilizer: "images/genitourinary/prostate/immobilizer.png"
         }
+      },
+      "breast:whole-breast": {
+        "IMRT/VMAT": { immobilizer: "Breast_immobilization.png" },
+        "3D conformal radiation": { immobilizer: "Breast_immobilization.png" }
+      },
+      "breast:pbi": {
+        "IMRT/VMAT": { immobilizer: "Breast_immobilization.png" },
+        "3D conformal radiation": { immobilizer: "Breast_immobilization.png" }
+      },
+      "breast:chest-wall": {
+        "IMRT/VMAT": { immobilizer: "Breast_immobilization.png" },
+        "3D conformal radiation": { immobilizer: "Breast_immobilization.png" }
+      },
+      "breast:regional-nodes": {
+        "IMRT/VMAT": { immobilizer: "Breast_immobilization.png" },
+        "3D conformal radiation": { immobilizer: "Breast_immobilization.png" }
+      },
+      "thoracic:nsclc": {
+        "IMRT/VMAT": { immobilizer: "Breast_immobilization.png" },
+        "3D conformal radiation": { immobilizer: "Breast_immobilization.png" },
+        "SBRT/SABR": { immobilizer: "Breast_immobilization.png" }
+      },
+      "thoracic:sclc": {
+        "IMRT/VMAT": { immobilizer: "Breast_immobilization.png" },
+        "3D conformal radiation": { immobilizer: "Breast_immobilization.png" },
+        "SBRT/SABR": { immobilizer: "Breast_immobilization.png" }
       }
     };
 
@@ -7251,9 +7355,9 @@
         { phase: "Late", time: "Months to years", title: "Pneumonitis and cardiac awareness", summary: "New cough, fever, or dyspnea weeks to months later can suggest pneumonitis and needs evaluation.", examples: ["Long-term monitoring depends on lung, heart, esophagus, and brachial plexus dose."] }
       ],
       breast: [
-        { phase: "Early", time: "Week 1", title: "Mild fatigue or none", summary: "Patients do not see or feel the beam; many feel well initially while skin care and arm mobility are reinforced.", examples: ["Use clinic-approved moisturizer and avoid friction over treated skin."] },
-        { phase: "Peak acute", time: "Weeks 2 to 4", title: "Skin and breast/chest wall reaction", summary: "Fatigue, redness or tanning, itching, tenderness, swelling, and underarm irritation may build.", examples: ["Skin reaction often peaks near the end of RT or shortly after."] },
-        { phase: "Recovery", time: "2 to 8 weeks after RT", title: "Skin heals and energy returns", summary: "Acute dermatitis and fatigue usually improve gradually after treatment finishes.", examples: ["Persistent swelling, pain, or reduced shoulder motion should be addressed."] },
+        { phase: "Early", time: "Week 1", title: "Mild fatigue or none", summary: "Patients do not see or feel the beam; many feel well initially while skin care and arm mobility are reinforced.", examples: ["Use clinic-approved moisturizer and avoid friction over treated skin.", "Skin reaction is often minimal early in treatment."] },
+        { phase: "Peak acute", time: "Weeks 2 to 4", title: "Skin and breast/chest wall reaction", summary: "A skin reaction may develop as treatment continues, including redness or darkening, warmth, dryness, itching, tenderness, swelling, and irritation in skin folds or the underarm.", examples: ["The reaction often becomes most noticeable near the end of RT or during the first 1 to 2 weeks afterward.", "Peeling or a more intense reaction can occur in higher-friction areas or skin folds."] },
+        { phase: "Recovery", time: "2 to 8 weeks after RT", title: "Skin heals and energy returns", summary: "The acute skin reaction and fatigue usually improve gradually after treatment finishes, although color change or sensitivity can take longer to fully settle.", examples: ["Persistent swelling, pain, open skin, drainage, or reduced shoulder motion should be addressed."] },
         { phase: "Late", time: "Months to years", title: "Fibrosis and regional effects", summary: "Late changes can include firmness, cosmetic change, edema, rib discomfort, or rare lung/heart effects.", examples: ["Risk depends on laterality, nodal fields, heart/lung dose, and systemic therapy."] }
       ],
       gi: [
@@ -7635,7 +7739,7 @@
       const normalized = String(title || "").toLowerCase();
       if (normalized.includes("position")) return "position";
       if (normalized.includes("machine") || normalized.includes("equipment")) return "machine";
-      if (normalized.includes("immobilizer") || normalized.includes("applicator")) return "immobilizer";
+      if (normalized.includes("immobiliz") || normalized.includes("applicator")) return "immobilizer";
       return "";
     }
 
@@ -7664,7 +7768,11 @@
       const system = activeSystem();
       const site = activeSite();
       const key = embedKey(system.id, site.id);
-      const setup = setupSlidesByTechnique[technique] || setupSlidesByTechnique["IMRT/VMAT"];
+      const setup =
+        siteSpecificSetupSlides[system.id]?.[technique] ||
+        siteSpecificSetupSlides[system.id]?.["IMRT/VMAT"] ||
+        setupSlidesByTechnique[technique] ||
+        setupSlidesByTechnique["IMRT/VMAT"];
       const slides = setup.slides;
       setupSlideIndex = setupSlideIndex % slides.length;
       const [icon, title, text] = slides[setupSlideIndex];
@@ -7747,6 +7855,54 @@
         $("setupDots").innerHTML = slides.map((_, index) => `<span class="setup-dot ${index === setupSlideIndex ? "active" : ""}"></span>`).join("");
       }
     }
+
+
+    const siteSpecificSetupSlides = {
+      breast: {
+        "IMRT/VMAT": {
+          description: "Breast radiation uses reproducible positioning and image guidance so the same target area can be treated accurately each day.",
+          slides: [
+            ["⚙️", "Treatment machine", "Linear accelerator used to deliver daily breast radiation treatments."],
+            ["🛏️", "Patient position", "Patients are commonly treated supine on a breast board with one or both arms raised. Prone positioning or breath hold may also be used when helpful."],
+            ["🧩", "Immobilization", "Different positioning and immobilization options may be used to keep the patient still and reproduce the same position each day. CT-based image guidance is performed each session to help line up treatment accurately."]
+          ]
+        },
+        "3D conformal radiation": {
+          description: "Breast radiation uses reproducible positioning and image guidance so the same target area can be treated accurately each day.",
+          slides: [
+            ["⚙️", "Treatment machine", "Linear accelerator used to deliver shaped breast radiation fields."],
+            ["🛏️", "Patient position", "Patients are commonly treated supine on a breast board with one or both arms raised. Prone positioning may also be used selectively."],
+            ["🧩", "Immobilization", "Different positioning and immobilization options may be used to keep the patient still and reproduce the same position each day. CT-based image guidance is performed each session to help line up treatment accurately."]
+          ]
+        }
+      },
+      thoracic: {
+        "IMRT/VMAT": {
+          description: "Thoracic radiation uses reproducible upper-body positioning, motion management when needed, and daily image guidance to align the target accurately.",
+          slides: [
+            ["⚙️", "Treatment machine", "Linear accelerator used to deliver image-guided thoracic radiation."],
+            ["🛏️", "Patient position", "Patients are usually treated supine with both arms raised. Depending on the case, breath hold or other motion-management strategies may also be used."],
+            ["🧩", "Immobilization", "Different positioning and immobilization options may be used to keep the patient still and reproduce the same position each day. CT-based image guidance is performed each session to help line up treatment accurately."]
+          ]
+        },
+        "3D conformal radiation": {
+          description: "Thoracic radiation uses reproducible upper-body positioning, motion management when needed, and daily image guidance to align the target accurately.",
+          slides: [
+            ["⚙️", "Treatment machine", "Linear accelerator used to deliver shaped thoracic radiation fields."],
+            ["🛏️", "Patient position", "Patients are usually treated supine with both arms raised. Motion-management strategies are chosen based on anatomy and tumor motion."],
+            ["🧩", "Immobilization", "Different positioning and immobilization options may be used to keep the patient still and reproduce the same position each day. CT-based image guidance is performed each session to help line up treatment accurately."]
+          ]
+        },
+        "SBRT/SABR": {
+          description: "Thoracic SBRT/SABR relies on very reproducible setup, motion management, and daily image guidance because treatment is highly focused.",
+          slides: [
+            ["🎯", "Treatment machine", "Linac-based SBRT or another stereotactic platform used for highly focused lung treatment."],
+            ["🛏️", "Patient position", "Patients are usually treated supine with the arms raised, with setup chosen to minimize motion and allow reproducible targeting."],
+            ["🧩", "Immobilization", "Different positioning and immobilization options may be used to keep the patient still and reproduce the same position each day. CT-based image guidance is performed each session to help line up treatment accurately."]
+          ]
+        }
+      }
+    };
 
     const treatmentGlanceSiteCopy = {
       "breast:whole-breast": {
@@ -11776,7 +11932,11 @@
     }
     function navigateSetupSlide(direction) {
       const technique = $("technique").value;
-      const setup = setupSlidesByTechnique[technique] || setupSlidesByTechnique["IMRT/VMAT"];
+      const setup =
+        siteSpecificSetupSlides[system.id]?.[technique] ||
+        siteSpecificSetupSlides[system.id]?.["IMRT/VMAT"] ||
+        setupSlidesByTechnique[technique] ||
+        setupSlidesByTechnique["IMRT/VMAT"];
       const totalSlides = setup.slides.length;
       setupSlideIndex = (setupSlideIndex + direction + totalSlides) % totalSlides;
       updateSetupCard();
@@ -12111,71 +12271,27 @@ const workspaceMainColumn = document.querySelector(".workspace > .main-column");
     <section class="ipss-dialog" role="dialog" aria-modal="true" aria-labelledby="lungBaselineDialogTitle">
       <header class="ipss-dialog-header">
         <div>
-          <span class="ipss-dialog-kicker">Thoracic consultation baseline</span>
-          <h2 id="lungBaselineDialogTitle">Baseline respiratory assessment</h2>
-          <p>Record breathlessness-related functional limitation and key respiratory symptoms present before thoracic radiation begins.</p>
+          <span class="ipss-dialog-kicker">Thoracic consultation assessment</span>
+          <h2 id="lungBaselineDialogTitle">Modified Medical Research Council (mMRC) Dyspnea Scale</h2>
+          <p>Select the description that best reflects the patient's current functional limitation from breathlessness before thoracic radiation begins.</p>
         </div>
-        <button class="ipss-close-btn" id="closeLungBaseline" type="button" aria-label="Close respiratory baseline assessment">×</button>
+        <button class="ipss-close-btn" id="closeLungBaseline" type="button" aria-label="Close mMRC calculator">×</button>
       </header>
 
       <div class="ipss-dialog-body">
         <div class="ipss-content-grid">
           <div class="ipss-question-list">
             <div class="ipss-question">
-              <label for="lungMmrc"><span class="ipss-question-number">1</span>mMRC dyspnea grade</label>
+              <label for="lungMmrc"><span class="ipss-question-number">1</span>Which description best matches current breathlessness?</label>
               <select id="lungMmrc">
-                <option value="">Select the description that best fits</option>
+                <option value="">Select response</option>
                 <option value="0">Grade 0 - Breathless only with strenuous exercise</option>
                 <option value="1">Grade 1 - Short of breath when hurrying on level ground or walking up a slight hill</option>
                 <option value="2">Grade 2 - Walks slower than peers because of breathlessness, or stops for breath at own pace</option>
                 <option value="3">Grade 3 - Stops for breath after about 100 meters or a few minutes on level ground</option>
                 <option value="4">Grade 4 - Too breathless to leave home, or breathless when dressing or undressing</option>
               </select>
-              <span class="baseline-field-note">mMRC grades functional limitation from breathlessness. It does not replace pulmonary function testing or the clinical respiratory assessment.</span>
-            </div>
-
-            <div class="ipss-question">
-              <label for="lungOxygen"><span class="ipss-question-number">2</span>Supplemental oxygen at baseline</label>
-              <select id="lungOxygen">
-                <option value="">Select response</option>
-                <option value="none">None</option>
-                <option value="exertion">With exertion</option>
-                <option value="sleep">During sleep</option>
-                <option value="intermittent">Intermittent daytime use</option>
-                <option value="continuous">Continuous or near-continuous use</option>
-              </select>
-            </div>
-
-            <div class="ipss-question">
-              <label for="lungCough"><span class="ipss-question-number">3</span>Baseline cough</label>
-              <select id="lungCough">
-                <option value="">Select response</option>
-                <option value="0">None</option>
-                <option value="1">Mild</option>
-                <option value="2">Moderate</option>
-                <option value="3">Severe</option>
-              </select>
-            </div>
-
-            <div class="ipss-question">
-              <label for="lungHemoptysis"><span class="ipss-question-number">4</span>Hemoptysis before treatment</label>
-              <select id="lungHemoptysis">
-                <option value="">Select response</option>
-                <option value="no">Absent</option>
-                <option value="scant">Present - scant or blood-streaked sputum</option>
-                <option value="more">Present - more than scant</option>
-              </select>
-            </div>
-
-            <div class="ipss-question">
-              <label for="lungChestPain"><span class="ipss-question-number">5</span>Baseline chest pain or discomfort</label>
-              <select id="lungChestPain">
-                <option value="">Select response</option>
-                <option value="0">None</option>
-                <option value="1">Mild</option>
-                <option value="2">Moderate</option>
-                <option value="3">Severe</option>
-              </select>
+              <span class="baseline-field-note">The mMRC grade measures functional limitation from dyspnea. It does not replace pulmonary function testing or the clinical respiratory assessment.</span>
             </div>
           </div>
 
@@ -12187,14 +12303,7 @@ const workspaceMainColumn = document.querySelector(".workspace > .main-column");
               <div class="ipss-score-scale">0 minimal limitation · 4 severe limitation</div>
             </div>
 
-            <div class="ipss-qol-card">
-              <span class="ipss-qol-label">Consultation baseline</span>
-              <strong class="baseline-summary-value" id="lungBaselineCompletion">0 / 5 recorded</strong>
-              <span class="baseline-summary-detail" id="lungBaselineHighlights">Record symptoms that are already present before RT.</span>
-            </div>
-
-            <div class="ipss-note-card">Use this assessment at consultation before radiation starts. Interpret it together with history, examination, oxygen requirement, imaging, pulmonary function testing when available, and the planned thoracic treatment.</div>
-            <div class="baseline-source-note">mMRC description source: <a href="https://www.ncbi.nlm.nih.gov/books/NBK593672/" target="_blank" rel="noopener noreferrer">National Academies / NCBI Bookshelf</a>.</div>
+            <div class="ipss-note-card">Use this score as a pre-treatment reference for dyspnea-related functional limitation during the radiation oncology consultation.</div>
 
             <div class="ipss-actions">
               <button class="btn small secondary" id="resetLungBaseline" type="button">Reset</button>
@@ -12210,44 +12319,164 @@ const workspaceMainColumn = document.querySelector(".workspace > .main-column");
     <section class="ipss-dialog" role="dialog" aria-modal="true" aria-labelledby="breastBaselineDialogTitle">
       <header class="ipss-dialog-header">
         <div>
-          <span class="ipss-dialog-kicker">Breast consultation baseline</span>
-          <h2 id="breastBaselineDialogTitle">BREAST-Q Physical Well-being: Chest</h2>
-          <p>This space is reserved for an official breast baseline questionnaire at consultation, before radiation starts.</p>
+          <span class="ipss-dialog-kicker">Breast consultation assessment</span>
+          <h2 id="breastBaselineDialogTitle">Breast Cancer Treatment Outcome Scale (BCTOS-12)</h2>
+          <p>Rate the difference between the treated and untreated breast or side for each item. Use this after breast-conserving surgery and before radiation to document functional and aesthetic status.</p>
         </div>
-        <button class="ipss-close-btn" id="closeBreastBaseline" type="button" aria-label="Close breast baseline assessment">×</button>
+        <button class="ipss-close-btn" id="closeBreastBaseline" type="button" aria-label="Close BCTOS-12 calculator">×</button>
       </header>
 
       <div class="ipss-dialog-body">
         <div class="ipss-content-grid">
           <div class="ipss-question-list">
-            <div class="ipss-overview" aria-label="Official breast questionnaire note">
-              <span class="ipss-overview-heading">Preview status</span>
-              <div style="display:grid; gap:12px;">
-                <div style="padding:12px 13px; border:1px solid var(--line); border-radius:12px; background:rgba(255,255,255,0.78); color:var(--muted); font-size:0.84rem; line-height:1.5;">The previous made-up breast checklist has been removed. This slot is now reserved for an official patient-reported instrument only.</div>
-                <div style="padding:12px 13px; border:1px solid var(--line); border-radius:12px; background:rgba(255,255,255,0.78); color:var(--muted); font-size:0.84rem; line-height:1.5;"><strong style="color:var(--ink); display:block; margin-bottom:4px;">Recommended option</strong>BREAST-Q Physical Well-being: Chest for the breast consultation baseline.</div>
-                <div style="padding:12px 13px; border:1px solid var(--line); border-radius:12px; background:rgba(255,255,255,0.78); color:var(--muted); font-size:0.84rem; line-height:1.5;"><strong style="color:var(--ink); display:block; margin-bottom:4px;">Next step</strong>Confirm the specific breast instrument you want and the associated licensing/scoring workflow. Once selected, the official questionnaire can be embedded here and the top-right score tile can report the completed score.</div>
-              </div>
+            <div class="ipss-overview">
+              <span class="ipss-overview-heading">Functional Status</span>
+            </div>
+            <div class="ipss-question">
+              <label for="bctosArmHeaviness"><span class="ipss-question-number">1</span>Arm heaviness</label>
+              <select id="bctosArmHeaviness" class="bctos-item" data-bctos-group="functional">
+                <option value="">Select response</option>
+                <option value="1">1 · No difference</option>
+                <option value="2">2 · Slight difference</option>
+                <option value="3">3 · Moderate difference</option>
+                <option value="4">4 · Large difference</option>
+              </select>
+            </div>
+            <div class="ipss-question">
+              <label for="bctosShoulderDiscomfort"><span class="ipss-question-number">2</span>Shoulder discomfort</label>
+              <select id="bctosShoulderDiscomfort" class="bctos-item" data-bctos-group="functional">
+                <option value="">Select response</option>
+                <option value="1">1 · No difference</option>
+                <option value="2">2 · Slight difference</option>
+                <option value="3">3 · Moderate difference</option>
+                <option value="4">4 · Large difference</option>
+              </select>
+            </div>
+            <div class="ipss-question">
+              <label for="bctosArmDiscomfort"><span class="ipss-question-number">3</span>Arm discomfort</label>
+              <select id="bctosArmDiscomfort" class="bctos-item" data-bctos-group="functional">
+                <option value="">Select response</option>
+                <option value="1">1 · No difference</option>
+                <option value="2">2 · Slight difference</option>
+                <option value="3">3 · Moderate difference</option>
+                <option value="4">4 · Large difference</option>
+              </select>
+            </div>
+            <div class="ipss-question">
+              <label for="bctosArmSwelling"><span class="ipss-question-number">4</span>Arm swelling</label>
+              <select id="bctosArmSwelling" class="bctos-item" data-bctos-group="functional">
+                <option value="">Select response</option>
+                <option value="1">1 · No difference</option>
+                <option value="2">2 · Slight difference</option>
+                <option value="3">3 · Moderate difference</option>
+                <option value="4">4 · Large difference</option>
+              </select>
+            </div>
+
+            <div class="ipss-overview" style="margin-top:14px;">
+              <span class="ipss-overview-heading">Aesthetic Status</span>
+            </div>
+            <div class="ipss-question">
+              <label for="bctosBreastShape"><span class="ipss-question-number">5</span>Breast shape</label>
+              <select id="bctosBreastShape" class="bctos-item" data-bctos-group="aesthetic">
+                <option value="">Select response</option>
+                <option value="1">1 · No difference</option>
+                <option value="2">2 · Slight difference</option>
+                <option value="3">3 · Moderate difference</option>
+                <option value="4">4 · Large difference</option>
+              </select>
+            </div>
+            <div class="ipss-question">
+              <label for="bctosBreastTexture"><span class="ipss-question-number">6</span>Breast texture</label>
+              <select id="bctosBreastTexture" class="bctos-item" data-bctos-group="aesthetic">
+                <option value="">Select response</option>
+                <option value="1">1 · No difference</option>
+                <option value="2">2 · Slight difference</option>
+                <option value="3">3 · Moderate difference</option>
+                <option value="4">4 · Large difference</option>
+              </select>
+            </div>
+            <div class="ipss-question">
+              <label for="bctosNippleAppearance"><span class="ipss-question-number">7</span>Nipple appearance</label>
+              <select id="bctosNippleAppearance" class="bctos-item" data-bctos-group="aesthetic">
+                <option value="">Select response</option>
+                <option value="1">1 · No difference</option>
+                <option value="2">2 · Slight difference</option>
+                <option value="3">3 · Moderate difference</option>
+                <option value="4">4 · Large difference</option>
+              </select>
+            </div>
+            <div class="ipss-question">
+              <label for="bctosBreastTenderness"><span class="ipss-question-number">8</span>Breast tenderness</label>
+              <select id="bctosBreastTenderness" class="bctos-item" data-bctos-group="aesthetic">
+                <option value="">Select response</option>
+                <option value="1">1 · No difference</option>
+                <option value="2">2 · Slight difference</option>
+                <option value="3">3 · Moderate difference</option>
+                <option value="4">4 · Large difference</option>
+              </select>
+            </div>
+            <div class="ipss-question">
+              <label for="bctosScarTissue"><span class="ipss-question-number">9</span>Scar tissue</label>
+              <select id="bctosScarTissue" class="bctos-item" data-bctos-group="aesthetic">
+                <option value="">Select response</option>
+                <option value="1">1 · No difference</option>
+                <option value="2">2 · Slight difference</option>
+                <option value="3">3 · Moderate difference</option>
+                <option value="4">4 · Large difference</option>
+              </select>
+            </div>
+            <div class="ipss-question">
+              <label for="bctosBreastSwelling"><span class="ipss-question-number">10</span>Breast swelling</label>
+              <select id="bctosBreastSwelling" class="bctos-item" data-bctos-group="aesthetic">
+                <option value="">Select response</option>
+                <option value="1">1 · No difference</option>
+                <option value="2">2 · Slight difference</option>
+                <option value="3">3 · Moderate difference</option>
+                <option value="4">4 · Large difference</option>
+              </select>
+            </div>
+            <div class="ipss-question">
+              <label for="bctosBraFit"><span class="ipss-question-number">11</span>Fit of bra</label>
+              <select id="bctosBraFit" class="bctos-item" data-bctos-group="aesthetic">
+                <option value="">Select response</option>
+                <option value="1">1 · No difference</option>
+                <option value="2">2 · Slight difference</option>
+                <option value="3">3 · Moderate difference</option>
+                <option value="4">4 · Large difference</option>
+              </select>
+            </div>
+            <div class="ipss-question">
+              <label for="bctosBreastSensitivity"><span class="ipss-question-number">12</span>Breast sensitivity</label>
+              <select id="bctosBreastSensitivity" class="bctos-item" data-bctos-group="aesthetic">
+                <option value="">Select response</option>
+                <option value="1">1 · No difference</option>
+                <option value="2">2 · Slight difference</option>
+                <option value="3">3 · Moderate difference</option>
+                <option value="4">4 · Large difference</option>
+              </select>
             </div>
           </div>
 
           <aside class="ipss-score-column">
             <div class="ipss-score-card" aria-live="polite">
-              <span class="ipss-score-label">Consultation baseline score</span>
-              <strong class="ipss-score-value" id="breastBaselinePlaceholderScore">—</strong>
-              <span class="ipss-severity" id="breastBaselinePlaceholderStatus">Awaiting official breast questionnaire integration</span>
-              <div class="ipss-score-scale">No unofficial score is displayed.</div>
+              <span class="ipss-score-label">Functional Status</span>
+              <strong class="ipss-score-value" id="bctosFunctionalResult">— / 4</strong>
+              <span class="ipss-severity" id="bctosFunctionalInterpretation">Complete all 4 functional items</span>
+              <div class="ipss-score-scale">1 no difference · 4 large difference</div>
             </div>
 
-            <div class="ipss-qol-card">
-              <span class="ipss-qol-label">Status</span>
-              <strong class="baseline-summary-value">Official instruments only</strong>
-              <span class="baseline-summary-detail">The preview keeps this slot styled consistently while avoiding a made-up breast score.</span>
-              <span class="baseline-status-chip">Pre-RT consultation baseline</span>
+            <div class="ipss-score-card" aria-live="polite">
+              <span class="ipss-score-label">Aesthetic Status</span>
+              <strong class="ipss-score-value" id="bctosAestheticResult">— / 4</strong>
+              <span class="ipss-severity" id="bctosAestheticInterpretation">Complete all 8 aesthetic items</span>
+              <div class="ipss-score-scale">1 no difference · 4 large difference</div>
             </div>
 
-            <div class="ipss-note-card">Use this panel as the final layout template. Once an official breast questionnaire is selected, its true score can appear here, and the side-card result chip can display the completed value instead of a placeholder.</div>
+            <div class="ipss-note-card">Each subscale is calculated as the arithmetic mean of its completed items once all items in that subscale are answered. Higher scores indicate a larger treated-versus-untreated difference and therefore poorer status.</div>
 
             <div class="ipss-actions">
+              <button class="btn small secondary" id="resetBreastBaseline" type="button">Reset</button>
               <button class="btn small primary" id="doneBreastBaseline" type="button">Done</button>
             </div>
           </aside>
@@ -12441,7 +12670,7 @@ const workspaceMainColumn = document.querySelector(".workspace > .main-column");
           scoreValue.textContent = `${score} / 35`;
           severityText.textContent = severity;
           if (miniResult) {
-            miniResult.textContent = `Score ${score} · ${severity.replace(" urinary symptoms", "")}`;
+            miniResult.innerHTML = `<span class="ipss-mini-score">${score} / 35</span><span class="ipss-mini-interpretation">${severity.replace(" urinary symptoms", "")}</span>`;
             miniResult.classList.add("has-score");
           }
         } else {
@@ -12571,13 +12800,10 @@ const workspaceMainColumn = document.querySelector(".workspace > .main-column");
         }, 0);
       };
 
-      // Lung baseline assessment
+      // Lung: validated mMRC score only.
       const lungMmrc = document.getElementById("lungMmrc");
-      const lungFields = ["lungMmrc", "lungOxygen", "lungCough", "lungHemoptysis", "lungChestPain"].map(id => document.getElementById(id)).filter(Boolean);
       const lungMmrcResult = document.getElementById("lungMmrcResult");
       const lungMmrcInterpretation = document.getElementById("lungMmrcInterpretation");
-      const lungBaselineCompletion = document.getElementById("lungBaselineCompletion");
-      const lungBaselineHighlights = document.getElementById("lungBaselineHighlights");
       const mmrcLabels = {
         0: "Minimal functional limitation",
         1: "Mild functional limitation",
@@ -12587,14 +12813,13 @@ const workspaceMainColumn = document.querySelector(".workspace > .main-column");
       };
 
       const updateLungBaseline = () => {
-        const completed = lungFields.filter(field => field.value !== "").length;
-        if (lungBaselineCompletion) lungBaselineCompletion.textContent = `${completed} / ${lungFields.length} recorded`;
         if (lungMmrc?.value !== "") {
           const grade = Number(lungMmrc.value);
+          const interpretation = mmrcLabels[grade] || "Recorded";
           if (lungMmrcResult) lungMmrcResult.textContent = `${grade} / 4`;
-          if (lungMmrcInterpretation) lungMmrcInterpretation.textContent = mmrcLabels[grade] || "Recorded";
+          if (lungMmrcInterpretation) lungMmrcInterpretation.textContent = interpretation;
           if (lungMiniResult) {
-            lungMiniResult.textContent = `mMRC ${grade}`;
+            lungMiniResult.innerHTML = `<span class="ipss-mini-score">${grade} / 4</span><span class="ipss-mini-interpretation">${interpretation.replace(" functional limitation", "")}</span>`;
             lungMiniResult.classList.add("has-score");
           }
         } else {
@@ -12605,18 +12830,11 @@ const workspaceMainColumn = document.querySelector(".workspace > .main-column");
             lungMiniResult.classList.remove("has-score");
           }
         }
-
-        const hemoptysis = document.getElementById("lungHemoptysis")?.value || "";
-        const oxygen = document.getElementById("lungOxygen")?.value || "";
-        const highlights = [];
-        if (oxygen && oxygen !== "none") highlights.push("Supplemental oxygen use recorded");
-        if (hemoptysis && hemoptysis !== "no") highlights.push("Hemoptysis present before RT");
-        if (lungBaselineHighlights) lungBaselineHighlights.textContent = highlights.length ? highlights.join(" · ") : "Record symptoms that are already present before RT.";
       };
 
-      lungFields.forEach(field => field.addEventListener("change", updateLungBaseline));
+      lungMmrc?.addEventListener("change", updateLungBaseline);
       document.getElementById("resetLungBaseline")?.addEventListener("click", () => {
-        lungFields.forEach(field => { field.value = ""; });
+        if (lungMmrc) lungMmrc.value = "";
         updateLungBaseline();
         lungMmrc?.focus();
       });
@@ -12625,13 +12843,74 @@ const workspaceMainColumn = document.querySelector(".workspace > .main-column");
       document.getElementById("doneLungBaseline")?.addEventListener("click", () => closeModal(lungModal));
       lungModal?.addEventListener("click", event => { if (event.target === lungModal) closeModal(lungModal); });
 
-      // Breast baseline placeholder. The made-up checklist was removed; keep only the official-instrument slot.
+      // Breast: BCTOS-12, with separate Functional and Aesthetic subscale means.
+      const bctosItems = Array.from(document.querySelectorAll(".bctos-item"));
+      const bctosFunctionalItems = bctosItems.filter(item => item.dataset.bctosGroup === "functional");
+      const bctosAestheticItems = bctosItems.filter(item => item.dataset.bctosGroup === "aesthetic");
+      const bctosFunctionalResult = document.getElementById("bctosFunctionalResult");
+      const bctosAestheticResult = document.getElementById("bctosAestheticResult");
+      const bctosFunctionalInterpretation = document.getElementById("bctosFunctionalInterpretation");
+      const bctosAestheticInterpretation = document.getElementById("bctosAestheticInterpretation");
+
+      const bctosCategory = score => {
+        if (score <= 1.75) return "Good";
+        if (score <= 2.50) return "Intermediate";
+        if (score <= 3.25) return "Fair";
+        return "Poor";
+      };
+
+      const bctosSubscale = items => {
+        const values = items.map(item => item.value === "" ? null : Number(item.value));
+        const complete = values.every(value => Number.isFinite(value));
+        if (!complete) return null;
+        return values.reduce((sum, value) => sum + value, 0) / values.length;
+      };
+
       const updateBreastBaseline = () => {
+        const functional = bctosSubscale(bctosFunctionalItems);
+        const aesthetic = bctosSubscale(bctosAestheticItems);
+
+        if (functional !== null) {
+          const value = functional.toFixed(2);
+          const category = bctosCategory(functional);
+          if (bctosFunctionalResult) bctosFunctionalResult.textContent = `${value} / 4`;
+          if (bctosFunctionalInterpretation) bctosFunctionalInterpretation.textContent = category;
+        } else {
+          const completed = bctosFunctionalItems.filter(item => item.value !== "").length;
+          if (bctosFunctionalResult) bctosFunctionalResult.textContent = "— / 4";
+          if (bctosFunctionalInterpretation) bctosFunctionalInterpretation.textContent = completed ? `${completed} of 4 functional items completed` : "Complete all 4 functional items";
+        }
+
+        if (aesthetic !== null) {
+          const value = aesthetic.toFixed(2);
+          const category = bctosCategory(aesthetic);
+          if (bctosAestheticResult) bctosAestheticResult.textContent = `${value} / 4`;
+          if (bctosAestheticInterpretation) bctosAestheticInterpretation.textContent = category;
+        } else {
+          const completed = bctosAestheticItems.filter(item => item.value !== "").length;
+          if (bctosAestheticResult) bctosAestheticResult.textContent = "— / 4";
+          if (bctosAestheticInterpretation) bctosAestheticInterpretation.textContent = completed ? `${completed} of 8 aesthetic items completed` : "Complete all 8 aesthetic items";
+        }
+
         if (breastMiniResult) {
-          breastMiniResult.textContent = "---";
-          breastMiniResult.classList.remove("has-score");
+          if (functional !== null && aesthetic !== null) {
+            breastMiniResult.innerHTML =
+              `<span class="bctos-mini-line"><span class="bctos-mini-label">Function</span><span class="bctos-mini-value">${functional.toFixed(2)} · ${bctosCategory(functional)}</span></span>` +
+              `<span class="bctos-mini-line"><span class="bctos-mini-label">Aesthetic</span><span class="bctos-mini-value">${aesthetic.toFixed(2)} · ${bctosCategory(aesthetic)}</span></span>`;
+            breastMiniResult.classList.add("has-score");
+          } else {
+            breastMiniResult.textContent = "---";
+            breastMiniResult.classList.remove("has-score");
+          }
         }
       };
+
+      bctosItems.forEach(item => item.addEventListener("change", updateBreastBaseline));
+      document.getElementById("resetBreastBaseline")?.addEventListener("click", () => {
+        bctosItems.forEach(item => { item.value = ""; });
+        updateBreastBaseline();
+        bctosItems[0]?.focus();
+      });
       breastOpen?.addEventListener("click", () => openModal(breastModal, document.getElementById("closeBreastBaseline")));
       document.getElementById("closeBreastBaseline")?.addEventListener("click", () => closeModal(breastModal));
       document.getElementById("doneBreastBaseline")?.addEventListener("click", () => closeModal(breastModal));
@@ -12657,6 +12936,90 @@ const workspaceMainColumn = document.querySelector(".workspace > .main-column");
       updateLungBaseline();
       updateBreastBaseline();
       syncPanels();
+    })();
+  </script>
+
+  <script>
+    (() => {
+      const courseSteps = Array.from(document.querySelectorAll(".treatment-course-card .course-step"));
+      if (!courseSteps.length) return;
+
+      const activateCourseStep = selected => {
+        courseSteps.forEach(step => {
+          const active = step === selected;
+          step.classList.toggle("is-active", active);
+          if (active) {
+            step.setAttribute("aria-current", "step");
+          } else {
+            step.removeAttribute("aria-current");
+          }
+        });
+      };
+
+      courseSteps.forEach(step => {
+        step.addEventListener("click", () => activateCourseStep(step));
+        step.addEventListener("keydown", event => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            activateCourseStep(step);
+          }
+        });
+      });
+    })();
+  </script>
+
+  <script>
+    (() => {
+      const mobileQuery = window.matchMedia("(max-width: 980px)");
+      const workspace = document.querySelector(".workspace");
+      const setupCard = workspace?.querySelector(".setup-card");
+      const sideColumn = workspace?.querySelector(".side-column");
+      const desktopAnchor = document.getElementById("baselinePanelDesktopAnchor");
+      const baselinePanels = [
+        document.getElementById("ipssLaunchPanel"),
+        document.getElementById("lungBaselinePanel"),
+        document.getElementById("breastBaselinePanel")
+      ].filter(Boolean);
+
+      if (!workspace || !setupCard || !sideColumn || !desktopAnchor || !baselinePanels.length) return;
+
+      const placeBaselinePanels = () => {
+        if (mobileQuery.matches) {
+          /*
+            Treatment plan / calendar is the final section of Treatment setup.
+            Place baseline scoring immediately after the entire setup card so it
+            appears directly beneath the plan while remaining its own card.
+          */
+          let insertionPoint = setupCard;
+          baselinePanels.forEach(panel => {
+            insertionPoint.insertAdjacentElement("afterend", panel);
+            insertionPoint = panel;
+          });
+        } else {
+          /*
+            Restore the normal desktop placement in the right-side column.
+          */
+          let insertionPoint = desktopAnchor;
+          baselinePanels.forEach(panel => {
+            insertionPoint.insertAdjacentElement("afterend", panel);
+            insertionPoint = panel;
+          });
+        }
+
+        requestAnimationFrame(() => {
+          if (typeof syncWorkspaceColumnHeights === "function") {
+            syncWorkspaceColumnHeights();
+          }
+        });
+      };
+
+      placeBaselinePanels();
+
+      if (typeof mobileQuery.addEventListener === "function") {
+        mobileQuery.addEventListener("change", placeBaselinePanels);
+      } else if (typeof mobileQuery.addListener === "function") {
+        mobileQuery.addListener(placeBaselinePanels);
+      }
     })();
   </script>
 
