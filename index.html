@@ -1957,6 +1957,19 @@
       color: var(--ink);
     }
 
+    .lung-source-context {
+      display: block;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .lung-source-context b {
+      color: var(--ink);
+    }
+
     @media (max-width: 620px) {
       .prostate-regimen-grid {
         grid-template-columns: 1fr;
@@ -6078,14 +6091,14 @@
                   </div>
                 </div>
 
-                <div class="lung-regimen-note" id="lungRegimenNote" aria-live="polite"></div>
+                <div class="lung-regimen-note" id="lungRegimenNote" aria-live="polite" hidden></div>
 
                 <div class="regimen-quiet-meta">
                   <span class="regimen-quiet-status info" id="lungRegimenStatus" aria-live="polite"></span>
                   <button class="regimen-source-toggle" type="button" aria-expanded="false" aria-controls="lungRegimenSource">Source</button>
                 </div>
                 <div class="breast-regimen-source prostate-regimen-source regimen-source-detail" id="lungRegimenSource" hidden></div>
-                <p class="prostate-regimen-disclaimer regimen-disclaimer-quiet">Educational decision support only. Final regimen selection remains individualized to tumor location, stage, organ-at-risk constraints, systemic therapy, and institutional protocol.</p>
+                <p class="prostate-regimen-disclaimer regimen-disclaimer-quiet">Educational decision support only. Final regimen selection remains individualized.</p>
               </div>
 
               </div>
@@ -10710,8 +10723,25 @@
       if (supported?.twiceDaily) {
         html += ` The calendar displays two treatment sessions on each weekday.`;
       }
+
+      /*
+        Keep the main lung regimen panel visually consistent with prostate and
+        breast. Detailed setting-specific guidance is retained inside Source.
+      */
+      note.hidden = true;
       note.className = `lung-regimen-note ${tone === "warning" ? "warning" : ""}`.trim();
-      note.innerHTML = html;
+      note.innerHTML = "";
+
+      const source = $("lungRegimenSource");
+      if (source && html) {
+        source.insertAdjacentHTML(
+          "beforeend",
+          `<span class="boost-source-note lung-source-context">
+            <b>Clinical context:</b>
+            ${html}
+          </span>`
+        );
+      }
     }
 
     function updateLungRegimenPanel({ syncCategory = true } = {}) {
@@ -13037,4 +13067,3 @@ const workspaceMainColumn = document.querySelector(".workspace > .main-column");
 
 </body>
 </html>
-  
