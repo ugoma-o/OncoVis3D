@@ -1288,6 +1288,10 @@
       font-weight: 800;
     }
 
+    .setup-immobilization-info {
+      grid-template-columns: 1fr;
+    }
+
     .setup-position-control[hidden] {
       display: none !important;
     }
@@ -5850,6 +5854,13 @@
               </select>
             </div>
 
+            <div class="setup-position-control setup-immobilization-info" id="setupImmobilizationInfo" hidden>
+              <div>
+                <label>Immobilization</label>
+                <span>There are multiple ways to help keep you still and in the same position during treatment. The method used depends on the area being treated.</span>
+              </div>
+            </div>
+
             <div class="setup-media" id="setupMedia" role="img" aria-label="Treatment setup image placeholder">
               <div class="setup-placeholder-icon" id="setupIcon">⚙️</div>
               <div>
@@ -7283,29 +7294,51 @@
       },
       "breast:whole-breast": {
         "IMRT/VMAT": { immobilizer: "Breast_immobilization.png" },
-        "3D conformal radiation": { immobilizer: "Breast_immobilization.png" }
+        "3D conformal radiation": { immobilizer: "Breast_immobilization.png" },
+        "SBRT/SABR": { immobilizer: "Breast_immobilization.png" },
+        "SRS": { immobilizer: "Breast_immobilization.png" },
+        "Protons": { immobilizer: "Breast_immobilization.png" },
+        "Brachytherapy": { immobilizer: "Breast_immobilization.png" }
       },
       "breast:pbi": {
         "IMRT/VMAT": { immobilizer: "Breast_immobilization.png" },
-        "3D conformal radiation": { immobilizer: "Breast_immobilization.png" }
+        "3D conformal radiation": { immobilizer: "Breast_immobilization.png" },
+        "SBRT/SABR": { immobilizer: "Breast_immobilization.png" },
+        "SRS": { immobilizer: "Breast_immobilization.png" },
+        "Protons": { immobilizer: "Breast_immobilization.png" },
+        "Brachytherapy": { immobilizer: "Breast_immobilization.png" }
       },
       "breast:chest-wall": {
         "IMRT/VMAT": { immobilizer: "Breast_immobilization.png" },
-        "3D conformal radiation": { immobilizer: "Breast_immobilization.png" }
+        "3D conformal radiation": { immobilizer: "Breast_immobilization.png" },
+        "SBRT/SABR": { immobilizer: "Breast_immobilization.png" },
+        "SRS": { immobilizer: "Breast_immobilization.png" },
+        "Protons": { immobilizer: "Breast_immobilization.png" },
+        "Brachytherapy": { immobilizer: "Breast_immobilization.png" }
       },
       "breast:regional-nodes": {
         "IMRT/VMAT": { immobilizer: "Breast_immobilization.png" },
-        "3D conformal radiation": { immobilizer: "Breast_immobilization.png" }
+        "3D conformal radiation": { immobilizer: "Breast_immobilization.png" },
+        "SBRT/SABR": { immobilizer: "Breast_immobilization.png" },
+        "SRS": { immobilizer: "Breast_immobilization.png" },
+        "Protons": { immobilizer: "Breast_immobilization.png" },
+        "Brachytherapy": { immobilizer: "Breast_immobilization.png" }
       },
       "thoracic:nsclc": {
         "IMRT/VMAT": { immobilizer: "Breast_immobilization.png" },
         "3D conformal radiation": { immobilizer: "Breast_immobilization.png" },
-        "SBRT/SABR": { immobilizer: "Breast_immobilization.png" }
+        "SBRT/SABR": { immobilizer: "Breast_immobilization.png" },
+        "SRS": { immobilizer: "Breast_immobilization.png" },
+        "Protons": { immobilizer: "Breast_immobilization.png" },
+        "Brachytherapy": { immobilizer: "Breast_immobilization.png" }
       },
       "thoracic:sclc": {
         "IMRT/VMAT": { immobilizer: "Breast_immobilization.png" },
         "3D conformal radiation": { immobilizer: "Breast_immobilization.png" },
-        "SBRT/SABR": { immobilizer: "Breast_immobilization.png" }
+        "SBRT/SABR": { immobilizer: "Breast_immobilization.png" },
+        "SRS": { immobilizer: "Breast_immobilization.png" },
+        "Protons": { immobilizer: "Breast_immobilization.png" },
+        "Brachytherapy": { immobilizer: "Breast_immobilization.png" }
       }
     };
 
@@ -7314,42 +7347,48 @@
         description: "A linear accelerator rotates around the patient while daily image guidance helps align the treatment target.",
         slides: [
           ["⚙️", "Treatment machine", "Linear accelerator used to deliver image-guided IMRT/VMAT treatments."],
-          ["🛏️", "Patient position", "Placeholder for a supine treatment setup image. Replace this with your site-specific patient positioning photo."]
+          ["🛏️", "Patient position", "Placeholder for a supine treatment setup image. Replace this with your site-specific patient positioning photo."],
+          ["🧩", "Immobilization", "Positioning and immobilization devices help keep the patient still and reproduce the same treatment position each day. Daily image guidance is used when appropriate to verify alignment before treatment."]
         ]
       },
       "3D conformal radiation": {
         description: "A linear accelerator delivers shaped fields from selected beam angles using patient-specific blocks, MLCs, and reproducible setup.",
         slides: [
           ["⚙️", "Treatment machine", "Linear accelerator used to deliver shaped 3D conformal radiation fields."],
-          ["🛏️", "Patient position", "Placeholder for conventional supine or site-specific treatment setup."]
+          ["🛏️", "Patient position", "Placeholder for conventional supine or site-specific treatment setup."],
+          ["🧩", "Immobilization", "Positioning and immobilization devices help keep the patient still and reproduce the same treatment position each day. Image guidance is used as appropriate to verify treatment alignment."]
         ]
       },
       "SBRT/SABR": {
         description: "SBRT/SABR uses highly focused radiation over a small number of treatments, with strict immobilization and motion management when needed.",
         slides: [
           ["🎯", "Treatment machine", "Placeholder for linac-based SBRT, CyberKnife, or other stereotactic platform."],
-          ["🛏️", "Patient position", "Placeholder for SBRT setup, commonly supine with customized body immobilization."]
+          ["🛏️", "Patient position", "Placeholder for SBRT setup, commonly supine with customized body immobilization."],
+          ["🧩", "Immobilization", "SBRT/SABR uses highly reproducible immobilization and image guidance to minimize setup uncertainty and account for motion when needed."]
         ]
       },
       "SRS": {
         description: "SRS uses stereotactic localization and very precise immobilization to treat intracranial targets in one or a few sessions.",
         slides: [
           ["🎯", "Treatment machine", "Placeholder for Gamma Knife, linac SRS, CyberKnife, or comparable system."],
-          ["🛏️", "Patient position", "Placeholder for cranial stereotactic setup."]
+          ["🛏️", "Patient position", "Placeholder for cranial stereotactic setup."],
+          ["🧩", "Immobilization", "SRS requires precise stereotactic immobilization, such as a thermoplastic mask or frame-based system, to reproduce cranial positioning accurately."]
         ]
       },
       "Protons": {
         description: "Proton therapy uses charged particles with finite range, often requiring highly reproducible setup and anatomy-specific verification.",
         slides: [
           ["🌀", "Treatment machine", "Placeholder for proton gantry, fixed beam room, or nozzle image."],
-          ["🛏️", "Patient position", "Placeholder for proton treatment setup."]
+          ["🛏️", "Patient position", "Placeholder for proton treatment setup."],
+          ["🧩", "Immobilization", "Customized positioning and immobilization are used to reproduce patient anatomy and alignment accurately for proton treatment."]
         ]
       },
       "Brachytherapy": {
         description: "Brachytherapy places a radiation source close to or inside the treatment region using applicators, catheters, or seeds.",
         slides: [
           ["🏥", "Treatment equipment", "Placeholder for HDR afterloader, applicator setup, or procedure suite."],
-          ["🛏️", "Patient position", "Placeholder for procedure or treatment position."]
+          ["🛏️", "Patient position", "Placeholder for procedure or treatment position."],
+          ["🧩", "Immobilization / applicator", "Applicators, catheters, templates, packing, or other positioning devices may be used to maintain reproducible geometry during brachytherapy treatment."]
         ]
       }
     };
@@ -7793,6 +7832,7 @@
       const selectedPosition = getSelectedPatientPosition();
       const isPositionSlide = slideType === "position";
       const isEquipmentSlide = slideType === "machine";
+      const isImmobilizerSlide = slideType === "immobilizer";
 
       syncPatientPositionSelect();
 
@@ -7801,6 +7841,9 @@
       }
       if ($("setupPositionControl")) {
         $("setupPositionControl").hidden = !isPositionSlide;
+      }
+      if ($("setupImmobilizationInfo")) {
+        $("setupImmobilizationInfo").hidden = !isImmobilizerSlide;
       }
 
       const imagePath = isPositionSlide
