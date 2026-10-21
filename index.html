@@ -5751,18 +5751,18 @@
       </section>
 
       <section class="app-page" id="workspacePage" data-page="workspace">
-        <section class="panel organ-selector-panel" aria-label="Organ systems">
+        <section class="panel organ-selector-panel" aria-label="Treatment areas">
           <div class="panel-heading">
             <div>
-              <h2>Organ systems</h2>
+              <h2>Treatment area</h2>
          
             </div>
           </div>
           <div class="search-box">
-            <label class="sr-only" for="searchInput">Search cancer sites</label>
-            <input id="searchInput" type="search" placeholder="Search CNS, prostate, lung..." autocomplete="off" />
+            <label class="sr-only" for="searchInput">Search treatment areas or cancer types</label>
+            <input id="searchInput" type="search" placeholder="Search breast, prostate, lung..." autocomplete="off" />
           </div>
-          <div class="organ-tabs-wrap" aria-label="Organ system tabs">
+          <div class="organ-tabs-wrap" aria-label="Treatment area tabs">
             <button class="organ-scroll-btn prev" id="organScrollPrev" type="button" aria-label="Scroll organ systems left"><span aria-hidden="true"></span></button>
             <div class="system-grid" id="systemGrid"></div>
             <button class="organ-scroll-btn next" id="organScrollNext" type="button" aria-label="Scroll organ systems right"><span aria-hidden="true"></span></button>
@@ -5772,8 +5772,8 @@
         <section class="workspace-landing panel" id="workspaceLanding" aria-labelledby="workspaceLandingTitle">
           <div class="workspace-landing-copy">
             <span class="workspace-landing-kicker">Treatment education workspace</span>
-            <h2 id="workspaceLandingTitle">Choose an organ system to begin</h2>
-            <p>Select an organ system above to load its disease sites, 3D anatomy model, treatment setup, treatment plan, symptom timeline, and clinician notes.</p>
+            <h2 id="workspaceLandingTitle">Choose a treatment area to begin</h2>
+            <p>Select a treatment area above to explore its cancer types or treatment sites, 3D anatomy, treatment setup, treatment plan, symptom timeline, and clinician notes.</p>
           </div>
         </section>
 
@@ -5783,8 +5783,8 @@
           <div class="content-section disease-site-section">
             <div class="panel-heading">
               <div>
-                <h3 id="siteHeading">Disease sites</h3>
-                <p>Pick the most relevant clinical scenario</p>
+                <h3 id="siteHeading">Cancer type or treatment site</h3>
+                <p>Choose the area or type of cancer being treated</p>
               </div>
             </div>
             <div class="site-grid" id="siteGrid"></div>
@@ -6228,6 +6228,16 @@
         </div>
 
         <aside class="side-column" aria-label="Treatment explanation and symptom timeline">
+          <section class="side-card symptom-card">
+            <div class="panel-heading">
+              <div>
+                <h3>Symptom timeline</h3>
+                <p>During treatment you won't see the beam and you won't feel the beam. Side effects vary from person to person. Some people have few noticeable effects, while others develop symptoms that become more noticeable during treatment or in the weeks afterward.</p>
+              </div>
+            </div>
+            <div class="timeline" id="timeline"></div>
+          </section>
+
           <section class="side-card treatment-course-card" aria-label="Treatment course">
             <div class="panel-heading">
               <div>
@@ -6357,15 +6367,7 @@
             </div>
           </section>
 
-          <section class="side-card symptom-card">
-            <div class="panel-heading">
-              <div>
-                <h3>Symptom timeline</h3>
-                <p>During treatment you won't see the beam and you won't feel the beam. Side effects vary from person to person. Some people have few noticeable effects, while others develop symptoms that become more noticeable during treatment or in the weeks afterward.</p>
-              </div>
-            </div>
-            <div class="timeline" id="timeline"></div>
-          </section>
+          
 
       <section class="side-card clinician-notes-wide" aria-label="Clinician notes">
         <div class="panel-heading">
@@ -8104,7 +8106,7 @@
 
       $("selectedTitle").textContent = system.name;
       $("selectedSubtitle").textContent = system.subtitle;
-      $("siteHeading").textContent = `${system.name} disease sites`;
+      $("siteHeading").textContent = `${system.name}: treatment area or cancer type`;
       updateTreatmentAtAGlanceContent();
       if ($("supportiveCare")) $("supportiveCare").innerHTML = supportiveCare.map(item => `<li>${item}</li>`).join("");
       updateTreatmentAtAGlanceSchedule();
