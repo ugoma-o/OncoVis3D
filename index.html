@@ -7300,6 +7300,13 @@
       const select = $("patientPositionSelect");
       if (!select) return;
       select.value = getSelectedPatientPositionKey();
+
+      const supineOption = select.querySelector('option[value="supine"]');
+      if (supineOption) {
+        supineOption.textContent = activeSystem()?.id === "breast"
+          ? "Supine, arms over chest"
+          : "Supine";
+      }
     }
 
     const sharedSetupImagesByTechnique = {
@@ -7897,6 +7904,14 @@
             const positionKey = getSelectedPatientPositionKey();
             const isBreastSite = system.id === "breast";
 
+            if (isBreastSite && positionKey === "supine") {
+              return "images/Breast_Supine_Arms_Chest.jpg";
+            }
+
+            if (isBreastSite && positionKey === "supine-arms-up") {
+              return "images/Breast_Supine_Arms_Raised.jpg";
+            }
+
             if (positionKey === "supine" && key === "gu:prostate") {
               return "images/Supine_Chest_Male.png";
             }
@@ -7914,7 +7929,13 @@
             ""
           );
 
-      const displayTitle = isPositionSlide ? selectedPosition.label : title;
+      const displayTitle = isPositionSlide
+        ? (
+            system.id === "breast" && getSelectedPatientPositionKey() === "supine"
+              ? "Supine, arms over chest"
+              : selectedPosition.label
+          )
+        : title;
       const displayText = isPositionSlide ? selectedPosition.description : text;
 
       const imageCreditHtml = imagePath === "images/IMRT.jpg"
@@ -7925,7 +7946,7 @@
       if ($("setupTechniqueText")) $("setupTechniqueText").textContent = setup.description;
       if ($("setupSubtitle")) {
         $("setupSubtitle").textContent = isPositionSlide
-          ? `${selectedPosition.label} position preview`
+          ? `${displayTitle} position preview`
           : `${title} preview`;
       }
 
@@ -7935,7 +7956,7 @@
           $("setupMedia").setAttribute(
             "aria-label",
             isPositionSlide
-              ? `${site.name} ${selectedPosition.label.toLowerCase()} treatment position preview`
+              ? `${site.name} ${displayTitle.toLowerCase()} treatment position preview`
               : `${site.name} ${title.toLowerCase()} preview`
           );
           $("setupMedia").innerHTML = `
