@@ -4208,6 +4208,7 @@
     }
 
     .landing-preview-video-frame {
+      position: relative;
       width: 100%;
       min-height: 188px;
       display: grid;
@@ -4215,19 +4216,60 @@
       overflow: hidden;
       border: 1px solid rgba(47, 127, 136, 0.12);
       border-radius: 14px;
-      background: transparent;
+      background:
+        radial-gradient(circle at 50% 42%, rgba(47, 127, 136, 0.16), transparent 44%),
+        linear-gradient(145deg, rgba(232, 242, 245, 0.96), rgba(247, 250, 251, 0.98));
       box-shadow: none;
     }
 
+    .landing-preview-video-fallback {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      text-align: center;
+      color: var(--muted);
+      opacity: 1;
+      transition: opacity 180ms ease;
+    }
+
+    .landing-preview-video-fallback strong {
+      display: block;
+      color: var(--ink);
+      font-size: 0.9rem;
+      margin-bottom: 3px;
+    }
+
+    .landing-preview-video-fallback span {
+      display: block;
+      font-size: 0.72rem;
+      line-height: 1.35;
+    }
+
+    .landing-preview-video-frame.is-video-ready .landing-preview-video-fallback {
+      opacity: 0;
+      pointer-events: none;
+    }
+
     .landing-preview-video {
+      position: relative;
+      z-index: 1;
       width: 100%;
       height: 188px;
       display: block;
       object-fit: cover;
       object-position: center center;
-      transform: scale(1.14);
+      transform: scale(1.08);
       transform-origin: center center;
       background-color: transparent !important;
+      opacity: 0;
+      transition: opacity 180ms ease;
+    }
+
+    .landing-preview-video-frame.is-video-ready .landing-preview-video {
+      opacity: 1;
     }
 
     .model-core {
@@ -5547,7 +5589,13 @@
                     <div class="landing-preview-body">
                       <div class="landing-preview-anatomy">
                         <div class="landing-preview-video-frame">
-                          <video class="landing-preview-video" autoplay muted loop playsinline preload="metadata" aria-label="OncoVis3D 3D anatomy preview">
+                          <div class="landing-preview-video-fallback" aria-hidden="true">
+                            <div>
+                              <strong>Interactive 3D anatomy</strong>
+                              <span>Preview loading...</span>
+                            </div>
+                          </div>
+                          <video class="landing-preview-video" autoplay muted loop playsinline preload="auto" aria-label="OncoVis3D 3D anatomy preview">
                             <source src="images/homepage_preview.mp4" type="video/mp4" />
                             Your browser does not support embedded video.
                           </video>
@@ -12593,7 +12641,29 @@ const workspaceMainColumn = document.querySelector(".workspace > .main-column");
         firstSlideClone.removeAttribute("data-preview-slide");
         firstSlideClone.setAttribute("aria-hidden", "true");
         firstSlideClone.setAttribute("data-preview-clone", "first");
+
+        // Do not duplicate the large autoplaying video in the loop clone.
+        // A lightweight visual placeholder avoids Safari/iOS rendering and
+        // bandwidth issues while preserving the seamless forward wrap.
+        const clonedVideo = firstSlideClone.querySelector(".landing-preview-video");
+        const clonedFrame = firstSlideClone.querySelector(".landing-preview-video-frame");
+        if (clonedVideo) clonedVideo.remove();
+        if (clonedFrame) clonedFrame.classList.remove("is-video-ready");
+
         track.appendChild(firstSlideClone);
+      }
+
+      const primaryPreviewVideo = slides[0]?.querySelector(".landing-preview-video");
+      const primaryPreviewFrame = slides[0]?.querySelector(".landing-preview-video-frame");
+      if (primaryPreviewVideo && primaryPreviewFrame) {
+        const markVideoReady = () => primaryPreviewFrame.classList.add("is-video-ready");
+        primaryPreviewVideo.addEventListener("loadeddata", markVideoReady, { once: true });
+        primaryPreviewVideo.addEventListener("canplay", markVideoReady, { once: true });
+        primaryPreviewVideo.load();
+        const playAttempt = primaryPreviewVideo.play();
+        if (playAttempt && typeof playAttempt.catch === "function") {
+          playAttempt.catch(() => {});
+        }
       }
 
       const updateIndicators = () => {
