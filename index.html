@@ -7268,7 +7268,7 @@
       },
       prone: {
         label: "Prone",
-        image: "images/Prone.png",
+        image: "images/Prone_Male.jpg",
         description: "The patient lies face down in a reproducible treatment position."
       }
     };
@@ -7911,6 +7911,12 @@
               return "images/Breast_Supine_Arms_Raised.jpg";
             }
 
+            if (positionKey === "prone") {
+              return isBreastSite
+                ? "images/Breast_Prone_Female.jpg"
+                : "images/Prone_Male.jpg";
+            }
+
             if (positionKey === "supine" && key === "gu:prostate") {
               return "images/Supine_Chest_Male.png";
             }
@@ -7922,10 +7928,14 @@
             return selectedPosition.image;
           })()
         : (
-            sharedSetupImagesByTechnique[technique]?.[slideType] ||
-            setupImageLibrary[key]?.[technique]?.[slideType] ||
-            setupImageLibrary[key]?.["IMRT/VMAT"]?.[slideType] ||
-            ""
+            isImmobilizerSlide
+              ? "images/Breast_immobilization.png"
+              : (
+                  sharedSetupImagesByTechnique[technique]?.[slideType] ||
+                  setupImageLibrary[key]?.[technique]?.[slideType] ||
+                  setupImageLibrary[key]?.["IMRT/VMAT"]?.[slideType] ||
+                  ""
+                )
           );
 
       const displayTitle = isPositionSlide
