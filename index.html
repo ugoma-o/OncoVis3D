@@ -855,6 +855,106 @@
     .viewer-title h2 { margin: 0; font-size: 1.24rem; letter-spacing: -0.03em; }
     .viewer-title p { margin: 3px 0 0; color: var(--muted); font-size: 0.9rem; }
 
+    .disease-scale-toolbar {
+      width: 100%;
+      display: grid;
+      gap: 11px;
+    }
+
+    .disease-scale-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .disease-scale-heading p {
+      margin: 0;
+      text-align: right;
+    }
+
+    .disease-scale-grid {
+      display: grid;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .disease-scale-option {
+      min-width: 0;
+      min-height: 68px;
+      display: grid;
+      align-content: center;
+      gap: 3px;
+      padding: 9px 8px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.82);
+      color: var(--ink);
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 5px 13px rgba(34, 55, 66, 0.06);
+      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease, background 0.16s ease;
+    }
+
+    .disease-scale-option:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 17px rgba(34, 55, 66, 0.10);
+    }
+
+    .disease-scale-option:focus-visible {
+      outline: none;
+      box-shadow: var(--focus);
+    }
+
+    .disease-scale-option strong {
+      display: block;
+      font-size: 0.92rem;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+
+    .disease-scale-option span {
+      display: block;
+      font-size: 0.70rem;
+      line-height: 1.2;
+      font-weight: 760;
+      color: var(--muted);
+    }
+
+    .disease-scale-option[data-tone="1"] { border-color: rgba(46, 125, 50, 0.42); background: rgba(76, 175, 80, 0.10); }
+    .disease-scale-option[data-tone="2"] { border-color: rgba(104, 159, 56, 0.44); background: rgba(139, 195, 74, 0.11); }
+    .disease-scale-option[data-tone="3"] { border-color: rgba(191, 150, 20, 0.46); background: rgba(255, 193, 7, 0.11); }
+    .disease-scale-option[data-tone="4"] { border-color: rgba(224, 124, 25, 0.48); background: rgba(255, 152, 0, 0.11); }
+    .disease-scale-option[data-tone="5"] { border-color: rgba(190, 57, 57, 0.48); background: rgba(229, 57, 53, 0.10); }
+
+    .disease-scale-option[aria-pressed="true"] {
+      border-width: 2px;
+      box-shadow: 0 8px 20px rgba(34, 55, 66, 0.13);
+      transform: translateY(-1px);
+    }
+
+    .disease-scale-option[data-tone="1"][aria-pressed="true"] { background: rgba(76, 175, 80, 0.23); border-color: rgba(46, 125, 50, 0.82); }
+    .disease-scale-option[data-tone="2"][aria-pressed="true"] { background: rgba(139, 195, 74, 0.24); border-color: rgba(104, 159, 56, 0.82); }
+    .disease-scale-option[data-tone="3"][aria-pressed="true"] { background: rgba(255, 193, 7, 0.24); border-color: rgba(191, 150, 20, 0.84); }
+    .disease-scale-option[data-tone="4"][aria-pressed="true"] { background: rgba(255, 152, 0, 0.23); border-color: rgba(224, 124, 25, 0.86); }
+    .disease-scale-option[data-tone="5"][aria-pressed="true"] { background: rgba(229, 57, 53, 0.22); border-color: rgba(190, 57, 57, 0.86); }
+
+    @media (max-width: 700px) {
+      .disease-scale-heading {
+        display: block;
+      }
+
+      .disease-scale-heading p {
+        margin-top: 4px;
+        text-align: left;
+      }
+
+      .disease-scale-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+    }
+
     .viewer-frame-wrap {
       position: relative;
       flex: 0 0 auto;
@@ -5841,9 +5941,12 @@
           </div>
 
           <div class="viewer-toolbar">
-            <div class="viewer-title">
-              <h2 id="selectedTitle">Central nervous system</h2>
-              <p id="selectedSubtitle">Brain tumors, skull base tumors, spinal tumors, metastases</p>
+            <div class="viewer-title disease-scale-toolbar">
+              <div class="disease-scale-heading">
+                <h2 id="selectedTitle">Cancer classification</h2>
+                <p id="selectedSubtitle">Select the category that applies to this patient.</p>
+              </div>
+              <div class="disease-scale-grid" id="diseaseScaleOptions" role="group" aria-label="Cancer classification scale"></div>
             </div>
           </div>
 
@@ -8177,6 +8280,113 @@
       }
     }
 
+
+    const diseaseScaleLibrary = {
+      "gu:prostate": {
+        title: "Prostate Grade Group",
+        prompt: "Select the biopsy Grade Group",
+        options: [
+          { id: "gg1", label: "GG 1", detail: "Gleason ≤6 (3+3)", tone: 1 },
+          { id: "gg2", label: "GG 2", detail: "Gleason 7 (3+4)", tone: 2 },
+          { id: "gg3", label: "GG 3", detail: "Gleason 7 (4+3)", tone: 3 },
+          { id: "gg4", label: "GG 4", detail: "Gleason 8 (4+4, 3+5, 5+3)", tone: 4 },
+          { id: "gg5", label: "GG 5", detail: "Gleason 9–10 (4+5, 5+4, 5+5)", tone: 5 }
+        ]
+      },
+      "thoracic:nsclc": {
+        title: "NSCLC Stage",
+        prompt: "Select the clinical stage",
+        options: [
+          { id: "stage-i", label: "Stage I", detail: "Early / lung only", tone: 1 },
+          { id: "stage-ii", label: "Stage II", detail: "Local ± nearby nodes", tone: 2 },
+          { id: "stage-iii", label: "Stage III", detail: "Locoregional", tone: 4 },
+          { id: "stage-iv", label: "Stage IV", detail: "Metastatic", tone: 5 }
+        ]
+      },
+      "thoracic:sclc": {
+        title: "Small Cell Lung Cancer Stage",
+        prompt: "Select the disease extent",
+        options: [
+          { id: "limited", label: "Limited stage", detail: "Confined to one hemithorax / regional nodes", tone: 1 },
+          { id: "extensive", label: "Extensive stage", detail: "Beyond the limited-stage region", tone: 5 }
+        ]
+      },
+      "breast:whole-breast": null,
+      "breast:pbi": null,
+      "breast:chest-wall": null,
+      "breast:regional-nodes": null
+    };
+
+    const breastDiseaseScale = {
+      title: "Breast Cancer Stage",
+      prompt: "Select the clinical or pathologic stage",
+      options: [
+        { id: "stage-0", label: "Stage 0", detail: "In situ", tone: 1 },
+        { id: "stage-i", label: "Stage I", detail: "Early invasive", tone: 2 },
+        { id: "stage-ii", label: "Stage II", detail: "Larger and/or nearby nodes", tone: 3 },
+        { id: "stage-iii", label: "Stage III", detail: "Locally advanced", tone: 4 },
+        { id: "stage-iv", label: "Stage IV", detail: "Metastatic", tone: 5 }
+      ]
+    };
+
+    Object.keys(diseaseScaleLibrary).forEach(key => {
+      if (key.startsWith("breast:")) diseaseScaleLibrary[key] = breastDiseaseScale;
+    });
+
+    const diseaseScaleSelections = Object.create(null);
+
+    function renderDiseaseScale() {
+      const system = activeSystem();
+      const site = activeSite();
+      const key = embedKey(system.id, site.id);
+      const scale = diseaseScaleLibrary[key];
+      const title = $("selectedTitle");
+      const subtitle = $("selectedSubtitle");
+      const grid = $("diseaseScaleOptions");
+      if (!title || !subtitle || !grid) return;
+
+      if (!scale) {
+        title.textContent = site.name;
+        subtitle.textContent = system.subtitle;
+        grid.innerHTML = "";
+        grid.hidden = true;
+        return;
+      }
+
+      grid.hidden = false;
+      grid.style.gridTemplateColumns = `repeat(${scale.options.length}, minmax(0, 1fr))`;
+
+      const selectedId = diseaseScaleSelections[key] || "";
+      const selectedOption = scale.options.find(option => option.id === selectedId);
+
+      title.textContent = scale.title;
+      subtitle.textContent = selectedOption
+        ? `${selectedOption.label} selected`
+        : scale.prompt;
+
+      grid.setAttribute("aria-label", scale.title);
+      grid.innerHTML = scale.options.map(option => `
+        <button
+          class="disease-scale-option"
+          type="button"
+          data-disease-scale-id="${option.id}"
+          data-tone="${option.tone}"
+          aria-pressed="${option.id === selectedId ? "true" : "false"}"
+          title="${option.label}: ${option.detail}"
+        >
+          <strong>${option.label}</strong>
+          <span>${option.detail}</span>
+        </button>
+      `).join("");
+
+      grid.querySelectorAll("[data-disease-scale-id]").forEach(button => {
+        button.addEventListener("click", () => {
+          diseaseScaleSelections[key] = button.dataset.diseaseScaleId;
+          renderDiseaseScale();
+        });
+      });
+    }
+
     function updateDetails() {
       const system = activeSystem();
       const site = activeSite();
@@ -8184,8 +8394,7 @@
       const expectation = site.expectation || system.expectation;
       const supportiveCare = Array.isArray(site.support) ? site.support : system.support;
 
-      $("selectedTitle").textContent = system.name;
-      $("selectedSubtitle").textContent = system.subtitle;
+      renderDiseaseScale();
       $("siteHeading").textContent = `${system.name}: treatment area or cancer type`;
       updateTreatmentAtAGlanceContent();
       if ($("supportiveCare")) $("supportiveCare").innerHTML = supportiveCare.map(item => `<li>${item}</li>`).join("");
