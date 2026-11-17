@@ -1219,6 +1219,13 @@
       gap: 18px;
     }
 
+    /* Split-screen order: treatment course first, active baseline symptom
+       calculator second, then the symptom timeline. Narrow layouts override
+       this ordering below. */
+    .workspace > .side-column > .treatment-course-card { order: -3; }
+    .workspace > .side-column > .baseline-assessment-panel { order: -2; }
+    .workspace > .side-column > .symptom-card { order: -1; }
+
     .side-card { padding: 18px; }
 
     .setup-card {
