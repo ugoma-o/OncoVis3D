@@ -922,23 +922,18 @@
       color: var(--muted);
     }
 
-    .disease-scale-option[data-tone="1"] { border-color: rgba(46, 125, 50, 0.42); background: rgba(76, 175, 80, 0.10); }
-    .disease-scale-option[data-tone="2"] { border-color: rgba(104, 159, 56, 0.44); background: rgba(139, 195, 74, 0.11); }
-    .disease-scale-option[data-tone="3"] { border-color: rgba(191, 150, 20, 0.46); background: rgba(255, 193, 7, 0.11); }
-    .disease-scale-option[data-tone="4"] { border-color: rgba(224, 124, 25, 0.48); background: rgba(255, 152, 0, 0.11); }
-    .disease-scale-option[data-tone="5"] { border-color: rgba(190, 57, 57, 0.48); background: rgba(229, 57, 53, 0.10); }
+    .disease-scale-option {
+      border-color: rgba(47, 127, 136, 0.20);
+      background: rgba(255, 255, 255, 0.82);
+    }
 
     .disease-scale-option[aria-pressed="true"] {
       border-width: 2px;
+      border-color: rgba(47, 127, 136, 0.72);
+      background: rgba(47, 127, 136, 0.12);
       box-shadow: 0 8px 20px rgba(34, 55, 66, 0.13);
       transform: translateY(-1px);
     }
-
-    .disease-scale-option[data-tone="1"][aria-pressed="true"] { background: rgba(76, 175, 80, 0.23); border-color: rgba(46, 125, 50, 0.82); }
-    .disease-scale-option[data-tone="2"][aria-pressed="true"] { background: rgba(139, 195, 74, 0.24); border-color: rgba(104, 159, 56, 0.82); }
-    .disease-scale-option[data-tone="3"][aria-pressed="true"] { background: rgba(255, 193, 7, 0.24); border-color: rgba(191, 150, 20, 0.84); }
-    .disease-scale-option[data-tone="4"][aria-pressed="true"] { background: rgba(255, 152, 0, 0.23); border-color: rgba(224, 124, 25, 0.86); }
-    .disease-scale-option[data-tone="5"][aria-pressed="true"] { background: rgba(229, 57, 53, 0.22); border-color: rgba(190, 57, 57, 0.86); }
 
     @media (max-width: 700px) {
       .disease-scale-heading {
@@ -8335,6 +8330,155 @@
 
     const diseaseScaleSelections = Object.create(null);
 
+
+    function selectPresetOption(selectId, presetId, applyFn) {
+      const select = $(selectId);
+      if (!select || !presetId) return false;
+      const option = Array.from(select.options || []).find(item => item.value === presetId);
+      if (!option) return false;
+      select.value = presetId;
+      applyFn();
+      return true;
+    }
+
+    function preloadDiseaseScaleDefaults(key, optionId) {
+      const system = activeSystem();
+      const site = activeSite();
+      if (!system || !site) return;
+
+      // Position defaults remain patient-editable and are stored per site.
+      if (key === "gu:prostate") {
+        patientPositionSelections[key] = "supine";
+
+        const setting = $("prostateTreatmentSetting");
+        const category = $("prostateFractionationCategory");
+        if (setting && category) {
+          setting.value = "intact";
+          category.value = "moderate";
+          populateProstatePresetOptions({ preserveSelection: false });
+          selectPresetOption("prostateRegimenPreset", "mod-60-20", applyProstateRegimenPreset);
+        }
+      }
+
+      if (system.id === "breast") {
+        patientPositionSelections[key] = "supine-arms-up";
+
+        const setting = $("breastTreatmentSetting");
+        const category = $("breastFractionationCategory");
+        if (setting && category) {
+          if (site.id === "whole-breast") {
+            setting.value = "wbi";
+            category.value = "moderate";
+            populateBreastPresetOptions({ preserveSelection: false });
+            selectPresetOption("breastRegimenPreset", "wbi-40-15", applyBreastRegimenPreset);
+          } else if (site.id === "pbi") {
+            // PBI is generally an early-stage use case. Do not force a PBI
+            // prescription when a more advanced stage is selected.
+            if (optionId === "stage-0" || optionId === "stage-i") {
+              setting.value = "external";
+              category.value = "ultra";
+              populateBreastPresetOptions({ preserveSelection: false });
+              selectPresetOption("breastRegimenPreset", "pbi-30-5", applyBreastRegimenPreset);
+            }
+          } else if (site.id === "chest-wall") {
+            setting.value = "pmrt-no-recon";
+            category.value = "moderate";
+            populateBreastPresetOptions({ preserveSelection: false });
+            selectPresetOption("breastRegimenPreset", "pmrt-40-15", applyBreastRegimenPreset);
+          } else if (site.id === "regional-nodes") {
+            setting.value = "wbi-rni";
+            category.value = "moderate";
+            populateBreastPresetOptions({ preserveSelection: false });
+            selectPresetOption("breastRegimenPreset", "rni-40-15", applyBreastRegimenPreset);
+          }
+        }
+      }
+
+      if (key === "thoracic:nsclc") {
+        patientPositionSelections[key] = "supine-arms-up";
+        const setting = $("lungTreatmentSetting");
+        const category = $("lungFractionationCategory");
+        const config = activeLungRegimenConfig();
+
+        if (setting && category && config) {
+          let settingId = "";
+          let categoryId = "";
+          let presetId = "";
+
+          if (optionId === "stage-i") {
+            settingId = "early-peripheral";
+            categoryId = "sbrt";
+            presetId = "nsclc-peripheral-48-4";
+          } else if (optionId === "stage-ii") {
+            settingId = "stage3-rt-alone";
+            categoryId = "conventional";
+          } else if (optionId === "stage-iii") {
+            settingId = "stage3-concurrent";
+            categoryId = "conventional";
+            presetId = "nsclc-stage3-60-30";
+          } else if (optionId === "stage-iv") {
+            settingId = "palliative";
+            categoryId = "palliative";
+          }
+
+          if (settingId && config.settings.some(item => item.id === settingId)) {
+            setting.value = settingId;
+            category.value = categoryId || config.settings.find(item => item.id === settingId)?.defaultCategory || category.value;
+            populateLungPresetOptions({ preserveSelection: false });
+
+            if (presetId) {
+              selectPresetOption("lungRegimenPreset", presetId, applyLungRegimenPreset);
+            } else {
+              const common = config.presets.find(preset =>
+                preset.settings.includes(setting.value) &&
+                preset.category === category.value &&
+                (
+                  optionId !== "stage-iv" ||
+                  (preset.fractions === 10 && Math.abs(preset.totalDose - 30) < 0.01)
+                )
+              );
+              if (common) {
+                selectPresetOption("lungRegimenPreset", common.id, applyLungRegimenPreset);
+              } else {
+                updateLungRegimenPanel({ syncCategory: false });
+              }
+            }
+          }
+        }
+      }
+
+      if (key === "thoracic:sclc") {
+        patientPositionSelections[key] = "supine-arms-up";
+        const setting = $("lungTreatmentSetting");
+        const category = $("lungFractionationCategory");
+        const config = activeLungRegimenConfig();
+
+        if (setting && category && config) {
+          if (optionId === "limited") {
+            setting.value = "limited-bid";
+            category.value = "hyperfractionated";
+            populateLungPresetOptions({ preserveSelection: false });
+            selectPresetOption("lungRegimenPreset", "sclc-ls-45-30-bid", applyLungRegimenPreset);
+          } else if (optionId === "extensive") {
+            // Extensive-stage SCLC is primarily systemic therapy. Do not
+            // automatically imply thoracic consolidation for every patient.
+            setting.value = "extensive-consolidation";
+            category.value = "consolidation";
+            populateLungPresetOptions({ preserveSelection: false });
+            updateLungRegimenPanel({ syncCategory: false });
+          }
+        }
+      }
+
+      syncPatientPositionSelect();
+      setupSlideIndex = 1;
+      updateSetupCard();
+      updateTreatmentAtAGlanceContent();
+      updateDose();
+      updateTreatmentCourse();
+      requestAnimationFrame(syncWorkspaceColumnHeights);
+    }
+
     function renderDiseaseScale() {
       const system = activeSystem();
       const site = activeSite();
@@ -8381,7 +8525,9 @@
 
       grid.querySelectorAll("[data-disease-scale-id]").forEach(button => {
         button.addEventListener("click", () => {
-          diseaseScaleSelections[key] = button.dataset.diseaseScaleId;
+          const selectedId = button.dataset.diseaseScaleId;
+          diseaseScaleSelections[key] = selectedId;
+          preloadDiseaseScaleDefaults(key, selectedId);
           renderDiseaseScale();
         });
       });
