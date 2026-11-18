@@ -2988,7 +2988,8 @@
     .team-study-card p {
       font-size: 0.98rem;
       line-height: 1.58;
-      max-width: 98ch;
+      max-width: none;
+      width: 100%;
     }
 
     .team-study-card .team-meta-list {
@@ -3126,12 +3127,16 @@
 
     .team-research-members {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(6, minmax(0, 1fr));
       gap: 10px;
       padding: 0;
       margin: 0;
       list-style: none;
     }
+
+    .team-research-members li { grid-column: span 2; }
+    .team-research-members li:nth-child(-n+2),
+    .team-research-members li:nth-child(n+6) { grid-column: span 3; }
 
     .team-study-role {
       display: block;
@@ -3152,6 +3157,7 @@
 
     @media (max-width: 800px) {
       .team-research-members { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .team-research-members li:nth-child(n) { grid-column: auto; }
     }
 
     @media (max-width: 520px) {
